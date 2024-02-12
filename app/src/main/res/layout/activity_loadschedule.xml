@@ -4,477 +4,478 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="780dp"
     android:id="@+id/zoom"
-    android:layout_height="383dp"
+    android:layout_height="wrap_content"
     tools:context=".Loadschedule">
-<RelativeLayout
-    android:id="@+id/under"
-    android:layout_width="match_parent"
-    android:layout_height="303dp"
-    >
+    <RelativeLayout
+        android:id="@+id/under"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
-</RelativeLayout>
+
+
+    </RelativeLayout>
 
     <RelativeLayout
-    android:layout_width="800dp"
-    android:layout_height="match_parent">
+        android:id="@+id/rela"
+        android:layout_width="800dp"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/border1"
+            android:layout_width="800dp"
+            android:layout_height="43dp"
+            android:background="@drawable/boardupper" />
+        <ImageView
+            android:id="@+id/border2"
+            android:layout_width="800dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/border1"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="-0.5dp"
+            android:layout_above="@+id/border3"
+            android:background="@drawable/boardmid" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylcer_view"
+            android:layout_width="770dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/border1"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="0dp" />
 
 
         <ImageView
-            android:id="@+id/border"
-
+            android:id="@+id/border3"
             android:layout_width="800dp"
-            android:layout_height="411dp"
-            android:background="@drawable/board" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="-2dp"
+            android:layout_below="@+id/recylcer_view"
+            android:background="@drawable/boardlower" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recylcer_view"
 
-            android:layout_width="850dp"
-            android:layout_height="216dp"
 
-            android:layout_marginTop="43dp"
-            android:textAlignment="center" />
+        <RelativeLayout
+            android:id="@+id/UnderUnder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_below="@id/recylcer_view"
+            >
+            <TextView
+                android:id="@+id/totalONE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:id="@+id/HIGHA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/SAVEHIGHA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/LAWEHIGHA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ThirdUnder"
+            android:layout_marginTop="-2dp"
+            android:layout_below="@id/UnderUnder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/TopOneAndTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:id="@+id/TopThreeAndFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="165.6dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ForthUnder"
+            android:layout_marginTop="-2dp"
+            android:layout_below="@id/ThirdUnder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/TotalTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/FifthUnder"
+            android:layout_below="@id/ForthUnder"
+            android:layout_width="match_parent"
+            android:layout_marginTop="-1dp"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/TotalB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="175dp"
+                android:text="0.80"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:text="1.5"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:id="@+id/HighestB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/SAVEHIGHB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/LAWEHIGHB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="340dp"
+                android:text="12.00"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/LastUnder"
+            android:layout_marginTop="-2dp"
+            android:layout_below="@id/FifthUnder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/underoneandtwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/underthreeandfour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="169.5dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="-2dp"
+            android:layout_below="@id/LastUnder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/totalunder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:text="60.78"
+                android:textSize="9dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                tools:ignore="TextSizeCheck" />
+
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/firstleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="TOTAL CONNECTED"
+            android:textColor="@color/black"
+            android:layout_below="@id/recylcer_view"
+            android:textSize="15dp"
+            android:textStyle="bold"
+
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/totalVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="295dp"
+            android:layout_marginTop="18dp"
+            android:text="25820"
+            android:textColor="@color/black"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+
+            android:id="@+id/totalA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="350dp"
+            android:text="112.26"
+            android:textColor="@color/black"
+            android:textSize="8dp"
+            android:layout_marginTop="18dp"
+            android:layout_below="@id/recylcer_view"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/saveA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="450dp"
+            android:layout_marginTop="275dp"
+            android:textColor="@color/black"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/MainWire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="450dp"
+            android:gravity="start"
+            android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="80dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/MainWirePass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="450dp"
+            android:gravity="start"
+            android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="336.5dp"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/UpdatedMainWire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="450dp"
+            android:gravity="start"
+            android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="336.5dp"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/FeederWire"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="493dp"
+            android:gravity="start"
+            android:text="2 - 14.0mm.sq. THHN Cu. Wire "
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            android:textColor="@color/black"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/FeederWireSecond"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="625dp"
+            android:gravity="start"
+            android:text="+ 1 - 8.0 mm.sq."
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/FeederSize"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="625dp"
+            android:gravity="start"
+            android:text="22"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/FeederWireType"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="696dp"
+            android:gravity="start"
+            android:text="THHN"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/FeederWireTypePass"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="696dp"
+            android:gravity="start"
+            android:text="THHN"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/FeederWireThird"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="728dp"
+            android:gravity="start"
+            android:text="Cu. Wire"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/FeederWireTFourth"
+            android:layout_width="130dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="493dp"
+            android:gravity="start"
+            android:text=" (G)In 32 mmø IMC PIPE"
+            android:textSize="9dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="60dp"
+            android:layout_below="@id/recylcer_view"
+            tools:ignore="TextSizeCheck" />
+
+
+    </RelativeLayout>
 </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/UnderUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/under"
-        >
-        <TextView
-            android:id="@+id/totalONE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-            android:id="@+id/HIGHA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="340dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/SAVEHIGHA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="340dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/LAWEHIGHA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="340dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/ThirdUnder"
-        android:layout_marginTop="-2dp"
-        android:layout_below="@id/UnderUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/TopOneAndTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-            android:id="@+id/TopThreeAndFour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/ForthUnder"
-        android:layout_marginTop="-2dp"
-        android:layout_below="@id/ThirdUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/TotalTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/FifthUnder"
-
-        android:layout_below="@id/ForthUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/TotalB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="175dp"
-            android:text="0.80"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:text="1.5"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-            android:id="@+id/HighestB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="340dp"
-        android:text="12.00"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        tools:ignore="TextSizeCheck" />
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/SAVEHIGHB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="340dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/LAWEHIGHB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="340dp"
-            android:text="12.00"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/LastUnder"
-        android:layout_marginTop="-2dp"
-        android:layout_below="@id/FifthUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/underoneandtwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-        <TextView
-            android:id="@+id/underthreeandfour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="172dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="-2dp"
-        android:layout_below="@id/LastUnder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/totalunder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:text="60.78"
-            android:textSize="9dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-
-            tools:ignore="TextSizeCheck" />
-
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/firstleft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="270dp"
-        android:text="TOTAL CONNECTED"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/totalVA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="295dp"
-        android:layout_marginTop="275dp"
-        android:text="25820"
-        android:textColor="@color/black"
-        android:textSize="8dp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-
-        android:id="@+id/totalA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="275dp"
-        android:text="112.26"
-        android:textColor="@color/black"
-        android:textSize="8dp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/saveA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
-        android:layout_marginTop="275dp"
-        android:textColor="@color/black"
-        android:textSize="8dp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
-
-
-    <TextView
-        android:id="@+id/MainWire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
-        android:gravity="start"
-        android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="336.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/MainWirePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
-        android:gravity="start"
-        android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="336.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/UpdatedMainWire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
-        android:gravity="start"
-        android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="336.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/FeederWire"
-        android:layout_width="280dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="493dp"
-        android:gravity="start"
-        android:text="2 - 14.0mm.sq. THHN Cu. Wire "
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/FeederWireSecond"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="630dp"
-        android:gravity="start"
-        android:text="+ 1 - 8.0 mm.sq."
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/FeederSize"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="630dp"
-        android:gravity="start"
-        android:text="22"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/FeederWireType"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="705dp"
-        android:gravity="start"
-        android:text="THHN"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/FeederWireTypePass"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="705dp"
-        android:gravity="start"
-        android:text="THHN"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/FeederWireThird"
-        android:layout_width="280dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="735dp"
-        android:gravity="start"
-        android:text="Cu. Wire"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="304.5dp"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/FeederWireTFourth"
-        android:layout_width="130dp"
-        android:layout_height="16dp"
-        android:layout_marginLeft="493dp"
-        android:gravity="start"
-        android:text=" (G)In 32 mmø IMC PIPE"
-        android:textSize="9dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="314.5dp"
-        tools:ignore="TextSizeCheck" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</RelativeLayout>
-

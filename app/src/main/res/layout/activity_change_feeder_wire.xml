@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".PanelBoard">
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:src="@drawable/creatingproject"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/picture"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:layout_below="@id/circuit_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Wire For Ground"
+        android:elevation="1dp"
+        android:textColor="@color/black"
+        android:background="@drawable/textbox"
+        android:textSize="25sp"
+
+
+        android:gravity="center_horizontal"
+        android:id="@+id/WireForGround"
+        tools:ignore="NotSibling" />
+
+
+    <RadioGroup
+        android:id="@+id/RadioGroup_two"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/WireForGround"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="ExtraText">
+
+
+
+        <RadioButton
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:text="TW"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="THHN"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RadioGroup>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WFGT"
+/>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/SimpleColor"
+        android:elevation="4dp"
+        android:text="Update"
+        android:textSize="25dp"
+
+        android:textStyle="normal" />
+</LinearLayout>

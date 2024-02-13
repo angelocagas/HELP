@@ -95,7 +95,7 @@ public class Inputing extends AppCompatActivity {
 
 
 
-        String[] other = new String[]{"Lightning Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
+        String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
         String[] hp = new String[]{"1/6", "1/4", "1/3", "1/2", "3/4", "1", "1 1/2", "2", "3", "5", "7 1/2", "10"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
@@ -108,14 +108,54 @@ public class Inputing extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 isAutoCompleteItemSelected = true;
                 String selectedItem = autoCompleteTextView1.getText().toString();
-                if ("ACU".equals(selectedItem) || "Range".equals(selectedItem)) {
-                    // If the user chooses ACU or Range, set the value of AT to 30
+                if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     AT.setText("30");
-                } else {
+                }
+                if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     AT.setText("20"); // Set the default value for other items
+                }
+                if ("Convenience Outlet".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "ACU".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     SMM.setText("3.5");
                     GMM.setText("3.5");
                 }
+                if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    SMM.setText("5.5");
+                    GMM.setText("5.5");
+                }
+                if ("Lighting Outlet".equals(selectedItem)) {
+                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                    AT.setText("15");
+                    SMM.setText("2");
+                    GMM.setText("2");
+
+                }
+
+                if ("Spare".equals(selectedItem)) {
+                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                    SMM.setText("stud");
+                    GMM.setText("");
+                }
+
+                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    SNUM.setText("2");//MATIC
+                    GNUM.setText("1");//MATIC
+                    STYPE.setText("THHN");//MATIC
+                    GTYPE.setText("THW");//MATIC
+                } else{
+                    SNUM.setText("");//MATIC
+                    GNUM.setText("");//MATIC
+                    STYPE.setText("UP");//MATIC
+                    GTYPE.setText("");//MATIC
+                }
+
+
+
+
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
@@ -266,9 +306,6 @@ public class Inputing extends AppCompatActivity {
                     V.setText("230");//MATIC
                     P.setText("2");//MATIC
                     AF.setText("50");//MATIC
-                    SNUM.setText("2");//MATIC
-                    STYPE.setText("THHN");//MATIC
-                    GNUM.setText("1");//MATIC
                     MMPlus.setText("20");//MATIC
                     CTYPE.setText("PVC");//MATIC
                     helper.addNewProject(
@@ -287,7 +324,7 @@ public class Inputing extends AppCompatActivity {
                             STYPE.getText().toString(),
                             GNUM.getText().toString(),
                             GMM.getText().toString(),
-                            WireForGround,
+                            GTYPE.getText().toString(),
                             MMPlus.getText().toString(),
                             CTYPE.getText().toString()
                     );

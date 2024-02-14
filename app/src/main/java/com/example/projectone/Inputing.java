@@ -88,7 +88,7 @@ public class Inputing extends AppCompatActivity {
         } catch (NumberFormatException e) {
 
         }
-        
+
 
 
 
@@ -136,7 +136,7 @@ public class Inputing extends AppCompatActivity {
 
                 if ("Spare".equals(selectedItem)) {
                     // If the user chooses Lighting Outlet, set the value of AT to 15
-                    SMM.setText("stud");
+                    SMM.setText("Stub");
                     GMM.setText("");
                 }
 

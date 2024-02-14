@@ -96,7 +96,7 @@ public class Inputing extends AppCompatActivity {
 
 
         String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
-        String[] hp = new String[]{"1/6", "1/4", "1/3", "1/2", "3/4", "1", "1 1/2", "2", "3", "5", "7 1/2", "10"};
+        String[] hp = new String[]{"1/6", "1/4", "1/3", "0.5", "0.75", "1", "1.5", "2", "3", "5", "7.5", "10"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         autoCompleteTextView1.setAdapter(adapter1);
@@ -194,14 +194,14 @@ public class Inputing extends AppCompatActivity {
                         A.setText("3.60");
                         VA.setText("828");
                         break;
-                    case "1/2":
+                    case "0.5":
                         Watts.setText("1127");
                         SMM.setText("3.5");
                         GMM.setText("3.5");
                         A.setText("4.90");
                         VA.setText("1127");
                         break;
-                    case "3/4":
+                    case "0.75":
                         Watts.setText("1587");
                         SMM.setText("3.5");
                         GMM.setText("3.5");
@@ -215,7 +215,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("8.00");
                         VA.setText("1840");
                         break;
-                    case "1 1/2":
+                    case "1.5":
                         Watts.setText("2300");
                         SMM.setText("5.5");
                         GMM.setText("5.5");
@@ -243,7 +243,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("28.00");
                         VA.setText("6440");
                         break;
-                    case "7 1/2":
+                    case "7.5":
                         Watts.setText("9220");
                         SMM.setText("5.5");
                         GMM.setText("5.5");

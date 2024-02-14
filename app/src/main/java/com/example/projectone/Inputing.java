@@ -288,20 +288,26 @@ public class Inputing extends AppCompatActivity {
                 if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
                     Toast.makeText(Inputing.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 } else {
+
                     String selectedItem = autoCompleteTextView1.getText().toString();
-                    String add = others.getText().toString();
+                    String selectedWatts = Watts.getText().toString();
 
                     // Check if 'add' is not empty and concatenate it to the existing text in autoCompleteTextView1
-                    if (!add.isEmpty()) {
-                        if (!selectedItem.isEmpty()) {
-                            selectedItem += ", " + add;
-                        } else {
-                            selectedItem = add;
+                    if ("Lighting Outlet".equals(selectedItem)) {
+
+                        if (!selectedWatts.isEmpty()) {
+                            if (!selectedItem.isEmpty()) {
+                                selectedItem += ", " + selectedWatts + "W";
+                            } else {
+                                selectedItem = selectedWatts;
+                            }
+                            autoCompleteTextView1.setText(selectedItem);
+                        }else {
+                            // Display a message indicating that only "Lighting Outlet" should be selected
+                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
                         }
-                        autoCompleteTextView1.setText(selectedItem);
+
                     }
-
-
                     OPlus.setText("1");//MATIC
                     V.setText("230");//MATIC
                     P.setText("2");//MATIC

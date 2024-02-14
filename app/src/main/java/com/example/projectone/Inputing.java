@@ -288,13 +288,11 @@ public class Inputing extends AppCompatActivity {
                 if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
                     Toast.makeText(Inputing.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 } else {
-
                     String selectedItem = autoCompleteTextView1.getText().toString();
                     String selectedWatts = Watts.getText().toString();
 
-                    // Check if 'add' is not empty and concatenate it to the existing text in autoCompleteTextView1
+                    // Your existing validation for "Lighting Outlet"
                     if ("Lighting Outlet".equals(selectedItem)) {
-
                         if (!selectedWatts.isEmpty()) {
                             if (!selectedItem.isEmpty()) {
                                 selectedItem += ", " + selectedWatts + "W";
@@ -302,11 +300,26 @@ public class Inputing extends AppCompatActivity {
                                 selectedItem = selectedWatts;
                             }
                             autoCompleteTextView1.setText(selectedItem);
-                        }else {
-                            // Display a message indicating that only "Lighting Outlet" should be selected
+                        } else {
                             Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
+                            return; // return if validation fails
                         }
+                    }
 
+                    // Additional validation for "ACU"
+                    String selectedHP = Horsepower.getText().toString();
+                    if ("ACU".equals(selectedItem)) {
+                        if (!selectedHP.isEmpty()) {
+                            if (!selectedItem.isEmpty()) {
+                                selectedItem += " " + selectedHP + "HP";
+                            } else {
+                                selectedItem = selectedHP;
+                            }
+                            autoCompleteTextView1.setText(selectedItem);
+                        } else {
+                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
+                            return; // return if validation fails
+                        }
                     }
                     OPlus.setText("1");//MATIC
                     V.setText("230");//MATIC

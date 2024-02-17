@@ -314,29 +314,94 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
-        if (totalUnderValue < 30)
-        {
+        String FeederW2 = FeederWire.getText().toString().trim();
+
+//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
+        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        if (totalUnderValue < 30)
-        {
+        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        else if (totalUnderValue >= 30 && totalUnderValue <= 50) {
-            FeederWireSecond.setText("+ 1 - 14 mm.sq.");
+        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        else if (totalUnderValue >= 51 && totalUnderValue <= 80) {
-            FeederWireSecond.setText("+ 1 - 22 mm.sq.");
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        else if (totalUnderValue >= 81 && totalUnderValue <= 175) {
-            FeederWireSecond.setText("+ 1 - 30 mm.sq.");
+        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        else if (totalUnderValue >= 176 && totalUnderValue <= 325) {
-            FeederWireSecond.setText("+ 1 - 50 mm.sq.");
+        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
-        else if (totalUnderValue >= 326 && totalUnderValue <= 500) {
-            FeederWireSecond.setText("+ 1 - 60 mm.sq.");
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
         }
+        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+        }
+
+        //IF FEEDERWIRE IS 60 80   =    22
+        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+        }
+
+
+        //IF FEEDERWIRE IS 100 to 175   = 30
+
+        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+        }
+
+        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+        }
+
+        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+        }
+
+
+        //IF FEEDERWIRE IS 200 to 325    50
+        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+        }
+
+
+        //IF FEEDERWIRE IS  375 to 500    600
+        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+
+
+
+
+
+
 
 
 

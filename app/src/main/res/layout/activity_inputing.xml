@@ -32,13 +32,15 @@
 
     <TextView
         android:id="@+id/CircuitNum"
-        android:layout_width="255dp"
+        android:layout_width="217dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/textbox"
+        android:backgroundTint="#ECE8E8"
+        android:fontFamily="serif-monospace"
         android:text="CIRCUIT NO# 1"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="27dp" />
 
     <com.google.android.material.textfield.TextInputLayout

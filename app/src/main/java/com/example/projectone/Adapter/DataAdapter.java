@@ -2,11 +2,15 @@ package com.example.projectone.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
+import com.example.projectone.Loadschedule;
 import com.example.projectone.R;
 import com.example.projectone.UpdateDataActivity;
 import com.google.protobuf.StringValue;
@@ -47,6 +52,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (projectTableList != null && projectTableList.size() > 0)
@@ -79,6 +85,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                     context.startActivity(intent);
                 }
             });
+
         }
     }
 
@@ -91,6 +98,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView NumberId, Quantity,Item, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
         LinearLayout edit;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             NumberId = itemView.findViewById(R.id.NumberId);
@@ -113,6 +121,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             CTYPE = itemView.findViewById(R.id.CTYPE);
             edit = itemView.findViewById(R.id.edit);
 
+
         }
     }
+
 }

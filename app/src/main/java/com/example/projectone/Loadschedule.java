@@ -9,6 +9,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Loadschedule extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class Loadschedule extends AppCompatActivity {
     private float mLastTouchX;
     private float mLastTouchY;
     DatabaseHelper helper;
+    List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
     TextView FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
@@ -68,7 +71,14 @@ public class Loadschedule extends AppCompatActivity {
         SaveA = findViewById(R.id.saveA);
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
-
+        // Assuming you have references to your TextViews
+        ImageView s4TextView = findViewById(R.id.s4);
+        TextView num4TopTextView = findViewById(R.id.num4_top);
+        TextView num4_1TextView = findViewById(R.id.num4_1);
+        TextView num4_2TextView = findViewById(R.id.num4_2);
+        TextView num4_3TextView = findViewById(R.id.num4_3);
+        TextView num4_4TextView = findViewById(R.id.num4_4);
+        TextView num4BotTextView = findViewById(R.id.num4_bot);
 
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
@@ -122,7 +132,6 @@ public class Loadschedule extends AppCompatActivity {
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
             }
-
 
 
             if (HIGHA != null)

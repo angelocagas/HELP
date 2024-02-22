@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="780dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_width="1300dp"
     android:id="@+id/zoom"
     android:layout_height="wrap_content"
     tools:context=".Loadschedule">
@@ -37,9 +39,10 @@
             android:layout_marginLeft="-0.5dp"
             android:layout_above="@+id/border3"
             android:background="@drawable/boardmid" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recylcer_view"
-            android:layout_width="770dp"
+            android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/border1"
             android:nestedScrollingEnabled="false"
@@ -79,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="340dp"
-                android:text="12.00"
+                android:text="1.00"
                 android:textSize="9dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -209,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="340dp"
-                android:text="12.00"
+                android:text="1.00"
                 android:textSize="9dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -480,4 +483,86 @@
 
 
     </RelativeLayout>
+
+
+    <!-- unang skeleton na madidisplay kapag 4 ang mga item  -->
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="840dp"
+        android:layout_height="400dp">
+
+        <ImageView
+            android:id="@+id/s4"
+            android:layout_width="400dp"
+            android:src="@drawable/s4"
+            android:visibility="gone"
+            android:layout_height="400dp"/>
+
+        <TextView
+            android:id="@+id/num4_top"
+            android:visibility="gone"
+            android:layout_width="182dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="40dp"
+            android:text="2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/num4_1"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="175dp"
+            android:text="1"/>
+
+        <TextView
+            android:id="@+id/num4_2"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="248dp"
+            android:layout_marginTop="175dp"
+            android:text="2"/>
+
+        <TextView
+            android:id="@+id/num4_3"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="240dp"
+            android:text="3"/>
+
+        <TextView  android:id="@+id/num4_4"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="248dp"
+            android:layout_marginTop="240dp"
+            android:text="4"/>
+
+        <TextView
+            android:id="@+id/num4_bot"
+            android:visibility="gone"
+            android:layout_width="182dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="330dp"
+            android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+            android:textSize="10dp" />
+
+
+    </RelativeLayout>
+
+
+
 </RelativeLayout>

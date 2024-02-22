@@ -24,9 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inputing extends AppCompatActivity {
+    // Declare ArrayList to store "A" values
+    ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower;
     TextInputLayout horses;
-    TextView CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
+    TextView HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
     Button next, preview,back;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
@@ -76,6 +78,7 @@ public class Inputing extends AppCompatActivity {
         TotalA = findViewById(R.id.TotalA);
         TotalVA = findViewById(R.id.TotalVA);
         CNM = findViewById(R.id.CNM);
+        HighestAmp12 = findViewById(R.id.HighestAmp);
 
 
         Intent intent = getIntent();
@@ -306,6 +309,8 @@ public class Inputing extends AppCompatActivity {
                         }
                     }
 
+
+
                     // Additional validation for "ACU"
                     String selectedHP = Horsepower.getText().toString();
                     if ("ACU".equals(selectedItem)) {
@@ -362,16 +367,26 @@ public class Inputing extends AppCompatActivity {
         preview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                double highestAmp = findHighestAmp();
+                HighestAmp12.setText(String.valueOf(highestAmp));
+
+                // Once the highest values are determined, create an intent to start the new activity
                 String passVA = TotalVA.getText().toString();
                 String passA = TotalA.getText().toString();
-                String passHIGHEST = A.getText().toString();
+                String passHIGHEST = HighestAmp12.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
-                intent.putExtra("TOTALVA",passVA);
-                intent.putExtra("TOTALA",passA);
-                intent.putExtra("HIGHA",passHIGHEST);
+
+                // Pass the necessary data to the new activity through the intent
+                intent.putExtra("TOTALVA", passVA);
+                intent.putExtra("TOTALA", passA);
+                intent.putExtra("HIGHA", passHIGHEST);
+
+                // Start the new activity with the intent
                 startActivity(intent);
             }
         });
+
     }
 
     private void computeVA() {
@@ -401,14 +416,42 @@ public class Inputing extends AppCompatActivity {
 
             // Update the total A
             updateTotalA();
+
+
+            // Add "A" value to the arrayAmp ArrayList based on selected item
+            String selectedItem = autoCompleteTextView1.getText().toString();
+            if ("ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                arrayAmp.add(aValue);
+            } else if ("Lighting Outlet".equals(selectedItem)) {
+                // If selected item is "Lighting Outlet", add its "A" value to arrayAmp
+                arrayAmp.add(aValue);
+            }
         }
     }
+    // Function to find the highest value in the arrayAmp ArrayList
+
     private void updateTotalA() {
         // Update the TotalA TextView with the total A value
         totalAValue = Double.parseDouble(decimalFormat.format(totalAValue)); // Ensure totalAValue has two decimal places
         TotalA.setText(decimalFormat.format(totalAValue));
     }
 
+
+    private double findHighestAmp() {
+        double highestAmp = 0.0;
+        for (Double amp : arrayAmp) {
+            if (amp > highestAmp) {
+                highestAmp = amp;
+            }
+        }
+
+        // Create DecimalFormat object to format the number
+        DecimalFormat df = new DecimalFormat("#.##");
+        String roundedValue = df.format(highestAmp);
+
+        // Parse the rounded value back to double
+        return Double.parseDouble(roundedValue);
+    }
 
     @SuppressLint("MissingSuperCall")
     @Override

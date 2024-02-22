@@ -39,7 +39,7 @@ public class Loadschedule extends AppCompatActivity {
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +71,8 @@ public class Loadschedule extends AppCompatActivity {
         SaveA = findViewById(R.id.saveA);
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
-        // Assuming you have references to your TextViews
-        ImageView s4TextView = findViewById(R.id.s4);
-        TextView num4TopTextView = findViewById(R.id.num4_top);
-        TextView num4_1TextView = findViewById(R.id.num4_1);
-        TextView num4_2TextView = findViewById(R.id.num4_2);
-        TextView num4_3TextView = findViewById(R.id.num4_3);
-        TextView num4_4TextView = findViewById(R.id.num4_4);
-        TextView num4BotTextView = findViewById(R.id.num4_bot);
+        CTRtv = findViewById(R.id.CTRtv);
+        ImageView s4ImageView = findViewById(R.id.s4);
 
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
@@ -88,6 +82,11 @@ public class Loadschedule extends AppCompatActivity {
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
         Intent intent = getIntent();
+
+
+
+
+
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
@@ -96,7 +95,21 @@ public class Loadschedule extends AppCompatActivity {
             String Wiretype =intent.getStringExtra("WFG");
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
+            String CTR = intent.getStringExtra("CTR");
 
+
+
+            // Assuming CTRtv is a TextView object
+            if (CTR != null) {
+                int ctrValue = Integer.parseInt(CTR);
+                CTRtv.setText(CTR);
+                if (ctrValue == 5) {
+                    s4ImageView.setVisibility(View.VISIBLE);
+                } else {
+                    s4ImageView.setVisibility(View.GONE);
+
+                }
+            }
 
             if (totalA == null && HIGHA == null)
             {
@@ -125,6 +138,10 @@ public class Loadschedule extends AppCompatActivity {
                 totalVATextView.setText(totalVA);
             }
 
+            if (CTR != null) {
+                CTRtv.setText(CTR);
+            }
+
 
 
             if (totalA != null) {
@@ -132,7 +149,6 @@ public class Loadschedule extends AppCompatActivity {
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
             }
-
 
             if (HIGHA != null)
             {
@@ -150,6 +166,10 @@ public class Loadschedule extends AppCompatActivity {
             }
 
         }
+
+
+
+
 
 
         String SAVEA = totalATextView.getText().toString();

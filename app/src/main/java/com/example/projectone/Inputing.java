@@ -1,8 +1,10 @@
 package com.example.projectone;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,12 +30,13 @@ public class Inputing extends AppCompatActivity {
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower;
     TextInputLayout horses;
-    TextView HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
+    TextView Counter2, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
     Button next, preview,back;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
     int counter = 1;
+
     private SharedPreferences sharedPreferences;
     private DecimalFormat decimalFormat;
     double totalVAValue = 0.00;
@@ -48,6 +51,7 @@ public class Inputing extends AppCompatActivity {
         sharedPreferences = getPreferences(MODE_PRIVATE);
         others = findViewById(R.id.others);
         counter = sharedPreferences.getInt("counter", counter);
+
         setContentView(R.layout.activity_inputing);
         others = findViewById(R.id.others);
         helper = DatabaseHelper.getInstance(this);
@@ -79,7 +83,7 @@ public class Inputing extends AppCompatActivity {
         TotalVA = findViewById(R.id.TotalVA);
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
-
+        Counter2 = findViewById(R.id.counter2);
 
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
@@ -91,10 +95,6 @@ public class Inputing extends AppCompatActivity {
         } catch (NumberFormatException e) {
 
         }
-
-
-
-
 
 
 
@@ -284,7 +284,8 @@ public class Inputing extends AppCompatActivity {
                 computeVA();
                 computeA();
                 counter++;
-                CircuitNum.setText("CIRCUIT NO# " + counter);
+                CircuitNum.setText("CIRCUIT NO." + counter);
+                Counter2.setText(String.valueOf(counter));
                 String ProjectName = getIntent().getStringExtra("ProjectName");
                 String WireForGround = getIntent().getStringExtra("WFG");
 
@@ -307,6 +308,38 @@ public class Inputing extends AppCompatActivity {
                             Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
                             return; // return if validation fails
                         }
+                    }
+
+
+
+                    // Retrieve the text from the TextView counter
+                    String counterText = Counter2.getText().toString();
+
+// Convert the text to an integer value
+                    int ctrValue = Integer.parseInt(counterText);
+
+// Check if the counter value is greater than or equal to 30
+                    if (ctrValue >= 30) {
+                        // Create an AlertDialog.Builder instance
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+
+                        // Set the dialog title and message
+                        builder.setTitle("Alert");
+                        builder.setMessage("You have reached the maximum limit of 30 circuits.");
+
+                        // Add an OK button with a click listener that dismisses the dialog
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Dismiss the dialog
+                                dialog.dismiss();
+                                // Trigger the click event of the loadPreviewButton
+                                preview.performClick();
+                            }
+                        });
+
+                        // Create and show the AlertDialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
 
 
@@ -375,17 +408,22 @@ public class Inputing extends AppCompatActivity {
                 String passVA = TotalVA.getText().toString();
                 String passA = TotalA.getText().toString();
                 String passHIGHEST = HighestAmp12.getText().toString();
+                String skel = Counter2.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
                 // Pass the necessary data to the new activity through the intent
                 intent.putExtra("TOTALVA", passVA);
                 intent.putExtra("TOTALA", passA);
                 intent.putExtra("HIGHA", passHIGHEST);
-
-                // Start the new activity with the intent
+                intent.putExtra("CTR", skel);
                 startActivity(intent);
             }
         });
+
+
+
+
+
 
     }
 

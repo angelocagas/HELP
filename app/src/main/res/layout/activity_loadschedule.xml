@@ -494,6 +494,16 @@
         android:layout_marginLeft="840dp"
         android:layout_height="400dp">
 
+        <TextView
+            android:id="@+id/CTRtv"
+            android:visibility="gone"
+            android:layout_width="182dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="40dp"
+            android:text="CTR holder"
+            android:textSize="10dp" />
+
         <ImageView
             android:id="@+id/s4"
             android:layout_width="400dp"

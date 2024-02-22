@@ -98,6 +98,8 @@ public class Inputing extends AppCompatActivity {
 
 
 
+
+
         String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
         String[] hp = new String[]{"1/6", "1/4", "1/3", "0.5", "0.75", "1", "1.5", "2", "3", "5", "7.5", "10"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);
@@ -273,152 +275,195 @@ public class Inputing extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                if (counter == cirnum)
-                {
 
-                    Toast.makeText(Inputing.this, "You exceed the limit of Circuit Number", Toast.LENGTH_SHORT).show();
-                   Intent intent = new Intent(getApplicationContext(),Loadschedule.class);
-                   startActivity(intent);
-
-                }
-                computeVA();
-                computeA();
-                counter++;
-                CircuitNum.setText("CIRCUIT NO." + counter);
-                Counter2.setText(String.valueOf(counter));
-                String ProjectName = getIntent().getStringExtra("ProjectName");
-                String WireForGround = getIntent().getStringExtra("WFG");
-
-                if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
-                    Toast.makeText(Inputing.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                // Check if any of the fields are empty
+                if (Quantity.getText().toString().isEmpty() ||
+                        autoCompleteTextView1.getText().toString().isEmpty() ||
+                        Watts.getText().toString().isEmpty() ||
+                        Horsepower.getText().toString().isEmpty()) {
+                    // Show AlertDialog if any field is empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill all the fields")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Continue with nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return; // Exit the method without proceeding further
                 } else {
-                    String selectedItem = autoCompleteTextView1.getText().toString();
-                    String selectedWatts = Watts.getText().toString();
 
-                    // Your existing validation for "Lighting Outlet"
-                    if ("Lighting Outlet".equals(selectedItem)) {
-                        if (!selectedWatts.isEmpty()) {
-                            if (!selectedItem.isEmpty()) {
-                                selectedItem += ", " + selectedWatts + "W";
-                            } else {
-                                selectedItem = selectedWatts;
-                            }
-                            autoCompleteTextView1.setText(selectedItem);
-                        } else {
-                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                            return; // return if validation fails
-                        }
+                    if (counter == cirnum) {
+
+                        Toast.makeText(Inputing.this, "You exceed the limit of Circuit Number", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+                        startActivity(intent);
+
                     }
+                    computeVA();
+                    computeA();
+                    counter++;
+                    CircuitNum.setText("CIRCUIT NO." + counter);
+                    Counter2.setText(String.valueOf(counter));
+                    String ProjectName = getIntent().getStringExtra("ProjectName");
+                    String WireForGround = getIntent().getStringExtra("WFG");
+
+                    if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
+                        Toast.makeText(Inputing.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String selectedItem = autoCompleteTextView1.getText().toString();
+                        String selectedWatts = Watts.getText().toString();
+
+                        // Your existing validation for "Lighting Outlet"
+                        if ("Lighting Outlet".equals(selectedItem)) {
+                            if (!selectedWatts.isEmpty()) {
+                                if (!selectedItem.isEmpty()) {
+                                    selectedItem += ", " + selectedWatts + "W";
+                                } else {
+                                    selectedItem = selectedWatts;
+                                }
+                                autoCompleteTextView1.setText(selectedItem);
+                            } else {
+                                Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
+                                return; // return if validation fails
+                            }
+                        }
 
 
-
-                    // Retrieve the text from the TextView counter
-                    String counterText = Counter2.getText().toString();
+                        // Retrieve the text from the TextView counter
+                        String counterText = Counter2.getText().toString();
 
 // Convert the text to an integer value
-                    int ctrValue = Integer.parseInt(counterText);
+                        int ctrValue = Integer.parseInt(counterText);
 
 // Check if the counter value is greater than or equal to 30
-                    if (ctrValue >= 30) {
-                        // Create an AlertDialog.Builder instance
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+                        if (ctrValue >= 30) {
+                            // Create an AlertDialog.Builder instance
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
-                        // Set the dialog title and message
-                        builder.setTitle("Alert");
-                        builder.setMessage("You have reached the maximum limit of 30 circuits.");
+                            // Set the dialog title and message
+                            builder.setTitle("Alert");
+                            builder.setMessage("You have reached the maximum limit of 30 circuits.");
 
-                        // Add an OK button with a click listener that dismisses the dialog
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Dismiss the dialog
-                                dialog.dismiss();
-                                // Trigger the click event of the loadPreviewButton
-                                preview.performClick();
-                            }
-                        });
+                            // Add an OK button with a click listener that dismisses the dialog
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Dismiss the dialog
+                                    dialog.dismiss();
+                                    // Trigger the click event of the loadPreviewButton
+                                    preview.performClick();
+                                }
+                            });
 
-                        // Create and show the AlertDialog
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-
-
-
-                    // Additional validation for "ACU"
-                    String selectedHP = Horsepower.getText().toString();
-                    if ("ACU".equals(selectedItem)) {
-                        if (!selectedHP.isEmpty()) {
-                            if (!selectedItem.isEmpty()) {
-                                selectedItem += " " + selectedHP + "HP";
-                            } else {
-                                selectedItem = selectedHP;
-                            }
-                            autoCompleteTextView1.setText(selectedItem);
-                        } else {
-                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                            return; // return if validation fails
+                            // Create and show the AlertDialog
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
+
+
+                        // Additional validation for "ACU"
+                        String selectedHP = Horsepower.getText().toString();
+                        if ("ACU".equals(selectedItem)) {
+                            if (!selectedHP.isEmpty()) {
+                                if (!selectedItem.isEmpty()) {
+                                    selectedItem += " " + selectedHP + "HP";
+                                } else {
+                                    selectedItem = selectedHP;
+                                }
+                                autoCompleteTextView1.setText(selectedItem);
+                            } else {
+                                Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
+                                return; // return if validation fails
+                            }
+                        }
+                        OPlus.setText("1");//MATIC
+                        V.setText("230");//MATIC
+                        P.setText("2");//MATIC
+                        AF.setText("50");//MATIC
+                        MMPlus.setText("20");//MATIC
+                        CTYPE.setText("PVC");//MATIC
+                        helper.addNewProject(
+                                ProjectName,
+                                Quantity.getText().toString(),
+                                autoCompleteTextView1.getText().toString(),
+                                OPlus.getText().toString(),
+                                V.getText().toString(),
+                                VA.getText().toString(),
+                                A.getText().toString(),
+                                P.getText().toString(),
+                                AT.getText().toString(),
+                                AF.getText().toString(),
+                                SNUM.getText().toString(),
+                                SMM.getText().toString(),
+                                STYPE.getText().toString(),
+                                GNUM.getText().toString(),
+                                GMM.getText().toString(),
+                                GTYPE.getText().toString(),
+                                MMPlus.getText().toString(),
+                                CTYPE.getText().toString()
+                        );
                     }
-                    OPlus.setText("1");//MATIC
-                    V.setText("230");//MATIC
-                    P.setText("2");//MATIC
-                    AF.setText("50");//MATIC
-                    MMPlus.setText("20");//MATIC
-                    CTYPE.setText("PVC");//MATIC
-                    helper.addNewProject(
-                            ProjectName,
-                            Quantity.getText().toString(),
-                            autoCompleteTextView1.getText().toString(),
-                            OPlus.getText().toString(),
-                            V.getText().toString(),
-                            VA.getText().toString(),
-                            A.getText().toString(),
-                            P.getText().toString(),
-                            AT.getText().toString(),
-                            AF.getText().toString(),
-                            SNUM.getText().toString(),
-                            SMM.getText().toString(),
-                            STYPE.getText().toString(),
-                            GNUM.getText().toString(),
-                            GMM.getText().toString(),
-                            GTYPE.getText().toString(),
-                            MMPlus.getText().toString(),
-                            CTYPE.getText().toString()
-                    );
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("counter", counter);
+                    editor.apply();
+                    Quantity.setText(null);
+                    autoCompleteTextView1.setText(null);
+                    Watts.setText(null);
+                    Horsepower.setText(null);
+                    others.setText(null);
                 }
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("counter", counter);
-                editor.apply();
-                Quantity.setText(null);
-                autoCompleteTextView1.setText(null);
-                Watts.setText(null);
-                Horsepower.setText(null);
-                others.setText(null);
-            }
-        });
+            } });
 
         preview.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
 
-                double highestAmp = findHighestAmp();
-                HighestAmp12.setText(String.valueOf(highestAmp));
 
-                // Once the highest values are determined, create an intent to start the new activity
-                String passVA = TotalVA.getText().toString();
-                String passA = TotalA.getText().toString();
-                String passHIGHEST = HighestAmp12.getText().toString();
-                String skel = Counter2.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+                // Check if the counter is less than 4
+                if (counter < 4) {
+                    // Create an AlertDialog.Builder instance
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
-                // Pass the necessary data to the new activity through the intent
-                intent.putExtra("TOTALVA", passVA);
-                intent.putExtra("TOTALA", passA);
-                intent.putExtra("HIGHA", passHIGHEST);
-                intent.putExtra("CTR", skel);
-                startActivity(intent);
-            }
-        });
+                    // Set the dialog title and message
+                    builder.setTitle("Alert");
+                    builder.setMessage("You need to add at least 4 items before previewing");
+
+                    // Add an OK button with a click listener that dismisses the dialog
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Dismiss the dialog
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // Create and show the AlertDialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+
+
+                    double highestAmp = findHighestAmp();
+                    HighestAmp12.setText(String.valueOf(highestAmp));
+
+                    // Once the highest values are determined, create an intent to start the new activity
+                    String passVA = TotalVA.getText().toString();
+                    String passA = TotalA.getText().toString();
+                    String passHIGHEST = HighestAmp12.getText().toString();
+                    String skel = Counter2.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+
+                    // Pass the necessary data to the new activity through the intent
+                    intent.putExtra("TOTALVA", passVA);
+                    intent.putExtra("TOTALA", passA);
+                    intent.putExtra("HIGHA", passHIGHEST);
+                    intent.putExtra("CTR", skel);
+                    startActivity(intent);
+                }
+            } });
 
 
 

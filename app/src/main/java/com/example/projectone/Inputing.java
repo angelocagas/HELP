@@ -279,8 +279,7 @@ public class Inputing extends AppCompatActivity {
                 // Check if any of the fields are empty
                 if (Quantity.getText().toString().isEmpty() ||
                         autoCompleteTextView1.getText().toString().isEmpty() ||
-                        Watts.getText().toString().isEmpty() ||
-                        Horsepower.getText().toString().isEmpty()) {
+                        Watts.getText().toString().isEmpty()) {
                     // Show AlertDialog if any field is empty
                     new AlertDialog.Builder(Inputing.this)
                             .setTitle("Alert")
@@ -305,7 +304,7 @@ public class Inputing extends AppCompatActivity {
                     computeVA();
                     computeA();
                     counter++;
-                    CircuitNum.setText("CIRCUIT NO." + counter);
+                    CircuitNum.setText("CIRCUIT NO. " + counter);
                     Counter2.setText(String.valueOf(counter));
                     String ProjectName = getIntent().getStringExtra("ProjectName");
                     String WireForGround = getIntent().getStringExtra("WFG");
@@ -339,7 +338,7 @@ public class Inputing extends AppCompatActivity {
                         int ctrValue = Integer.parseInt(counterText);
 
 // Check if the counter value is greater than or equal to 30
-                        if (ctrValue >= 30) {
+                        if (ctrValue >= 31) {
                             // Create an AlertDialog.Builder instance
                             AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
@@ -413,6 +412,9 @@ public class Inputing extends AppCompatActivity {
                     Watts.setText(null);
                     Horsepower.setText(null);
                     others.setText(null);
+                    horses.setVisibility(View.GONE);
+
+
                 }
             } });
 

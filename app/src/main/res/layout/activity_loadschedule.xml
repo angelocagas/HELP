@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
-    android:layout_width="1300dp"
+    android:layout_width="1400dp"
     android:id="@+id/zoom"
-    android:layout_height="wrap_content"
+    android:layout_height="1000dp"
     tools:context=".Loadschedule">
 
 
@@ -23,6 +23,7 @@
     <RelativeLayout
         android:id="@+id/rela"
         android:layout_width="800dp"
+        android:layout_marginTop="200dp"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -53,7 +54,7 @@
             android:id="@+id/border3"
             android:layout_width="800dp"
             android:layout_height="125dp"
-            android:layout_marginLeft="-2dp"
+            android:layout_marginLeft="-1dp"
             android:layout_below="@+id/recylcer_view"
             android:background="@drawable/boardlower" />
 
@@ -64,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             >
             <TextView
                 android:id="@+id/totalONE"
@@ -303,7 +304,7 @@
             android:layout_marginTop="15dp"
             android:text="TOTAL CONNECTED"
             android:textColor="@color/black"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             android:textSize="15dp"
             android:textStyle="bold"
 
@@ -312,14 +313,14 @@
             android:id="@+id/totalVA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="295dp"
+            android:layout_marginLeft="302dp"
             android:layout_marginTop="18dp"
             android:text="25820"
             android:textColor="@color/black"
             android:textSize="8dp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
         <TextView
 
@@ -331,7 +332,7 @@
             android:textColor="@color/black"
             android:textSize="8dp"
             android:layout_marginTop="18dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             android:textStyle="bold"
             tools:ignore="TextSizeCheck" />
         <TextView
@@ -355,8 +356,8 @@
             android:textSize="9dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="80dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_marginTop="88dp"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:visibility="gone"
@@ -384,31 +385,33 @@
             android:textColor="@color/black"
             android:layout_marginTop="336.5dp"
             tools:ignore="TextSizeCheck" />
+
         <TextView
             android:id="@+id/FeederWire"
-            android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/border2"
             android:layout_marginLeft="493dp"
+            android:layout_marginTop="55dp"
             android:gravity="start"
             android:text="2 - 1.0mm.sq. THHN Cu. Wire "
+            android:textColor="@color/black"
             android:textSize="9dp"
             android:textStyle="bold"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
-            android:textColor="@color/black"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:id="@+id/FeederWireSecond"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="625dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+  android:layout_toEndOf="@id/FeederWire"
             android:gravity="start"
             android:text="+ 1 - 2.0 mm.sq."
             android:textSize="9dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_marginTop="55dp"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:visibility="gone"
@@ -422,20 +425,21 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:id="@+id/FeederWireType"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="696dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_toEndOf="@id/FeederWireSecond"
             android:gravity="start"
             android:text="THHN"
             android:textSize="9dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_marginTop="55dp"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
 
         <TextView
@@ -450,35 +454,37 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/FeederWireThird"
-            android:layout_width="280dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="728dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:gravity="start"
+            android:layout_toEndOf="@id/FeederWireType"
             android:text="Cu. Wire"
             android:textSize="9dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_marginTop="55dp"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
 
         <TextView
-            android:id="@+id/FeederWireTFourth"
-            android:layout_width="130dp"
-            android:layout_height="16dp"
-            android:layout_marginLeft="493dp"
+            android:id="@+id/FeederWireFourth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-40dp"
             android:gravity="start"
-            android:text=" (G)In 1 mmø IMC PIPE"
+            android:layout_toEndOf="@id/FeederWire"
+            android:text= " (G)In 1 mmø IMC PIPE"
             android:textSize="9dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="60dp"
-            android:layout_below="@id/recylcer_view"
+            android:layout_marginTop="64dp"
+            android:layout_below="@id/border2"
             tools:ignore="TextSizeCheck" />
 
 
@@ -491,8 +497,11 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_marginLeft="840dp"
-        android:layout_height="400dp">
+        android:layout_height="wrap_content"
+        android:id="@+id/RS4"
+         android:visibility="gone"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="840dp">
 
         <TextView
             android:id="@+id/CTRtv"
@@ -507,9 +516,9 @@
         <ImageView
             android:id="@+id/s4"
             android:layout_width="400dp"
-            android:src="@drawable/s4"
             android:visibility="gone"
-            android:layout_height="400dp"/>
+            android:src="@drawable/s4"
+            android:layout_height="400dp" />
 
         <TextView
             android:id="@+id/num4_top"
@@ -569,6 +578,288 @@
             android:layout_marginTop="330dp"
             android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
             android:textSize="10dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS6"
+   android:visibility="gone"
+
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s6"
+            android:layout_width="400dp"
+            android:visibility="gone"
+            android:src="@drawable/s6"
+            android:layout_height="400dp"
+            />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS8"
+   android:visibility="gone"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s8"
+            android:layout_width="450dp"
+            android:src="@drawable/s8"
+            android:visibility="gone"
+            android:layout_height="450dp"
+          />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS10"
+   android:visibility="gone"
+
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s10"
+            android:layout_width="450dp"
+            android:src="@drawable/s10"
+            android:visibility="gone"
+            android:layout_height="550dp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS12"
+   android:visibility="gone"
+      
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s12"
+            android:layout_width="5000dp"
+            android:src="@drawable/s12"
+            android:visibility="gone"
+            android:layout_height="600dp"
+          />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS14"
+   android:visibility="gone"
+
+android:layout_marginTop="65dp"
+android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s14"
+            android:layout_width="450dp"
+            android:src="@drawable/s14"
+            android:visibility="gone"
+            android:layout_height="600dp"
+          />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS16"
+   android:visibility="gone"
+
+android:layout_marginTop="40dp"
+android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s16"
+            android:layout_width="450dp"
+            android:src="@drawable/s16"
+            android:visibility="gone"
+            android:layout_height="700dp"
+           />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS18"
+   android:visibility="gone"
+
+android:layout_marginTop="40dp"
+android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s18"
+            android:layout_width="400dp"
+            android:src="@drawable/s18"
+            android:layout_height="670dp"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS20"
+   android:visibility="gone"
+
+android:layout_marginTop="30dp"
+android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s20"
+            android:layout_width="400dp"
+            android:src="@drawable/s20"
+            android:layout_height="650dp"
+            android:visibility="gone"
+         
+           />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+ android:id="@+id/RS22"
+   android:visibility="gone"
+
+android:layout_marginTop="30dp"
+android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s22"
+            android:layout_width="400dp"
+            android:src="@drawable/s22"
+            android:layout_height="700dp"
+            android:visibility="gone"
+        />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RS24"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s24"
+            android:layout_width="400dp"
+            android:src="@drawable/s24"
+            android:layout_height="750dp"
+            android:visibility="gone"
+          
+           />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RS26"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s26"
+            android:layout_width="400dp"
+            android:src="@drawable/s26"
+            android:layout_height="750dp"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RS28"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s28"
+            android:layout_width="450dp"
+            android:src="@drawable/s28"
+            android:layout_height="800dp"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RS30"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="840dp">
+
+
+
+        <ImageView
+            android:id="@+id/s30"
+            android:layout_width="450dp"
+            android:src="@drawable/s30"
+            android:visibility="gone"
+            android:layout_height="900dp"/>
 
 
     </RelativeLayout>

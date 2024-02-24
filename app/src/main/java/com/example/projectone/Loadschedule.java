@@ -39,7 +39,8 @@ public class Loadschedule extends AppCompatActivity {
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num4_top, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class Loadschedule extends AppCompatActivity {
         FeederWire = findViewById(R.id.FeederWire);
         FeederWireSecond = findViewById(R.id.FeederWireSecond);
         FeederWireThird = findViewById(R.id.FeederWireThird);
-        FeederWireFourth = findViewById(R.id.FeederWireTFourth);
+        FeederWireFourth = findViewById(R.id.FeederWireFourth);
         FeederWireType = findViewById(R.id.FeederWireType);
         FeederSize = findViewById(R.id.FeederSize);
         UpdatedMainWire = findViewById(R.id.UpdatedMainWire);
@@ -72,7 +73,47 @@ public class Loadschedule extends AppCompatActivity {
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
         CTRtv = findViewById(R.id.CTRtv);
+        num4_top = findViewById(R.id.num4_top);
+        num4_1 = findViewById(R.id.num4_1);
+        num4_2 = findViewById(R.id.num4_2);
+        num4_3 = findViewById(R.id.num4_3);
+        num4_4 = findViewById(R.id.num4_4);
+        num4_bot = findViewById(R.id.num4_bot);
+
+
+        RelativeLayout RS4  = findViewById(R.id.RS4);
+        RelativeLayout RS6  = findViewById(R.id.RS6);
+        RelativeLayout RS8  = findViewById(R.id.RS8);
+        RelativeLayout RS10  = findViewById(R.id.RS10);
+        RelativeLayout RS12  = findViewById(R.id.RS12);
+        RelativeLayout RS14  = findViewById(R.id.RS14);
+        RelativeLayout RS16  = findViewById(R.id.RS16);
+        RelativeLayout RS18  = findViewById(R.id.RS18);
+        RelativeLayout RS20  = findViewById(R.id.RS20);
+        RelativeLayout RS22  = findViewById(R.id.RS22);
+        RelativeLayout RS24  = findViewById(R.id.RS24);
+        RelativeLayout RS26  = findViewById(R.id.RS26);
+        RelativeLayout RS28  = findViewById(R.id.RS28);
+        RelativeLayout RS30  = findViewById(R.id.RS30);
+
+
+
         ImageView s4ImageView = findViewById(R.id.s4);
+        ImageView s6ImageView = findViewById(R.id.s6);
+        ImageView s8ImageView = findViewById(R.id.s8);
+        ImageView s10ImageView = findViewById(R.id.s10);
+        ImageView s12ImageView = findViewById(R.id.s12);
+        ImageView s14ImageView = findViewById(R.id.s14);
+        ImageView s16ImageView = findViewById(R.id.s16);
+        ImageView s18ImageView = findViewById(R.id.s18);
+        ImageView s20ImageView = findViewById(R.id.s20);
+        ImageView s22ImageView = findViewById(R.id.s22);
+        ImageView s24ImageView = findViewById(R.id.s24);
+        ImageView s26ImageView = findViewById(R.id.s26);
+        ImageView s28ImageView = findViewById(R.id.s28);
+        ImageView s30ImageView = findViewById(R.id.s30);
+
+
 
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
@@ -81,8 +122,9 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
-        Intent intent = getIntent();
 
+
+        Intent intent = getIntent();
 
 
 
@@ -104,9 +146,102 @@ public class Loadschedule extends AppCompatActivity {
                 int ctrValue = Integer.parseInt(CTR);
                 CTRtv.setText(CTR);
                 if (ctrValue == 5) {
-                    s4ImageView.setVisibility(View.VISIBLE);
+                    RS4.setVisibility(View.VISIBLE);
+
                 } else {
-                    s4ImageView.setVisibility(View.GONE);
+                    RS4.setVisibility(View.GONE);
+
+                }
+
+                if (ctrValue == 7) {
+                    RS6.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS6.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 9) {
+                    RS8.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS8.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 11) {
+                    RS10.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS10.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 13) {
+                    RS12.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS12.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 15) {
+                    RS14.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS14.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 17) {
+                    RS16.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS16.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 19) {
+                    RS18.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS18.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 21) {
+                    RS20.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS20.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 23) {
+                    RS22.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS22.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 25) {
+                    RS24.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS24.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 27) {
+                    RS26.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS26.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 29) {
+                    RS28.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS28.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 30) {
+                    RS30.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS30.setVisibility(View.GONE);
 
                 }
             }
@@ -348,40 +483,51 @@ public class Loadschedule extends AppCompatActivity {
 //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
         if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
         }
         //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
 
         if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
         }
 
         //IF FEEDERWIRE IS 60 80   =    22
         if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
 
 
@@ -389,26 +535,32 @@ public class Loadschedule extends AppCompatActivity {
 
         if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
 
         if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
 
         if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
 
 
         //IF FEEDERWIRE IS 200 to 325    50
         if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
         }
         if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
@@ -428,64 +580,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-        String FeederS = FeederWireSecond.getText().toString().trim();
-        if (FeederS.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
-        }
         FeederWireFourth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -91,8 +91,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return projectTableList.size()
-                ;
+        // Limiting the number of items displayed to 30 at most
+        return Math.min(projectTableList.size(), 31);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

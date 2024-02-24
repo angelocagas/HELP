@@ -38,7 +38,7 @@
         android:background="@drawable/textbox"
         android:backgroundTint="#ECE8E8"
         android:fontFamily="serif-monospace"
-        android:text="CIRCUIT NO# 1"
+        android:text="CIRCUIT NO. 1"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="27dp" />

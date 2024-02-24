@@ -414,7 +414,6 @@ public class Inputing extends AppCompatActivity {
                     others.setText(null);
                     horses.setVisibility(View.GONE);
 
-
                     intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
                 }
             } });
@@ -427,7 +426,7 @@ public class Inputing extends AppCompatActivity {
 
 
                 // Check if the counter is less than 4
-                if (counter < 4) {
+                if (counter < 3) {
                     // Create an AlertDialog.Builder instance
                     AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 

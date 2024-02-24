@@ -415,6 +415,7 @@ public class Inputing extends AppCompatActivity {
                     horses.setVisibility(View.GONE);
 
 
+                    intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
                 }
             } });
 

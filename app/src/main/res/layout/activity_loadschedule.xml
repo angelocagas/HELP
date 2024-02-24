@@ -499,7 +499,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/RS4"
-         android:visibility="gone"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="840dp">
 
@@ -516,23 +515,52 @@
         <ImageView
             android:id="@+id/s4"
             android:layout_width="400dp"
-            android:visibility="gone"
             android:src="@drawable/s4"
             android:layout_height="400dp" />
 
         <TextView
             android:id="@+id/num4_top"
-            android:visibility="gone"
             android:layout_width="182dp"
             android:layout_height="31dp"
             android:layout_marginLeft="235dp"
             android:layout_marginTop="40dp"
-            android:text="2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
+            android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
             android:textSize="10dp" />
 
         <TextView
             android:id="@+id/num4_1"
-            android:visibility="gone"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:text="Lighting Outlet, 69W"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/num4_2"
+            android:layout_width="119dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="150dp"
+            android:text="Lighting Outlet, 69W"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/num4_3"
+            android:layout_width="119dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="215dp"
+            android:text="Lighting Outlet, 69W"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/num4_4"
+            android:layout_width="119dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="215dp"
+            android:text="Lighting Outlet, 69W"
+            android:textSize="12dp" />
+
+
+        <TextView
+            android:id="@+id/num4_11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
@@ -541,8 +569,7 @@
             android:text="1"/>
 
         <TextView
-            android:id="@+id/num4_2"
-            android:visibility="gone"
+            android:id="@+id/num4_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
@@ -551,8 +578,7 @@
             android:text="2"/>
 
         <TextView
-            android:id="@+id/num4_3"
-            android:visibility="gone"
+            android:id="@+id/num4_13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
@@ -560,8 +586,7 @@
             android:layout_marginTop="240dp"
             android:text="3"/>
 
-        <TextView  android:id="@+id/num4_4"
-            android:visibility="gone"
+        <TextView  android:id="@+id/num4_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
@@ -569,9 +594,17 @@
             android:layout_marginTop="240dp"
             android:text="4"/>
 
+        <TextView  android:id="@+id/num4_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="120dp"
+            android:text="4"/>
+
+
         <TextView
             android:id="@+id/num4_bot"
-            android:visibility="gone"
             android:layout_width="182dp"
             android:layout_height="31dp"
             android:layout_marginLeft="260dp"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -98,23 +99,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-        ImageView s4ImageView = findViewById(R.id.s4);
-        ImageView s6ImageView = findViewById(R.id.s6);
-        ImageView s8ImageView = findViewById(R.id.s8);
-        ImageView s10ImageView = findViewById(R.id.s10);
-        ImageView s12ImageView = findViewById(R.id.s12);
-        ImageView s14ImageView = findViewById(R.id.s14);
-        ImageView s16ImageView = findViewById(R.id.s16);
-        ImageView s18ImageView = findViewById(R.id.s18);
-        ImageView s20ImageView = findViewById(R.id.s20);
-        ImageView s22ImageView = findViewById(R.id.s22);
-        ImageView s24ImageView = findViewById(R.id.s24);
-        ImageView s26ImageView = findViewById(R.id.s26);
-        ImageView s28ImageView = findViewById(R.id.s28);
-        ImageView s30ImageView = findViewById(R.id.s30);
-
-
-
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
         SAVEHIGHB = findViewById(R.id.SAVEHIGHB);
@@ -122,6 +106,7 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
+
 
 
         Intent intent = getIntent();
@@ -141,17 +126,20 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+
             // Assuming CTRtv is a TextView object
             if (CTR != null) {
                 int ctrValue = Integer.parseInt(CTR);
                 CTRtv.setText(CTR);
+
+
                 if (ctrValue == 5) {
                     RS4.setVisibility(View.VISIBLE);
-
                 } else {
                     RS4.setVisibility(View.GONE);
 
                 }
+
 
                 if (ctrValue == 7) {
                     RS6.setVisibility(View.VISIBLE);
@@ -350,12 +338,14 @@ public class Loadschedule extends AppCompatActivity {
 
             if (totalUnderValue == 0) {
             MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
               }
             if (totalUnderValue < 15) {
                 MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
             }
             if (totalUnderValue >= 16 && totalUnderValue <= 20) {
                 MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
             }
             if (totalUnderValue >= 21 && totalUnderValue <= 30) {
                 MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");
@@ -392,6 +382,18 @@ public class Loadschedule extends AppCompatActivity {
                 MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
             }
             String PassMainWire = MainWire.getText().toString();
+
+
+
+
+
+
+
+
+
+
+
+
         if (FDW != null)
         {
             MainWire.setText(PassMainWire);
@@ -484,6 +486,7 @@ public class Loadschedule extends AppCompatActivity {
         if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
             FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+
         }
         if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
@@ -617,6 +620,23 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
@@ -635,7 +655,6 @@ public class Loadschedule extends AppCompatActivity {
         mGestureDetector.onTouchEvent(event);
         return true;
     }
-
 
 
 

@@ -814,7 +814,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                         File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
                                         FileOutputStream outputStream = new FileOutputStream(pdf);
 
-                                        Document document = new Document(pageSize);
+                                        Document document = new Document(pageSize.rotate());
                                         PdfWriter.getInstance(document, outputStream);
                                         document.open();
                                         document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here

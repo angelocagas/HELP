@@ -46,7 +46,7 @@ public class Loadschedule extends AppCompatActivity {
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView num4_top, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num4_top,num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
 
     @Override
@@ -80,13 +80,43 @@ public class Loadschedule extends AppCompatActivity {
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
         CTRtv = findViewById(R.id.CTRtv);
-        num4_top = findViewById(R.id.num4_top);
-        num4_1 = findViewById(R.id.num4_1);
-        num4_2 = findViewById(R.id.num4_2);
-        num4_3 = findViewById(R.id.num4_3);
-        num4_4 = findViewById(R.id.num4_4);
-        num4_bot = findViewById(R.id.num4_bot);
 
+
+         num4_1 = findViewById(R.id.num4_1);
+         num4_2 = findViewById(R.id.num4_2);
+         num4_3 = findViewById(R.id.num4_3);
+         num4_4 = findViewById(R.id.num4_4);
+
+         num4_bot = findViewById(R.id.num4_bot);
+         num6_top = findViewById(R.id.num6_top);
+         num8_top = findViewById(R.id. num8_top);
+         num10_top = findViewById(R.id. num10_top);
+         num12_top = findViewById(R.id. num12_top);
+         num14_top = findViewById(R.id. num14_top);
+         num16_top = findViewById(R.id. num16_top);
+         num18_top = findViewById(R.id. num18_top);
+         num20_top = findViewById(R.id. num20_top);
+         num22_top = findViewById(R.id. num22_top);
+         num24_top = findViewById(R.id. num24_top);
+         num26_top = findViewById(R.id. num26_top);
+         num28_top = findViewById(R.id. num28_top);
+         num30_top = findViewById(R.id. num30_top);
+
+
+        num4_top = findViewById(R.id.num4_top);
+        num6_bot = findViewById(R.id.num6_bot);
+        num8_bot = findViewById(R.id. num8_bot);
+        num10_bot = findViewById(R.id. num10_bot);
+        num12_bot = findViewById(R.id. num12_bot);
+        num14_bot = findViewById(R.id. num14_bot);
+        num16_bot = findViewById(R.id. num16_bot);
+        num18_bot = findViewById(R.id. num18_bot);
+        num20_bot = findViewById(R.id. num20_bot);
+        num22_bot = findViewById(R.id. num22_bot);
+        num24_bot = findViewById(R.id. num24_bot);
+        num26_bot = findViewById(R.id. num26_bot);
+        num28_bot = findViewById(R.id. num28_bot);
+        num30_bot = findViewById(R.id. num30_bot);
 
         RelativeLayout RS4  = findViewById(R.id.RS4);
         RelativeLayout RS6  = findViewById(R.id.RS6);
@@ -595,6 +625,51 @@ public class Loadschedule extends AppCompatActivity {
         if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
         }
+
+        String Feeder2 = FeederWireSecond.getText().toString().trim();
+        String Feeder3 = FeederWireFourth.getText().toString().trim();
+
+
+
+
+
+            if (FeederW2 != null) {
+                num4_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num6_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num8_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num10_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num12_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num14_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num16_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num18_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num20_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num22_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num24_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num26_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num28_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num30_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+
+            }
+            if (FeederW2 != null) {
+                num4_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num6_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num8_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num10_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num12_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num14_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num16_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num18_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num20_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num22_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num24_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num26_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num28_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num30_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+
+            }
+
+
+
 
 
 

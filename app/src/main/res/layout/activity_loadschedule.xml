@@ -520,7 +520,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="800dp"
             android:layout_marginTop="100dp"
-            android:visibility="gone"
+
            >
 
             <TextView
@@ -543,7 +543,7 @@
             <TextView
                 android:id="@+id/num4_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="215dp"
                 android:layout_marginTop="40dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -638,7 +638,7 @@
             <TextView
                 android:id="@+id/num4_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="277dp"
                 android:layout_marginTop="330dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -669,7 +669,7 @@
             <TextView
                 android:id="@+id/num6_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
                 android:layout_marginTop="20dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -801,7 +801,7 @@
             <TextView
                 android:id="@+id/num6_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="330dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -830,7 +830,7 @@
             <TextView
                 android:id="@+id/num8_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
                 android:layout_marginTop="10dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -999,7 +999,7 @@
             <TextView
                 android:id="@+id/num8_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="420dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -1030,7 +1030,7 @@
             <TextView
                 android:id="@+id/num10_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
                 android:layout_marginTop="10dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -1236,7 +1236,7 @@
             <TextView
                 android:id="@+id/num10_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="270dp"
                 android:layout_marginTop="430dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -1266,7 +1266,7 @@
             <TextView
                 android:id="@+id/num12_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="225dp"
                 android:layout_marginTop="10dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -1509,7 +1509,7 @@
             <TextView
                 android:id="@+id/num12_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="430dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -1540,7 +1540,7 @@
             <TextView
                 android:id="@+id/num14_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="215dp"
                 android:layout_marginTop="10dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -1819,7 +1819,7 @@
             <TextView
                 android:id="@+id/num14_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="265dp"
                 android:layout_marginTop="485dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -1848,7 +1848,7 @@
             <TextView
                 android:id="@+id/num16_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="10dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -2163,7 +2163,7 @@
             <TextView
                 android:id="@+id/num16_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="265dp"
                 android:layout_marginTop="485dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -2198,7 +2198,7 @@
             <TextView
                 android:id="@+id/num18_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="5dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -2549,7 +2549,7 @@
             <TextView
                 android:id="@+id/num18_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="505dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -2581,7 +2581,7 @@
             <TextView
                 android:id="@+id/num20_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="5dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -2970,7 +2970,7 @@
             <TextView
                 android:id="@+id/num20_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="235dp"
                 android:layout_marginTop="495dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -3008,7 +3008,7 @@
             <TextView
                 android:id="@+id/num22_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                 android:textStyle="bold"
@@ -3429,7 +3429,7 @@
             <TextView
                 android:id="@+id/num22_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="640dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -3458,7 +3458,7 @@
             <TextView
                 android:id="@+id/num24_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="5dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -3913,7 +3913,7 @@
             <TextView
                 android:id="@+id/num24_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="710dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -3942,7 +3942,7 @@
             <TextView
                 android:id="@+id/num26_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="5dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -4432,7 +4432,7 @@
             <TextView
                 android:id="@+id/num26_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="710dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -4463,7 +4463,7 @@
             <TextView
                 android:id="@+id/num28_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="5dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -4986,7 +4986,7 @@
             <TextView
                 android:id="@+id/num28_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="720dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
@@ -5020,7 +5020,7 @@
             <TextView
                 android:id="@+id/num30_top"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
                 android:layout_marginTop="15dp"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -5578,7 +5578,7 @@
             <TextView
                 android:id="@+id/num30_bot"
                 android:layout_width="182dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="720dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "

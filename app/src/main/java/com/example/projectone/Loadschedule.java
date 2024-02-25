@@ -1,6 +1,7 @@
 package com.example.projectone;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.opengl.Visibility;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import android.view.Menu;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -732,6 +734,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
         int id = item.getItemId();
         if (id == R.id.back){
             Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Loadschedule.this, Inputing.class);
+            startActivity(intent);
         }
         if (id == R.id.save){
             Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
@@ -742,9 +746,30 @@ public  boolean onCreateOptionsMenu(Menu menu){
         if (id == R.id.newLS){
             Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.exit){
-            Toast.makeText(this, "return home", Toast.LENGTH_SHORT).show();
+        if (id == R.id.exit) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Disregard the load?");
+            builder.setMessage("Are you sure you want to disregard the load?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Disregard the load and return home
+                    Toast.makeText(Loadschedule.this, "Returning home", Toast.LENGTH_SHORT).show();
+                     Intent intent = new Intent(Loadschedule.this, Menu.class);
+                     startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing, close the dialog
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+            return true;
         }
-        return true;
+
+        return super.onOptionsItemSelected(item);
     }
 }

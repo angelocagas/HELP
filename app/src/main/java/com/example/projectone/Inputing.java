@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class Inputing extends AppCompatActivity {
     double totalVAValue = 0.00;
     double totalAValue = 0.00;
     int cirnum;
-
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -470,6 +471,14 @@ public class Inputing extends AppCompatActivity {
 
 
 
+        imageView = findViewById(R.id.back);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showConfirmationDialog();
+            }
+        });
 
 
     }
@@ -542,6 +551,29 @@ public class Inputing extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "You can't back the application until the project is done", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to proceed?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        proceedToMenuActivity();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing, user canceled the action
+                    }
+                })
+                .show();
+    }
+
+    private void proceedToMenuActivity() {
+        Intent intent = new Intent(Inputing.this, Menu.class);
+        startActivity(intent);
     }
 
 }

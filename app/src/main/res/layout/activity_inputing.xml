@@ -16,6 +16,7 @@
 
         <ImageView
             android:layout_width="37dp"
+            android:id="@+id/back"
             android:layout_height="37dp"
             android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"

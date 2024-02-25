@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.example.projectone.Adapter.DataAdapter;
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
@@ -754,101 +758,157 @@ public  boolean onCreateOptionsMenu(Menu menu){
             Intent intent = new Intent(Loadschedule.this, Inputing.class);
             startActivity(intent);
         }
-        if (id == R.id.save){
+        /* -------------------------- PRINT ---------------------- */
+        if (id == R.id.save) {
+            // Array of choices
+            final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
 
-                    // Array of choices
-                    final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
+            // Create the AlertDialog Builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+            builder.setTitle("Choose paper size");
 
-                    // Create the AlertDialog Builder
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                    builder.setTitle("Choose paper size");
+            // To be used to store index of selectedItem
+            final int[] selectedItem = {-1};
 
-                    // To be used to store index of selectedItem
-                    final int[] selectedItem = {-1};
+            // 'checkedItem' is used to indicate which item is currently selected
+            builder.setSingleChoiceItems(paperSizes, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    selectedItem[0] = which;
+                }
+            });
 
-                    // 'checkedItem' is used to indicate which item is currently selected
-                    builder.setSingleChoiceItems(paperSizes, -1, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            selectedItem[0] = which;
+            // Set the Cancel button
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            // Set the 'Save Now' button
+            builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (selectedItem[0] != -1) {
+                        String paperSize = (String) paperSizes[selectedItem[0]];
+
+                        // Specify paper size for pdf
+                        Rectangle pageSize = null;
+                        switch (paperSize.toLowerCase()) {
+                            case "a1":
+                                pageSize = PageSize.A1;
+                                break;
+                            case "a3":
+                                pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
+                                break;
+                            case "20x30 inches":
+                                pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
+                                break;
                         }
-                    });
 
-                    // Set the Cancel button
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
+                        if (pageSize != null) {
+                            // Create a PDF file and save
+                            try {
+                                // Get the current date and time
+                                String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
 
-                    // Set the 'Save Now' button
-                    builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (selectedItem[0] != -1) {
-                                String paperSize = (String) paperSizes[selectedItem[0]];
+                                // Create the filename
+                                String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
 
-                                // Specify paper size for pdf
-                                Rectangle pageSize = null;
-                                switch (paperSize) {
-                                    case "A1":
-                                        pageSize = PageSize.A1;
-                                        break;
-                                    case "A3":
-                                        pageSize = PageSize.A3;
-                                        break;
-                                    case "20x30 inches":
-                                        pageSize = new Rectangle(1440, 2160); // Assuming 72 points per inch
-                                        break;
-                                }
+                                // Define your output stream here
+                                File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+                                FileOutputStream outputStream = new FileOutputStream(pdf);
 
-                                if (pageSize != null) {
-                                    // Create a PDF file and save
-                                    try {
-                                        // Get the current date and time
-                                        String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+                                Document document = new Document(pageSize.rotate());
+                                PdfWriter.getInstance(document, outputStream);
+                                document.open();
+                                document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
 
-                                        // Create the filename
-                                        String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
-                                        File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
-                                        FileOutputStream outputStream = new FileOutputStream(pdf);
-
-                                        Document document = new Document(pageSize.rotate());
-                                        PdfWriter.getInstance(document, outputStream);
-                                        document.open();
-                                        document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
-                                        document.close();
-                                        outputStream.close();
-
-                                        // Show dialog to tell user that PDF is saved
-                                        new AlertDialog.Builder(Loadschedule.this)
-                                                .setTitle("PDF Saved")
-                                                .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
-                                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                })
-                                                .show();
-
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
+                                // Add image to pdf based on paper size
+                                try {
+                                    // Get the image from drawable resources
+                                    int id;
+                                    if("20x30 inches".equals(paperSize)){
+                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
                                     }
-                                }else {
-                                    Toast.makeText(getApplicationContext(), "Please select a valid paper size", Toast.LENGTH_SHORT).show();
-                                }
-                                dialog.dismiss();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                                    else {
+                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                    }
+                                    if (id != 0) {
+                                        BitmapFactory.Options options = new BitmapFactory.Options();
+                                        options.inJustDecodeBounds = true;
+                                        BitmapFactory.decodeResource(getResources(), id, options);
 
-                    // Create and show the AlertDialog
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+                                        // Compute the inSampleSize
+                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                        options.inJustDecodeBounds = false;
+
+                                        // Decode the image with calculated inSampleSize
+                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        Image image = Image.getInstance(stream.toByteArray());
+
+                                        if("20x30 inches".equals(paperSize)){
+                                            // Scale the image to cover whole page and set position to bottom-left corner
+                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                            image.scalePercent(widthPercentage, heightPercentage);
+                                            image.setAbsolutePosition(0,0);
+                                        }
+                                        else{
+                                            // Scale the image to cover whole page and set position to bottom-left corner
+                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                            image.scalePercent(widthPercentage, heightPercentage);
+                                            image.setAbsolutePosition(0,0);
+                                        }
+
+                                        // Add the image to the document
+                                        document.add(image);
+                                    }
+                                } catch(Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                // closing the document
+                                document.close();
+                                outputStream.close();
+
+                                // Show dialog to tell the user that the PDF has been saved
+                                new AlertDialog.Builder(Loadschedule.this)
+                                        .setTitle("PDF Saved")
+                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            // Create and show the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
+        /* -------------------------- END OF PRINT ---------------------- */
+
+
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
         }
@@ -880,5 +940,26 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // ------- Helper Method ------------
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        int height = options.outHeight;
+        int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 }

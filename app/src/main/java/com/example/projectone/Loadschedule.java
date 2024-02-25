@@ -7,6 +7,7 @@ import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -14,8 +15,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Menu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,7 +101,8 @@ public class Loadschedule extends AppCompatActivity {
         RelativeLayout RS28  = findViewById(R.id.RS28);
         RelativeLayout RS30  = findViewById(R.id.RS30);
 
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
@@ -135,6 +140,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 if (ctrValue == 5) {
                     RS4.setVisibility(View.VISIBLE);
+
                 } else {
                     RS4.setVisibility(View.GONE);
 
@@ -714,5 +720,31 @@ public class Loadschedule extends AppCompatActivity {
 
             return true;
         }
+    }
+@Override
+public  boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.back){
+            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.save){
+            Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.nextLS){
+            Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.newLS){
+            Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.exit){
+            Toast.makeText(this, "return home", Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }

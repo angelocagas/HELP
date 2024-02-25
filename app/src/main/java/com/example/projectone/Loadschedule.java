@@ -233,7 +233,14 @@ public class Loadschedule extends AppCompatActivity {
                     RS28.setVisibility(View.GONE);
 
                 }
-                if (ctrValue == 30) {
+              if (ctrValue == 30) {
+                   RS30.setVisibility(View.VISIBLE);
+
+               } else {
+                   RS30.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 31) {
                     RS30.setVisibility(View.VISIBLE);
 
                 } else {
@@ -748,8 +755,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         if (id == R.id.exit) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Disregard the load?");
-            builder.setMessage("Are you sure you want to disregard the load?");
+            builder.setTitle("Discard the load?");
+            builder.setMessage("Are you sure you want to discard the load?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

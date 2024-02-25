@@ -32,6 +32,23 @@ import com.example.projectone.Helper.DatabaseHelper;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import android.content.DialogInterface;
+import android.os.Environment;
+import android.widget.Toast;
+import android.widget.Button;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Loadschedule extends AppCompatActivity {
 
@@ -738,7 +755,99 @@ public  boolean onCreateOptionsMenu(Menu menu){
             startActivity(intent);
         }
         if (id == R.id.save){
-            Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
+
+                    // Array of choices
+                    final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
+
+                    // Create the AlertDialog Builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                    builder.setTitle("Choose paper size");
+
+                    // To be used to store index of selectedItem
+                    final int[] selectedItem = {-1};
+
+                    // 'checkedItem' is used to indicate which item is currently selected
+                    builder.setSingleChoiceItems(paperSizes, -1, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            selectedItem[0] = which;
+                        }
+                    });
+
+                    // Set the Cancel button
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // Set the 'Save Now' button
+                    builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (selectedItem[0] != -1) {
+                                String paperSize = (String) paperSizes[selectedItem[0]];
+
+                                // Specify paper size for pdf
+                                Rectangle pageSize = null;
+                                switch (paperSize) {
+                                    case "A1":
+                                        pageSize = PageSize.A1;
+                                        break;
+                                    case "A3":
+                                        pageSize = PageSize.A3;
+                                        break;
+                                    case "20x30 inches":
+                                        pageSize = new Rectangle(1440, 2160); // Assuming 72 points per inch
+                                        break;
+                                }
+
+                                if (pageSize != null) {
+                                    // Create a PDF file and save
+                                    try {
+                                        // Get the current date and time
+                                        String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+
+                                        // Create the filename
+                                        String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
+                                        File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+                                        FileOutputStream outputStream = new FileOutputStream(pdf);
+
+                                        Document document = new Document(pageSize);
+                                        PdfWriter.getInstance(document, outputStream);
+                                        document.open();
+                                        document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
+                                        document.close();
+                                        outputStream.close();
+
+                                        // Show dialog to tell user that PDF is saved
+                                        new AlertDialog.Builder(Loadschedule.this)
+                                                .setTitle("PDF Saved")
+                                                .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
+                                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                })
+                                                .show();
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "Please select a valid paper size", Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    // Create and show the AlertDialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
         }
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();

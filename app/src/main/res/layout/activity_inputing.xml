@@ -7,6 +7,22 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".Inputing">
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="-40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="37dp"
+            android:id="@+id/back"
+            android:layout_height="37dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/help_backbtn" />
+
+    </RelativeLayout>
 
     <ImageView
         android:layout_marginTop="20dp"
@@ -17,38 +33,16 @@
 
     <TextView
         android:id="@+id/CircuitNum"
-        android:layout_width="300dp"
+        android:layout_width="217dp"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="CIRCUIT NO# 1"
-        android:textColor="@color/white"
-        android:textSize="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/textbox"
-        android:layout_marginTop="20dp"
-        />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        app:boxBackgroundMode="outline"
-        app:boxBackgroundColor="@color/white"
-        android:layout_marginStart="30dp"
-        android:backgroundTint="@color/black"
-        app:hintTextColor="@color/black"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Quantity"
-            android:inputType="number"
-            android:maxLines="1"
-
-            ></com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:backgroundTint="#ECE8E8"
+        android:fontFamily="serif-monospace"
+        android:text="CIRCUIT NO. 1"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="27dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -99,6 +93,30 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginStart="30dp"
+        android:backgroundTint="@color/black"
+        app:hintTextColor="@color/black"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:maxLines="1"
+
+            ></com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -176,6 +194,14 @@
         android:id="@+id/preview"
         tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:text="00"
+        android:id="@+id/counter2"/>
+
 
     <TextView
         android:visibility="gone"
@@ -303,6 +329,15 @@
         android:text="CTYPE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:id="@+id/HighestAmp"
+        android:text="12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
 
     <Button
         android:id="@+id/Back"
@@ -312,7 +347,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:textColor="@color/white"
-        android:text="Back to Main menu"
+        android:text="Proceed"
         android:backgroundTint="@color/SimpleColor"
         android:textSize="25dp"
         />

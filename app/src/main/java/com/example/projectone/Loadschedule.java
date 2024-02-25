@@ -1,19 +1,27 @@
 package com.example.projectone;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Menu;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +30,7 @@ import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Loadschedule extends AppCompatActivity {
@@ -35,8 +44,10 @@ public class Loadschedule extends AppCompatActivity {
     private float mLastTouchX;
     private float mLastTouchY;
     DatabaseHelper helper;
+    List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num4_top, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +72,39 @@ public class Loadschedule extends AppCompatActivity {
         FeederWire = findViewById(R.id.FeederWire);
         FeederWireSecond = findViewById(R.id.FeederWireSecond);
         FeederWireThird = findViewById(R.id.FeederWireThird);
-        FeederWireFourth = findViewById(R.id.FeederWireTFourth);
+        FeederWireFourth = findViewById(R.id.FeederWireFourth);
         FeederWireType = findViewById(R.id.FeederWireType);
         FeederSize = findViewById(R.id.FeederSize);
         UpdatedMainWire = findViewById(R.id.UpdatedMainWire);
         SaveA = findViewById(R.id.saveA);
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
+        CTRtv = findViewById(R.id.CTRtv);
+        num4_top = findViewById(R.id.num4_top);
+        num4_1 = findViewById(R.id.num4_1);
+        num4_2 = findViewById(R.id.num4_2);
+        num4_3 = findViewById(R.id.num4_3);
+        num4_4 = findViewById(R.id.num4_4);
+        num4_bot = findViewById(R.id.num4_bot);
 
+
+        RelativeLayout RS4  = findViewById(R.id.RS4);
+        RelativeLayout RS6  = findViewById(R.id.RS6);
+        RelativeLayout RS8  = findViewById(R.id.RS8);
+        RelativeLayout RS10  = findViewById(R.id.RS10);
+        RelativeLayout RS12  = findViewById(R.id.RS12);
+        RelativeLayout RS14  = findViewById(R.id.RS14);
+        RelativeLayout RS16  = findViewById(R.id.RS16);
+        RelativeLayout RS18  = findViewById(R.id.RS18);
+        RelativeLayout RS20  = findViewById(R.id.RS20);
+        RelativeLayout RS22  = findViewById(R.id.RS22);
+        RelativeLayout RS24  = findViewById(R.id.RS24);
+        RelativeLayout RS26  = findViewById(R.id.RS26);
+        RelativeLayout RS28  = findViewById(R.id.RS28);
+        RelativeLayout RS30  = findViewById(R.id.RS30);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SAVEHIGHA = findViewById(R.id.SAVEHIGHA);
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
@@ -77,7 +113,14 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
+
+
+
         Intent intent = getIntent();
+
+
+
+
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
@@ -86,7 +129,118 @@ public class Loadschedule extends AppCompatActivity {
             String Wiretype =intent.getStringExtra("WFG");
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
+            String CTR = intent.getStringExtra("CTR");
 
+
+
+
+            // Assuming CTRtv is a TextView object
+            if (CTR != null) {
+                int ctrValue = Integer.parseInt(CTR);
+                CTRtv.setText(CTR);
+
+
+                if (ctrValue == 5) {
+                    RS4.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS4.setVisibility(View.GONE);
+
+                }
+
+
+                if (ctrValue == 7) {
+                    RS6.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS6.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 9) {
+                    RS8.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS8.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 11) {
+                    RS10.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS10.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 13) {
+                    RS12.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS12.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 15) {
+                    RS14.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS14.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 17) {
+                    RS16.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS16.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 19) {
+                    RS18.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS18.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 21) {
+                    RS20.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS20.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 23) {
+                    RS22.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS22.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 25) {
+                    RS24.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS24.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 27) {
+                    RS26.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS26.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 29) {
+                    RS28.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS28.setVisibility(View.GONE);
+
+                }
+                if (ctrValue == 30) {
+                    RS30.setVisibility(View.VISIBLE);
+
+                } else {
+                    RS30.setVisibility(View.GONE);
+
+                }
+            }
 
             if (totalA == null && HIGHA == null)
             {
@@ -115,6 +269,10 @@ public class Loadschedule extends AppCompatActivity {
                 totalVATextView.setText(totalVA);
             }
 
+            if (CTR != null) {
+                CTRtv.setText(CTR);
+            }
+
 
 
             if (totalA != null) {
@@ -122,8 +280,6 @@ public class Loadschedule extends AppCompatActivity {
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
             }
-
-
 
             if (HIGHA != null)
             {
@@ -141,6 +297,10 @@ public class Loadschedule extends AppCompatActivity {
             }
 
         }
+
+
+
+
 
 
         String SAVEA = totalATextView.getText().toString();
@@ -186,12 +346,14 @@ public class Loadschedule extends AppCompatActivity {
 
             if (totalUnderValue == 0) {
             MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
               }
             if (totalUnderValue < 15) {
                 MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
             }
             if (totalUnderValue >= 16 && totalUnderValue <= 20) {
                 MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
             }
             if (totalUnderValue >= 21 && totalUnderValue <= 30) {
                 MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");
@@ -228,6 +390,18 @@ public class Loadschedule extends AppCompatActivity {
                 MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
             }
             String PassMainWire = MainWire.getText().toString();
+
+
+
+
+
+
+
+
+
+
+
+
         if (FDW != null)
         {
             MainWire.setText(PassMainWire);
@@ -314,84 +488,109 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
-        if (totalUnderValue < 30)
-        {
+        String FeederW2 = FeederWire.getText().toString().trim();
+
+//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
+        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+
         }
-        if (totalUnderValue < 30)
-        {
+        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-        }
-        else if (totalUnderValue >= 30 && totalUnderValue <= 50) {
-            FeederWireSecond.setText("+ 1 - 14 mm.sq.");
-        }
-        else if (totalUnderValue >= 51 && totalUnderValue <= 80) {
-            FeederWireSecond.setText("+ 1 - 22 mm.sq.");
-        }
-        else if (totalUnderValue >= 81 && totalUnderValue <= 175) {
-            FeederWireSecond.setText("+ 1 - 30 mm.sq.");
-        }
-        else if (totalUnderValue >= 176 && totalUnderValue <= 325) {
-            FeederWireSecond.setText("+ 1 - 50 mm.sq.");
-        }
-        else if (totalUnderValue >= 326 && totalUnderValue <= 500) {
-            FeederWireSecond.setText("+ 1 - 60 mm.sq.");
-        }
-
-
-
-        String FeederS = FeederWireSecond.getText().toString().trim();
-        if (FeederS.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
-            FeederWireFourth.setText("(G)In 15 mmø IMC PIPE");
-        }
-        if (FeederS.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
             FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
             FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
             FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
+        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
             FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
             FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+
+        //IF FEEDERWIRE IS 60 80   =    22
+        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
             FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
             FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+
+
+        //IF FEEDERWIRE IS 100 to 175   = 30
+
+        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
             FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
             FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+
+        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
             FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+
+        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
             FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+
+
+        //IF FEEDERWIRE IS 200 to 325    50
+        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
             FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
         }
-        if (FeederS.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
             FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
         }
+        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+        }
+
+
+        //IF FEEDERWIRE IS  375 to 500    600
+        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+
+
+
         FeederWireFourth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -429,6 +628,23 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
@@ -447,7 +663,6 @@ public class Loadschedule extends AppCompatActivity {
         mGestureDetector.onTouchEvent(event);
         return true;
     }
-
 
 
 
@@ -507,5 +722,54 @@ public class Loadschedule extends AppCompatActivity {
 
             return true;
         }
+    }
+@Override
+public  boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.back){
+            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Loadschedule.this, Inputing.class);
+            startActivity(intent);
+        }
+        if (id == R.id.save){
+            Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.nextLS){
+            Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.newLS){
+            Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.exit) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Disregard the load?");
+            builder.setMessage("Are you sure you want to disregard the load?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Disregard the load and return home
+                    Toast.makeText(Loadschedule.this, "Returning home", Toast.LENGTH_SHORT).show();
+                     Intent intent = new Intent(Loadschedule.this, Menu.class);
+                     startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing, close the dialog
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

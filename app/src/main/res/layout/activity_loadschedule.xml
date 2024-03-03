@@ -376,11 +376,12 @@
                 tools:ignore="TextSizeCheck" />
 
             <TextView
-                android:id="@+id/MainWirePass"
+                android:id="@+id/UpdatedMainWire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/border2"
                 android:layout_marginLeft="450dp"
-                android:layout_marginTop="336.5dp"
+                android:layout_marginTop="88dp"
                 android:gravity="start"
                 android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
                 android:textColor="@color/black"
@@ -390,18 +391,21 @@
                 tools:ignore="TextSizeCheck" />
 
             <TextView
-                android:id="@+id/UpdatedMainWire"
+                android:id="@+id/MainWirePass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="450dp"
-                android:layout_marginTop="336.5dp"
+                android:layout_marginTop="88dp"
+                android:layout_below="@id/border2"
                 android:gravity="start"
+                android:visibility="gone"
                 android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
                 android:textColor="@color/black"
                 android:textSize="9dp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 tools:ignore="TextSizeCheck" />
+
+
 
             <TextView
                 android:id="@+id/FeederWire"
@@ -433,18 +437,19 @@
                 tools:ignore="TextSizeCheck" />
 
             <TextView
+
                 android:id="@+id/FeederSize"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="625dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="55dp"
+                android:layout_toEndOf="@id/FeederWire"
                 android:gravity="start"
-                android:text="22"
+                android:text="+ 1 - 2.0 mm.sq."
                 android:textColor="@color/black"
                 android:textSize="9dp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 tools:ignore="TextSizeCheck" />
 
             <TextView
@@ -463,12 +468,14 @@
                 tools:ignore="TextSizeCheck" />
 
             <TextView
+
                 android:id="@+id/FeederWireTypePass"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
+                android:layout_toEndOf="@id/FeederWireSecond"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="696dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="55dp"
                 android:gravity="start"
                 android:text="THHN"
                 android:textColor="@color/black"
@@ -482,7 +489,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="2dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="55dp"
                 android:layout_toEndOf="@id/FeederWireType"
                 android:gravity="start"
@@ -501,7 +508,7 @@
                 android:layout_marginTop="64dp"
                 android:layout_toEndOf="@id/FeederWire"
                 android:gravity="start"
-                android:text=" (G)In 1 mmø IMC PIPE"
+                android:text="(G)In 1 mmø IMC PIPE"
                 android:textColor="@color/black"
                 android:textSize="9dp"
                 android:textStyle="bold"
@@ -1257,7 +1264,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:visibility="gone">
+            >
 
 
             <ImageView

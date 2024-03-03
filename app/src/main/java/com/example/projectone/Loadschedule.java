@@ -46,7 +46,7 @@ public class Loadschedule extends AppCompatActivity {
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA,UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA, FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
 
     @Override
@@ -74,11 +74,8 @@ public class Loadschedule extends AppCompatActivity {
         FeederWireThird = findViewById(R.id.FeederWireThird);
         FeederWireFourth = findViewById(R.id.FeederWireFourth);
         FeederWireType = findViewById(R.id.FeederWireType);
-        FeederSize = findViewById(R.id.FeederSize);
-        UpdatedMainWire = findViewById(R.id.UpdatedMainWire);
         SaveA = findViewById(R.id.saveA);
         MAINWIREPASS = findViewById(R.id.MainWirePass);
-        FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
         CTRtv = findViewById(R.id.CTRtv);
 
 
@@ -370,7 +367,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-        num4_top = findViewById(R.id.num4_top);
+          num4_top = findViewById(R.id.num4_top);
          num6_top = findViewById(R.id.num6_top);
          num8_top = findViewById(R.id. num8_top);
          num10_top = findViewById(R.id. num10_top);
@@ -422,6 +419,8 @@ public class Loadschedule extends AppCompatActivity {
         LAWEHIGHA = findViewById(R.id.LAWEHIGHA);
         SAVEHIGHB = findViewById(R.id.SAVEHIGHB);
         LAWEHIGHB = findViewById(R.id.LAWEHIGHB);
+
+        //updated
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
@@ -841,7 +840,7 @@ public class Loadschedule extends AppCompatActivity {
         }
         //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
 
-        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
             FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
         }
@@ -995,20 +994,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
@@ -1092,15 +1077,33 @@ public  boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("WARNING!");
+        builder.setMessage("You can't go back.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing when OK is clicked
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.back){
-            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Loadschedule.this, Inputing.class);
-            startActivity(intent);
-        }
+       int id = item.getItemId();
+
+         /*    if (id == R.id.back){
+                onBackPressed();
+                return true;}
+            */
+
         if (id == R.id.save){
             Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
         }
@@ -1135,5 +1138,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
 
         return super.onOptionsItemSelected(item);
+
+
     }
 }

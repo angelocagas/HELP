@@ -427,7 +427,7 @@ public class Inputing extends AppCompatActivity {
 
 
                 // Check if the counter is less than 4
-                if (counter < 3) {
+                if (counter <= 4) {
                     // Create an AlertDialog.Builder instance
                     AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
@@ -443,30 +443,60 @@ public class Inputing extends AppCompatActivity {
                         }
                     });
 
-                    // Create and show the AlertDialog
+
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
 
+                    if  (counter == 6 || counter == 8 || counter == 10 || counter == 12 || counter == 14 || counter == 16 || counter == 18 || counter == 20 || counter == 22 || counter == 24 || counter == 26 || counter == 28 || counter == 30) {
+                        // Create an AlertDialog.Builder instance
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+                        builder.setTitle("Alert");
+                        builder.setMessage("You are trying to preview with an odd number. Do you want to continue and add 1 spare?");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Proceed with preview
+                                proceedWithPreview();
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User canceled, do nothing
+                            }
+                        });
+                        // Show the AlertDialog
+                        builder.show();
+                    } else {
 
-                    double highestAmp = findHighestAmp();
-                    HighestAmp12.setText(String.valueOf(highestAmp));
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+                        builder.setTitle("Alert");
+                        builder.setMessage("Do you want to proceed?");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Proceed with preview
+                                proceedWithPreview();
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User canceled, do nothing
+                            }
+                        });
+                        // Show the AlertDialog
+                        builder.show();
+                    }
 
-                    // Once the highest values are determined, create an intent to start the new activity
-                    String passVA = TotalVA.getText().toString();
-                    String passA = TotalA.getText().toString();
-                    String passHIGHEST = HighestAmp12.getText().toString();
-                    String skel = Counter2.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
-                    // Pass the necessary data to the new activity through the intent
-                    intent.putExtra("TOTALVA", passVA);
-                    intent.putExtra("TOTALA", passA);
-                    intent.putExtra("HIGHA", passHIGHEST);
-                    intent.putExtra("CTR", skel);
-                    startActivity(intent);
+
+
                 }
             } });
+
+
 
 
 
@@ -480,6 +510,27 @@ public class Inputing extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void proceedWithPreview() {
+
+        double highestAmp = findHighestAmp();
+        HighestAmp12.setText(String.valueOf(highestAmp));
+
+        // Once the highest values are determined, create an intent to start the new activity
+        String passVA = TotalVA.getText().toString();
+        String passA = TotalA.getText().toString();
+        String passHIGHEST = HighestAmp12.getText().toString();
+        String skel = Counter2.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+
+        // Pass the necessary data to the new activity through the intent
+        intent.putExtra("TOTALVA", passVA);
+        intent.putExtra("TOTALA", passA);
+        intent.putExtra("HIGHA", passHIGHEST);
+        intent.putExtra("CTR", skel);
+        startActivity(intent);
 
     }
 

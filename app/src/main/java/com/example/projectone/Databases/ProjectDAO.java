@@ -21,5 +21,9 @@ public interface ProjectDAO {
     @Update
     void updateData(ProjectTable projectTable);
 
+    // Add this method to delete all projects from the table
+    @Query("DELETE FROM projecttable")
+    void deleteAllProjects();
+
 
 }

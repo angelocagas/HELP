@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -29,9 +32,28 @@ import com.example.projectone.Adapter.DataAdapter;
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import android.content.DialogInterface;
+import android.os.Environment;
+import android.widget.Toast;
+import android.widget.Button;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Loadschedule extends AppCompatActivity {
 
@@ -46,7 +68,8 @@ public class Loadschedule extends AppCompatActivity {
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA, FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4,
+                                                                                                                          CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA, UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
 
     @Override
@@ -74,8 +97,11 @@ public class Loadschedule extends AppCompatActivity {
         FeederWireThird = findViewById(R.id.FeederWireThird);
         FeederWireFourth = findViewById(R.id.FeederWireFourth);
         FeederWireType = findViewById(R.id.FeederWireType);
+        FeederSize = findViewById(R.id.FeederSize);
+        UpdatedMainWire = findViewById(R.id.UpdatedMainWire);
         SaveA = findViewById(R.id.saveA);
         MAINWIREPASS = findViewById(R.id.MainWirePass);
+        FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
         CTRtv = findViewById(R.id.CTRtv);
 
 
@@ -467,7 +493,7 @@ public class Loadschedule extends AppCompatActivity {
                     RS6.setVisibility(View.GONE);
 
                 }
-                if (ctrValue == 9) {
+                if (ctrValue == 9 ) {
                     RS8.setVisibility(View.VISIBLE);
 
                 } else {
@@ -558,6 +584,7 @@ public class Loadschedule extends AppCompatActivity {
                     RS30.setVisibility(View.GONE);
 
                 }
+
             }
 
             if (totalA == null && HIGHA == null)
@@ -994,6 +1021,20 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
@@ -1077,7 +1118,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
-    @Override
+    /* --------------------------
+     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("WARNING!");
@@ -1093,30 +1135,182 @@ public  boolean onCreateOptionsMenu(Menu menu){
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    ---------------------- */
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
-       int id = item.getItemId();
-
-         /*    if (id == R.id.back){
-                onBackPressed();
-                return true;}
-            */
-
-        if (id == R.id.save){
-            Toast.makeText(this, "save PDF button", Toast.LENGTH_SHORT).show();
+        int id = item.getItemId();
+        if (id == R.id.back){
+            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Loadschedule.this, Inputing.class);
+            startActivity(intent);
         }
+        /* -------------------------- PRINT ---------------------- */
+        if (id == R.id.save) {
+            // Array of choices
+            final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
+
+            // Create the AlertDialog Builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+            builder.setTitle("Choose paper size");
+
+            // To be used to store index of selectedItem
+            final int[] selectedItem = {-1};
+
+            // 'checkedItem' is used to indicate which item is currently selected
+            builder.setSingleChoiceItems(paperSizes, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    selectedItem[0] = which;
+                }
+            });
+
+            // Set the Cancel button
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            // Set the 'Save Now' button
+            builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (selectedItem[0] != -1) {
+                        String paperSize = (String) paperSizes[selectedItem[0]];
+
+                        // Specify paper size for pdf
+                        Rectangle pageSize = null;
+                        switch (paperSize.toLowerCase()) {
+                            case "a1":
+                                pageSize = PageSize.A1;
+                                break;
+                            case "a3":
+                                pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
+                                break;
+                            case "20x30 inches":
+                                pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
+                                break;
+                        }
+
+                        if (pageSize != null) {
+                            // Create a PDF file and save
+                            try {
+                                // Get the current date and time
+                                String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+
+                                // Create the filename
+                                String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
+
+                                // Define your output stream here
+                                File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+                                FileOutputStream outputStream = new FileOutputStream(pdf);
+
+                                Document document = new Document(pageSize.rotate());
+                                PdfWriter.getInstance(document, outputStream);
+                                document.open();
+                                document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
+
+                                // Add image to pdf based on paper size
+                                try {
+                                    // Get the image from drawable resources
+                                    int id;
+                                    if("20x30 inches".equals(paperSize)){
+                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
+                                    }
+                                    else {
+                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                    }
+                                    if (id != 0) {
+                                        BitmapFactory.Options options = new BitmapFactory.Options();
+                                        options.inJustDecodeBounds = true;
+                                        BitmapFactory.decodeResource(getResources(), id, options);
+
+                                        // Compute the inSampleSize
+                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                        options.inJustDecodeBounds = false;
+
+                                        // Decode the image with calculated inSampleSize
+                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        Image image = Image.getInstance(stream.toByteArray());
+
+                                        if("20x30 inches".equals(paperSize)){
+                                            // Scale the image to cover whole page and set position to bottom-left corner
+                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                            image.scalePercent(widthPercentage, heightPercentage);
+                                            image.setAbsolutePosition(0,0);
+                                        }
+                                        else{
+                                            // Scale the image to cover whole page and set position to bottom-left corner
+                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                            image.scalePercent(widthPercentage, heightPercentage);
+                                            image.setAbsolutePosition(0,0);
+                                        }
+
+                                        // Add the image to the document
+                                        document.add(image);
+                                    }
+                                } catch(Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                // closing the document
+                                document.close();
+                                outputStream.close();
+
+                                // Show dialog to tell the user that the PDF has been saved
+                                new AlertDialog.Builder(Loadschedule.this)
+                                        .setTitle("PDF Saved")
+                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            // Create and show the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        /* -------------------------- END OF PRINT ---------------------- */
+
+
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.newLS){
             Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
+            // Start the Inputing activity
+            Intent intent = new Intent(this, Inputing.class);
+            startActivity(intent);
+
         }
         if (id == R.id.exit) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Discard the load?");
-            builder.setMessage("Are you sure you want to discard the load?");
+            builder.setTitle("Disregard the load?");
+            builder.setMessage("Are you sure you want to disregard the load?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1126,8 +1320,6 @@ public  boolean onCreateOptionsMenu(Menu menu){
                      startActivity(intent);
                 }
             });
-
-
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1140,7 +1332,26 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
 
         return super.onOptionsItemSelected(item);
+    }
 
+    // ------- Helper Method ------------
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        int height = options.outHeight;
+        int width = options.outWidth;
+        int inSampleSize = 1;
 
+        if (height > reqHeight || width > reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 }

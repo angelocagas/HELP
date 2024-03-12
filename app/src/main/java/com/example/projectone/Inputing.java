@@ -59,7 +59,7 @@ public class Inputing extends AppCompatActivity {
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         sharedPreferences = getPreferences(MODE_PRIVATE);
         others = findViewById(R.id.others);
-        counter = 1;
+        counter = 1; // reset yung sa counter dun sa input display
 
 
         setContentView(R.layout.activity_inputing);

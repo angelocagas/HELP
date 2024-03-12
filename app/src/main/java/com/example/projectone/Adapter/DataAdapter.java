@@ -58,7 +58,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         if (projectTableList != null && projectTableList.size() > 0)
         {
             ProjectTable projectTable = projectTableList.get(position);
-            holder.NumberId.setText(String.valueOf(position + 1));
+            holder.NumberId.setText(String.valueOf(position + 1));// reset sa chk item number sa recycler viewer
             holder.Quantity.setText(String.valueOf(projectTable.getQuantity()));
             holder.Item.setText(String.valueOf(projectTable.getItem()));
             holder.OPlus.setText(String.valueOf(projectTable.getOPlus()));

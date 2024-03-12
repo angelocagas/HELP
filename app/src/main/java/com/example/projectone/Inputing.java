@@ -47,6 +47,14 @@ public class Inputing extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Clear the SharedPreferences when the activity is first initialized
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        // Rest of your existing code...
         decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         sharedPreferences = getPreferences(MODE_PRIVATE);
@@ -272,6 +280,7 @@ public class Inputing extends AppCompatActivity {
             }
         });
 
+        SharedPreferences finalSharedPreferences = sharedPreferences;
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -405,7 +414,7 @@ public class Inputing extends AppCompatActivity {
                                 CTYPE.getText().toString()
                         );
                     }
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    SharedPreferences.Editor editor = finalSharedPreferences.edit();
                     editor.putInt("counter", counter);
                     editor.apply();
                     Quantity.setText(null);

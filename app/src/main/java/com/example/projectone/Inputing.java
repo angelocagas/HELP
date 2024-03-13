@@ -48,18 +48,19 @@ public class Inputing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         // Clear the SharedPreferences when the activity is first initialized
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
 
-        // Rest of your existing code...
         decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         sharedPreferences = getPreferences(MODE_PRIVATE);
         others = findViewById(R.id.others);
-        counter = sharedPreferences.getInt("counter", counter);
+        counter = 1; // reset yung sa counter dun sa input display
+
 
         setContentView(R.layout.activity_inputing);
         others = findViewById(R.id.others);
@@ -279,7 +280,6 @@ public class Inputing extends AppCompatActivity {
                 }
             }
         });
-
         SharedPreferences finalSharedPreferences = sharedPreferences;
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -341,7 +341,7 @@ public class Inputing extends AppCompatActivity {
                         }
 
 
-                        // Retrieve the text from the TextView counter
+                        // counter para sa skel
                         String counterText = Counter2.getText().toString();
 
 // Convert the text to an integer value
@@ -534,7 +534,7 @@ public class Inputing extends AppCompatActivity {
         String skel = Counter2.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
-        // Pass the necessary data to the new activity through the intent
+        // Pass the necessary data to the loadsched through the intent
         intent.putExtra("TOTALVA", passVA);
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);

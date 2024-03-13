@@ -1019,22 +1019,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
@@ -1300,13 +1284,34 @@ public  boolean onCreateOptionsMenu(Menu menu){
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.newLS){
-            Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
-            // Start the Inputing activity
-            Intent intent = new Intent(this, Inputing.class);
-            startActivity(intent);
 
+        /* -------------------------- dipa ayos new loadsched ---------------------- */
+        if (id == R.id.newLS){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Disregard the load?");
+            builder.setMessage("Are you sure you want to disregard the current load and proceed to a new load schedule?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Disregard the load and return home
+                    Toast.makeText(Loadschedule.this, "Returning Input", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Loadschedule.this, Home.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing, close the dialog
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+            return true;
         }
+
         if (id == R.id.exit) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Disregard the load?");

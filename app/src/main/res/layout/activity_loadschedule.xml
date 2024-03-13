@@ -439,6 +439,7 @@
             <TextView
 
                 android:id="@+id/FeederSize"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_below="@id/border2"
@@ -527,6 +528,7 @@ android:id="@+id/lc1"
     app:layout_constraintTop_toTopOf="parent">
 
 <RelativeLayout
+    android:id="@+id/skeleton"
     android:layout_marginStart="900dp"
     android:layout_width="435dp"
     android:layout_height="wrap_content"
@@ -1259,6 +1261,7 @@ android:id="@+id/lc1"
 
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/RS12"
             android:layout_width="wrap_content"

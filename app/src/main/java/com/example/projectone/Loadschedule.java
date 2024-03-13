@@ -1316,7 +1316,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
                 public void onClick(DialogInterface dialog, int which) {
                     // Disregard the load and return home
                     Toast.makeText(Loadschedule.this, "Returning home", Toast.LENGTH_SHORT).show();
-                     Intent intent = new Intent(Loadschedule.this, Menu.class);
+                     Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                      startActivity(intent);
                 }
             });

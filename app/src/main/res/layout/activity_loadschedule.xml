@@ -611,7 +611,7 @@ android:id="@+id/lc1"
 
 
             <TextView
-                android:id="@+id/num4_at1"
+                android:id="@+id/num4_a1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="155dp"
@@ -620,7 +620,7 @@ android:id="@+id/lc1"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/num4_at2"
+                android:id="@+id/num4_a2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="247dp"
@@ -629,7 +629,7 @@ android:id="@+id/lc1"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/num4_at3"
+                android:id="@+id/num4_a3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="155dp"
@@ -638,7 +638,7 @@ android:id="@+id/lc1"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/num4_at4"
+                android:id="@+id/num4_a4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="247dp"

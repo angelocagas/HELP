@@ -137,7 +137,7 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
-                        {
+                        { 
                             bar.setVisibility(View.GONE);
                             UserId = firebaseAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = firestore.collection("users").document(UserId);

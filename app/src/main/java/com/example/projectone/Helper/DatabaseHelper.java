@@ -150,5 +150,32 @@ public class DatabaseHelper {
         updateProjectData.execute();
     }
 
+    // Add this method in your DatabaseHelper class
+    public void clearTable() {
+        class ClearTableTask extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // Access the project database and delete all records from the table
+                DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .deleteAllProjects();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context, "Fresh Project", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        // Execute the AsyncTask to clear the table
+        ClearTableTask clearTableTask = new ClearTableTask();
+        clearTableTask.execute();
+    }
+
+
+
 
 }

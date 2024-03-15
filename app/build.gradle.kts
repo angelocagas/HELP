@@ -45,4 +45,8 @@ dependencies {
     testImplementation("androidx.room:room-testing:2.4.0")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
 
+    //pdf
+    implementation ("com.itextpdf:itextg:5.5.10")
+
+
 }

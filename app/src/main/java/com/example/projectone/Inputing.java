@@ -94,30 +94,25 @@ public class Inputing extends AppCompatActivity {
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
-
         Intent intent = getIntent();
-        String Cirnum = intent.getStringExtra("CNM");
-        CNM.setText(Cirnum);
-
-        try {
-            cirnum = Integer.parseInt(CNM.getText().toString().trim());
-
-        } catch (NumberFormatException e) {
-
-        }
 
 
 
 
 
+
+//adapter for ITEMS
         String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
-        String[] hp = new String[]{"1/6", "1/4", "1/3", "0.5", "0.75", "1", "1.5", "2", "3", "5", "7.5", "10"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         autoCompleteTextView1.setAdapter(adapter1);
+
+//adapter(dropdown) for Horse power
+        String[] hp = new String[]{"1/6", "1/4", "1/3", "0.5", "0.75", "1", "1.5", "2", "3", "5", "7.5", "10"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         Horsepower.setAdapter(adapter2);
 
 
+//selected item automated data
         autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -169,8 +164,6 @@ public class Inputing extends AppCompatActivity {
                 }
 
 
-
-
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
@@ -180,6 +173,8 @@ public class Inputing extends AppCompatActivity {
             }
         });
 
+
+//selected horsepower automated data
         Horsepower.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -281,6 +276,9 @@ public class Inputing extends AppCompatActivity {
             }
         });
         SharedPreferences finalSharedPreferences = sharedPreferences;
+
+
+//NEXT BUTTON
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -304,24 +302,21 @@ public class Inputing extends AppCompatActivity {
                     return; // Exit the method without proceeding further
                 } else {
 
-                    if (counter == cirnum) {
+                    // WHEN DATA IS OK PROCEED TO LOADSCHEDULE
+                    //computation total
 
-                        Toast.makeText(Inputing.this, "You exceed the limit of Circuit Number", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
-                        startActivity(intent);
-
-                    }
                     computeVA();
                     computeA();
                     counter++;
                     CircuitNum.setText("CIRCUIT NO. " + counter);
                     Counter2.setText(String.valueOf(counter));
                     String ProjectName = getIntent().getStringExtra("ProjectName");
-                    String WireForGround = getIntent().getStringExtra("WFG");
 
+                    //IF EMPTY ALERT
                     if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
                         Toast.makeText(Inputing.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                     } else {
+                        // PROCEED
                         String selectedItem = autoCompleteTextView1.getText().toString();
                         String selectedWatts = Watts.getText().toString();
 
@@ -374,6 +369,8 @@ public class Inputing extends AppCompatActivity {
 
                         // Additional validation for "ACU"
                         String selectedHP = Horsepower.getText().toString();
+
+                        //IF ACU IS SELECTED MATING DATA
                         if ("ACU".equals(selectedItem)) {
                             if (!selectedHP.isEmpty()) {
                                 if (!selectedItem.isEmpty()) {

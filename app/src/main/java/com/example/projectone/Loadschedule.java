@@ -104,7 +104,7 @@ public class Loadschedule extends AppCompatActivity {
         MAINWIREPASS = findViewById(R.id.MainWirePass);
         FEEDERWIREPASS = findViewById(R.id.FeederWireTypePass);
         CTRtv = findViewById(R.id.CTRtv);
-        List<ProjectTable> projectTableList;
+
 
          num4_1 = findViewById(R.id.num4_1);
          num4_2 = findViewById(R.id.num4_2);
@@ -819,7 +819,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
+/*
         for (ProjectTable projectTable : projectTableList) {
             if (projectTable.getId() == 4) {
                 // Displaying names in TextViews
@@ -828,7 +828,7 @@ public class Loadschedule extends AppCompatActivity {
                 num4_3.setText(projectTableList.get(2).getItem());
                 num4_4.setText(projectTableList.get(3).getItem());
             }
-        }
+        }*/
 
 
         rootLayout = findViewById(R.id.zoom);

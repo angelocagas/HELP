@@ -62,11 +62,30 @@ public class UpdateDataActivity extends AppCompatActivity {
             Quantity.setText(projectTable.getQuantity());
             autoCompleteTextView1.setText(projectTable.getItem());
 
-        String[] other= new String[]{"Lightning Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range",  "Refrigerator"};
+        String[] other= new String[]{"Convenience Outlet", "ACU", "Water Heater", "Range",  "Refrigerator"};
 
         ArrayAdapter<String> adapter1=new ArrayAdapter<>(this, R.layout.drop_down_item, other
         );
         autoCompleteTextView1.setAdapter(adapter1);
+
+        // PROCEED
+        String selectedItem = autoCompleteTextView1.getText().toString();
+        String selectedWatts = Watts.getText().toString();
+
+        // Your existing validation for "Lighting Outlet"
+        if ("Lighting Outlet".equals(selectedItem)) {
+            if (!selectedWatts.isEmpty()) {
+                if (!selectedItem.isEmpty()) {
+                    selectedItem += ", " + selectedWatts + "W";
+                } else {
+                    selectedItem = selectedWatts;
+                }
+                autoCompleteTextView1.setText(selectedItem);
+            } else {
+                Toast.makeText(UpdateDataActivity.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
+                return; // return if validation fails
+            }
+        }
 
         autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

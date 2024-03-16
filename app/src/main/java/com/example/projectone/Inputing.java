@@ -95,15 +95,8 @@ public class Inputing extends AppCompatActivity {
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
         Intent intent = getIntent();
-        String Cirnum = intent.getStringExtra("CNM");
-        CNM.setText(Cirnum);
 
-        try {
-            cirnum = Integer.parseInt(CNM.getText().toString().trim());
 
-        } catch (NumberFormatException e) {
-
-        }
 
 
 
@@ -309,20 +302,15 @@ public class Inputing extends AppCompatActivity {
                     return; // Exit the method without proceeding further
                 } else {
 
-                    if (counter == cirnum) {
+                    // WHEN DATA IS OK PROCEED TO LOADSCHEDULE
+                    //computation total
 
-                        Toast.makeText(Inputing.this, "You exceed the limit of Circuit Number", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
-                        startActivity(intent);
-
-                    }
                     computeVA();
                     computeA();
                     counter++;
                     CircuitNum.setText("CIRCUIT NO. " + counter);
                     Counter2.setText(String.valueOf(counter));
                     String ProjectName = getIntent().getStringExtra("ProjectName");
-                    String WireForGround = getIntent().getStringExtra("WFG");
 
                     //IF EMPTY ALERT
                     if (!isAutoCompleteItemSelected || Quantity.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {

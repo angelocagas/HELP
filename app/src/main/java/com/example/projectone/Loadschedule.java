@@ -1,6 +1,7 @@
 package com.example.projectone;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -1173,167 +1174,249 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     if (selectedItem[0] != -1) {
                         String paperSize = (String) paperSizes[selectedItem[0]];
 
-                        // Specify paper size for pdf
-                        Rectangle pageSize = null;
-                        switch (paperSize.toLowerCase()) {
-                            case "a1":
-                                pageSize = PageSize.A1;
-                                break;
-                            case "a3":
-                                pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
-                                break;
-                            case "20x30 inches":
-                                pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
-                                break;
-                        }
-
-                        if (pageSize != null) {
-                            // Create a PDF file and save
-                            try {
-                                // Get the current date and time
-                                String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-
-                                // Create the filename
-                                String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
-
-                                // Define your output stream here
-                                File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
-                                FileOutputStream outputStream = new FileOutputStream(pdf);
-
-                                Document document = new Document(pageSize.rotate());
-                                PdfWriter.getInstance(document, outputStream);
-                                document.open();
-                                document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
-
-                                // Add image to pdf based on paper size
-                                try {
-                                    // Get the image from drawable resources
-                                    int id;
-                                    if("20x30 inches".equals(paperSize)){
-                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
-                                    }
-                                    else {
-                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
-                                    }
-                                    if (id != 0) {
-                                        BitmapFactory.Options options = new BitmapFactory.Options();
-                                        options.inJustDecodeBounds = true;
-                                        BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        // Compute the inSampleSize
-                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
-                                        options.inJustDecodeBounds = false;
-
-                                        // Decode the image with calculated inSampleSize
-                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                        Image image = Image.getInstance(stream.toByteArray());
-
-                                        if("20x30 inches".equals(paperSize)){
-                                            // Scale the image to cover whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0,0);
-                                        }
-                                        else{
-                                            // Scale the image to cover whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0,0);
-                                        }
-
-                                        // Add the image to the document
-                                        document.add(image);
-                                    }
-                                } catch(Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                                // Convert RelativeLayout to Bitmap
-                                RelativeLayout relativeLayout = findViewById(R.id.rela);
-
-// Calculate desired width and height based on paper size
-                                int desiredWidth;
-                                int desiredHeight;
-
-// Define the new position for the image
-                                float xPosition = 0; // Default position
-                                float yPosition = 0; // Default position
-
-                                switch (paperSize.toLowerCase()) {
-                                    case "a1":
-                                        desiredWidth = (int) (relativeLayout.getWidth() - 100); // Adjust as needed
-                                        desiredHeight = (int) (relativeLayout.getHeight() - 100); // Adjust as needed
-                                        xPosition = 60; // Adjust as needed (horizontal position)
-                                        yPosition = 1050; // Adjust as needed (vertical position)
-                                        break;
-                                    case "a3":
-                                        desiredWidth = (int) (relativeLayout.getWidth() / 2.2); // Adjust as needed
-                                        desiredHeight = (int) (relativeLayout.getHeight() / 2.2); // Adjust as needed
-                                        xPosition = 30; // Adjust as needed (horizontal position)
-                                        yPosition = 500; // Adjust as needed (vertical position)
-                                        break;
-                                    case "20x30 inches":
-                                        desiredWidth = (int) (relativeLayout.getWidth() - 500); // Adjust as needed
-                                        desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
-                                        xPosition = 65; // Adjust as needed (horizontal position)
-                                        yPosition = 960; // Adjust as needed (vertical position)
-                                        break;
-                                    default:
-                                        // Default desired width and height
-                                        desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
-                                        desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
-                                        break;
-                                }
-
-// Create a bitmap from the RelativeLayout
-                                Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
-                                Canvas canvas = new Canvas(originalBitmap);
-                                relativeLayout.draw(canvas);
-
-// Scale down the bitmap
-                                Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
-
-// Add RelativeLayout as Bitmap to the PDF
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                Image relLayoutImage = Image.getInstance(stream.toByteArray());
-
-// Set the absolute position of the image
-                                relLayoutImage.setAbsolutePosition(xPosition, yPosition);
-
-// Add the RelativeLayout as Bitmap to the PDF document
-                                document.add(relLayoutImage);
-
-
-
-                                // closing the document
-                                document.close();
-                                outputStream.close();
-
-                                // Show dialog to tell the user that the PDF has been saved
-                                new AlertDialog.Builder(Loadschedule.this)
-                                        .setTitle("PDF Saved")
-                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
-                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
-                        }
+                        // Dismiss the paper size selection dialog
                         dialog.dismiss();
+
+                        // Show progress dialog
+                        ProgressDialog progressDialog = new ProgressDialog(Loadschedule.this);
+                        progressDialog.setMessage("Saving PDF...");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+
+                        // Handle PDF creation and saving in a background thread
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    // Get the current date and time
+                                    String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+
+                                    // Create the filename
+                                    String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
+
+                                    // Define your output stream here
+                                    File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+                                    FileOutputStream outputStream = new FileOutputStream(pdf);
+
+                                    // Specify paper size for PDF
+                                    Rectangle pageSize = null;
+                                    switch (paperSize.toLowerCase()) {
+                                        case "a1":
+                                            pageSize = PageSize.A1;
+                                            break;
+                                        case "a3":
+                                            pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
+                                            break;
+                                        case "20x30 inches":
+                                            pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
+                                            break;
+                                    }
+
+                                    if (pageSize != null) {
+                                        Document document = new Document(pageSize.rotate());
+                                        PdfWriter.getInstance(document, outputStream);
+                                        document.open();
+                                        document.add(new Paragraph(paperSize)); // You can add anything to the PDF file here
+
+                                        // Add image to PDF based on paper size
+                                        try {
+                                            // Get the image from drawable resources
+                                            int id;
+                                            if ("20x30 inches".equals(paperSize)) {
+                                                id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
+                                            } else {
+                                                id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                            }
+                                            if (id != 0) {
+                                                BitmapFactory.Options options = new BitmapFactory.Options();
+                                                options.inJustDecodeBounds = true;
+                                                BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                // Compute the inSampleSize
+                                                options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                                options.inJustDecodeBounds = false;
+
+                                                // Decode the image with calculated inSampleSize
+                                                Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                                Image image = Image.getInstance(stream.toByteArray());
+
+                                                if ("20x30 inches".equals(paperSize)) {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                } else {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                }
+
+                                                // Add the image to the document
+                                                document.add(image);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        // Convert RelativeLayouts to Bitmaps and add them to the PDF
+                                        RelativeLayout relativeLayout = findViewById(R.id.rela);
+                                        RelativeLayout skeletonLayout = findViewById(R.id.skeleton);
+
+                                        // Define the new position for the images
+                                        float xPosition = 0; // Default position
+                                        float yPosition = 0; // Default position
+
+                                        // Calculate desired width and height for "rela" and "skeleton" RelativeLayouts based on paper size
+                                        int desiredWidth;
+                                        int desiredHeight;
+
+                                        int skeletonDesiredWidth = 0;
+                                        int skeletonDesiredHeight = 0;
+
+                                        switch (paperSize.toLowerCase()) {
+                                            case "a1":
+                                                desiredWidth = (int) (relativeLayout.getWidth() - 700); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 2.5); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 2.5); // Adjust as needed
+
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 850; // Adjust as needed (vertical position)
+                                                break;
+                                            case "a3":
+                                                desiredWidth = (int) (relativeLayout.getWidth() / 2.7); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() / 2.7); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 5.1); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 5.1); // Adjust as needed
+
+                                                xPosition = 35; // Adjust as needed (horizontal position)
+                                                yPosition = 425; // Adjust as needed (vertical position);
+
+                                                break;
+                                            case "20x30 inches":
+                                                desiredWidth = (int) (relativeLayout.getWidth() - 700); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 3); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 3); // Adjust as needed
+
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 810; // Adjust as needed (vertical position)
+                                                break;
+                                            default:
+                                                // Default desired width and height
+                                                desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
+                                                desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
+                                                break;
+                                        }
+
+                                        // Create a bitmap from the "rela" RelativeLayout
+                                        Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas canvas = new Canvas(originalBitmap);
+                                        relativeLayout.draw(canvas);
+
+                                        // Scale down the bitmap for "rela" RelativeLayout
+                                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
+
+                                        // Add "rela" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        Image relLayoutImage = Image.getInstance(stream.toByteArray());
+
+                                        // Determine the total height of the page
+                                        float pageHeight = pageSize.getHeight();
+
+                                        // Calculate the y-coordinate relative to the top of the page
+                                        float yPositionFromTop = pageHeight - yPosition;
+
+                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
+                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
+
+                                        // Set the position of the element using the calculated y-coordinate relative to the top
+                                        relLayoutImage.setAbsolutePosition(xPosition, topEdgeYPosition);
+
+                                        // Add the "rela" RelativeLayout as Bitmap to the PDF document
+                                        document.add(relLayoutImage);
+
+                                        // Calculate the position of "skeleton" RelativeLayout
+                                        float skeletonXPosition = xPosition + desiredWidth; // Right of "rela"
+                                        float skeletonYPosition = topEdgeYPosition; // Same top position as "rela"
+
+                                        // Create a bitmap from the "skeleton" RelativeLayout
+                                        Bitmap skeletonOriginalBitmap = Bitmap.createBitmap(skeletonLayout.getWidth(), skeletonLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas skeletonCanvas = new Canvas(skeletonOriginalBitmap);
+                                        skeletonLayout.draw(skeletonCanvas);
+
+                                        // Scale down the bitmap for "skeleton" RelativeLayout
+                                        Bitmap skeletonScaledBitmap = Bitmap.createScaledBitmap(skeletonOriginalBitmap, skeletonDesiredWidth, skeletonDesiredHeight, true);
+
+                                        // Add "skeleton" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream skeletonStream = new ByteArrayOutputStream();
+                                        skeletonScaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, skeletonStream);
+                                        Image skeletonImage = Image.getInstance(skeletonStream.toByteArray());
+
+                                        // Set the absolute position of the "skeleton" RelativeLayout
+                                        skeletonImage.setAbsolutePosition(skeletonXPosition, skeletonYPosition - 10);
+
+                                        // Add the "skeleton" RelativeLayout as Bitmap to the PDF document
+                                        document.add(skeletonImage);
+
+                                        // closing the document
+                                        document.close();
+                                        outputStream.close();
+
+                                        // Show dialog to tell the user that the PDF has been saved
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                new AlertDialog.Builder(Loadschedule.this)
+                                                        .setTitle("PDF Saved")
+                                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
+                                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        })
+                                                        .show();
+                                            }
+                                        });
+                                    } else {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext(), "Error occurred while saving PDF", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                } finally {
+                                    // Dismiss progress dialog
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                        }
+                                    });
+                                }
+                            }
+                        }).start();
                     } else {
                         Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
                     }
@@ -1345,6 +1428,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
             dialog.show();
         }
         /* -------------------------- END OF PRINT ---------------------- */
+
 
 
         if (id == R.id.nextLS){

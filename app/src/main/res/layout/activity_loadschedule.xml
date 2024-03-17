@@ -528,6 +528,7 @@ android:id="@+id/lc1"
     app:layout_constraintTop_toTopOf="parent">
 
 <RelativeLayout
+    android:id="@+id/skeleton"
     android:layout_marginStart="900dp"
     android:layout_width="435dp"
     android:layout_height="wrap_content"

@@ -323,11 +323,12 @@
 
             <TextView
                 android:id="@+id/totalVA"
-                android:layout_width="wrap_content"
+                android:layout_width="31dp"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="302dp"
+                android:layout_marginLeft="299dp"
                 android:layout_marginTop="18dp"
                 android:text="25820"
                 android:textColor="@color/black"
@@ -338,12 +339,13 @@
             <TextView
 
                 android:id="@+id/totalA"
-                android:layout_width="wrap_content"
+                android:layout_width="72dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="350dp"
+                android:layout_marginLeft="333dp"
                 android:layout_marginTop="18dp"
-                android:text="112.26"
+             android:textAlignment="center"
+                android:text="1122.26"
                 android:textColor="@color/black"
                 android:textSize="8dp"
                 android:textStyle="bold"

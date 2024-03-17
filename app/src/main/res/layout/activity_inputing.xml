@@ -171,17 +171,42 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+        <Button
+            android:layout_marginRight="2.5dp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/SimpleColor"
+            android:elevation="4dp"
+            android:text="Update"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:id="@+id/update"
+            tools:ignore="TouchTargetSizeCheck" />
     <Button
         android:layout_marginRight="2.5dp"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/SimpleColor"
         android:elevation="4dp"
+
         android:text="Next Circuit"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:id="@+id/next"
         tools:ignore="TouchTargetSizeCheck" />
+        <Button
+            android:layout_marginLeft="2.5dp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/SimpleColor"
+            android:elevation="4dp"
+            android:text="Preview"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:id="@+id/preview2"
+            tools:ignore="TouchTargetSizeCheck" />
     <Button
         android:layout_marginLeft="2.5dp"
         android:layout_width="170dp"

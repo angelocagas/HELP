@@ -18,9 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
+import com.example.projectone.Inputing;
 import com.example.projectone.Loadschedule;
 import com.example.projectone.R;
-import com.example.projectone.UpdateDataActivity;
+
 import com.google.protobuf.StringValue;
 
 import org.w3c.dom.Text;
@@ -80,8 +81,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,UpdateDataActivity.class);
+                    Intent intent = new Intent(context, Inputing.class);
                     intent.putExtra("ProjectTable",projectTable);
+                    intent.putExtra("EditMode", true); // Pass true to indicate editing mode
+
                     context.startActivity(intent);
                 }
             });

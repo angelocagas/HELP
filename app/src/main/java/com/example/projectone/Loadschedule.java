@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.Visibility;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -30,6 +31,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.projectone.Adapter.DataAdapter;
+import com.example.projectone.Databases.ProjectDAO;
+import com.example.projectone.Databases.ProjectDatabase;
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
 
@@ -66,6 +69,7 @@ public class Loadschedule extends AppCompatActivity {
     private GestureDetector mGestureDetector;
     private float mLastTouchX;
     private float mLastTouchY;
+    private ProjectDAO projectDAO;
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
@@ -453,8 +457,12 @@ public class Loadschedule extends AppCompatActivity {
         String FDW = sharedPreferences.getString("UFWT","");
 
 
-
         Intent intent = getIntent();
+
+
+
+
+
 
 
 
@@ -462,8 +470,8 @@ public class Loadschedule extends AppCompatActivity {
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
-            String totalA = intent.getStringExtra("TOTALA");
-            String HIGHA = intent.getStringExtra("HIGHA");
+       String totalA = intent.getStringExtra("TOTALA");
+   String HIGHA = intent.getStringExtra("HIGHA");
             String Wiretype =intent.getStringExtra("WFG");
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
@@ -645,16 +653,12 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
-
-
-
-
         String SAVEA = totalATextView.getText().toString();
         String SaveHighA = HighestA.getText().toString();
         SaveA.setText(SAVEA);
         SAVEHIGHA.setText(SaveHighA);
 
-        double totalOneValue = Double.parseDouble(totalone.getText().toString());
+    double totalOneValue = Double.parseDouble(totalone.getText().toString());
         double topOneAndTwoValue = totalOneValue * 0.80;
         TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
         String formattedResult = decimalFormat.format(topOneAndTwoValue);
@@ -907,6 +911,7 @@ public class Loadschedule extends AppCompatActivity {
             return true;
         }
     }
+    /*
 @Override
 public  boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
@@ -1170,4 +1175,19 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         return inSampleSize;
     }
+
+
+    private int calculateTotal(List<String> values) {
+        int total = 0;
+        for (String str : values) {
+            try {
+                total += Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                // Handle parsing errors if necessary
+                e.printStackTrace();
+            }
+        }
+        return total;
+    }
+
 }

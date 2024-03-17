@@ -111,7 +111,8 @@ public class Inputing extends AppCompatActivity {
             projectTable = (ProjectTable)getIntent().getSerializableExtra("ProjectTable");
             assert projectTable != null;
             Quantity.setText(projectTable.getQuantity());
-            autoCompleteTextView1.setText(projectTable.getItem());
+            String item = projectTable.getItem();
+            autoCompleteTextView1.setText(item);
 
             // If editing mode is enabled, disable the "Next" button
             preview.setVisibility(View.GONE);
@@ -120,7 +121,14 @@ public class Inputing extends AppCompatActivity {
             preview2.setVisibility(View.VISIBLE);
             update.setVisibility(View.VISIBLE);
 
-
+            // Check if item starts with "LIGHTING OUTLET"
+            if (item.startsWith("Lighting Outlet")) {
+                autoCompleteTextView1.setText("Lighting Outlet");
+            }
+            // Check if item starts with "ACU"
+            else if (item.startsWith("ACU")) {
+                autoCompleteTextView1.setText("ACU");
+            }
 
         } else {
             // Otherwise, enable the "Next" button

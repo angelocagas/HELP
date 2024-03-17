@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,6 +55,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import android.graphics.Bitmap;
+import android.view.View;
 
 public class Loadschedule extends AppCompatActivity {
 
@@ -457,7 +460,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
@@ -735,14 +737,6 @@ public class Loadschedule extends AppCompatActivity {
                 MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
             }
             String PassMainWire = MainWire.getText().toString();
-
-
-
-
-
-
-
-
 
 
 
@@ -1262,6 +1256,64 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                 } catch(Exception e) {
                                     e.printStackTrace();
                                 }
+
+                                // Convert RelativeLayout to Bitmap
+                                RelativeLayout relativeLayout = findViewById(R.id.rela);
+
+// Calculate desired width and height based on paper size
+                                int desiredWidth;
+                                int desiredHeight;
+
+// Define the new position for the image
+                                float xPosition = 0; // Default position
+                                float yPosition = 0; // Default position
+
+                                switch (paperSize.toLowerCase()) {
+                                    case "a1":
+                                        desiredWidth = (int) (relativeLayout.getWidth() - 100); // Adjust as needed
+                                        desiredHeight = (int) (relativeLayout.getHeight() - 100); // Adjust as needed
+                                        xPosition = 60; // Adjust as needed (horizontal position)
+                                        yPosition = 1050; // Adjust as needed (vertical position)
+                                        break;
+                                    case "a3":
+                                        desiredWidth = (int) (relativeLayout.getWidth() / 2.2); // Adjust as needed
+                                        desiredHeight = (int) (relativeLayout.getHeight() / 2.2); // Adjust as needed
+                                        xPosition = 30; // Adjust as needed (horizontal position)
+                                        yPosition = 500; // Adjust as needed (vertical position)
+                                        break;
+                                    case "20x30 inches":
+                                        desiredWidth = (int) (relativeLayout.getWidth() - 500); // Adjust as needed
+                                        desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+                                        xPosition = 65; // Adjust as needed (horizontal position)
+                                        yPosition = 960; // Adjust as needed (vertical position)
+                                        break;
+                                    default:
+                                        // Default desired width and height
+                                        desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
+                                        desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
+                                        break;
+                                }
+
+// Create a bitmap from the RelativeLayout
+                                Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                Canvas canvas = new Canvas(originalBitmap);
+                                relativeLayout.draw(canvas);
+
+// Scale down the bitmap
+                                Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
+
+// Add RelativeLayout as Bitmap to the PDF
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                Image relLayoutImage = Image.getInstance(stream.toByteArray());
+
+// Set the absolute position of the image
+                                relLayoutImage.setAbsolutePosition(xPosition, yPosition);
+
+// Add the RelativeLayout as Bitmap to the PDF document
+                                document.add(relLayoutImage);
+
+
 
                                 // closing the document
                                 document.close();

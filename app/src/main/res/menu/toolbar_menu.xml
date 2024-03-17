@@ -3,27 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <!--  <item
-          android:title="Back"
-          android:id="@+id/back"
+     <item
+          android:title="Add Circuit"
+          android:id="@+id/add"
           app:showAsAction="ifRoom"/>
-          -->
+
 
       <item
-          android:title="save PDF"
+          android:title="save PDF ⤓"
           android:id="@+id/save"
           app:showAsAction="ifRoom"/>
+
+
 
 
       <item
           android:title="Next Load Schedule"
           android:id="@+id/nextLS"/>
       <item
-          android:title="New Load Schedule"
-          android:id="@+id/newLS"/>
+          android:title="Reset current Load Schedule"
+          android:id="@+id/resetLS"/>
       <item
-          android:title="Exit"
-          android:id="@+id/exit"/>
+          android:title="Discard Project"
+          android:id="@+id/discard"/>
 
 
 

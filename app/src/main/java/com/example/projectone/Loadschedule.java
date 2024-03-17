@@ -1135,10 +1135,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
-        if (id == R.id.back){
-            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Loadschedule.this, Inputing.class);
-            startActivity(intent);
+        if (id == R.id.add){
+            onBackPressed();
         }
         /* -------------------------- PRINT ---------------------- */
         if (id == R.id.save) {
@@ -1352,22 +1350,22 @@ public  boolean onCreateOptionsMenu(Menu menu){
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.newLS){
-            Toast.makeText(this, "new load schedule button", Toast.LENGTH_SHORT).show();
+        if (id == R.id.resetLS){
+            Toast.makeText(this, "reset current load schedule button", Toast.LENGTH_SHORT).show();
             // Start the Inputing activity
             Intent intent = new Intent(this, Inputing.class);
             startActivity(intent);
 
         }
-        if (id == R.id.exit) {
+        if (id == R.id.discard) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Disregard the load?");
-            builder.setMessage("Are you sure you want to disregard the load?");
+            builder.setTitle("Discard the project?");
+            builder.setMessage("Are you sure you want to discard the project and return to home?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Disregard the load and return home
-                    Toast.makeText(Loadschedule.this, "Returning home", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
                      Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                      startActivity(intent);

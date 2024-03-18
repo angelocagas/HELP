@@ -358,6 +358,17 @@ public class Inputing extends AppCompatActivity {
                         // PROCEED
                         String selectedItem = autoCompleteTextView1.getText().toString();
                         String selectedWatts = Watts.getText().toString();
+                        String add = others.getText().toString();
+
+                        // Check if 'add' is not empty and concatenate it to the existing text in autoCompleteTextView1
+                        if (!add.isEmpty()) {
+                            if (!selectedItem.isEmpty()) {
+                                selectedItem += " (" + add + ")";
+                            } else {
+                                selectedItem = add;
+                            }
+                            autoCompleteTextView1.setText(selectedItem);
+                        }
 
                         // Your existing validation for "Lighting Outlet"
                         if ("Lighting Outlet".equals(selectedItem)) {
@@ -368,7 +379,9 @@ public class Inputing extends AppCompatActivity {
                                     selectedItem = selectedWatts;
                                 }
                                 autoCompleteTextView1.setText(selectedItem);
-                            } else {
+                            }
+
+                            else {
                                 Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
                                 return; // return if validation fails
                             }
@@ -521,6 +534,10 @@ public class Inputing extends AppCompatActivity {
                         GNUM.setText("");//MATIC
                         STYPE.setText("UP");//MATIC
                         GTYPE.setText("");//MATIC
+                    }
+
+                    if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+
                     }
 
 

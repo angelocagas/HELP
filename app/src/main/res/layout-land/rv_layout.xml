@@ -2,13 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="850dp"
-    android:layout_height="15dp"
+    android:layout_height="23dp"
     android:gravity="start"
     android:id="@+id/edit"
-    android:layout_marginTop="-6dp"
+    android:layout_marginTop="-4dp"
     android:layout_marginBottom="2dp"
     android:orientation="horizontal"
     tools:ignore="MissingDefaultResource">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="22.5dp">
+
+
 
 
         <TextView
@@ -34,19 +40,21 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/Item"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:text="Conveniec Outlet"
-            android:textAlignment="center"
+            android:layout_width="95.4dp"
+            android:layout_height="19dp"
+            android:layout_marginLeft="11.5dp"
+            android:text="Conveniec Outlet (living Room)"
             android:textSize="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="-2dp"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:textStyle="bold"
             android:id="@+id/OPlus"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="8dp"
             android:text="1"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -196,6 +204,8 @@
 
 
 
+
+</LinearLayout>
 
 
 </LinearLayout>

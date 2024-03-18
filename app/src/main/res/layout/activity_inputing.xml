@@ -363,20 +363,4 @@
         android:layout_height="wrap_content"/>
 
 
-
-    <Button
-        android:id="@+id/Back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:textColor="@color/white"
-        android:text="Proceed"
-        android:backgroundTint="@color/SimpleColor"
-        android:textSize="25dp"
-        />
-
-
-
 </LinearLayout>

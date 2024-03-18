@@ -19,6 +19,13 @@
 
 
         <RelativeLayout
+            android:id="@+id/aaaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
             android:id="@+id/rela"
             android:layout_width="800dp"
             android:layout_height="wrap_content"
@@ -525,8 +532,8 @@
         <!-- unang skeleton na madidisplay kapag 4 ang mga item  -->
         <RelativeLayout
 android:id="@+id/lc1"
-    android:layout_width="1400dp"
-    android:layout_height="800dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -5593,7 +5600,7 @@ android:id="@+id/lc1"
 
 </RelativeLayout>
 
-
+        </RelativeLayout>
 
     </RelativeLayout>
 

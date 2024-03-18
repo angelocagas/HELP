@@ -1,6 +1,7 @@
 package com.example.projectone.Helper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.example.projectone.Databases.ProjectDAO;
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Loadschedule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
@@ -175,6 +177,34 @@ public class DatabaseHelper {
         ClearTableTask clearTableTask = new ClearTableTask();
         clearTableTask.execute();
     }
+    public void getAllItemsList() {
+        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                // Retrieve the list of items from the database
+                return DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .getAllItems();
+            }
+
+            @Override
+            protected void onPostExecute(List<String> itemsList) {
+                super.onPostExecute(itemsList);
+                // Pass the list of items to another activity using an Intent
+                if (itemsList != null && !itemsList.isEmpty()) {
+                    Intent intent = new Intent(context, Loadschedule.class);
+                    intent.putStringArrayListExtra("itemsList", new ArrayList<>(itemsList));
+                    context.startActivity(intent);
+                }
+            }
+        }
+
+        // Execute the AsyncTask to fetch the list of items
+        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
+        getAllItemsTask.execute();
+    }
+
 
 
 

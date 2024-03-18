@@ -19,6 +19,9 @@ public interface ProjectDAO {
 
     @Update
     void updateData(ProjectTable projectTable);
+    @Query("SELECT DISTINCT Item FROM ProjectTable")
+    List<String> getAllItems();
+
 
     // Add this method to delete all projects from the table
     @Query("DELETE FROM projecttable")

@@ -515,7 +515,6 @@ public class Inputing extends AppCompatActivity {
                 }
                 else
                 {
-
                     // PROCEED
                     String selectedItem = autoCompleteTextView1.getText().toString();
                     String selectedWatts = Watts.getText().toString();
@@ -575,6 +574,7 @@ public class Inputing extends AppCompatActivity {
                     } else {
                         horses.setVisibility(View.GONE);
                     }
+
                     computeVA();
                     computeA();
 
@@ -684,6 +684,7 @@ public class Inputing extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Proceed with preview
                                 proceedWithPreview();
+
                             }
                         });
                         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -758,9 +759,6 @@ public class Inputing extends AppCompatActivity {
 
 
 
-
-
-
         imageView = findViewById(R.id.back);
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -784,6 +782,7 @@ public class Inputing extends AppCompatActivity {
         String passHIGHEST = HighestAmp12.getText().toString();
         String skel = Counter2.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+
 
         // Pass the necessary data to the loadsched through the intent
         intent.putExtra("TOTALVA", passVA);

@@ -81,7 +81,6 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -551,8 +550,6 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-       android:visibility="gone"
-
            >
 
             <TextView
@@ -1275,6 +1272,7 @@ android:id="@+id/lc1"
 
         <RelativeLayout
             android:id="@+id/RS12"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
@@ -1287,7 +1285,8 @@ android:id="@+id/lc1"
                 android:layout_marginTop="-10dp"
                 android:layout_width="280dp"
                 android:layout_height="500dp"
-                android:src="@drawable/s12" />
+                android:src="@drawable/s12"
+               />
 
             <TextView
                 android:id="@+id/num12_top"

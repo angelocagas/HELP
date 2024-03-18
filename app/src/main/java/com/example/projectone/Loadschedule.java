@@ -484,122 +484,23 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-            // Assuming CTRtv is a TextView object
+//minimize the space for skeleton display
             if (CTR != null) {
                 int ctrValue = Integer.parseInt(CTR);
                 CTRtv.setText(CTR);
 
+                View[] rsViews = {RS4, RS6, RS8, RS10, RS12, RS14, RS16, RS18, RS20, RS22, RS24, RS26, RS28, RS30};
 
-                if (ctrValue == 5) {
-                    RS4.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS4.setVisibility(View.GONE);
-
+                for (int i = 0; i < rsViews.length; i++) {
+                    if (ctrValue == 5 + 2 * i) {
+                        rsViews[i].setVisibility(View.VISIBLE);
+                    } else {
+                        rsViews[i].setVisibility(View.GONE);
+                    }
                 }
-
-
-                if (ctrValue == 7) {
-                    RS6.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS6.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 9 ) {
-                    RS8.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS8.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 11) {
-                    RS10.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS10.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 13) {
-                    RS12.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS12.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 15) {
-                    RS14.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS14.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 17) {
-                    RS16.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS16.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 19) {
-                    RS18.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS18.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 21) {
-                    RS20.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS20.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 23) {
-                    RS22.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS22.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 25) {
-                    RS24.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS24.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 27) {
-                    RS26.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS26.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 29) {
-                    RS28.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS28.setVisibility(View.GONE);
-
-                }
-              if (ctrValue == 30) {
-                   RS30.setVisibility(View.VISIBLE);
-
-               } else {
-                   RS30.setVisibility(View.GONE);
-
-                }
-                if (ctrValue == 31) {
-                    RS30.setVisibility(View.VISIBLE);
-
-                } else {
-                    RS30.setVisibility(View.GONE);
-
-                }
-
             }
+
+
 
             if (totalA == null && HIGHA == null)
             {
@@ -616,6 +517,7 @@ public class Loadschedule extends AppCompatActivity {
                 SAVEA = sharedPreferences.getString("TOTALA","");
                 SAVEHIGHAA = sharedPreferences.getString("HIGHAA","");
                 totalATextView.setText(SAVEA);
+
                 HighestA.setText(SAVEHIGHAA);
                 HighestB.setText(HighestA.getText().toString());
                 totalone.setText(totalATextView.getText().toString());
@@ -632,12 +534,16 @@ public class Loadschedule extends AppCompatActivity {
                 CTRtv.setText(CTR);
             }
 
-
-
             if (totalA != null) {
                 totalATextView.setText(totalA);
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
+                ///for total A in skel
+                TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                for (int i = 0; i < numViews.length; i++) {
+                    numViews[i].setText(totalA + " A");
+                }
             }
 
             if (HIGHA != null)
@@ -945,42 +851,21 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+//for the skeleton displays values
+        if (FeederW2 != null) {
+            String topText = "USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3;
+            String botText = "GEC:" + Feeder2 + " THHN Cu. Wire ";
 
+            TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
-            if (FeederW2 != null) {
-                num4_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num6_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num8_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num10_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num12_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num14_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num16_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num18_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num20_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num22_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num24_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num26_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num28_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-                num30_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
-
+            for (int i = 0; i < topViews.length; i++) {
+                topViews[i].setText(topText);
+                botViews[i].setText(botText);
             }
-            if (FeederW2 != null) {
-                num4_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num6_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num8_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num10_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num12_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num14_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num16_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num18_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num20_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num22_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num24_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num26_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num28_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
-                num30_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+        }
 
-            }
+
 
 
 
@@ -1023,7 +908,21 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+        // Retrieve the list of items from the Intent extras
+        ArrayList<String> itemsList = getIntent().getStringArrayListExtra("itemsList");
 
+       if (itemsList != null && !itemsList.isEmpty()) {
+
+            // Check if itemList size is 3
+            if (itemsList.size() == 4) {
+                num4_1.setText(itemsList.get(0));
+                num4_2.setText(itemsList.get(1));
+                num4_3.setText(itemsList.get(2));
+                num4_4.setText(itemsList.get(3));
+
+            }
+
+        }
 
 
 /*

@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Update;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -93,17 +95,23 @@ public class Inputing extends AppCompatActivity {
         Quantity = findViewById(R.id.Quantity);
         Watts = findViewById(R.id.Watts);
         Horsepower = findViewById(R.id.horse);
-        back = findViewById(R.id.Back);
         update = findViewById(R.id.update);
         TotalA = findViewById(R.id.TotalA);
         TotalVA = findViewById(R.id.TotalVA);
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
+
         Intent intent = getIntent();
+        String Cirnum = intent.getStringExtra("CNM");
+        CNM.setText(Cirnum);
 
+        try {
+            cirnum = Integer.parseInt(CNM.getText().toString().trim());
 
+        } catch (NumberFormatException e) {
 
+        }
 
         // Check if editing mode is enabled
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
@@ -334,6 +342,16 @@ public class Inputing extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+
+                // Hide the keyboard
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                // Clear focus from any view that currently has it
+                Watts.clearFocus();
+                Quantity.clearFocus();
+                others.clearFocus();
+
 
                 // Check if any of the fields are empty
                 if (Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {

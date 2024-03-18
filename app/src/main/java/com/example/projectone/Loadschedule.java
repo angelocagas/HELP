@@ -1,11 +1,13 @@
 package com.example.projectone;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,6 +60,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import android.graphics.Bitmap;
+import android.view.View;
 
 public class Loadschedule extends AppCompatActivity {
 
@@ -457,6 +461,7 @@ public class Loadschedule extends AppCompatActivity {
         String FDW = sharedPreferences.getString("UFWT","");
 
 
+
         Intent intent = getIntent();
 
 
@@ -470,8 +475,8 @@ public class Loadschedule extends AppCompatActivity {
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
-       String totalA = intent.getStringExtra("TOTALA");
-   String HIGHA = intent.getStringExtra("HIGHA");
+            String totalA = intent.getStringExtra("TOTALA");
+            String HIGHA = intent.getStringExtra("HIGHA");
             String Wiretype =intent.getStringExtra("WFG");
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
@@ -653,12 +658,16 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
+
+
+
+
         String SAVEA = totalATextView.getText().toString();
         String SaveHighA = HighestA.getText().toString();
         SaveA.setText(SAVEA);
         SAVEHIGHA.setText(SaveHighA);
 
-    double totalOneValue = Double.parseDouble(totalone.getText().toString());
+        double totalOneValue = Double.parseDouble(totalone.getText().toString());
         double topOneAndTwoValue = totalOneValue * 0.80;
         TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
         String formattedResult = decimalFormat.format(topOneAndTwoValue);
@@ -694,94 +703,288 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-        if (totalUnderValue == 0) { MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue < 15) { MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 16 && totalUnderValue <= 20) { MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 21 && totalUnderValue <= 30) { MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 31 && totalUnderValue <= 40) { MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 41 && totalUnderValue <= 50) {MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 50 && totalUnderValue <= 60) {MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 71 && totalUnderValue <= 80) {MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 81 && totalUnderValue <= 90) {MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 91 && totalUnderValue <= 100) {MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 101 && totalUnderValue <= 110) {MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 111 && totalUnderValue <= 125) {MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue >= 125 && totalUnderValue <= 150) {MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 GHZ");}
-        if (totalUnderValue > 151) {MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");}
-        String PassMainWire = MainWire.getText().toString();
+            if (totalUnderValue == 0) {
+            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
+              }
+            if (totalUnderValue < 15) {
+                MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 16 && totalUnderValue <= 20) {
+                MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+
+            }
+            if (totalUnderValue >= 21 && totalUnderValue <= 30) {
+                MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 31 && totalUnderValue <= 40) {
+                MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 41 && totalUnderValue <= 50) {
+                MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 50 && totalUnderValue <= 60) {
+                MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 GHZ");
+            }
+
+            if (totalUnderValue >= 71 && totalUnderValue <= 80) {
+                MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 81 && totalUnderValue <= 90) {
+                MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 91 && totalUnderValue <= 100) {
+                MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 101 && totalUnderValue <= 110) {
+                MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 111 && totalUnderValue <= 125) {
+                MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue >= 125 && totalUnderValue <= 150) {
+                MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 GHZ");
+            }
+            if (totalUnderValue > 151) {
+                MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
+            }
+            String PassMainWire = MainWire.getText().toString();
+
 
 
 
         if (FDW != null)
-        {MainWire.setText(PassMainWire);}
+        {
+            MainWire.setText(PassMainWire);
+        }
+
+        if (totalUnderValue >= 1 && totalUnderValue < 25 )
+        {
+            FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 25 && totalUnderValue < 30)
+        {
+            FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 30 && totalUnderValue < 40)
+        {
+            FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 40 && totalUnderValue < 55)
+        {
+            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 55 && totalUnderValue < 75)
+        {
+            FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 75 && totalUnderValue < 95)
+        {
+            FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 95 && totalUnderValue < 115)
+        {
+            FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 115 && totalUnderValue < 130)
+        {
+            FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 130 && totalUnderValue < 150)
+        {
+            FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 150 && totalUnderValue < 170)
+        {
+            FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 170 && totalUnderValue < 205)
+        {
+            FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 205 && totalUnderValue < 240)
+        {
+            FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
+        }if (totalUnderValue >= 240 && totalUnderValue < 285)
+        {
+            FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
+        }if (totalUnderValue >= 285 && totalUnderValue < 320)
+        {
+            FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
+        }if (totalUnderValue >= 320 && totalUnderValue < 345)
+        {
+            FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
+        }if (totalUnderValue >= 345 && totalUnderValue < 360)
+        {
+            FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
+        }if (totalUnderValue >= 360 && totalUnderValue < 425)
+        {
+            FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 425 && totalUnderValue < 490)
+        {
+            FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 490 && totalUnderValue < 530)
+        {
+            FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 530 && totalUnderValue < 535)
+        {
+            FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 535 && totalUnderValue < 595)
+        {
+            FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
+        }
+
 
         String FeederW2 = FeederWire.getText().toString().trim();
-        String Feeder2 = FeederWireSecond.getText().toString().trim();
-        String Feeder3 = FeederWireFourth.getText().toString().trim();
-
-        if (totalUnderValue >= 1 && totalUnderValue < 25 ) {FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 25 && totalUnderValue < 30) {FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 30 && totalUnderValue < 40) {FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 40 && totalUnderValue < 55) {FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 55 && totalUnderValue < 75) {FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 75 && totalUnderValue < 95) {FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 95 && totalUnderValue < 115) {FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 115 && totalUnderValue < 130) {FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 130 && totalUnderValue < 150) {FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 150 && totalUnderValue < 170) {FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 170 && totalUnderValue < 205) {FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 205 && totalUnderValue < 240) {FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 240 && totalUnderValue < 285) {FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 285 && totalUnderValue < 320) {FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 320 && totalUnderValue < 345) {FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 345 && totalUnderValue < 360) {FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 360 && totalUnderValue < 425) {FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 425 && totalUnderValue < 490) {FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 490 && totalUnderValue < 530) {FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 530 && totalUnderValue < 535) {FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");}
-        if (totalUnderValue >= 535 && totalUnderValue < 595) {FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");}
-
-
 
 //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 8.0 mm.sq."); FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");}
+        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
 
+        }
+        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+        }
         //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
-        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 14.0 mm.sq."); FeederWireFourth.setText("(G)In 32 mmø IMC PIPE"); }
-        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 14.0 mm.sq."); FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");}
+
+        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+        }
 
         //IF FEEDERWIRE IS 60 80   =    22
-        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 22.0 mm.sq."); FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 22.0 mm.sq."); FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");}
+        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
 
 
         //IF FEEDERWIRE IS 100 to 175   = 30
-        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 30.0 mm.sq."); FeederWireFourth.setText("(G)In 50 mmø IMC PIPE"); }
-        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 30.0 mm.sq."); FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 30.0 mm.sq."); FeederWireFourth.setText("(G)In 65 mmø IMC PIPE"); }
-        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 30.0 mm.sq."); FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");}
+
+        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
+
+        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
+
+        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
 
 
         //IF FEEDERWIRE IS 200 to 325    50
-        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 50.0 mm.sq."); FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 50.0 mm.sq."); FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");}
-        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");}
+        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+            FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
+        }
 
 
         //IF FEEDERWIRE IS  375 to 500    600
-        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");}
-        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");}
-        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");}
+        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
+        }
+
+        String Feeder2 = FeederWireSecond.getText().toString().trim();
+        String Feeder3 = FeederWireFourth.getText().toString().trim();
 
 
-        if (FeederW2 != null) {num4_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3); num6_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num8_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num10_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num12_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num14_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num16_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num18_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num20_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num22_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num24_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num26_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num28_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);num30_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);}
-        if (FeederW2 != null) { num4_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num6_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num8_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num10_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num12_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num14_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num16_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num18_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num20_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num22_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num24_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num26_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num28_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");num30_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");}
+
+
+
+            if (FeederW2 != null) {
+                num4_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num6_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num8_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num10_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num12_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num14_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num16_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num18_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num20_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num22_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num24_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num26_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num28_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+                num30_top.setText("USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3);
+
+            }
+            if (FeederW2 != null) {
+                num4_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num6_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num8_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num10_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num12_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num14_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num16_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num18_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num20_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num22_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num24_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num26_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num28_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+                num30_bot.setText("GEC:" + Feeder2 + " THHN Cu. Wire ");
+
+            }
+
+
+
+
 
 
         FeederWireFourth.setOnClickListener(new View.OnClickListener() {
@@ -911,7 +1114,6 @@ public class Loadschedule extends AppCompatActivity {
             return true;
         }
     }
-    /*
 @Override
 public  boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
@@ -940,10 +1142,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
-        if (id == R.id.back){
-            Toast.makeText(this, "back button", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Loadschedule.this, Inputing.class);
-            startActivity(intent);
+        if (id == R.id.add){
+            onBackPressed();
         }
         /* -------------------------- PRINT ---------------------- */
         if (id == R.id.save) {
@@ -980,109 +1180,249 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     if (selectedItem[0] != -1) {
                         String paperSize = (String) paperSizes[selectedItem[0]];
 
-                        // Specify paper size for pdf
-                        Rectangle pageSize = null;
-                        switch (paperSize.toLowerCase()) {
-                            case "a1":
-                                pageSize = PageSize.A1;
-                                break;
-                            case "a3":
-                                pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
-                                break;
-                            case "20x30 inches":
-                                pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
-                                break;
-                        }
-
-                        if (pageSize != null) {
-                            // Create a PDF file and save
-                            try {
-                                // Get the current date and time
-                                String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-
-                                // Create the filename
-                                String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
-
-                                // Define your output stream here
-                                File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
-                                FileOutputStream outputStream = new FileOutputStream(pdf);
-
-                                Document document = new Document(pageSize.rotate());
-                                PdfWriter.getInstance(document, outputStream);
-                                document.open();
-                                document.add(new Paragraph(paperSize)); // You can add anything to the pdf file here
-
-                                // Add image to pdf based on paper size
-                                try {
-                                    // Get the image from drawable resources
-                                    int id;
-                                    if("20x30 inches".equals(paperSize)){
-                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
-                                    }
-                                    else {
-                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
-                                    }
-                                    if (id != 0) {
-                                        BitmapFactory.Options options = new BitmapFactory.Options();
-                                        options.inJustDecodeBounds = true;
-                                        BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        // Compute the inSampleSize
-                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
-                                        options.inJustDecodeBounds = false;
-
-                                        // Decode the image with calculated inSampleSize
-                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                        Image image = Image.getInstance(stream.toByteArray());
-
-                                        if("20x30 inches".equals(paperSize)){
-                                            // Scale the image to cover whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0,0);
-                                        }
-                                        else{
-                                            // Scale the image to cover whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0,0);
-                                        }
-
-                                        // Add the image to the document
-                                        document.add(image);
-                                    }
-                                } catch(Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                                // closing the document
-                                document.close();
-                                outputStream.close();
-
-                                // Show dialog to tell the user that the PDF has been saved
-                                new AlertDialog.Builder(Loadschedule.this)
-                                        .setTitle("PDF Saved")
-                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
-                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
-                        }
+                        // Dismiss the paper size selection dialog
                         dialog.dismiss();
+
+                        // Show progress dialog
+                        ProgressDialog progressDialog = new ProgressDialog(Loadschedule.this);
+                        progressDialog.setMessage("Saving PDF...");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+
+                        // Handle PDF creation and saving in a background thread
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    // Get the current date and time
+                                    String currentDateAndTime = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+
+                                    // Create the filename
+                                    String filename = "HELP_" + paperSize + "_" + currentDateAndTime + ".pdf";
+
+                                    // Define your output stream here
+                                    File pdf = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+                                    FileOutputStream outputStream = new FileOutputStream(pdf);
+
+                                    // Specify paper size for PDF
+                                    Rectangle pageSize = null;
+                                    switch (paperSize.toLowerCase()) {
+                                        case "a1":
+                                            pageSize = PageSize.A1;
+                                            break;
+                                        case "a3":
+                                            pageSize = new Rectangle(841.68f, 1190.5f); // dimensions in points for 297 x 420 mm
+                                            break;
+                                        case "20x30 inches":
+                                            pageSize = new Rectangle(1441f, 2163f); // dimensions in points for 508 x 762 mm
+                                            break;
+                                    }
+
+                                    if (pageSize != null) {
+                                        Document document = new Document(pageSize.rotate());
+                                        PdfWriter.getInstance(document, outputStream);
+                                        document.open();
+                                        document.add(new Paragraph(paperSize)); // You can add anything to the PDF file here
+
+                                        // Add image to PDF based on paper size
+                                        try {
+                                            // Get the image from drawable resources
+                                            int id;
+                                            if ("20x30 inches".equals(paperSize)) {
+                                                id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
+                                            } else {
+                                                id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                            }
+                                            if (id != 0) {
+                                                BitmapFactory.Options options = new BitmapFactory.Options();
+                                                options.inJustDecodeBounds = true;
+                                                BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                // Compute the inSampleSize
+                                                options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                                options.inJustDecodeBounds = false;
+
+                                                // Decode the image with calculated inSampleSize
+                                                Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                                Image image = Image.getInstance(stream.toByteArray());
+
+                                                if ("20x30 inches".equals(paperSize)) {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                } else {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                }
+
+                                                // Add the image to the document
+                                                document.add(image);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        // Convert RelativeLayouts to Bitmaps and add them to the PDF
+                                        RelativeLayout relativeLayout = findViewById(R.id.rela);
+                                        RelativeLayout skeletonLayout = findViewById(R.id.skeleton);
+
+                                        // Define the new position for the images
+                                        float xPosition = 0; // Default position
+                                        float yPosition = 0; // Default position
+
+                                        // Calculate desired width and height for "rela" and "skeleton" RelativeLayouts based on paper size
+                                        int desiredWidth;
+                                        int desiredHeight;
+
+                                        int skeletonDesiredWidth = 0;
+                                        int skeletonDesiredHeight = 0;
+
+                                        switch (paperSize.toLowerCase()) {
+                                            case "a1":
+                                                desiredWidth = (int) (relativeLayout.getWidth() - 700); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 2.5); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 2.5); // Adjust as needed
+
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 850; // Adjust as needed (vertical position)
+                                                break;
+                                            case "a3":
+                                                desiredWidth = (int) (relativeLayout.getWidth() / 2.7); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() / 2.7); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 5.1); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 5.1); // Adjust as needed
+
+                                                xPosition = 35; // Adjust as needed (horizontal position)
+                                                yPosition = 425; // Adjust as needed (vertical position);
+
+                                                break;
+                                            case "20x30 inches":
+                                                desiredWidth = (int) (relativeLayout.getWidth() - 700); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 3); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 3); // Adjust as needed
+
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 810; // Adjust as needed (vertical position)
+                                                break;
+                                            default:
+                                                // Default desired width and height
+                                                desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
+                                                desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
+                                                break;
+                                        }
+
+                                        // Create a bitmap from the "rela" RelativeLayout
+                                        Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas canvas = new Canvas(originalBitmap);
+                                        relativeLayout.draw(canvas);
+
+                                        // Scale down the bitmap for "rela" RelativeLayout
+                                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
+
+                                        // Add "rela" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        Image relLayoutImage = Image.getInstance(stream.toByteArray());
+
+                                        // Determine the total height of the page
+                                        float pageHeight = pageSize.getHeight();
+
+                                        // Calculate the y-coordinate relative to the top of the page
+                                        float yPositionFromTop = pageHeight - yPosition;
+
+                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
+                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
+
+                                        // Set the position of the element using the calculated y-coordinate relative to the top
+                                        relLayoutImage.setAbsolutePosition(xPosition, topEdgeYPosition);
+
+                                        // Add the "rela" RelativeLayout as Bitmap to the PDF document
+                                        document.add(relLayoutImage);
+
+                                        // Calculate the position of "skeleton" RelativeLayout
+                                        float skeletonXPosition = xPosition + desiredWidth; // Right of "rela"
+                                        float skeletonYPosition = topEdgeYPosition; // Same top position as "rela"
+
+                                        // Create a bitmap from the "skeleton" RelativeLayout
+                                        Bitmap skeletonOriginalBitmap = Bitmap.createBitmap(skeletonLayout.getWidth(), skeletonLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas skeletonCanvas = new Canvas(skeletonOriginalBitmap);
+                                        skeletonLayout.draw(skeletonCanvas);
+
+                                        // Scale down the bitmap for "skeleton" RelativeLayout
+                                        Bitmap skeletonScaledBitmap = Bitmap.createScaledBitmap(skeletonOriginalBitmap, skeletonDesiredWidth, skeletonDesiredHeight, true);
+
+                                        // Add "skeleton" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream skeletonStream = new ByteArrayOutputStream();
+                                        skeletonScaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, skeletonStream);
+                                        Image skeletonImage = Image.getInstance(skeletonStream.toByteArray());
+
+                                        // Set the absolute position of the "skeleton" RelativeLayout
+                                        skeletonImage.setAbsolutePosition(skeletonXPosition, skeletonYPosition - 10);
+
+                                        // Add the "skeleton" RelativeLayout as Bitmap to the PDF document
+                                        document.add(skeletonImage);
+
+                                        // closing the document
+                                        document.close();
+                                        outputStream.close();
+
+                                        // Show dialog to tell the user that the PDF has been saved
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                new AlertDialog.Builder(Loadschedule.this)
+                                                        .setTitle("PDF Saved")
+                                                        .setMessage("Your PDF file has been saved. Please check your Downloads folder.")
+                                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        })
+                                                        .show();
+                                            }
+                                        });
+                                    } else {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext(), "Error occurred while saving PDF", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                } finally {
+                                    // Dismiss progress dialog
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                        }
+                                    });
+                                }
+                            }
+                        }).start();
                     } else {
                         Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
                     }
@@ -1096,46 +1436,26 @@ public  boolean onCreateOptionsMenu(Menu menu){
         /* -------------------------- END OF PRINT ---------------------- */
 
 
+
         if (id == R.id.nextLS){
             Toast.makeText(this, "next button", Toast.LENGTH_SHORT).show();
         }
+        if (id == R.id.resetLS){
+            Toast.makeText(this, "reset current load schedule button", Toast.LENGTH_SHORT).show();
+            // Start the Inputing activity
+            Intent intent = new Intent(this, Inputing.class);
+            startActivity(intent);
 
-        /* -------------------------- dipa ayos new loadsched ---------------------- */
-        if (id == R.id.newLS){
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Disregard the load?");
-            builder.setMessage("Are you sure you want to disregard the current load and proceed to a new load schedule?");
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Disregard the load and return home
-                    Toast.makeText(Loadschedule.this, "Returning Input", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Loadschedule.this, Home.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Do nothing, close the dialog
-                    dialog.dismiss();
-                }
-            });
-            builder.show();
-            return true;
         }
-
-        if (id == R.id.exit) {
+        if (id == R.id.discard) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Disregard the load?");
-            builder.setMessage("Are you sure you want to disregard the load?");
+            builder.setTitle("Discard the project?");
+            builder.setMessage("Are you sure you want to discard the project and return to home?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Disregard the load and return home
-                    Toast.makeText(Loadschedule.this, "Returning home", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
                      Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                      startActivity(intent);
@@ -1175,19 +1495,4 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         return inSampleSize;
     }
-
-
-    private int calculateTotal(List<String> values) {
-        int total = 0;
-        for (String str : values) {
-            try {
-                total += Integer.parseInt(str);
-            } catch (NumberFormatException e) {
-                // Handle parsing errors if necessary
-                e.printStackTrace();
-            }
-        }
-        return total;
-    }
-
 }

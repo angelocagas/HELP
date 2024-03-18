@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.room.DatabaseView;
+
 import com.example.projectone.Databases.DatabaseClient;
 import com.example.projectone.Databases.ProjectDAO;
 import com.example.projectone.Databases.ProjectTable;
@@ -173,6 +175,7 @@ public class DatabaseHelper {
         ClearTableTask clearTableTask = new ClearTableTask();
         clearTableTask.execute();
     }
+
 
 
 

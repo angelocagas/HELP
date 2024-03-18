@@ -2,17 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="850dp"
-    android:layout_height="23dp"
+    android:layout_height="wrap_content"
     android:gravity="start"
     android:id="@+id/edit"
-    android:layout_marginTop="-4dp"
-    android:layout_marginBottom="2dp"
     android:orientation="horizontal"
+    android:layout_marginTop="0.1dp"
     tools:ignore="MissingDefaultResource">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="22.5dp">
 
 
 
@@ -21,7 +17,7 @@
             android:textStyle="bold"
             android:id="@+id/NumberId"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
             android:layout_marginLeft="1dp"
             android:text="1"
             android:textAlignment="center"
@@ -37,18 +33,34 @@
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="1.3dp"
+            android:layout_height="wrap_content">
+
+
+
         <TextView
             android:textStyle="bold"
             android:id="@+id/Item"
-            android:layout_width="95.4dp"
-            android:layout_height="19dp"
-            android:layout_marginLeft="11.5dp"
-            android:text="Conveniec Outlet (living Room)"
+            android:textColor="@color/black"
+            android:layout_width="93.7dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="Conveniec asd asas"
             android:textSize="8dp"
             android:maxLines="2"
             android:ellipsize="end"
+            android:paddingBottom="0dp"
+
             android:layout_marginTop="-2dp"
             tools:ignore="TextSizeCheck" />
+
+
+
+
+        </LinearLayout>
         <TextView
             android:textStyle="bold"
             android:id="@+id/OPlus"
@@ -62,9 +74,9 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/V"
-            android:layout_width="53dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="10dp"
             android:text="230"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -72,7 +84,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/VA"
-            android:layout_width="20dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="3240"
@@ -82,7 +94,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/A"
-            android:layout_width="85dp"
+            android:layout_width="80.5dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:maxLength="5"
@@ -184,7 +196,7 @@
             android:textStyle="bold"
             android:id="@+id/MMPlus"
             android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="1dp"
             android:text="20"
@@ -203,9 +215,6 @@
             tools:ignore="TextSizeCheck" />
 
 
-
-
-</LinearLayout>
 
 
 </LinearLayout>

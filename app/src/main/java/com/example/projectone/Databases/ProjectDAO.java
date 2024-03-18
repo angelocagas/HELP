@@ -17,24 +17,6 @@ public interface ProjectDAO {
     @Query("SELECT * FROM projecttable")
     List<ProjectTable> selectAll();
 
-    @Query("SELECT A FROM projecttable")
-    List<String> getA();
-    @Query("SELECT VA FROM projecttable")
-    List<String> getVA();
-
-    @Query("SELECT A, Item FROM ProjectTable")
-    List<ProjectTableProjection> getAAndItem();
-
-     class ProjectTableProjection {
-        public String A;
-        public String Item;
-
-        public ProjectTableProjection(String A, String Item) {
-            this.A = A;
-            this.Item = Item;
-        }
-    }
-
     @Update
     void updateData(ProjectTable projectTable);
 

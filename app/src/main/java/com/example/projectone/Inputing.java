@@ -128,6 +128,16 @@ public class Inputing extends AppCompatActivity {
             // Check if item starts with "ACU"
             else if (item.startsWith("ACU")) {
                 autoCompleteTextView1.setText("ACU");
+            } else if (item.startsWith("Convenience Outlet")) {
+                autoCompleteTextView1.setText("Convenience Outlet");
+            } else if (item.startsWith("Water Heater")) {
+                autoCompleteTextView1.setText("Water Heater");
+            } else if (item.startsWith("Range")) {
+                autoCompleteTextView1.setText("Range");
+            } else if (item.startsWith("Refrigerator")) {
+                autoCompleteTextView1.setText("Refrigerator");
+            }else if (item.startsWith("Spare")) {
+                autoCompleteTextView1.setText("Spare");
             }
 
         } else {

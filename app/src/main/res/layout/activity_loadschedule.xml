@@ -550,7 +550,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:visibility="gone"
+
            >
 
             <TextView
@@ -572,20 +572,25 @@ android:id="@+id/lc1"
 
             <TextView
                 android:id="@+id/num4_top"
-                android:layout_width="182dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="215dp"
+                android:layout_marginLeft="230dp"
+                android:layout_alignParentStart="true"
                 android:layout_marginTop="40dp"
-                android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
+                android:text="USE 2 - 32.0mm.sq. THHN Cu. Wire + 14 - 32.0mm.sq. THHN Cu. Wire (G) In 20 mmo IMC PIPE"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num4_1"
-                android:layout_width="121dp"
+                android:layout_width="119dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="150dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="140dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:text="Lighting Outlet, 69W (Living Room ni kuya kuys)"
+                android:maxLines="2"
+              android:ellipsize="middle"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -679,6 +684,7 @@ android:id="@+id/lc1"
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/RS6"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"

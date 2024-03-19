@@ -1999,7 +1999,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
                                         switch (paperSize.toLowerCase()) {
                                             case "a1":
-                                                desiredWidth = (int) (pageSize.getWidth() - 20); // Adjust as needed
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
                                                 desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
 
                                                 skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 2.5); // Adjust as needed
@@ -2009,7 +2009,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                                 yPosition = 850; // Adjust as needed (vertical position)
                                                 break;
                                             case "a3":
-                                                desiredWidth = (int) (pageSize.getWidth() - 20); // Adjust as needed
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
                                                 desiredHeight = (int) (relativeLayout.getHeight() / 2.7); // Adjust as needed
 
                                                 skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 5.1); // Adjust as needed
@@ -2020,7 +2020,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
                                                 break;
                                             case "20x30 inches":
-                                                desiredWidth = (int) (pageSize.getWidth() - 20); // Adjust as needed
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
                                                 desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
 
                                                 skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 3); // Adjust as needed
@@ -2082,7 +2082,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                         Image skeletonImage = Image.getInstance(skeletonStream.toByteArray());
 
                                         // Set the absolute position of the "skeleton" RelativeLayout
-                                        skeletonImage.setAbsolutePosition(skeletonXPosition, skeletonYPosition - 10);
+                                        skeletonImage.setAbsolutePosition(skeletonXPosition + 50, skeletonYPosition - 10);
 
                                         // Add the "skeleton" RelativeLayout as Bitmap to the PDF document
                                         document.add(skeletonImage);

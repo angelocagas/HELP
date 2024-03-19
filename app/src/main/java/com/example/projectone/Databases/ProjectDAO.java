@@ -1,7 +1,6 @@
 package com.example.projectone.Databases;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -17,13 +16,20 @@ public interface ProjectDAO {
     //for getting all the data
     @Query("SELECT * FROM projecttable")
     List<ProjectTable> selectAll();
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectITEM();
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectAT();
 
     @Update
     void updateData(ProjectTable projectTable);
 
+
     // Add this method to delete all projects from the table
     @Query("DELETE FROM projecttable")
     void deleteAllProjects();
+
+
 
 
 }

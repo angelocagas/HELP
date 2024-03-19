@@ -16,16 +16,20 @@ public interface ProjectDAO {
     //for getting all the data
     @Query("SELECT * FROM projecttable")
     List<ProjectTable> selectAll();
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectITEM();
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectAT();
 
     @Update
     void updateData(ProjectTable projectTable);
-    @Query("SELECT DISTINCT Item FROM ProjectTable")
-    List<String> getAllItems();
 
 
     // Add this method to delete all projects from the table
     @Query("DELETE FROM projecttable")
     void deleteAllProjects();
+
+
 
 
 }

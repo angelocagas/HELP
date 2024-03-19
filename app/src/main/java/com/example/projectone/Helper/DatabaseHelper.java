@@ -18,7 +18,9 @@ import java.util.List;
 public class DatabaseHelper {
 
     Context context;
-
+    public interface OnItemsLoadedListener {
+        void onItemsLoaded(List<String> items);
+    }
     public DatabaseHelper (Context context)
     {
         this.context = context;
@@ -107,6 +109,71 @@ public class DatabaseHelper {
         allProject.execute();
     }
 
+    public void getAllItemsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
+        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                // Retrieve all items from the ProjectTable
+                List<ProjectTable> projectTables = DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectITEM();
+                List<String> itemList = new ArrayList<>();
+                for (ProjectTable projectTable : projectTables) {
+                    // Add each item to the itemList
+                    itemList.add(projectTable.getItem());
+                }
+                return itemList;
+            }
+
+            @Override
+            protected void onPostExecute(List<String> itemList) {
+                super.onPostExecute(itemList);
+                if (itemList != null && !itemList.isEmpty()) {
+                    // Notify the listener with the list of items
+                    listener.onItemsLoaded(itemList);
+                } else {
+                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
+        getAllItemsTask.execute();
+    }
+    public void getAllATsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
+        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                // Retrieve all items from the ProjectTable
+                List<ProjectTable> projectTables = DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectAT();
+                List<String> ATList = new ArrayList<>();
+                for (ProjectTable projectTable : projectTables) {
+                    // Add each item to the itemList
+                    ATList.add(projectTable.getAT());
+                }
+                return ATList;
+            }
+
+            @Override
+            protected void onPostExecute(List<String> itemList) {
+                super.onPostExecute(itemList);
+                if (itemList != null && !itemList.isEmpty()) {
+                    // Notify the listener with the list of items
+                    listener.onItemsLoaded(itemList);
+                } else {
+                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
+        getAllItemsTask.execute();
+    }
+
     public void updateData(ProjectTable projectTable, String ProjectName, String Quantity, String Item, String OPlus, String V, String VA, String A, String P, String AT, String AF, String SNUM, String SMM, String STYPE, String GNUM, String GMM, String GTYPE, String MMPlus, String CTYPE)
     {
         class UpdateProjectData extends AsyncTask<Void,Void,ProjectTable>
@@ -153,6 +220,8 @@ public class DatabaseHelper {
         updateProjectData.execute();
     }
 
+
+
     // Add this method in your DatabaseHelper class
     public void clearTable() {
         class ClearTableTask extends AsyncTask<Void, Void, Void> {
@@ -177,33 +246,10 @@ public class DatabaseHelper {
         ClearTableTask clearTableTask = new ClearTableTask();
         clearTableTask.execute();
     }
-    public void getAllItemsList() {
-        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
-            @Override
-            protected List<String> doInBackground(Void... voids) {
-                // Retrieve the list of items from the database
-                return DatabaseClient.getInstance(context)
-                        .getProjectDatabase()
-                        .projectDAO()
-                        .getAllItems();
-            }
+    // Assuming this is in the activity where you want to start the next activity
 
-            @Override
-            protected void onPostExecute(List<String> itemsList) {
-                super.onPostExecute(itemsList);
-                // Pass the list of items to another activity using an Intent
-                if (itemsList != null && !itemsList.isEmpty()) {
-                    Intent intent = new Intent(context, Loadschedule.class);
-                    intent.putStringArrayListExtra("itemsList", new ArrayList<>(itemsList));
-                    context.startActivity(intent);
-                }
-            }
-        }
 
-        // Execute the AsyncTask to fetch the list of items
-        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
-        getAllItemsTask.execute();
-    }
+
 
 
 

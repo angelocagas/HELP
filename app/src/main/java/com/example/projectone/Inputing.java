@@ -613,6 +613,7 @@ public class Inputing extends AppCompatActivity {
                             return; // return if validation fails
                         }
                     }
+
                     OPlus.setText("1");
                     V.setText("233");
                     P.setText("2");

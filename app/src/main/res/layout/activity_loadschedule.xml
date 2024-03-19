@@ -550,7 +550,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-
+            android:visibility="gone"
            >
 
             <TextView
@@ -561,7 +561,7 @@ android:id="@+id/lc1"
                 android:layout_marginTop="40dp"
                 android:text="CTR holder"
                 android:textSize="10dp"
-                android:visibility="gone" />
+              />
 
             <ImageView
                 android:id="@+id/s4"
@@ -577,49 +577,63 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="230dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="40dp"
-                android:text="USE 2 - 32.0mm.sq. THHN Cu. Wire + 14 - 32.0mm.sq. THHN Cu. Wire (G) In 20 mmo IMC PIPE"
+                android:text="USE: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num4_1"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="32dp"
                 android:layout_marginTop="140dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:text="Lighting Outlet, 69W (Living Room ni kuya kuys)"
+                android:text="ACU 2.0 HP
+                (Living Room)"
+                android:gravity="center"
                 android:maxLines="2"
-              android:ellipsize="middle"
+              android:ellipsize="end"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="315dp"
-                android:layout_marginTop="150dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="32dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="140dp"
+                android:layout_toEndOf="@+id/num4_1"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="Lighting Outlet, 60W (Bed Room)"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_3"
-                android:layout_width="121dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="215dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="120dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="203dp"
+                android:gravity="center"
+                android:text="Lighting Outlet, 60W "
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_4"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="315dp"
-                android:layout_marginTop="215dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="120dp"
+                  android:layout_height="32dp"
+                android:layout_marginTop="203dp"
+                android:text="Refrigerator"
+                android:layout_marginLeft="200dp"
+                android:layout_toEndOf="@+id/num4_1"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -628,36 +642,36 @@ android:id="@+id/lc1"
                 android:id="@+id/num4_a1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
+                android:layout_marginLeft="165dp"
                 android:layout_marginTop="178dp"
-                android:text="15"
+                android:text="20"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_a2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="247dp"
+                android:layout_marginLeft="255dp"
                 android:layout_marginTop="178dp"
-                android:text="25"
+                android:text="15"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_a3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
+                android:layout_marginLeft="165dp"
                 android:layout_marginTop="240dp"
-                android:text="35"
+                android:text="15"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num4_a4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="247dp"
+                android:layout_marginLeft="255dp"
                 android:layout_marginTop="240dp"
-                android:text="45"
+                android:text="20"
                 android:textSize="12dp" />
 
             <TextView
@@ -665,8 +679,10 @@ android:id="@+id/lc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="190dp"
-                android:layout_marginTop="120dp"
-                android:text="125 A"
+                android:layout_marginEnd="210dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="124dp"
+                android:text="12.0 A"
                 android:textSize="12dp" />
 
 
@@ -676,15 +692,20 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="277dp"
                 android:layout_marginTop="330dp"
-              android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+              android:text="GEC: 8.0mm.sq. THHN Cu. Wire "
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
 
         </RelativeLayout>
+
+
         <RelativeLayout
             android:id="@+id/RS6"
-            android:visibility="gone"
+         android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
@@ -702,7 +723,7 @@ android:id="@+id/lc1"
 
             <TextView
                 android:id="@+id/num6_top"
-                android:layout_width="182dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
                 android:layout_marginTop="20dp"
@@ -712,57 +733,64 @@ android:id="@+id/lc1"
 
             <TextView
                 android:id="@+id/num6_1"
-                android:layout_width="119dp"
+                android:layout_width="121dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:text="1 Lighting Outlet, 69W"
+                android:layout_marginTop="113dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num6_2"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
+                android:layout_width="120dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="310dp"
-                android:layout_marginTop="120dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="113dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num6_3"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="180dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num6_4"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
+                android:layout_width="120dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="310dp"
-                android:layout_marginTop="180dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="170dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num6_5"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="240dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="120dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="225dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num6_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="310dp"
-                android:layout_marginTop="240dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="225dp"
+                android:text="Lighting Outlet, 69W (kuya dude kuys living)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -827,8 +855,10 @@ android:id="@+id/lc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="90dp"
-                android:text="125 A"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="215dp"
+                android:layout_marginTop="95dp"
+                 android:text="125 A"
                 android:textSize="12dp" />
 
 
@@ -839,6 +869,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="330dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -849,7 +881,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-           android:visibility="gone"
+          android:visibility="gone"
           >
 
 
@@ -857,91 +889,108 @@ android:id="@+id/lc1"
                 android:id="@+id/s8"
                 android:layout_width="450dp"
                 android:layout_height="450dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:src="@drawable/s8" />
 
             <TextView
                 android:id="@+id/num8_top"
-                android:layout_width="182dp"
+                android:layout_width="196dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
+                android:layout_marginLeft="235dp"
                 android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"
                 android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                 android:textStyle="bold"
+                android:maxLines="2"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num8_1"
-                android:layout_width="119dp"
+                android:layout_width="118dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:text="1 Lighting Outlet, 69W"
+                android:layout_marginTop="110dp"
+                android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="320dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginLeft="332dp"
                 android:layout_marginTop="110dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="Lighting Outlet, 69W (living room ni kuya)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_3"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="189dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="176dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="320dp"
-                android:layout_marginTop="180dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginLeft="332dp"
+                android:layout_marginTop="176dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_5"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="252dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="240dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="320dp"
-                android:layout_marginTop="244dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginLeft="332dp"
+                android:layout_marginTop="240dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_7"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="315dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="304dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num8_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="320dp"
-                android:layout_marginTop="305dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginLeft="332dp"
+                android:layout_marginTop="304dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -950,7 +999,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="173dp"
+                android:layout_marginLeft="168dp"
                 android:layout_marginTop="150dp"
                 android:text="11"
                 android:textSize="12dp" />
@@ -959,7 +1008,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="272dp"
+                android:layout_marginLeft="267dp"
                 android:layout_marginTop="150dp"
                 android:text="12"
                 android:textSize="12dp" />
@@ -968,7 +1017,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="173dp"
+                android:layout_marginLeft="168dp"
                 android:layout_marginTop="215dp"
                 android:text="13"
                 android:textSize="12dp" />
@@ -977,7 +1026,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="272dp"
+                android:layout_marginLeft="267dp"
                 android:layout_marginTop="215dp"
                 android:text="14"
                 android:textSize="12dp" />
@@ -986,7 +1035,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="173dp"
+                android:layout_marginLeft="168dp"
                 android:layout_marginTop="276dp"
                 android:text="15"
                 android:textSize="12dp" />
@@ -995,7 +1044,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="272dp"
+                android:layout_marginLeft="267dp"
                 android:layout_marginTop="276dp"
                 android:text="16"
                 android:textSize="12dp" />
@@ -1004,7 +1053,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="173dp"
+                android:layout_marginLeft="168dp"
                 android:layout_marginTop="340dp"
                 android:text="17"
                 android:textSize="12dp" />
@@ -1013,7 +1062,7 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="272dp"
+                android:layout_marginLeft="267dp"
                 android:layout_marginTop="340dp"
                 android:text="18"
                 android:textSize="12dp" />
@@ -1023,9 +1072,10 @@ android:id="@+id/lc1"
                 android:id="@+id/num8_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="90dp"
                 android:text="125 A"
+                android:layout_marginEnd="200dp"
                 android:textSize="12dp" />
 
 
@@ -1036,6 +1086,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="420dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -1046,7 +1098,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="85dp"
-            android:visibility="gone"
+          android:visibility="gone"
           >
 
 
@@ -1070,95 +1122,115 @@ android:id="@+id/lc1"
 
             <TextView
                 android:id="@+id/num10_1"
-                android:layout_width="119dp"
+                android:layout_width="118dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:text="1 Lighting Outlet, 69W"
+                android:layout_marginTop="102dp"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="305dp"
-                android:layout_marginTop="120dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="102dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_3"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="158dp"
+               android:text="Lighting Outlet, 69W (living room ni kuya)"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_4"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="305dp"
-                android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="158dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_5"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="225dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="212dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="305dp"
-                android:layout_marginTop="225dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="212dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_7"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="280dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="268dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="305dp"
-                android:layout_marginTop="280dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="268dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_9"
-                android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="335dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_width="118dp"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="321dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num10_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="305dp"
-                android:layout_marginTop="335dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="321dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -1250,7 +1322,7 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="360dp"
-                android:text="110"
+                android:text="11"
                 android:textSize="12dp" />
 
 
@@ -1260,7 +1332,9 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="190dp"
                 android:layout_marginTop="85dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_marginEnd="220dp"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -1271,6 +1345,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="270dp"
                 android:layout_marginTop="430dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -1309,114 +1385,139 @@ android:id="@+id/lc1"
                 android:id="@+id/num12_1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="105dp"
-                android:text="1 Lighting Outlet, 69W"
-                android:textSize="12dp" />
+                android:layout_marginTop="94dp"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
-                android:layout_marginTop="105dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="94dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="155dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="143dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
-                android:layout_marginTop="155dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="143dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="205dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="192dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
-                android:layout_marginTop="205dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="192dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="250dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="240dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="250dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="300dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="289dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
-                android:layout_marginTop="300dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="289dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="348dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="338dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num12_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
-                android:layout_marginTop="348dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="338dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
 
             <TextView
@@ -1534,7 +1635,9 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="180dp"
                 android:layout_marginTop="80dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_marginEnd="225dp"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -1545,6 +1648,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="430dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -1554,9 +1659,8 @@ android:id="@+id/lc1"
             android:id="@+id/RS14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
             android:visibility="gone"
-           >
+            android:layout_marginTop="65dp">
 
 
             <ImageView
@@ -1581,131 +1685,160 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="95dp"
-                android:text="1 Lighting Outlet, 69W"
-                android:textSize="12dp" />
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="95dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="145dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="145dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="195dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="195dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="245dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="245dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num14_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="345dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="345dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="395dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num14_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="290dp"
                 android:layout_marginTop="395dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
 
             <TextView
@@ -1841,7 +1974,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="185dp"
                 android:layout_marginTop="70dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -1852,6 +1986,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="265dp"
                 android:layout_marginTop="485dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -1887,147 +2023,180 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="87dp"
-                android:text="1 Lighting Outlet, 69W"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="87dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="134dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="134dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="180dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                  android:layout_marginLeft="280dp"
                 android:layout_marginTop="180dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="225dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                  android:layout_marginLeft="280dp"
                 android:layout_marginTop="225dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="270dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                  android:layout_marginLeft="280dp"
                 android:layout_marginTop="270dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num16_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="315dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                  android:layout_marginLeft="280dp"
                 android:layout_marginTop="315dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="360dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                  android:layout_marginLeft="280dp"
                 android:layout_marginTop="360dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num16_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="405dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num16_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="405dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -2183,7 +2352,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="176dp"
                 android:layout_marginTop="64dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -2194,6 +2364,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="265dp"
                 android:layout_marginTop="485dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -2233,165 +2405,202 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="1 Lighting Outlet, 69W"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="80dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="168dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="168dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="255dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="255dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num18_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="340dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="340dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num18_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="382dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                android:layout_marginLeft="275dp"
                 android:layout_marginTop="382dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num18_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num18_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -2565,7 +2774,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="174dp"
                 android:layout_marginTop="60dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -2576,6 +2786,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="505dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -2614,184 +2826,225 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="1 Lighting Outlet, 69W"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="80dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="120dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="160dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="160dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="200dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="238dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="238dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num20_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="275dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="275dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num20_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="350dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="350dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num20_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="390dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="390dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num20_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="260dp"
                 android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -2984,7 +3237,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="160dp"
                 android:layout_marginTop="65dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -2995,6 +3249,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="235dp"
                 android:layout_marginTop="495dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -3037,201 +3293,246 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="1 Lighting Outlet, 69W"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="80dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="219dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="219dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="264dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="264dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num22_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="355dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="355dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num22_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="400dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="400dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num22_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="445dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="445dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="495dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num22_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="495dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num22_21"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="540dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num22_22"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="540dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -3440,7 +3741,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="50dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -3451,6 +3753,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="640dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -3487,218 +3791,267 @@ android:id="@+id/lc1"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="87dp"
-                android:text="1 Lighting Outlet, 69W"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="87dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="135dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="135dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="185dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="185dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="235dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="235dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="280dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="280dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="334dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="334dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="380dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="380dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="430dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="430dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="478dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="478dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="528dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="528dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_21"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="575dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/num24_22"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="575dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_23"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="620dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
             <TextView
                 android:id="@+id/num24_24"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="620dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
                 android:textSize="12dp" />
 
@@ -3923,7 +4276,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="58dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -3934,6 +4288,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="710dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -3943,14 +4299,13 @@ android:id="@+id/lc1"
             android:id="@+id/RS26"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:visibility="gone">
+            android:layout_marginTop="70dp">
 
 
             <ImageView
                 android:id="@+id/s26"
                 android:layout_width="400dp"
-                android:layout_height="750dp"
+                android:layout_height="738dp"
                 android:layout_marginTop="-8dp"
                 android:src="@drawable/s26" />
 
@@ -3967,239 +4322,292 @@ android:id="@+id/lc1"
             <TextView
                 android:id="@+id/num26_1"
                 android:layout_width="119dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:text="1 Lighting Outlet, 69W"
-                android:textSize="12dp" />
+                android:layout_height="30dp"
+                android:layout_marginTop="70dp"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num26_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="80dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="70dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="117dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="117dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="165dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="172dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="165dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="219dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="wrap_content"
+                android:layout_marginTop="210dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="219dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="210dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="264dp"
+                  android:layout_height="30dp"
+                android:layout_marginTop="254dp"
                 android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="264dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="310dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="355dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="355dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="400dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="400dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="445dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="445dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="495dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="495dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_21"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="540dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
             <TextView
                 android:id="@+id/num26_22"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="540dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_23"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="585dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_24"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="585dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_25"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginTop="630dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
             <TextView
                 android:id="@+id/num26_26"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="wrap_content"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="630dp"
-                android:text="Lighting Outlet, 69W"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp"  />
 
 
             <TextView
@@ -4440,7 +4848,8 @@ android:id="@+id/lc1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="58dp"
-                android:text="125 A"
+                 android:text="125 A"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -4451,25 +4860,28 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="710dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
 
         </RelativeLayout>
+
+
         <RelativeLayout
             android:id="@+id/RS28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:visibility="gone"
-          >
+            android:visibility="gone">
 
 
             <ImageView
                 android:id="@+id/s28"
                 android:layout_width="450dp"
-                android:layout_height="750dp"
-                android:layout_marginLeft="-20dp"
+                android:layout_height="739dp"
+                android:layout_marginLeft="-19dp"
                 android:src="@drawable/s28" />
 
 
@@ -4486,256 +4898,314 @@ android:id="@+id/lc1"
             <TextView
                 android:id="@+id/num28_1"
                 android:layout_width="119dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:text="1 Lighting Outlet, 69W"
-                android:textSize="12dp" />
+                android:layout_height="29dp"
+                android:layout_marginTop="73dp"
+              android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="11.5dp" />
 
             <TextView
                 android:id="@+id/num28_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="80dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="73dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11.5dp" />
 
             <TextView
                 android:id="@+id/num28_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="118dp"
+               android:text="Lighting Outlet, 69W
+               (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="125dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="118dp"
+               android:text="Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="168dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="161dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="168dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="161dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="203dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="203dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="255dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="248dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="255dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="248dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="290dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="295dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="290dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="340dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="335dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="340dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="335dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="382dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="377dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="382dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="377dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="420dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="280dp"
-                android:layout_marginTop="425dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="420dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="472dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="463dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="472dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="463dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_21"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="515dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="507dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/num28_22"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="515dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="507dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_23"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="560dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="550dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_24"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="560dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="550dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_25"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="604dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="593dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_26"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="604dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="593dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_27"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="645dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="29dp"
+                android:layout_marginTop="636dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
             <TextView
                 android:id="@+id/num28_28"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="29dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="645dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="636dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
 
             <TextView
@@ -4991,8 +5461,10 @@ android:id="@+id/lc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
-                android:layout_marginTop="60dp"
-                android:text="125 A"
+                android:layout_marginTop="64dp"
+                 android:text="125 A"
+                android:layout_marginEnd="239dp"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -5003,6 +5475,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="720dp"
               android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 
@@ -5015,7 +5489,7 @@ android:id="@+id/lc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-        android:visibility="gone"
+android:visibility="gone"
             >
 
 
@@ -5026,8 +5500,8 @@ android:id="@+id/lc1"
                 android:id="@+id/s30"
                 android:layout_width="394dp"
                 android:scaleType="fitXY"
-                android:layout_marginLeft="10dp"
-                android:layout_height="800dp"
+                android:layout_marginLeft="7.4dp"
+                android:layout_height="740dp"
                 android:src="@drawable/s30" />
 
             <TextView
@@ -5043,274 +5517,335 @@ android:id="@+id/lc1"
             <TextView
                 android:id="@+id/num30_1"
                 android:layout_width="119dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:text="1 Lighting Outlet, 69W"
-                android:textSize="12dp" />
+                android:layout_height="25dp"
+                android:layout_marginTop="86dp"
+              android:text="Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_2"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="95dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="86dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_3"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="133dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="125dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_4"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="133dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="125dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_5"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="170dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="167dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_6"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="170dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="167dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_7"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="205dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_8"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="210dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="205dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_9"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="250dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="245dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_10"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="250dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="245dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_11"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="290dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="285dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_12"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="290dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="285dp"
+               android:text="Lighting Outlet, 69W"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_13"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="330dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="324dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_14"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="330dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="324dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_15"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="370dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="364dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_16"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="370dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="364dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_17"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="410dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="402dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_18"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="280dp"
-                android:layout_marginTop="410dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="402dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_19"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="450dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="442dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_20"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="450dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="442dp"
+                android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_21"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="486dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="481dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_22"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="486dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="481dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_23"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="530dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="521dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_24"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="530dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="521dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_25"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="565dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="561dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_26"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="565dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="561dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_27"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="605dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="600dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_28"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="605dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="600dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_29"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="645dp"
-                android:text="Lighting Outlet, 69W"
+                  android:layout_height="25dp"
+                android:layout_marginTop="640dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_30"
                 android:layout_width="119dp"
-                android:layout_height="32dp"
+                  android:layout_height="25dp"
                 android:layout_marginLeft="275dp"
-                android:layout_marginTop="645dp"
-                android:text="Lighting Outlet, 69W"
+                android:layout_marginTop="640dp"
+               android:text="1 Lighting Outlet, 69W (living room ni kuya)"
+                android:gravity="center"
+                android:maxLines="2"
                 android:textAlignment="center"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
 
             <TextView
@@ -5320,7 +5855,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="115dp"
                 android:text="11"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a2"
@@ -5329,7 +5864,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="115dp"
                 android:text="12"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a3"
@@ -5338,7 +5873,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="150dp"
                 android:text="13"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a4"
@@ -5347,7 +5882,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="150dp"
                 android:text="14"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a5"
@@ -5356,7 +5891,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="190dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a6"
@@ -5365,7 +5900,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="190dp"
                 android:text="16"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a7"
@@ -5374,7 +5909,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="232dp"
                 android:text="17"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a8"
@@ -5383,7 +5918,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="232dp"
                 android:text="18"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a9"
@@ -5392,7 +5927,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="277dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a10"
@@ -5401,7 +5936,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="277dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a11"
@@ -5410,7 +5945,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="313dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a12"
                 android:layout_width="wrap_content"
@@ -5418,25 +5953,25 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="313dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="152dp"
-                android:layout_marginTop="358dp"
+                android:layout_marginTop="353dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="219dp"
-                android:layout_marginTop="358dp"
+                android:layout_marginTop="353dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
 
             <TextView
@@ -5446,7 +5981,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="390dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a16"
@@ -5455,7 +5990,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="390dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a17"
@@ -5464,7 +5999,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="430dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a18"
@@ -5473,7 +6008,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="430dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a19"
                 android:layout_width="wrap_content"
@@ -5481,7 +6016,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="470dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a20"
@@ -5490,7 +6025,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="470dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a21"
                 android:layout_width="wrap_content"
@@ -5498,7 +6033,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="510dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a22"
@@ -5507,7 +6042,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="510dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a23"
                 android:layout_width="wrap_content"
@@ -5515,7 +6050,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="550dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a24"
@@ -5524,7 +6059,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="550dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a25"
                 android:layout_width="wrap_content"
@@ -5532,7 +6067,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="590dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a26"
@@ -5541,7 +6076,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="590dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a27"
                 android:layout_width="wrap_content"
@@ -5549,7 +6084,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="625dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a28"
@@ -5558,7 +6093,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="625dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/num30_a29"
                 android:layout_width="wrap_content"
@@ -5566,7 +6101,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="152dp"
                 android:layout_marginTop="665dp"
                 android:text="19"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/num30_a30"
@@ -5575,7 +6110,7 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="219dp"
                 android:layout_marginTop="665dp"
                 android:text="15"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
 
             <TextView
@@ -5583,8 +6118,10 @@ android:id="@+id/lc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
-                android:layout_marginTop="70dp"
-                android:text="125 A"
+                android:layout_marginTop="73dp"
+                 android:text="125 A"
+                android:layout_marginEnd="240dp"
+                android:layout_alignParentEnd="true"
                 android:textSize="12dp" />
 
 
@@ -5595,6 +6132,8 @@ android:id="@+id/lc1"
                 android:layout_marginLeft="245dp"
                 android:layout_marginTop="720dp"
                 android:text="GEC: 1.0mm.sq. THHN Cu. Wire "
+                android:layout_alignParentEnd="true"
+                android:maxLines="2"
                 android:textStyle="bold"
                 android:textSize="10dp" />
 

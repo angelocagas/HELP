@@ -752,40 +752,256 @@ public class Loadschedule extends AppCompatActivity {
                         num8_8.setText(itemSList.get(7));
                         break;
                     case 10:
-                        // Set values for 10 elements
+                        num10_1.setText(itemSList.get(0));
+                        num10_2.setText(itemSList.get(1));
+                        num10_3.setText(itemSList.get(2));
+                        num10_4.setText(itemSList.get(3));
+                        num10_5.setText(itemSList.get(4));
+                        num10_6.setText(itemSList.get(5));
+                        num10_7.setText(itemSList.get(6));
+                        num10_8.setText(itemSList.get(7));
+                        num10_9.setText(itemSList.get(8));
+                        num10_10.setText(itemSList.get(9));
                         break;
-                    case 11:
-                        // Set values for 11 elements
-                        break;
+
                     case 12:
-                        // Set values for 12 elements
+                        num12_1.setText(itemSList.get(0));
+                        num12_2.setText(itemSList.get(1));
+                        num12_3.setText(itemSList.get(2));
+                        num12_4.setText(itemSList.get(3));
+                        num12_5.setText(itemSList.get(4));
+                        num12_6.setText(itemSList.get(5));
+                        num12_7.setText(itemSList.get(6));
+                        num12_8.setText(itemSList.get(7));
+                        num12_9.setText(itemSList.get(8));
+                        num12_10.setText(itemSList.get(9));
+                        num12_11.setText(itemSList.get(10));
+                        num12_12.setText(itemSList.get(11));
+
+
                         break;
                     case 14:
-                        // Set values for 14 elements
+                        num14_1.setText(itemSList.get(0));
+                        num14_2.setText(itemSList.get(1));
+                        num14_3.setText(itemSList.get(2));
+                        num14_4.setText(itemSList.get(3));
+                        num14_5.setText(itemSList.get(4));
+                        num14_6.setText(itemSList.get(5));
+                        num14_7.setText(itemSList.get(6));
+                        num14_8.setText(itemSList.get(7));
+                        num14_9.setText(itemSList.get(8));
+                        num14_10.setText(itemSList.get(9));
+                        num14_11.setText(itemSList.get(10));
+                        num14_12.setText(itemSList.get(11));
+                        num14_13.setText(itemSList.get(11));
+                        num14_14.setText(itemSList.get(13));
                         break;
                     case 16:
-                        // Set values for 16 elements
+                        num16_1.setText(itemSList.get(0));
+                        num16_2.setText(itemSList.get(1));
+                        num16_3.setText(itemSList.get(2));
+                        num16_4.setText(itemSList.get(3));
+                        num16_5.setText(itemSList.get(4));
+                        num16_6.setText(itemSList.get(5));
+                        num16_7.setText(itemSList.get(6));
+                        num16_8.setText(itemSList.get(7));
+                        num16_9.setText(itemSList.get(8));
+                        num16_10.setText(itemSList.get(9));
+                        num16_11.setText(itemSList.get(10));
+                        num16_12.setText(itemSList.get(11));
+                        num16_13.setText(itemSList.get(11));
+                        num16_14.setText(itemSList.get(13));
+                        num16_15.setText(itemSList.get(14));
+                        num16_16.setText(itemSList.get(15));
                         break;
                     case 18:
-                        // Set values for 18 elements
+                        num18_1.setText(itemSList.get(0));
+                        num18_2.setText(itemSList.get(1));
+                        num18_3.setText(itemSList.get(2));
+                        num18_4.setText(itemSList.get(3));
+                        num18_5.setText(itemSList.get(4));
+                        num18_6.setText(itemSList.get(5));
+                        num18_7.setText(itemSList.get(6));
+                        num18_8.setText(itemSList.get(7));
+                        num18_9.setText(itemSList.get(8));
+                        num18_10.setText(itemSList.get(9));
+                        num18_11.setText(itemSList.get(10));
+                        num18_12.setText(itemSList.get(11));
+                        num18_13.setText(itemSList.get(11));
+                        num18_14.setText(itemSList.get(13));
+                        num18_15.setText(itemSList.get(14));
+                        num18_16.setText(itemSList.get(15));
+                        num18_17.setText(itemSList.get(16));
+                        num18_18.setText(itemSList.get(17));
+
                         break;
                     case 20:
-                        // Set values for 20 elements
+                        num20_1.setText(itemSList.get(0));
+                        num20_2.setText(itemSList.get(1));
+                        num20_3.setText(itemSList.get(2));
+                        num20_4.setText(itemSList.get(3));
+                        num20_5.setText(itemSList.get(4));
+                        num20_6.setText(itemSList.get(5));
+                        num20_7.setText(itemSList.get(6));
+                        num20_8.setText(itemSList.get(7));
+                        num20_9.setText(itemSList.get(8));
+                        num20_10.setText(itemSList.get(9));
+                        num20_11.setText(itemSList.get(10));
+                        num20_12.setText(itemSList.get(11));
+                        num20_13.setText(itemSList.get(11));
+                        num20_14.setText(itemSList.get(13));
+                        num20_15.setText(itemSList.get(14));
+                        num20_16.setText(itemSList.get(15));
+                        num20_17.setText(itemSList.get(16));
+                        num20_18.setText(itemSList.get(17));
+                        num20_19.setText(itemSList.get(18));
+                        num20_20.setText(itemSList.get(19));
+
+
                         break;
                     case 22:
-                        // Set values for 22 elements
+                        num22_1.setText(itemSList.get(0));
+                        num22_2.setText(itemSList.get(1));
+                        num22_3.setText(itemSList.get(2));
+                        num22_4.setText(itemSList.get(3));
+                        num22_5.setText(itemSList.get(4));
+                        num22_6.setText(itemSList.get(5));
+                        num22_7.setText(itemSList.get(6));
+                        num22_8.setText(itemSList.get(7));
+                        num22_9.setText(itemSList.get(8));
+                        num22_10.setText(itemSList.get(9));
+                        num22_11.setText(itemSList.get(10));
+                        num22_12.setText(itemSList.get(11));
+                        num22_13.setText(itemSList.get(11));
+                        num22_14.setText(itemSList.get(13));
+                        num22_15.setText(itemSList.get(14));
+                        num22_16.setText(itemSList.get(15));
+                        num22_17.setText(itemSList.get(16));
+                        num22_18.setText(itemSList.get(17));
+                        num22_19.setText(itemSList.get(18));
+                        num22_20.setText(itemSList.get(19));
+                        num22_21.setText(itemSList.get(20));
+                        num22_22.setText(itemSList.get(21));
+
                         break;
                     case 24:
-                        // Set values for 24 elements
+                        num24_1.setText(itemSList.get(0));
+                        num24_2.setText(itemSList.get(1));
+                        num24_3.setText(itemSList.get(2));
+                        num24_4.setText(itemSList.get(3));
+                        num24_5.setText(itemSList.get(4));
+                        num24_6.setText(itemSList.get(5));
+                        num24_7.setText(itemSList.get(6));
+                        num24_8.setText(itemSList.get(7));
+                        num24_9.setText(itemSList.get(8));
+                        num24_10.setText(itemSList.get(9));
+                        num24_11.setText(itemSList.get(10));
+                        num24_12.setText(itemSList.get(11));
+                        num24_13.setText(itemSList.get(11));
+                        num24_14.setText(itemSList.get(13));
+                        num24_15.setText(itemSList.get(14));
+                        num24_16.setText(itemSList.get(15));
+                        num24_17.setText(itemSList.get(16));
+                        num24_18.setText(itemSList.get(17));
+                        num24_19.setText(itemSList.get(18));
+                        num24_20.setText(itemSList.get(19));
+                        num24_21.setText(itemSList.get(20));
+                        num24_22.setText(itemSList.get(21));
+                        num24_23.setText(itemSList.get(22));
+                        num24_24.setText(itemSList.get(23));
+
                         break;
                     case 26:
-                        // Set values for 26 elements
+                        num26_1.setText(itemSList.get(0));
+                        num26_2.setText(itemSList.get(1));
+                        num26_3.setText(itemSList.get(2));
+                        num26_4.setText(itemSList.get(3));
+                        num26_5.setText(itemSList.get(4));
+                        num26_6.setText(itemSList.get(5));
+                        num26_7.setText(itemSList.get(6));
+                        num26_8.setText(itemSList.get(7));
+                        num26_9.setText(itemSList.get(8));
+                        num26_10.setText(itemSList.get(9));
+                        num26_11.setText(itemSList.get(10));
+                        num26_12.setText(itemSList.get(11));
+                        num26_13.setText(itemSList.get(11));
+                        num26_14.setText(itemSList.get(13));
+                        num26_15.setText(itemSList.get(14));
+                        num26_16.setText(itemSList.get(15));
+                        num26_17.setText(itemSList.get(16));
+                        num26_18.setText(itemSList.get(17));
+                        num26_19.setText(itemSList.get(18));
+                        num26_20.setText(itemSList.get(19));
+                        num26_21.setText(itemSList.get(20));
+                        num26_22.setText(itemSList.get(21));
+                        num26_23.setText(itemSList.get(22));
+                        num26_24.setText(itemSList.get(23));
+                        num26_25.setText(itemSList.get(24));
+                        num26_26.setText(itemSList.get(25));
+
                         break;
                     case 28:
-                        // Set values for 28 elements
+                        num28_1.setText(itemSList.get(0));
+                        num28_2.setText(itemSList.get(1));
+                        num28_3.setText(itemSList.get(2));
+                        num28_4.setText(itemSList.get(3));
+                        num28_5.setText(itemSList.get(4));
+                        num28_6.setText(itemSList.get(5));
+                        num28_7.setText(itemSList.get(6));
+                        num28_8.setText(itemSList.get(7));
+                        num28_9.setText(itemSList.get(8));
+                        num28_10.setText(itemSList.get(9));
+                        num28_11.setText(itemSList.get(10));
+                        num28_12.setText(itemSList.get(11));
+                        num28_13.setText(itemSList.get(11));
+                        num28_14.setText(itemSList.get(13));
+                        num28_15.setText(itemSList.get(14));
+                        num28_16.setText(itemSList.get(15));
+                        num28_17.setText(itemSList.get(16));
+                        num28_18.setText(itemSList.get(17));
+                        num28_19.setText(itemSList.get(18));
+                        num28_20.setText(itemSList.get(19));
+                        num28_21.setText(itemSList.get(20));
+                        num28_22.setText(itemSList.get(21));
+                        num28_23.setText(itemSList.get(22));
+                        num28_24.setText(itemSList.get(23));
+                        num28_25.setText(itemSList.get(24));
+                        num28_26.setText(itemSList.get(25));
+                        num28_27.setText(itemSList.get(26));
+                        num28_28.setText(itemSList.get(27));
+
                         break;
                     case 30:
-                        // Set values for 30 elements
+                        num30_1.setText(itemSList.get(0));
+                        num30_2.setText(itemSList.get(1));
+                        num30_3.setText(itemSList.get(2));
+                        num30_4.setText(itemSList.get(3));
+                        num30_5.setText(itemSList.get(4));
+                        num30_6.setText(itemSList.get(5));
+                        num30_7.setText(itemSList.get(6));
+                        num30_8.setText(itemSList.get(7));
+                        num30_9.setText(itemSList.get(8));
+                        num30_10.setText(itemSList.get(9));
+                        num30_11.setText(itemSList.get(10));
+                        num30_12.setText(itemSList.get(11));
+                        num30_13.setText(itemSList.get(11));
+                        num30_14.setText(itemSList.get(13));
+                        num30_15.setText(itemSList.get(14));
+                        num30_16.setText(itemSList.get(15));
+                        num30_17.setText(itemSList.get(16));
+                        num30_18.setText(itemSList.get(17));
+                        num30_19.setText(itemSList.get(18));
+                        num30_20.setText(itemSList.get(19));
+                        num30_21.setText(itemSList.get(20));
+                        num30_22.setText(itemSList.get(21));
+                        num30_23.setText(itemSList.get(22));
+                        num30_24.setText(itemSList.get(23));
+                        num30_25.setText(itemSList.get(24));
+                        num30_26.setText(itemSList.get(25));
+                        num30_27.setText(itemSList.get(26));
+                        num30_28.setText(itemSList.get(27));
+                        num30_29.setText(itemSList.get(28));
+                        num30_30.setText(itemSList.get(29));
                         break;
                     default:
                         // Handle other cases if necessary
@@ -823,40 +1039,256 @@ public class Loadschedule extends AppCompatActivity {
                             num8_a8.setText(ATSList.get(7));
                             break;
                         case 10:
-                            // Set values for 10 elements
+                            num10_a1.setText(ATSList.get(0));
+                            num10_a2.setText(ATSList.get(1));
+                            num10_a3.setText(ATSList.get(2));
+                            num10_a4.setText(ATSList.get(3));
+                            num10_a5.setText(ATSList.get(4));
+                            num10_a6.setText(ATSList.get(5));
+                            num10_a7.setText(ATSList.get(6));
+                            num10_a8.setText(ATSList.get(7));
+                            num10_a9.setText(ATSList.get(8));
+                            num10_a10.setText(ATSList.get(9));
                             break;
-                        case 11:
-                            // Set values for 11 elements
-                            break;
+
                         case 12:
-                            // Set values for 12 elements
+                            num12_a1.setText(ATSList.get(0));
+                            num12_a2.setText(ATSList.get(1));
+                            num12_a3.setText(ATSList.get(2));
+                            num12_a4.setText(ATSList.get(3));
+                            num12_a5.setText(ATSList.get(4));
+                            num12_a6.setText(ATSList.get(5));
+                            num12_a7.setText(ATSList.get(6));
+                            num12_a8.setText(ATSList.get(7));
+                            num12_a9.setText(ATSList.get(8));
+                            num12_a10.setText(ATSList.get(9));
+                            num12_a11.setText(ATSList.get(10));
+                            num12_a12.setText(ATSList.get(11));
+
+
                             break;
                         case 14:
-                            // Set values for 14 elements
+                            num14_a1.setText(ATSList.get(0));
+                            num14_a2.setText(ATSList.get(1));
+                            num14_a3.setText(ATSList.get(2));
+                            num14_a4.setText(ATSList.get(3));
+                            num14_a5.setText(ATSList.get(4));
+                            num14_a6.setText(ATSList.get(5));
+                            num14_a7.setText(ATSList.get(6));
+                            num14_a8.setText(ATSList.get(7));
+                            num14_a9.setText(ATSList.get(8));
+                            num14_a10.setText(ATSList.get(9));
+                            num14_a11.setText(ATSList.get(10));
+                            num14_a12.setText(ATSList.get(11));
+                            num14_a13.setText(ATSList.get(11));
+                            num14_a14.setText(ATSList.get(13));
                             break;
                         case 16:
-                            // Set values for 16 elements
+                            num16_a1.setText(ATSList.get(0));
+                            num16_a2.setText(ATSList.get(1));
+                            num16_a3.setText(ATSList.get(2));
+                            num16_a4.setText(ATSList.get(3));
+                            num16_a5.setText(ATSList.get(4));
+                            num16_a6.setText(ATSList.get(5));
+                            num16_a7.setText(ATSList.get(6));
+                            num16_a8.setText(ATSList.get(7));
+                            num16_a9.setText(ATSList.get(8));
+                            num16_a10.setText(ATSList.get(9));
+                            num16_a11.setText(ATSList.get(10));
+                            num16_a12.setText(ATSList.get(11));
+                            num16_a13.setText(ATSList.get(11));
+                            num16_a14.setText(ATSList.get(13));
+                            num16_a15.setText(ATSList.get(14));
+                            num16_a16.setText(ATSList.get(15));
                             break;
                         case 18:
-                            // Set values for 18 elements
+                            num18_a1.setText(ATSList.get(0));
+                            num18_a2.setText(ATSList.get(1));
+                            num18_a3.setText(ATSList.get(2));
+                            num18_a4.setText(ATSList.get(3));
+                            num18_a5.setText(ATSList.get(4));
+                            num18_a6.setText(ATSList.get(5));
+                            num18_a7.setText(ATSList.get(6));
+                            num18_a8.setText(ATSList.get(7));
+                            num18_a9.setText(ATSList.get(8));
+                            num18_a10.setText(ATSList.get(9));
+                            num18_a11.setText(ATSList.get(10));
+                            num18_a12.setText(ATSList.get(11));
+                            num18_a13.setText(ATSList.get(11));
+                            num18_a14.setText(ATSList.get(13));
+                            num18_a15.setText(ATSList.get(14));
+                            num18_a16.setText(ATSList.get(15));
+                            num18_a17.setText(ATSList.get(16));
+                            num18_a18.setText(ATSList.get(17));
+
                             break;
                         case 20:
-                            // Set values for 20 elements
+                            num20_a1.setText(ATSList.get(0));
+                            num20_a2.setText(ATSList.get(1));
+                            num20_a3.setText(ATSList.get(2));
+                            num20_a4.setText(ATSList.get(3));
+                            num20_a5.setText(ATSList.get(4));
+                            num20_a6.setText(ATSList.get(5));
+                            num20_a7.setText(ATSList.get(6));
+                            num20_a8.setText(ATSList.get(7));
+                            num20_a9.setText(ATSList.get(8));
+                            num20_a10.setText(ATSList.get(9));
+                            num20_a11.setText(ATSList.get(10));
+                            num20_a12.setText(ATSList.get(11));
+                            num20_a13.setText(ATSList.get(11));
+                            num20_a14.setText(ATSList.get(13));
+                            num20_a15.setText(ATSList.get(14));
+                            num20_a16.setText(ATSList.get(15));
+                            num20_a17.setText(ATSList.get(16));
+                            num20_a18.setText(ATSList.get(17));
+                            num20_a19.setText(ATSList.get(18));
+                            num20_a20.setText(ATSList.get(19));
+
+
                             break;
                         case 22:
-                            // Set values for 22 elements
+                            num22_a1.setText(ATSList.get(0));
+                            num22_a2.setText(ATSList.get(1));
+                            num22_a3.setText(ATSList.get(2));
+                            num22_a4.setText(ATSList.get(3));
+                            num22_a5.setText(ATSList.get(4));
+                            num22_a6.setText(ATSList.get(5));
+                            num22_a7.setText(ATSList.get(6));
+                            num22_a8.setText(ATSList.get(7));
+                            num22_a9.setText(ATSList.get(8));
+                            num22_a10.setText(ATSList.get(9));
+                            num22_a11.setText(ATSList.get(10));
+                            num22_a12.setText(ATSList.get(11));
+                            num22_a13.setText(ATSList.get(11));
+                            num22_a14.setText(ATSList.get(13));
+                            num22_a15.setText(ATSList.get(14));
+                            num22_a16.setText(ATSList.get(15));
+                            num22_a17.setText(ATSList.get(16));
+                            num22_a18.setText(ATSList.get(17));
+                            num22_a19.setText(ATSList.get(18));
+                            num22_a20.setText(ATSList.get(19));
+                            num22_a21.setText(ATSList.get(20));
+                            num22_a22.setText(ATSList.get(21));
+
                             break;
                         case 24:
-                            // Set values for 24 elements
+                            num24_a1.setText(ATSList.get(0));
+                            num24_a2.setText(ATSList.get(1));
+                            num24_a3.setText(ATSList.get(2));
+                            num24_a4.setText(ATSList.get(3));
+                            num24_a5.setText(ATSList.get(4));
+                            num24_a6.setText(ATSList.get(5));
+                            num24_a7.setText(ATSList.get(6));
+                            num24_a8.setText(ATSList.get(7));
+                            num24_a9.setText(ATSList.get(8));
+                            num24_a10.setText(ATSList.get(9));
+                            num24_a11.setText(ATSList.get(10));
+                            num24_a12.setText(ATSList.get(11));
+                            num24_a13.setText(ATSList.get(11));
+                            num24_a14.setText(ATSList.get(13));
+                            num24_a15.setText(ATSList.get(14));
+                            num24_a16.setText(ATSList.get(15));
+                            num24_a17.setText(ATSList.get(16));
+                            num24_a18.setText(ATSList.get(17));
+                            num24_a19.setText(ATSList.get(18));
+                            num24_a20.setText(ATSList.get(19));
+                            num24_a21.setText(ATSList.get(20));
+                            num24_a22.setText(ATSList.get(21));
+                            num24_a23.setText(ATSList.get(22));
+                            num24_a24.setText(ATSList.get(23));
+
                             break;
                         case 26:
-                            // Set values for 26 elements
+                            num26_a1.setText(ATSList.get(0));
+                            num26_a2.setText(ATSList.get(1));
+                            num26_a3.setText(ATSList.get(2));
+                            num26_a4.setText(ATSList.get(3));
+                            num26_a5.setText(ATSList.get(4));
+                            num26_a6.setText(ATSList.get(5));
+                            num26_a7.setText(ATSList.get(6));
+                            num26_a8.setText(ATSList.get(7));
+                            num26_a9.setText(ATSList.get(8));
+                            num26_a10.setText(ATSList.get(9));
+                            num26_a11.setText(ATSList.get(10));
+                            num26_a12.setText(ATSList.get(11));
+                            num26_a13.setText(ATSList.get(11));
+                            num26_a14.setText(ATSList.get(13));
+                            num26_a15.setText(ATSList.get(14));
+                            num26_a16.setText(ATSList.get(15));
+                            num26_a17.setText(ATSList.get(16));
+                            num26_a18.setText(ATSList.get(17));
+                            num26_a19.setText(ATSList.get(18));
+                            num26_a20.setText(ATSList.get(19));
+                            num26_a21.setText(ATSList.get(20));
+                            num26_a22.setText(ATSList.get(21));
+                            num26_a23.setText(ATSList.get(22));
+                            num26_a24.setText(ATSList.get(23));
+                            num26_a25.setText(ATSList.get(24));
+                            num26_a26.setText(ATSList.get(25));
+
                             break;
                         case 28:
-                            // Set values for 28 elements
+                            num28_a1.setText(ATSList.get(0));
+                            num28_a2.setText(ATSList.get(1));
+                            num28_a3.setText(ATSList.get(2));
+                            num28_a4.setText(ATSList.get(3));
+                            num28_a5.setText(ATSList.get(4));
+                            num28_a6.setText(ATSList.get(5));
+                            num28_a7.setText(ATSList.get(6));
+                            num28_a8.setText(ATSList.get(7));
+                            num28_a9.setText(ATSList.get(8));
+                            num28_a10.setText(ATSList.get(9));
+                            num28_a11.setText(ATSList.get(10));
+                            num28_a12.setText(ATSList.get(11));
+                            num28_a13.setText(ATSList.get(11));
+                            num28_a14.setText(ATSList.get(13));
+                            num28_a15.setText(ATSList.get(14));
+                            num28_a16.setText(ATSList.get(15));
+                            num28_a17.setText(ATSList.get(16));
+                            num28_a18.setText(ATSList.get(17));
+                            num28_a19.setText(ATSList.get(18));
+                            num28_a20.setText(ATSList.get(19));
+                            num28_a21.setText(ATSList.get(20));
+                            num28_a22.setText(ATSList.get(21));
+                            num28_a23.setText(ATSList.get(22));
+                            num28_a24.setText(ATSList.get(23));
+                            num28_a25.setText(ATSList.get(24));
+                            num28_a26.setText(ATSList.get(25));
+                            num28_a27.setText(ATSList.get(26));
+                            num28_a28.setText(ATSList.get(27));
+
                             break;
                         case 30:
-                            // Set values for 30 elements
+                            num30_a1.setText(ATSList.get(0));
+                            num30_a2.setText(ATSList.get(1));
+                            num30_a3.setText(ATSList.get(2));
+                            num30_a4.setText(ATSList.get(3));
+                            num30_a5.setText(ATSList.get(4));
+                            num30_a6.setText(ATSList.get(5));
+                            num30_a7.setText(ATSList.get(6));
+                            num30_a8.setText(ATSList.get(7));
+                            num30_a9.setText(ATSList.get(8));
+                            num30_a10.setText(ATSList.get(9));
+                            num30_a11.setText(ATSList.get(10));
+                            num30_a12.setText(ATSList.get(11));
+                            num30_a13.setText(ATSList.get(11));
+                            num30_a14.setText(ATSList.get(13));
+                            num30_a15.setText(ATSList.get(14));
+                            num30_a16.setText(ATSList.get(15));
+                            num30_a17.setText(ATSList.get(16));
+                            num30_a18.setText(ATSList.get(17));
+                            num30_a19.setText(ATSList.get(18));
+                            num30_a20.setText(ATSList.get(19));
+                            num30_a21.setText(ATSList.get(20));
+                            num30_a22.setText(ATSList.get(21));
+                            num30_a23.setText(ATSList.get(22));
+                            num30_a24.setText(ATSList.get(23));
+                            num30_a25.setText(ATSList.get(24));
+                            num30_a26.setText(ATSList.get(25));
+                            num30_a27.setText(ATSList.get(26));
+                            num30_a28.setText(ATSList.get(27));
+                            num30_a29.setText(ATSList.get(28));
+                            num30_a30.setText(ATSList.get(29));
                             break;
                         default:
                             // Handle other cases if necessary

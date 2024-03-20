@@ -33,11 +33,11 @@
 
             <ImageView
                 android:id="@+id/border1"
-                android:layout_width="800dp"
+                android:layout_width="799dp"
                 android:layout_height="43dp"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
                 android:background="@drawable/boardupper" />
+
 
             <ImageView
                 android:id="@+id/border2"
@@ -46,8 +46,8 @@
                 android:layout_alignStart="@+id/border1"
                 android:layout_above="@+id/border3"
                 android:layout_below="@+id/border1"
+                android:layout_alignEnd="@+id/border1"
                 android:layout_marginTop="0dp"
-                android:layout_marginStart="-1"
                 android:background="@drawable/boardmid" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -55,11 +55,21 @@
                 android:layout_width="800dp"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/border1"
+                android:layout_marginStart="1dp"
                 android:layout_below="@+id/border1"
                 android:layout_marginTop="0dp"
+                android:layout_marginEnd="2dp"
                 android:nestedScrollingEnabled="false" />
 
-
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/border1"
+                android:layout_above="@id/border3"
+                android:layout_marginTop="-1dp"
+                android:layout_marginStart="-1dp"
+                android:background="@android:color/black"
+                android:layout_alignStart="@id/border1"/>
             <ImageView
                 android:id="@+id/border3"
                 android:layout_width="800dp"
@@ -207,7 +217,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="180.6"
+                    android:layout_marginLeft="180.6dp"
                     android:text="0.80"
                     android:textColor="@color/black"
                     android:textSize="9dp"

@@ -6,27 +6,42 @@
     android:gravity="start"
     android:id="@+id/edit"
     android:orientation="horizontal"
-    android:layout_marginTop="0.1dp"
+    android:layout_marginTop="1.4dp"
     tools:ignore="MissingDefaultResource">
 
 
-
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <View
+        android:layout_alignBottom="@+id/as"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="-0.5dp"
+                    android:background="@android:color/black"/>
+                <LinearLayout
+                    android:id="@+id/as"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
 
         <TextView
             android:textStyle="bold"
             android:id="@+id/NumberId"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
+            android:layout_gravity="center"
+
             android:text="1"
             android:textAlignment="center"
-            android:textSize="8dp"
+            android:textSize="9dp"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:textStyle="bold"
             android:id="@+id/Quantity"
             android:layout_width="70dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="1"
@@ -48,7 +63,7 @@
             android:layout_width="93.7dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:text="Conveniec asd asas"
+            android:text="Conveniec as"
             android:textSize="8dp"
             android:maxLines="2"
             android:ellipsize="end"
@@ -67,6 +82,7 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
             android:text="1"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -75,6 +91,7 @@
             android:textStyle="bold"
             android:id="@+id/V"
             android:layout_width="40dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="230"
@@ -84,6 +101,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/VA"
+            android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -94,6 +112,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/A"
+            android:layout_gravity="center"
             android:layout_width="80.5dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -105,6 +124,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/P"
+            android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
@@ -115,6 +135,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/AT"
+            android:layout_gravity="center"
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -125,6 +146,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/AF"
+            android:layout_gravity="center"
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -136,6 +158,7 @@
             android:textStyle="bold"
             android:id="@+id/SNUM"
             android:layout_width="33dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="2"
@@ -144,6 +167,7 @@
             tools:ignore="TextSizeCheck" />
         <TextView
             android:textStyle="bold"
+            android:layout_gravity="center"
             android:id="@+id/SMM"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
@@ -156,6 +180,7 @@
             android:textStyle="bold"
             android:id="@+id/STYPE"
             android:layout_width="37dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:text="THHN"
@@ -165,6 +190,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/GNUM"
+            android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -176,6 +202,7 @@
             android:textStyle="bold"
             android:id="@+id/GMM"
             android:layout_width="30dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2.5dp"
             android:text="3.5"
@@ -186,6 +213,7 @@
             android:textStyle="bold"
             android:id="@+id/GTYPE"
             android:layout_width="30dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:text="THHN"
@@ -196,6 +224,7 @@
             android:textStyle="bold"
             android:id="@+id/MMPlus"
             android:layout_width="50dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="1dp"
@@ -207,6 +236,7 @@
             android:textStyle="bold"
             android:id="@+id/CTYPE"
             android:layout_width="60dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="PVC"
@@ -214,6 +244,11 @@
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
 
+
+                </LinearLayout>
+
+
+        </RelativeLayout>
 
 
 

@@ -391,7 +391,7 @@ public class Inputing extends AppCompatActivity {
                         // Check if 'add' is not empty and concatenate it to the existing text in autoCompleteTextView1
                         if (!add.isEmpty()) {
                             if (!selectedItem.isEmpty()) {
-                                selectedItem += " (" + add + ")";
+                                selectedItem += "\n" + " (" + add + ")";
                             } else {
                                 selectedItem = add;
                             }

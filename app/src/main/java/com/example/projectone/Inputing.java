@@ -37,7 +37,7 @@ public class Inputing extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextView1, Horsepower;
     TextInputLayout horses;
     TextView Counter2, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
-    Button next, preview, preview2,back, update;
+    Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
@@ -116,11 +116,15 @@ public class Inputing extends AppCompatActivity {
         // Check if editing mode is enabled
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
         if (isEditMode) {
+            //populate the value in textview
             projectTable = (ProjectTable)getIntent().getSerializableExtra("ProjectTable");
             assert projectTable != null;
+
             Quantity.setText(projectTable.getQuantity());
+            String quan = projectTable.getQuantity();
             String item = projectTable.getItem();
-            autoCompleteTextView1.setText(item);
+            String  VAs = projectTable.getVA();
+
 
             // If editing mode is enabled, disable the "Next" button
             preview.setVisibility(View.GONE);
@@ -129,6 +133,8 @@ public class Inputing extends AppCompatActivity {
             preview2.setVisibility(View.VISIBLE);
             update.setVisibility(View.VISIBLE);
 
+
+
             // Check if item starts with "LIGHTING OUTLET"
             if (item.startsWith("Lighting Outlet")) {
                 autoCompleteTextView1.setText("Lighting Outlet");
@@ -136,6 +142,18 @@ public class Inputing extends AppCompatActivity {
             // Check if item starts with "ACU"
             else if (item.startsWith("ACU")) {
                 autoCompleteTextView1.setText("ACU");
+                //for HORSEPOWER DISPLAY
+                int startIndex = item.indexOf("ACU ");
+                int endIndex = item.indexOf("PH");
+                if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+                    // Extract the interval
+                    String interval = item.substring(startIndex + 1, endIndex).trim();
+
+                    // Display the interval in horsepower
+                    Horsepower.setText(interval);
+
+                }
+
             } else if (item.startsWith("Convenience Outlet")) {
                 autoCompleteTextView1.setText("Convenience Outlet");
             } else if (item.startsWith("Water Heater")) {
@@ -147,6 +165,52 @@ public class Inputing extends AppCompatActivity {
             }else if (item.startsWith("Spare")) {
                 autoCompleteTextView1.setText("Spare");
             }
+
+            TextInputEditText descpop = findViewById(R.id.others); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
+            TextInputEditText wattspop = findViewById(R.id.Watts); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
+
+            if (quan.equals("1")) {
+                // If quantity is 1, display VAs directly
+                wattspop.setText(VAs);
+            } else {
+                // If quantity is not 1, calculate watts and display the result
+                int quantity = Integer.parseInt(quan);
+                int vas = Integer.parseInt(VAs);
+                int wattsup = vas / quantity ;
+                wattspop.setText(String.valueOf(wattsup));
+            }
+
+
+
+
+
+            //populate the description
+            String[] prefixes = {"Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "Refrigerator", "Spare"};
+
+            String descriptionText = "";
+            for (String prefix : prefixes) {
+                if (item.startsWith(prefix)) {
+
+                    descriptionText = item.substring(prefix.length()).trim();
+
+                    // Find the opening and closing parentheses
+                    int startIndex = descriptionText.indexOf('(');
+                    int endIndex = descriptionText.indexOf(')');
+
+                    // Extract the text inside the parentheses
+                    if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+                        descriptionText = descriptionText.substring(startIndex + 1, endIndex).trim();
+                        descpop.setText(descriptionText);
+                    } else {
+                        // If no valid parentheses found, set remainingText to an empty string
+                        descpop.setText(descriptionText);
+                    }
+
+                    break;
+                }
+            }
+
+
 
         } else {
             // Otherwise, enable the "Next" button
@@ -387,20 +451,31 @@ public class Inputing extends AppCompatActivity {
                         String selectedItem = autoCompleteTextView1.getText().toString();
                         String selectedWatts = Watts.getText().toString();
                         String add = others.getText().toString();
+                        String selectedHP = Horsepower.getText().toString();
 
-                        // Check if 'add' is not empty and concatenate it to the existing text in autoCompleteTextView1
-                        if (!add.isEmpty()) {
-                            if (!selectedItem.isEmpty()) {
-                                selectedItem += " (" + add + ")";
-                            } else {
-                                selectedItem = add;
+                        if ("Convenience Outlet".equals(selectedItem) ||"Spare".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+
+                            if (!add.isEmpty()) {
+                                if (!selectedItem.isEmpty()) {
+                                    selectedItem += "\n" + " (" + add + ")";
+                                } else {
+                                    selectedItem = add;
+                                }
+                                autoCompleteTextView1.setText(selectedItem);
                             }
-                            autoCompleteTextView1.setText(selectedItem);
-                        }
 
-                        // Your existing validation for "Lighting Outlet"
-                        if ("Lighting Outlet".equals(selectedItem)) {
-                            if (!selectedWatts.isEmpty()) {
+                        } else if ("Lighting Outlet".equals(selectedItem) ) {
+
+
+                            if (!add.isEmpty()) {
+                                if (!selectedWatts.isEmpty()) {
+                                    selectedItem += ", " + selectedWatts + "W" + "\n" + " (" + add + ")";
+                                } else {
+                                    selectedItem = selectedWatts;
+                                }
+
+                                autoCompleteTextView1.setText(selectedItem);
+                            } else if (!selectedWatts.isEmpty()) {
                                 if (!selectedItem.isEmpty()) {
                                     selectedItem += ", " + selectedWatts + "W";
                                 } else {
@@ -409,11 +484,28 @@ public class Inputing extends AppCompatActivity {
                                 autoCompleteTextView1.setText(selectedItem);
                             }
 
-                            else {
-                                Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                                return; // return if validation fails
+                        }else if ("ACU".equals(selectedItem) ) {
+
+
+                            if (!add.isEmpty()) {
+                                if (!selectedHP.isEmpty()) {
+                                    selectedItem += " " + selectedHP + "HP" + "\n" + " (" + add + ")";
+                                } else {
+                                    selectedItem = selectedHP;
+                                }
+                                autoCompleteTextView1.setText(selectedItem);
+                            }else if (!selectedHP.isEmpty()) {
+                                if (!selectedItem.isEmpty()) {
+                                    selectedItem += " " + selectedHP + "HP";
+                                } else {
+                                    selectedItem = selectedHP;
+                                }
+                                autoCompleteTextView1.setText(selectedItem);
                             }
+
                         }
+
+
 
 
                         // counter para sa skel
@@ -447,23 +539,6 @@ public class Inputing extends AppCompatActivity {
                         }
 
 
-                        // Additional validation for "ACU"
-                        String selectedHP = Horsepower.getText().toString();
-
-                        //IF ACU IS SELECTED MATING DATA
-                        if ("ACU".equals(selectedItem)) {
-                            if (!selectedHP.isEmpty()) {
-                                if (!selectedItem.isEmpty()) {
-                                    selectedItem += " " + selectedHP + "HP";
-                                } else {
-                                    selectedItem = selectedHP;
-                                }
-                                autoCompleteTextView1.setText(selectedItem);
-                            } else {
-                                Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                                return; // return if validation fails
-                            }
-                        }
                         OPlus.setText("1");//MATIC
                         V.setText("230");//MATIC
                         P.setText("2");//MATIC
@@ -508,144 +583,9 @@ public class Inputing extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ProjectName = getIntent().getStringExtra("ProjectName");
-                if(Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty())
-                {
-                    Toast.makeText(Inputing.this, "Please fill up all the fields", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    // PROCEED
-                    String selectedItem = autoCompleteTextView1.getText().toString();
-                    String selectedWatts = Watts.getText().toString();
-                    if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    AT.setText("30");
-                }
-                    if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
-                        // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                        AT.setText("20"); // Set the default value for other items
-                    }
-                    if ("Convenience Outlet".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "ACU".equals(selectedItem)) {
-                        // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                        SMM.setText("3.5");
-                        GMM.setText("3.5");
-                    }
-                    if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
-                        // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
-                    }
-                    if ("Lighting Outlet".equals(selectedItem)) {
-                        // If the user chooses Lighting Outlet, set the value of AT to 15
-                        AT.setText("15");
-                        SMM.setText("2");
-                        GMM.setText("2");
-
-                    }
-
-                    if ("Spare".equals(selectedItem)) {
-                        // If the user chooses Lighting Outlet, set the value of AT to 15
-                        SMM.setText("Stub");
-                        GMM.setText("");
-                    }
-
-                    if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                        // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                        SNUM.setText("2");//MATIC
-                        GNUM.setText("1");//MATIC
-                        STYPE.setText("THHN");//MATIC
-                        GTYPE.setText("THW");//MATIC
-                    } else{
-                        SNUM.setText("");//MATIC
-                        GNUM.setText("");//MATIC
-                        STYPE.setText("UP");//MATIC
-                        GTYPE.setText("");//MATIC
-                    }
-
-                    if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-
-                    }
-
-
-                    if ("ACU".equals(selectedItem)) {
-                        horses.setVisibility(View.VISIBLE);
-                        Quantity.setText("1");
-                    } else {
-                        horses.setVisibility(View.GONE);
-                    }
-
-                    computeVA();
-                    computeA();
-
-
-                    // Your existing validation for "Lighting Outlet"
-                    if ("Lighting Outlet".equals(selectedItem)) {
-                        if (!selectedWatts.isEmpty()) {
-                            if (!selectedItem.isEmpty()) {
-                                selectedItem += ", " + selectedWatts + "W";
-                            } else {
-                                selectedItem = selectedWatts;
-                            }
-                            autoCompleteTextView1.setText(selectedItem);
-                        } else {
-                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                            return; // return if validation fails
-                        }
-                    }
-
-
-
-                    // Additional validation for "ACU"
-                    String selectedHP = Horsepower.getText().toString();
-
-                    //IF ACU IS SELECTED MATING DATA
-                    if ("ACU".equals(selectedItem)) {
-                        if (!selectedHP.isEmpty()) {
-                            if (!selectedItem.isEmpty()) {
-                                selectedItem += " " + selectedHP + "HP";
-                            } else {
-                                selectedItem = selectedHP;
-                            }
-                            autoCompleteTextView1.setText(selectedItem);
-                        } else {
-                            Toast.makeText(Inputing.this, "Please select 'Lighting Outlet' only", Toast.LENGTH_SHORT).show();
-                            return; // return if validation fails
-                        }
-                    }
-
-                    OPlus.setText("1");
-                    V.setText("233");
-                    P.setText("2");
-                    AF.setText("50");
-                    MMPlus.setText("20");
-                    CTYPE.setText("PVC");
-                    helper.updateData(projectTable,
-                            ProjectName,
-                            Quantity.getText().toString()
-                            ,autoCompleteTextView1.getText().toString()
-                            ,OPlus.getText().toString()
-                            ,V.getText().toString()
-                            ,VA.getText().toString()
-                            ,A.getText().toString()
-                            ,P.getText().toString()
-                            ,AT.getText().toString()
-                            ,AF.getText().toString()
-                            ,SNUM.getText().toString()
-                            ,SMM.getText().toString()
-                            ,STYPE.getText().toString()
-                            ,GNUM.getText().toString()
-                            ,GMM.getText().toString()
-                            ,GTYPE.getText().toString()
-                            ,MMPlus.getText().toString()
-                            ,CTYPE.getText().toString());
-                    Toast.makeText(Inputing.this, "Data Updated", Toast.LENGTH_SHORT).show();
-
-
-                }
+                onBackPressed(); // Call onBackPressed() method when the button is clicked
             }
         });
-
         preview.setOnClickListener(new View.OnClickListener() {
 
 
@@ -725,38 +665,198 @@ public class Inputing extends AppCompatActivity {
             } });
 
         preview2.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-                        builder.setTitle("Alert");
-                        builder.setMessage("Do you want to update this Item?");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Proceed with preview
-
-                                proceedWithPreview();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+                builder.setTitle("Alert");
+                builder.setMessage("Do you want to update this Item?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Proceed with preview
+                        if(Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty())
+                        {
+                            Toast.makeText(Inputing.this, "Please fill up all the fields", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            String ProjectName = getIntent().getStringExtra("ProjectName");
+                            // PROCEED
+                            String selectedItem = autoCompleteTextView1.getText().toString();
+                            String selectedWatts = Watts.getText().toString();
+                            if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                                // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                                AT.setText("30");
                             }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // User canceled, do nothing
+                            if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                                // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                                AT.setText("20"); // Set the default value for other items
                             }
-                        });
-                        // Show the AlertDialog
-                        builder.show();
+                            if ("Convenience Outlet".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "ACU".equals(selectedItem)) {
+                                // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                                SMM.setText("3.5");
+                                GMM.setText("3.5");
+                            }
+                            if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
+                                // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                                SMM.setText("5.5");
+                                GMM.setText("5.5");
+                            }
+                            if ("Lighting Outlet".equals(selectedItem)) {
+                                // If the user chooses Lighting Outlet, set the value of AT to 15
+                                AT.setText("15");
+                                SMM.setText("2");
+                                GMM.setText("2");
+
+                            }
+
+                            if ("Spare".equals(selectedItem)) {
+                                // If the user chooses Lighting Outlet, set the value of AT to 15
+                                SMM.setText("Stub");
+                                GMM.setText("");
+                            }
+
+                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                                // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                                SNUM.setText("2");//MATIC
+                                GNUM.setText("1");//MATIC
+                                STYPE.setText("THHN");//MATIC
+                                GTYPE.setText("THW");//MATIC
+                            } else{
+                                SNUM.setText("");//MATIC
+                                GNUM.setText("");//MATIC
+                                STYPE.setText("UP");//MATIC
+                                GTYPE.setText("");//MATIC
+                            }
+
+                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+
+                            }
+
+
+                            if ("ACU".equals(selectedItem)) {
+                                horses.setVisibility(View.VISIBLE);
+                                Quantity.setText("1");
+                            } else {
+                                horses.setVisibility(View.GONE);
+                            }
+
+                            computeVA();
+                            computeA();
+
+                            String add = others.getText().toString();
+                            String selectedHP = Horsepower.getText().toString();
+
+                            if ("Convenience Outlet".equals(selectedItem) ||"Spare".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+
+                                if (!add.isEmpty()) {
+                                    if (!selectedItem.isEmpty()) {
+                                        selectedItem += "\n" + " (" + add + ")";
+                                    } else {
+                                        selectedItem = add;
+                                    }
+                                    autoCompleteTextView1.setText(selectedItem);
+                                }
+
+                            } else if ("Lighting Outlet".equals(selectedItem) ) {
+
+
+                                if (!add.isEmpty()) {
+                                    if (!selectedWatts.isEmpty()) {
+                                        selectedItem += ", " + selectedWatts + "W" + "\n" + " (" + add + ")";
+                                    } else {
+                                        selectedItem = selectedWatts;
+                                    }
+
+                                    autoCompleteTextView1.setText(selectedItem);
+                                } else if (!selectedWatts.isEmpty()) {
+                                    if (!selectedItem.isEmpty()) {
+                                        selectedItem += ", " + selectedWatts + "W";
+                                    } else {
+                                        selectedItem = selectedWatts;
+                                    }
+                                    autoCompleteTextView1.setText(selectedItem);
+                                }
+
+                            }else if ("ACU".equals(selectedItem) ) {
+
+
+                                if (!add.isEmpty()) {
+                                    if (!selectedHP.isEmpty()) {
+                                        selectedItem += " " + selectedHP + "HP" + "\n" + " (" + add + ")";
+                                    } else {
+                                        selectedItem = selectedHP;
+                                    }
+                                    autoCompleteTextView1.setText(selectedItem);
+                                }else if (!selectedHP.isEmpty()) {
+                                    if (!selectedItem.isEmpty()) {
+                                        selectedItem += " " + selectedHP + "HP";
+                                    } else {
+                                        selectedItem = selectedHP;
+                                    }
+                                    autoCompleteTextView1.setText(selectedItem);
+                                }
+
+                            }
+
+                            OPlus.setText("1");
+                            V.setText("233");
+                            P.setText("2");
+                            AF.setText("50");
+                            MMPlus.setText("20");
+                            CTYPE.setText("PVC");
+                            helper.updateData(projectTable,
+                                    ProjectName,
+                                    Quantity.getText().toString()
+                                    ,autoCompleteTextView1.getText().toString()
+                                    ,OPlus.getText().toString()
+                                    ,V.getText().toString()
+                                    ,VA.getText().toString()
+                                    ,A.getText().toString()
+                                    ,P.getText().toString()
+                                    ,AT.getText().toString()
+                                    ,AF.getText().toString()
+                                    ,SNUM.getText().toString()
+                                    ,SMM.getText().toString()
+                                    ,STYPE.getText().toString()
+                                    ,GNUM.getText().toString()
+                                    ,GMM.getText().toString()
+                                    ,GTYPE.getText().toString()
+                                    ,MMPlus.getText().toString()
+                                    ,CTYPE.getText().toString());
+                            Toast.makeText(Inputing.this, "Data Updated", Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+                        proceedWithPreview();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User canceled, do nothing
+                    }
+                });
+                // Show the AlertDialog
+                builder.show();
+
+
+
+            }
 
 
 
 
 
 
-            } });
+
+
+
+
+             });
+
 
 
 
@@ -771,6 +871,9 @@ public class Inputing extends AppCompatActivity {
 
 
     }
+
+
+
 
     private void proceedWithPreview() {
 

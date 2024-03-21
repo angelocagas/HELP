@@ -33,17 +33,20 @@
 
             <ImageView
                 android:id="@+id/border1"
-                android:layout_width="800dp"
+                android:layout_width="799dp"
                 android:layout_height="43dp"
+                android:layout_alignParentStart="true"
                 android:background="@drawable/boardupper" />
+
 
             <ImageView
                 android:id="@+id/border2"
                 android:layout_width="800dp"
                 android:layout_height="20dp"
+                android:layout_alignStart="@+id/border1"
                 android:layout_above="@+id/border3"
                 android:layout_below="@+id/border1"
-                android:layout_marginLeft="-0.5dp"
+                android:layout_alignEnd="@+id/border1"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/boardmid" />
 
@@ -51,17 +54,30 @@
                 android:id="@+id/recylcer_view"
                 android:layout_width="800dp"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/border1"
+                android:layout_marginStart="1dp"
                 android:layout_below="@+id/border1"
                 android:layout_marginTop="0dp"
+                android:layout_marginEnd="2dp"
                 android:nestedScrollingEnabled="false" />
 
-
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/border1"
+                android:layout_above="@id/border3"
+                android:layout_marginTop="-1dp"
+                android:layout_marginStart="-1dp"
+                android:background="@android:color/black"
+                android:layout_alignStart="@id/border1"/>
             <ImageView
                 android:id="@+id/border3"
                 android:layout_width="800dp"
                 android:layout_height="125dp"
+                android:layout_marginStart="-1dp"
+                android:layout_alignStart="@+id/border1"
                 android:layout_below="@+id/recylcer_view"
-                android:layout_marginLeft="-1dp"
+                android:layout_marginLeft="0dp"
                 android:background="@drawable/boardlower" />
 
 
@@ -146,7 +162,7 @@
                     android:id="@+id/TopThreeAndFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="165.6dp"
+                    android:layout_marginLeft="180.6dp"
                     android:text="12.00"
                     android:textColor="@color/black"
                     android:textSize="9dp"
@@ -201,7 +217,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="175dp"
+                    android:layout_marginLeft="180.6dp"
                     android:text="0.80"
                     android:textColor="@color/black"
                     android:textSize="9dp"
@@ -213,7 +229,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="250dp"
+                    android:layout_marginLeft="260dp"
                     android:text="1.5"
                     android:textColor="@color/black"
                     android:textSize="9dp"
@@ -284,7 +300,7 @@
                     android:id="@+id/underthreeandfour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="169.5dp"
+                    android:layout_marginLeft="180.6dp"
                     android:text="60.78"
                     android:textColor="@color/black"
                     android:textSize="9dp"
@@ -335,7 +351,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="299dp"
+                android:layout_marginLeft="304.8dp"
                 android:layout_marginTop="18dp"
                 android:text="25820"
                 android:textColor="@color/black"
@@ -347,9 +363,10 @@
 
                 android:id="@+id/totalA"
                 android:layout_width="72dp"
+                android:layout_toEndOf="@+id/totalVA"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="333dp"
+                android:layout_marginLeft="3dp"
                 android:layout_marginTop="18dp"
              android:textAlignment="center"
                 android:text="1122.26"
@@ -375,7 +392,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="450dp"
+                android:layout_marginLeft="540dp"
                 android:layout_marginTop="88dp"
                 android:gravity="start"
                 android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
@@ -389,7 +406,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="450dp"
+                android:layout_marginLeft="540dp"
                 android:layout_marginTop="88dp"
                 android:gravity="start"
                 android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
@@ -421,7 +438,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
-                android:layout_marginLeft="493dp"
+                android:layout_marginLeft="475dp"
                 android:layout_marginTop="55dp"
                 android:gravity="start"
                 android:text="2 - 1.0mm.sq. THHN Cu. Wire "

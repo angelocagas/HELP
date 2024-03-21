@@ -399,7 +399,6 @@ public class Inputing extends AppCompatActivity {
         });
         SharedPreferences finalSharedPreferences = sharedPreferences;
 
-
 //NEXT BUTTON
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -624,6 +623,7 @@ public class Inputing extends AppCompatActivity {
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                counter++;
                                 // Proceed with preview
                                 Quantity.setText("1");
                                 autoCompleteTextView1.setText("Spare");
@@ -644,7 +644,7 @@ public class Inputing extends AppCompatActivity {
 
                                 computeVA();
                                 computeA();
-                                counter++;
+
                                 helper.addNewProject(
                                         ProjectName,
                                         Quantity.getText().toString(),
@@ -686,6 +686,7 @@ public class Inputing extends AppCompatActivity {
                         // Show the AlertDialog
                         builder.show();
                     } else {
+
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
                         builder.setTitle("Alert");

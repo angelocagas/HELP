@@ -182,32 +182,25 @@ public class Inputing extends AppCompatActivity {
                 wattspop.setText(String.valueOf(wattsup));
             }
 
-            //for description display
-            //populate the description
-            String[] prefixes = {"Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "Refrigerator", "Spare"};
 
-            String descriptionText = "";
-            for (String prefix : prefixes) {
-                if (item.startsWith(prefix)) {
+            if (item.startsWith("Lighting Outlet") || item.startsWith("Convenience Outlet") || item.startsWith("ACU") || item.startsWith("Water Heater") || item.startsWith("Range") || item.startsWith("Refrigerator") || item.startsWith("Spare")) {
+                // Check if the item starts with any of the specified strings
 
-                    descriptionText = item.substring(prefix.length()).trim();
+                // Find the opening and closing parentheses
+                int startIndex1 = item.indexOf('(');
+                int endIndex1 = item.indexOf(')');
 
-                    // Find the opening and closing parentheses
-                    int startIndex1 = descriptionText.indexOf('(');
-                    int endIndex1 = descriptionText.indexOf(')');
-
-                    // Extract the text inside the parentheses
-                    if (startIndex1 != -1 && endIndex1 != -1 && startIndex1 < endIndex1) {
-                        descriptionText = descriptionText.substring(startIndex1 + 1, endIndex1).trim();
-                        descpop.setText(descriptionText);
-                    } else {
-                        // If no valid parentheses found, set remainingText to an empty string
-                        descpop.setText(descriptionText);
-                    }
-
-                    break;
+                // Extract the text inside the parentheses
+                if (startIndex1 != -1 && endIndex1 != -1 && startIndex1 < endIndex1) {
+                    String extractedText = item.substring(startIndex1 + 1, endIndex1).trim();
+                    descpop.setText(extractedText); // Set the extracted text to a UI element, e.g., descpop
+                } else {
+                    // If no valid parentheses found, set descpop text to an empty string
+                    descpop.setText("");
                 }
             }
+
+
 
 
 

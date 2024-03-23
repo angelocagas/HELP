@@ -2418,13 +2418,19 @@ public  boolean onCreateOptionsMenu(Menu menu){
                 SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
                 editor.putInt("currentTableCount", currentTableCount);
                 editor.apply();
-                // Proceed with inputting data for the next table
-                // For example, to start a new activity for inputting data
-                Intent intent = new Intent(this, Inputing.class);
-                intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
-                startActivity(intent);
-                databaseHelper.clearTable();
-                Toast.makeText(this, "Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
+                if(currentTableCount != 3){
+                    // Proceed with inputting data for the next table
+                    // For example, to start a new activity for inputting data
+                    Intent intent = new Intent(this, Inputing.class);
+                    intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
+                    startActivity(intent);
+                    databaseHelper.clearTable();
+                    Toast.makeText(this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(this, "Limit of " + currentTableCount + " tables has been reached.", Toast.LENGTH_SHORT).show();
+                }
+
             } else {
                 // Handle what to do when the maximum number of tables is reached
                 Toast.makeText(this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();

@@ -270,7 +270,6 @@ public class DatabaseHelper {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                Toast.makeText(context, "Fresh Project", Toast.LENGTH_SHORT).show();
             }
         }
 

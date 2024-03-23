@@ -399,8 +399,10 @@
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
 
+
+
                 <TextView
-                    android:id="@+id/UpdatedMainWire"
+                    android:id="@+id/MainWirePass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/border2"
@@ -411,22 +413,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    android:visibility="gone"
-                    tools:ignore="TextSizeCheck" />
-
-                <TextView
-                    android:id="@+id/MainWirePass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/border2"
-                    android:layout_marginLeft="450dp"
-                    android:layout_marginTop="88dp"
-                    android:gravity="start"
-                    android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
-                    android:textColor="@color/black"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:ignore="TextSizeCheck" />
 
 
@@ -445,15 +432,31 @@
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
-                    android:id="@+id/FeederWireSecond"
+                    android:id="@+id/UpdatedMainWire"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/border2"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginLeft="475dp"
                     android:layout_marginTop="55dp"
-                    android:layout_toEndOf="@id/FeederWire"
                     android:gravity="start"
-                    android:text="+ 1 - 2.0 mm.sq."
+                    android:text="2 - 1.0mm.sq. THHN Cu. Wire "
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/FeederWireSecond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/border2"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="47dp"
+                    android:layout_toEndOf="@id/FeederWire"
+                    android:gravity="bottom"
+                    android:text="+ 1 - 2.0 mm.sq. THHN Cu.Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -462,7 +465,6 @@
                 <TextView
 
                     android:id="@+id/FeederSize"
-
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_below="@id/border2"
@@ -474,7 +476,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -490,6 +492,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -521,6 +524,7 @@
                     android:text="Cu. Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
+                    android:visibility="invisible"
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
 
@@ -4057,7 +4061,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="70dp"
-                        >
+                        android:visibility="gone">
 
 
                         <ImageView
@@ -4355,268 +4359,268 @@
 
                         <TextView
                             android:id="@+id/num24_a1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="110dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="96dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A1"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="110dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="96dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A2"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a3"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="160dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="146dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A3"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="160dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="146dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A4"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="208dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="195dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a6"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="208dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="195dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A6"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a7"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="258dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="244dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A7"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a8"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="258dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="244dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A8"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a9"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="305dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="292dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a10"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="305dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="292dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a11"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="355dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="342dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a12"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="355dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="342dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a13"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="405dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="392dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a14"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="405dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="392dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
                             android:id="@+id/num24_a15"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="454dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="440dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a16"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="454dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="440dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a17"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="505dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="490dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a18"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="505dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="490dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a19"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="553dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="540dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a20"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="553dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="540dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a21"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="600dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="589dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a22"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="600dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="589dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a23"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="156dp"
-                            android:layout_marginTop="649dp"
+                            android:layout_marginLeft="144dp"
+                            android:layout_marginTop="638dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num24_a24"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="232dp"
-                            android:layout_marginTop="649dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="638dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -4974,288 +4978,288 @@
                             android:id="@+id/num26_a1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="100dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="87dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A1"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="100dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="87dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A2"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="133dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A3"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="133dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A4"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="193dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="179dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="193dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="179dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A6"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="238dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="223dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A7"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="238dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="223dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A8"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="283dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="270dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="283dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="270dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="328dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="316dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="328dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="316dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="375dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="362dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="375dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="362dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
                             android:id="@+id/num26_a15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="420dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="407dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="420dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="407dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a17"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="466dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="452dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="466dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="452dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a19"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="515dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="499dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="515dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="499dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="560dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="544dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="560dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="544dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a23"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="607dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="590dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a24"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="607dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="590dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a25"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="155dp"
-                            android:layout_marginTop="652dp"
+                            android:layout_marginLeft="140dp"
+                            android:layout_marginTop="635dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num26_a26"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="225dp"
-                            android:layout_marginTop="652dp"
+                            android:layout_marginLeft="212dp"
+                            android:layout_marginTop="635dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -5636,312 +5640,312 @@
 
                         <TextView
                             android:id="@+id/num28_a1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="105dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="90dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A1"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="105dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="90dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A2"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a3"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="134dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A3"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="134dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A4"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="190dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="177dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a6"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="190dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="177dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A6"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a7"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="232dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="219dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A7"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a8"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="232dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="219dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A8"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a9"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="277dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="259dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a10"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="277dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="259dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a11"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="318dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="306dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a12"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="318dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="306dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a13"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="364dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="349dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a14"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="364dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="349dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
                             android:id="@+id/num28_a15"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="408dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="390dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a16"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="408dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="390dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a17"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="449dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="435dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a18"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="449dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="435dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a19"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="495dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="479dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a20"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="495dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="479dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a21"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="535dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="520dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a22"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="535dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="520dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a23"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="580dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="563dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a24"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="580dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="563dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a25"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="625dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="608dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a26"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="625dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="608dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a27"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="665dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="649dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/num28_a28"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="665dp"
+                            android:layout_marginLeft="206dp"
+                            android:layout_marginTop="649dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -6345,10 +6349,10 @@
 
                         <TextView
                             android:id="@+id/num30_a1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="115dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="100dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A1"
@@ -6356,10 +6360,10 @@
 
                         <TextView
                             android:id="@+id/num30_a2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="115dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="100dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A2"
@@ -6367,10 +6371,10 @@
 
                         <TextView
                             android:id="@+id/num30_a3"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="150dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="138dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A3"
@@ -6378,10 +6382,10 @@
 
                         <TextView
                             android:id="@+id/num30_a4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="150dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="138dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A4"
@@ -6389,10 +6393,10 @@
 
                         <TextView
                             android:id="@+id/num30_a5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="190dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="178dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6400,10 +6404,10 @@
 
                         <TextView
                             android:id="@+id/num30_a6"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="190dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="178dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A6"
@@ -6411,10 +6415,10 @@
 
                         <TextView
                             android:id="@+id/num30_a7"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="232dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="218dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A7"
@@ -6422,10 +6426,10 @@
 
                         <TextView
                             android:id="@+id/num30_a8"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="232dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="218dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A8"
@@ -6433,10 +6437,10 @@
 
                         <TextView
                             android:id="@+id/num30_a9"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="277dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="258dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6444,10 +6448,10 @@
 
                         <TextView
                             android:id="@+id/num30_a10"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="277dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="258dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6455,10 +6459,10 @@
 
                         <TextView
                             android:id="@+id/num30_a11"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="313dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="297dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6466,10 +6470,10 @@
 
                         <TextView
                             android:id="@+id/num30_a12"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="313dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="297dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6477,10 +6481,10 @@
 
                         <TextView
                             android:id="@+id/num30_a13"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="353dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="337dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6488,10 +6492,10 @@
 
                         <TextView
                             android:id="@+id/num30_a14"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="353dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="337dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6500,10 +6504,10 @@
 
                         <TextView
                             android:id="@+id/num30_a15"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="390dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="376dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6511,10 +6515,10 @@
 
                         <TextView
                             android:id="@+id/num30_a16"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="390dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="376dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6522,10 +6526,10 @@
 
                         <TextView
                             android:id="@+id/num30_a17"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="430dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="415dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6533,10 +6537,10 @@
 
                         <TextView
                             android:id="@+id/num30_a18"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="430dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="415dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6544,10 +6548,10 @@
 
                         <TextView
                             android:id="@+id/num30_a19"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="470dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="455dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6555,10 +6559,10 @@
 
                         <TextView
                             android:id="@+id/num30_a20"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="470dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="455dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6566,10 +6570,10 @@
 
                         <TextView
                             android:id="@+id/num30_a21"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="510dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="495dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6577,10 +6581,10 @@
 
                         <TextView
                             android:id="@+id/num30_a22"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="510dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="495dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6588,10 +6592,10 @@
 
                         <TextView
                             android:id="@+id/num30_a23"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="550dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="534dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6599,10 +6603,10 @@
 
                         <TextView
                             android:id="@+id/num30_a24"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="550dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="534dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6610,10 +6614,10 @@
 
                         <TextView
                             android:id="@+id/num30_a25"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="590dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="574dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6621,10 +6625,10 @@
 
                         <TextView
                             android:id="@+id/num30_a26"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="590dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="574dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6632,10 +6636,10 @@
 
                         <TextView
                             android:id="@+id/num30_a27"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="625dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="613dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6643,10 +6647,10 @@
 
                         <TextView
                             android:id="@+id/num30_a28"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="625dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="613dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -6654,10 +6658,10 @@
 
                         <TextView
                             android:id="@+id/num30_a29"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="152dp"
-                            android:layout_marginTop="665dp"
+                            android:layout_marginLeft="139dp"
+                            android:layout_marginTop="653dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -6665,10 +6669,10 @@
 
                         <TextView
                             android:id="@+id/num30_a30"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="219dp"
-                            android:layout_marginTop="665dp"
+                            android:layout_marginLeft="204dp"
+                            android:layout_marginTop="653dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"

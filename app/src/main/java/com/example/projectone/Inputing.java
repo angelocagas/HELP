@@ -255,8 +255,8 @@ public class Inputing extends AppCompatActivity {
                 if ("Lighting Outlet".equals(selectedItem)) {
                     // If the user chooses Lighting Outlet, set the value of AT to 15
                     AT.setText("15");
-                    SMM.setText("2");
-                    GMM.setText("2");
+                    SMM.setText("3.5");
+                    GMM.setText("3.5");
 
                 }
 

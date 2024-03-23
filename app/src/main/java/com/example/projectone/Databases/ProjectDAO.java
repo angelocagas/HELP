@@ -20,6 +20,8 @@ public interface ProjectDAO {
     List<ProjectTable> selectITEM();
     @Query("SELECT * FROM projecttable")
     List<ProjectTable> selectAT();
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectA();
 
     @Update
     void updateData(ProjectTable projectTable);

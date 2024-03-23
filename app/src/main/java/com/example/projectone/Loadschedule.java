@@ -1298,7 +1298,267 @@ public class Loadschedule extends AppCompatActivity {
             }
         });
      ///   List<String> itemSList = getIntent().getStringArrayListExtra("itemListS");
+        dbHelper.getAllATsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
+            @Override
+            public void onItemsLoaded(List<String>TSList) {
+                if (TSList != null) {
+                    switch (TSList.size()) {
+                        case 4:
+                           RS4.setVisibility(View.VISIBLE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
 
+                            break;
+                        case 6:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.VISIBLE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 8:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.VISIBLE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 10:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.VISIBLE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+
+                            break;
+
+                        case 12:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.VISIBLE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+                            break;
+                        case 14:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.VISIBLE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 16:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.VISIBLE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 18:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.VISIBLE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 20:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.VISIBLE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+
+
+                            break;
+                        case 22:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.VISIBLE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+                            break;
+                        case 24:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.VISIBLE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+                            break;
+                        case 26:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.VISIBLE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.GONE);
+
+                            break;
+                        case 28:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.VISIBLE);
+                            RS30.setVisibility(View.GONE);
+
+
+                            break;
+                        case 30:
+                            RS4.setVisibility(View.GONE);
+                            RS6.setVisibility(View.GONE);
+                            RS8.setVisibility(View.GONE);
+                            RS10.setVisibility(View.GONE);
+                            RS12.setVisibility(View.GONE);
+                            RS14.setVisibility(View.GONE);
+                            RS16.setVisibility(View.GONE);
+                            RS18.setVisibility(View.GONE);
+                            RS20.setVisibility(View.GONE);
+                            RS22.setVisibility(View.GONE);
+                            RS24.setVisibility(View.GONE);
+                            RS26.setVisibility(View.GONE);
+                            RS28.setVisibility(View.GONE);
+                            RS30.setVisibility(View.VISIBLE);
+
+                            break;
+                        default:
+                            // Handle other cases if necessary
+                    }
+
+                }
+            }
+        });
 
 
 
@@ -1317,20 +1577,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
 //minimize the space for skeleton display
-            if (CTR != null) {
-                int ctrValue = Integer.parseInt(CTR);
-                CTRtv.setText(CTR);
 
-                View[] rsViews = {RS4, RS6, RS8, RS10, RS12, RS14, RS16, RS18, RS20, RS22, RS24, RS26, RS28, RS30};
-
-                for (int i = 0; i < rsViews.length; i++) {
-                    if (ctrValue == 5 + 2 * i) {
-                        rsViews[i].setVisibility(View.VISIBLE);
-                    } else {
-                        rsViews[i].setVisibility(View.GONE);
-                    }
-                }
-            }
 
 
 

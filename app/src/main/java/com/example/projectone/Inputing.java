@@ -142,6 +142,7 @@ public class Inputing extends AppCompatActivity {
             // Check if item starts with "ACU"
             else if (item.startsWith("ACU")) {
                 autoCompleteTextView1.setText("ACU");
+                horses.setVisibility(View.VISIBLE);
                 //for HORSEPOWER DISPLAY
                 int startIndex = item.indexOf("ACU ");
                 int endIndex = item.indexOf("PH");
@@ -169,6 +170,7 @@ public class Inputing extends AppCompatActivity {
             TextInputEditText descpop = findViewById(R.id.others); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
             TextInputEditText wattspop = findViewById(R.id.Watts); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
 
+            //for watts display
             if (quan.equals("1")) {
                 // If quantity is 1, display VAs directly
                 wattspop.setText(VAs);
@@ -181,34 +183,24 @@ public class Inputing extends AppCompatActivity {
             }
 
 
+            if (item.startsWith("Lighting Outlet") || item.startsWith("Convenience Outlet") || item.startsWith("ACU") || item.startsWith("Water Heater") || item.startsWith("Range") || item.startsWith("Refrigerator") || item.startsWith("Spare")) {
+                // Check if the item starts with any of the specified strings
 
+                // Find the opening and closing parentheses
+                int startIndex1 = item.indexOf('(');
+                int endIndex1 = item.indexOf(')');
 
-
-            //populate the description
-            String[] prefixes = {"Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "Refrigerator", "Spare"};
-
-            String descriptionText = "";
-            for (String prefix : prefixes) {
-                if (item.startsWith(prefix)) {
-
-                    descriptionText = item.substring(prefix.length()).trim();
-
-                    // Find the opening and closing parentheses
-                    int startIndex = descriptionText.indexOf('(');
-                    int endIndex = descriptionText.indexOf(')');
-
-                    // Extract the text inside the parentheses
-                    if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
-                        descriptionText = descriptionText.substring(startIndex + 1, endIndex).trim();
-                        descpop.setText(descriptionText);
-                    } else {
-                        // If no valid parentheses found, set remainingText to an empty string
-                        descpop.setText(descriptionText);
-                    }
-
-                    break;
+                // Extract the text inside the parentheses
+                if (startIndex1 != -1 && endIndex1 != -1 && startIndex1 < endIndex1) {
+                    String extractedText = item.substring(startIndex1 + 1, endIndex1).trim();
+                    descpop.setText(extractedText); // Set the extracted text to a UI element, e.g., descpop
+                } else {
+                    // If no valid parentheses found, set descpop text to an empty string
+                    descpop.setText("");
                 }
             }
+
+
 
 
 
@@ -216,7 +208,7 @@ public class Inputing extends AppCompatActivity {
             // Otherwise, enable the "Next" button
             next.setVisibility(View.VISIBLE);
            preview.setVisibility(View.VISIBLE);
-
+            horses.setVisibility(View.GONE);
             update.setVisibility(View.GONE);
             preview2.setVisibility(View.GONE);
         }
@@ -399,7 +391,6 @@ public class Inputing extends AppCompatActivity {
             }
         });
         SharedPreferences finalSharedPreferences = sharedPreferences;
-
 
 //NEXT BUTTON
         next.setOnClickListener(new View.OnClickListener() {
@@ -617,13 +608,64 @@ public class Inputing extends AppCompatActivity {
 
                     if  (counter == 6 || counter == 8 || counter == 10 || counter == 12 || counter == 14 || counter == 16 || counter == 18 || counter == 20 || counter == 22 || counter == 24 || counter == 26 || counter == 28 || counter == 30) {
                         // Create an AlertDialog.Builder instance
+                        String ProjectName = getIntent().getStringExtra("ProjectName");
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
                         builder.setTitle("Alert");
                         builder.setMessage("You are trying to preview with an odd number. Do you want to continue and add 1 spare?");
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                counter++;
                                 // Proceed with preview
+                                Quantity.setText("1");
+                                autoCompleteTextView1.setText("Spare");
+                                OPlus.setText("1");//MATIC
+                                V.setText("230");//MATIC
+                                Watts.setText("1500");
+                                P.setText("2");//MATIC
+                                AT.setText("20");
+                                AF.setText("50");//MATIC
+                                SNUM.setText("");//MATIC
+                                SMM.setText("Stub");
+                                STYPE.setText("UP");//MATIC
+                                GNUM.setText("");//MATIC
+                                GMM.setText("");//MATIC
+                                GTYPE.setText("THW");//MATIC
+                                MMPlus.setText("20");//MATIC
+                                CTYPE.setText("PVC");//MATIC
+
+                                computeVA();
+                                computeA();
+
+                                helper.addNewProject(
+                                        ProjectName,
+                                        Quantity.getText().toString(),
+                                        autoCompleteTextView1.getText().toString(),
+                                        OPlus.getText().toString(),
+                                        V.getText().toString(),
+                                        VA.getText().toString(),
+                                        A.getText().toString(),
+                                        P.getText().toString(),
+                                        AT.getText().toString(),
+                                        AF.getText().toString(),
+                                        SNUM.getText().toString(),
+                                        SMM.getText().toString(),
+                                        STYPE.getText().toString(),
+                                        GNUM.getText().toString(),
+                                        GMM.getText().toString(),
+                                        GTYPE.getText().toString(),
+                                        MMPlus.getText().toString(),
+                                        CTYPE.getText().toString()
+
+
+                                );
+                                Quantity.setText(null);
+                                autoCompleteTextView1.setText(null);
+                                Watts.setText(null);
+                                Horsepower.setText(null);
+                                others.setText(null);
+
                                 proceedWithPreview();
 
                             }
@@ -637,6 +679,7 @@ public class Inputing extends AppCompatActivity {
                         // Show the AlertDialog
                         builder.show();
                     } else {
+
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
                         builder.setTitle("Alert");

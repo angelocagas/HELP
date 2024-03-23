@@ -30,6 +30,12 @@
         <activity
             android:name=".UpdateDataActivity"
             android:exported="false" />
+        <activity android:name=".ChangePipeSize"
+        android:exported="false" />
+        <activity android:name=".Changefirst"
+        android:exported="false" />
+
+
         <activity
             android:name=".Loadschedule"
             android:exported="false"

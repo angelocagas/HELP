@@ -399,8 +399,10 @@
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
 
+
+
                 <TextView
-                    android:id="@+id/UpdatedMainWire"
+                    android:id="@+id/MainWirePass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/border2"
@@ -411,22 +413,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    android:visibility="gone"
-                    tools:ignore="TextSizeCheck" />
-
-                <TextView
-                    android:id="@+id/MainWirePass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/border2"
-                    android:layout_marginLeft="450dp"
-                    android:layout_marginTop="88dp"
-                    android:gravity="start"
-                    android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
-                    android:textColor="@color/black"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:ignore="TextSizeCheck" />
 
 
@@ -445,15 +432,31 @@
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
-                    android:id="@+id/FeederWireSecond"
+                    android:id="@+id/UpdatedMainWire"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/border2"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginLeft="475dp"
                     android:layout_marginTop="55dp"
-                    android:layout_toEndOf="@id/FeederWire"
                     android:gravity="start"
-                    android:text="+ 1 - 2.0 mm.sq."
+                    android:text="2 - 1.0mm.sq. THHN Cu. Wire "
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/FeederWireSecond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/border2"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="47dp"
+                    android:layout_toEndOf="@id/FeederWire"
+                    android:gravity="bottom"
+                    android:text="+ 1 - 2.0 mm.sq. THHN Cu.Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -462,7 +465,6 @@
                 <TextView
 
                     android:id="@+id/FeederSize"
-
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_below="@id/border2"
@@ -474,7 +476,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -490,6 +492,7 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -521,6 +524,7 @@
                     android:text="Cu. Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
+                    android:visibility="invisible"
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
 
@@ -5976,7 +5980,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="60dp"
-                        >
+                        android:visibility="gone">
 
 
                         <ImageView

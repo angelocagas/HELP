@@ -50,6 +50,7 @@ import android.widget.Button;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
@@ -723,7 +724,8 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
         String UPDMT = sharedPreferences.getString("UMT","");
         String FDW = sharedPreferences.getString("UFWT","");
-
+        String TT = sharedPreferences.getString("TT","");
+        String YY = sharedPreferences.getString("YY","");
 
 
         Intent intent = getIntent();
@@ -1570,9 +1572,6 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
-
-
-
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
@@ -1592,14 +1591,18 @@ public class Loadschedule extends AppCompatActivity {
 
             if (totalA == null && HIGHA == null)
             {
-                MainWire.setVisibility(View.GONE);
-                MAINWIREPASS.setText(UPDMT);
-                MAINWIREPASS.setVisibility(View.VISIBLE);
+                FeederSize.setText(TT);
+                UpdatedMainWire.setText(YY);
+                MainWire.setText(UPDMT);
+
 
                 if (UPDMT != null)
                 {
                     FeederWireType.setText(WFGTYPE);
                 }
+
+
+
 
                 String SAVEA,SAVEHIGHAA;
                 SAVEA = sharedPreferences.getString("TOTALA","");
@@ -1650,9 +1653,6 @@ public class Loadschedule extends AppCompatActivity {
             }
 
         }
-
-
-
 
 
 
@@ -1747,192 +1747,176 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-        if (FDW != null)
-        {
-            MainWire.setText(PassMainWire);
-        }
+            if (FDW != null) {
+                MainWire.setText(PassMainWire);
+            }
 
-        if (totalUnderValue >= 1 && totalUnderValue < 25 )
-        {
-            FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 25 && totalUnderValue < 30)
-        {
-            FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 30 && totalUnderValue < 40)
-        {
-            FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 40 && totalUnderValue < 55)
-        {
-            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 55 && totalUnderValue < 75)
-        {
-            FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 75 && totalUnderValue < 95)
-        {
-            FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 95 && totalUnderValue < 115)
-        {
-            FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 115 && totalUnderValue < 130)
-        {
-            FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 130 && totalUnderValue < 150)
-        {
-            FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 150 && totalUnderValue < 170)
-        {
-            FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 170 && totalUnderValue < 205)
-        {
-            FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 205 && totalUnderValue < 240)
-        {
-            FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
-        }if (totalUnderValue >= 240 && totalUnderValue < 285)
-        {
-            FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
-        }if (totalUnderValue >= 285 && totalUnderValue < 320)
-        {
-            FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
-        }if (totalUnderValue >= 320 && totalUnderValue < 345)
-        {
-            FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
-        }if (totalUnderValue >= 345 && totalUnderValue < 360)
-        {
-            FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
-        }if (totalUnderValue >= 360 && totalUnderValue < 425)
-        {
-            FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 425 && totalUnderValue < 490)
-        {
-            FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 490 && totalUnderValue < 530)
-        {
-            FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 530 && totalUnderValue < 535)
-        {
-            FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
-        }
-        if (totalUnderValue >= 535 && totalUnderValue < 595)
-        {
-            FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
-        }
+            if (totalUnderValue >= 1 && totalUnderValue < 25) {
+                FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 25 && totalUnderValue < 30) {
+                FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 30 && totalUnderValue < 40) {
+                FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 40 && totalUnderValue < 55) {
+                FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 55 && totalUnderValue < 75) {
+                FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 75 && totalUnderValue < 95) {
+                FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 95 && totalUnderValue < 115) {
+                FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 115 && totalUnderValue < 130) {
+                FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 130 && totalUnderValue < 150) {
+                FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 150 && totalUnderValue < 170) {
+                FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 170 && totalUnderValue < 205) {
+                FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 205 && totalUnderValue < 240) {
+                FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 240 && totalUnderValue < 285) {
+                FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 285 && totalUnderValue < 320) {
+                FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 320 && totalUnderValue < 345) {
+                FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 345 && totalUnderValue < 360) {
+                FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 360 && totalUnderValue < 425) {
+                FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 425 && totalUnderValue < 490) {
+                FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 490 && totalUnderValue < 530) {
+                FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 530 && totalUnderValue < 535) {
+                FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
+            }
+            if (totalUnderValue >= 535 && totalUnderValue < 595) {
+                FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
+            }
 
 
-        String FeederW2 = FeederWire.getText().toString().trim();
+            String FeederW2 = FeederWire.getText().toString().trim();
 
 //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+            if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
 
-        }
-        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-        }
-        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+            }
+            if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+            }
+            //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
 
-        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-        }
+            if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+            }
 
-        //IF FEEDERWIRE IS 60 80   =    22
-        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-
-
-        //IF FEEDERWIRE IS 100 to 175   = 30
-
-        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-        }
-
-        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
-
-        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
+            //IF FEEDERWIRE IS 60 80   =    22
+            if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+            }
 
 
-        //IF FEEDERWIRE IS 200 to 325    50
-        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
-            FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
-        }
-        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0 mm.sq.");
-        }
+            //IF FEEDERWIRE IS 100 to 175   = 30
+
+            if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+            }
+
+            if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+            }
+
+            if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+            }
 
 
-        //IF FEEDERWIRE IS  375 to 500    600
-        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
-        }
-        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
-        }
-        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0 mm.sq.");
-        }
+            //IF FEEDERWIRE IS 200 to 325    50
+            if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+                FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
+            }
+            if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+            }
+
+
+            //IF FEEDERWIRE IS  375 to 500    600
+            if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+            }
+            if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+            }
+            if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
+                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+            }
+
 
         String Feeder2 = FeederWireSecond.getText().toString().trim();
         String Feeder3 = FeederWireFourth.getText().toString().trim();
@@ -1941,7 +1925,7 @@ public class Loadschedule extends AppCompatActivity {
 
 //for the skeleton displays values
         if (FeederW2 != null) {
-            String topText = "USE " + FeederW2 + Feeder2 + " THHN Cu. Wire " + Feeder3;
+            String topText = "USE " + FeederW2 + Feeder2 + Feeder3;
             String botText = "GEC:" + Feeder2 + " THHN Cu. Wire ";
 
             TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
@@ -1955,23 +1939,138 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
+//first update
+        FeederWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChangePVC.class);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("TOTALA", SAVEA);
-                editor.putString("HIGHAA",SaveHighA);
-                editor.apply();
-                startActivity(intent);
+                // Inflate the layout containing the TextInputEditText
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
+
+                // Find the TextInputEditText in the inflated layout
+                final TextInputEditText editTextFeederWire = dialogView.findViewById(R.id.edit_text_feeder_wire);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Feeder Wire Text")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Get the text from the TextInputEditText
+                                String newFeederWireText = editTextFeederWire.getText().toString();
+                                // Update the FeederWire with the new text
+                                FeederWire.setText("2 - " + newFeederWireText + "mm.sq. THHN Cu. Wire ");
+
+                                String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
+
+                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+
+                                for (int i = 0; i < topViews.length; i++) {
+                                    topViews[i].setText(topText);
+
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+
+
+//sira
+        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the TextInputEditText
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
+
+                // Find the TextInputEditText in the inflated layout
+                final TextInputEditText editTextpipeWire = dialogView.findViewById(R.id.edit_text_pipe_wire);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Pipe Wire Text")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Get the text from the TextInputEditText
+                                String wiresec = editTextpipeWire.getText().toString();
+                                // Update the FeederWire with the new text
+                                String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
+                                // Update TextViews
+                                FeederWireSecond.setText(newTet);
+                                String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
+                                String botText = "GEC: " + newTet;
+
+                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                                TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                                for (int i = 0; i < topViews.length; i++) {
+                                    topViews[i].setText(topText);
+                                    botViews[i].setText(botText);
+                                }
+
+
+
+
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        MainWire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the TextInputEditText
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
+
+                // Find the TextInputEditText in the inflated layout
+                final TextInputEditText ATWire = dialogView.findViewById(R.id.edit_text_AT_wire);
+                final TextInputEditText AFWire = dialogView.findViewById(R.id.edit_text_AF_wire);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Main Wire Text")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Get the text from the TextInputEditText
+                                String AT = ATWire.getText().toString();
+                                String AF = AFWire.getText().toString();
+                                // Update the FeederWire with the new text
+                                String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
+                                // Update TextViews
+                                MainWire.setText(newAfAt);
+
+
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
 
         FeederWireType.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1984,7 +2083,7 @@ public class Loadschedule extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        MainWire.setOnClickListener(new View.OnClickListener() {
+      /*  MainWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChangeMain.class);
@@ -1994,7 +2093,7 @@ public class Loadschedule extends AppCompatActivity {
                 editor.apply();
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 
@@ -2005,6 +2104,8 @@ public class Loadschedule extends AppCompatActivity {
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
+
+
     }
     public  void  setRecyclerView(List<ProjectTable> projectTableList)
     {
@@ -2415,6 +2516,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
             if (currentTableCount < 3) {
                 // Increment the current table count
                 currentTableCount++;
+
+
                 Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
 
                 // Save the updated currentTableCount using SharedPreferences

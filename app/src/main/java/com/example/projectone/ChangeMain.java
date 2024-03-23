@@ -52,6 +52,7 @@ public class ChangeMain extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("UMT", updatedMainText);
+                    intent.putExtra("executeCode3", true);
                     editor.apply();
                     startActivity(intent);
                     finish();

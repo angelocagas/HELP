@@ -36,8 +36,9 @@ public class Home extends Fragment {
                 databaseHelper.clearTable();
                 // Access the SharedPreferences file and remove the currentTableCount value
                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                editor.remove("currentTableCount");
+                editor.clear(); // Removes all data from SharedPreferences
                 editor.apply();
+
 
                 startActivity(new Intent(getActivity(), Inputing.class));
             }

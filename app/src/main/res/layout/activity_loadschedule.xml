@@ -555,7 +555,7 @@
                     android:id="@+id/skeleton"
                     android:layout_width="435dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="900dp">
+                    android:layout_marginStart="850dp">
 
                     <!-- skel 4-->
                     <RelativeLayout

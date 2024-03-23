@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -2114,6 +2115,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         /* -------------------------- PRINT ---------------------- */
         if (id == R.id.save) {
+
             // Array of choices
             final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
 
@@ -2142,10 +2144,13 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
             // Set the 'Save Now' button
             builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
+
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (selectedItem[0] != -1) {
                         String paperSize = (String) paperSizes[selectedItem[0]];
+                        currentTableCount++;
+                        captureRelativeLayoutAsImage();
 
                         // Dismiss the paper size selection dialog
                         dialog.dismiss();
@@ -2239,114 +2244,60 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                             e.printStackTrace();
                                         }
 
-                                        // Convert RelativeLayouts to Bitmaps and add them to the PDF
-                                        RelativeLayout relativeLayout = findViewById(R.id.rela);
-                                        RelativeLayout skeletonLayout = findViewById(R.id.skeleton);
+                                        // Retrieve RelativeLayout images from SharedPreferences and add them to the PDF
+                                        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                        for (int i = 1; i <= 3; i++) {
+                                            String keyRela = "relativeLayout" + i;
 
-                                        // Define the new position for the images
-                                        float xPosition = 0; // Default position
-                                        float yPosition = 0; // Default position
+                                            String relaImageBase64 = prefs.getString(keyRela, null);
 
-                                        // Calculate desired width and height for "rela" and "skeleton" RelativeLayouts based on paper size
-                                        int desiredWidth;
-                                        int desiredHeight;
+                                            if (relaImageBase64 != null) {
+                                                byte[] relaImageBytes = Base64.decode(relaImageBase64, Base64.DEFAULT);
 
-                                        int skeletonDesiredWidth = 0;
-                                        int skeletonDesiredHeight = 0;
+                                                // Convert bytes to Bitmap
+                                                Bitmap relaBitmap = BitmapFactory.decodeByteArray(relaImageBytes, 0, relaImageBytes.length);
 
-                                        switch (paperSize.toLowerCase()) {
-                                            case "a1":
-                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
-                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
+                                                // Convert Bitmap to Image
+                                                ByteArrayOutputStream relaStream = new ByteArrayOutputStream();
+                                                relaBitmap.compress(Bitmap.CompressFormat.PNG, 100, relaStream);
+                                                Image relaImage = Image.getInstance(relaStream.toByteArray());
 
-                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 2.5); // Adjust as needed
-                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 2.5); // Adjust as needed
+                                                // Adjust positions and sizes based on paper size
+                                                int desiredWidth;
+                                                int desiredHeight;
 
-                                                xPosition = 70; // Adjust as needed (horizontal position)
-                                                yPosition = 850; // Adjust as needed (vertical position)
-                                                break;
-                                            case "a3":
-                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
-                                                desiredHeight = (int) (relativeLayout.getHeight() / 2.7); // Adjust as needed
+                                                switch (paperSize.toLowerCase()) {
+                                                    case "a1":
+                                                        desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                        desiredHeight = (int) (pageSize.getHeight() / 4); // Adjust as needed
+                                                        break;
+                                                    case "a3":
+                                                        desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                        desiredHeight = (int) (pageSize.getHeight() / 4); // Adjust as needed
+                                                        break;
+                                                    case "20x30 inches":
+                                                        desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                        desiredHeight = (int) (pageSize.getHeight() / 4); // Adjust as needed
+                                                        break;
+                                                    default:
+                                                        // Default desired width and height
+                                                        desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                        desiredHeight = (int) (pageSize.getHeight() / 4); // Adjust as needed
+                                                        break;
+                                                }
 
-                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 5.1); // Adjust as needed
-                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 5.1); // Adjust as needed
+                                                // Scale the image to fit the desired width and height
+                                                relaImage.scaleToFit(desiredWidth, desiredHeight);
 
-                                                xPosition = 35; // Adjust as needed (horizontal position)
-                                                yPosition = 425; // Adjust as needed (vertical position);
-
-                                                break;
-                                            case "20x30 inches":
-                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
-                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
-
-                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 3); // Adjust as needed
-                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 3); // Adjust as needed
-
-                                                xPosition = 70; // Adjust as needed (horizontal position)
-                                                yPosition = 810; // Adjust as needed (vertical position)
-                                                break;
-                                            default:
-                                                // Default desired width and height
-                                                desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
-                                                desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
-                                                break;
+                                                // Add the RelativeLayout image to the PDF
+                                                document.add(relaImage);
+                                            }
                                         }
 
-                                        // Create a bitmap from the "rela" RelativeLayout
-                                        Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
-                                        Canvas canvas = new Canvas(originalBitmap);
-                                        relativeLayout.draw(canvas);
-
-                                        // Scale down the bitmap for "rela" RelativeLayout
-                                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
-
-                                        // Add "rela" RelativeLayout as Bitmap to the PDF
-                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                        scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                        Image relLayoutImage = Image.getInstance(stream.toByteArray());
-
-                                        // Determine the total height of the page
-                                        float pageHeight = pageSize.getHeight();
-
-                                        // Calculate the y-coordinate relative to the top of the page
-                                        float yPositionFromTop = pageHeight - yPosition;
-
-                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
-                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
-
-                                        // Set the position of the element using the calculated y-coordinate relative to the top
-                                        relLayoutImage.setAbsolutePosition(xPosition, topEdgeYPosition);
-
-                                        // Add the "rela" RelativeLayout as Bitmap to the PDF document
-                                        document.add(relLayoutImage);
-
-                                        // Calculate the position of "skeleton" RelativeLayout
-                                        float skeletonXPosition = xPosition + desiredWidth; // Right of "rela"
-                                        float skeletonYPosition = topEdgeYPosition; // Same top position as "rela"
-
-                                        // Create a bitmap from the "skeleton" RelativeLayout
-                                        Bitmap skeletonOriginalBitmap = Bitmap.createBitmap(skeletonLayout.getWidth(), skeletonLayout.getHeight(), Bitmap.Config.ARGB_8888);
-                                        Canvas skeletonCanvas = new Canvas(skeletonOriginalBitmap);
-                                        skeletonLayout.draw(skeletonCanvas);
-
-                                        // Scale down the bitmap for "skeleton" RelativeLayout
-                                        Bitmap skeletonScaledBitmap = Bitmap.createScaledBitmap(skeletonOriginalBitmap, skeletonDesiredWidth, skeletonDesiredHeight, true);
-
-                                        // Add "skeleton" RelativeLayout as Bitmap to the PDF
-                                        ByteArrayOutputStream skeletonStream = new ByteArrayOutputStream();
-                                        skeletonScaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, skeletonStream);
-                                        Image skeletonImage = Image.getInstance(skeletonStream.toByteArray());
-
-                                        // Set the absolute position of the "skeleton" RelativeLayout
-                                        skeletonImage.setAbsolutePosition(skeletonXPosition + 50, skeletonYPosition - 10);
-
-                                        // Add the "skeleton" RelativeLayout as Bitmap to the PDF document
-                                        document.add(skeletonImage);
-
-                                        // closing the document
+// closing the document
                                         document.close();
                                         outputStream.close();
+
 
                                         // Show dialog to tell the user that the PDF has been saved
                                         runOnUiThread(new Runnable() {
@@ -2367,8 +2318,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
-                                            }
+                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show(); }
                                         });
                                     }
                                 } catch (Exception e) {
@@ -2405,12 +2355,10 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
         /* -------------------------- START OF NEXT LOAD SCHEDULE ---------------------- */
 
-
 // Initialize currentTableCount from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         currentTableCount = prefs.getInt("currentTableCount", 0);
         if (id == R.id.nextLS) {
-
             // Check if the maximum number of tables has been reached
             if (currentTableCount < 3) {
                 // Increment the current table count
@@ -2421,7 +2369,11 @@ public  boolean onCreateOptionsMenu(Menu menu){
                 SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
                 editor.putInt("currentTableCount", currentTableCount);
                 editor.apply();
-                if(currentTableCount != 3){
+
+                // Capture the contents of RelativeLayout and save as images in SharedPreferences
+                captureRelativeLayoutAsImage();
+
+                if (currentTableCount != 3) {
                     // Proceed with inputting data for the next table
                     // For example, to start a new activity for inputting data
                     Intent intent = new Intent(this, Inputing.class);
@@ -2429,11 +2381,9 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     startActivity(intent);
                     databaseHelper.clearTable();
                     Toast.makeText(this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Limit of " + currentTableCount + " tables has been reached.", Toast.LENGTH_SHORT).show();
                 }
-
             } else {
                 // Handle what to do when the maximum number of tables is reached
                 Toast.makeText(this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();
@@ -2441,11 +2391,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
             }
         }
 
-
-
-
-
         /* -------------------------- END OF NEXT LOAD SCHEDULE ---------------------- */
+
 
 
         if (id == R.id.resetLS){
@@ -2465,7 +2412,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     // Disregard the load and return home
                     // Clear the currentTableCount from SharedPreferences to reset it to 0
                     SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                    editor.remove("currentTableCount");
+                    editor.clear(); // Removes all data from SharedPreferences
                     editor.apply();
 
 // Update the currentTableCount variable to reflect the change
@@ -2511,4 +2458,27 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         return inSampleSize;
     }
+    // Method to capture the contents of RelativeLayout and save as images in SharedPreferences
+    private void captureRelativeLayoutAsImage() {
+        // Get the RelativeLayout and its child views
+        RelativeLayout relativeLayout = findViewById(R.id.aaaa);
+
+        // Convert RelativeLayout to bitmap
+        Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        relativeLayout.draw(canvas);
+
+        // Convert bitmap to byte array
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        // Save byte array in SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String keyRela = "relativeLayout" + currentTableCount;
+        editor.putString(keyRela, Base64.encodeToString(byteArray, Base64.DEFAULT));
+        editor.apply();
+    }
+
 }

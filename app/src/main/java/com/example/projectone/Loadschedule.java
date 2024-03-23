@@ -1572,6 +1572,8 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+
+
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
@@ -1629,12 +1631,8 @@ public class Loadschedule extends AppCompatActivity {
                 totalATextView.setText(totalA);
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
-                ///for total A in skel
-                TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
 
-                for (int i = 0; i < numViews.length; i++) {
-                    numViews[i].setText(totalA + " A");
-                }
+
             }
 
             if (HIGHA != null)
@@ -1937,7 +1935,25 @@ public class Loadschedule extends AppCompatActivity {
             }
         }
 
+        //display for skel
 
+        String fullText = MainWire.getText().toString();
+        String desiredSubstring;
+
+// Assuming "175 AT" always appears at the beginning of the text and followed by a comma
+        int commaIndex = fullText.indexOf(',');
+        if (commaIndex != -1) {
+            desiredSubstring = fullText.substring(0, commaIndex);
+        } else {
+            // If there's no comma, simply take the whole text
+            desiredSubstring = fullText;
+        }
+
+        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+        for (int i = 0; i < numViews.length; i++) {
+            numViews[i].setText(desiredSubstring + ", 2P ");
+        }
 
 //first update
         FeederWire.setOnClickListener(new View.OnClickListener() {
@@ -1984,7 +2000,7 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
-//sira
+//second feeder wire update
         FeederWireSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2032,7 +2048,7 @@ public class Loadschedule extends AppCompatActivity {
                 dialog.show();
             }
         });
-
+//last main  wire update
         MainWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2056,6 +2072,11 @@ public class Loadschedule extends AppCompatActivity {
                                 // Update TextViews
                                 MainWire.setText(newAfAt);
 
+                                TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                                for (int i = 0; i < numViews.length; i++) {
+                                    numViews[i].setText(AT + " AT"+ ", 2P ");
+                                }
 
                             }
                         })

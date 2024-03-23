@@ -1,7 +1,10 @@
 package com.example.projectone;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
@@ -29,7 +32,13 @@ public class Home extends Fragment {
             @Override
             public void onClick(View view) {
                 // Clear the table before starting the Inputing activity
+
                 databaseHelper.clearTable();
+                // Access the SharedPreferences file and remove the currentTableCount value
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+                editor.remove("currentTableCount");
+                editor.apply();
+
                 startActivity(new Intent(getActivity(), Inputing.class));
             }
         });

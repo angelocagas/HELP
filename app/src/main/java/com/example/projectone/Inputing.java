@@ -55,6 +55,7 @@ public class Inputing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
         // Clear the SharedPreferences when the activity is first initialized
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

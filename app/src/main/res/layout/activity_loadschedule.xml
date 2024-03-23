@@ -210,7 +210,6 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -222,7 +221,6 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -351,7 +349,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/border2"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="304.8dp"
+                android:layout_marginLeft="298dp"
                 android:layout_marginTop="18dp"
                 android:text="25820"
                 android:textColor="@color/black"

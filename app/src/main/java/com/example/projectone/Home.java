@@ -23,6 +23,7 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Button create = view.findViewById(R.id.create);

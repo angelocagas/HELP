@@ -11,6 +11,8 @@ import android.graphics.Canvas;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -1972,26 +1974,8 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Feeder Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String newFeederWireText = editTextFeederWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                FeederWire.setText("2 - " + newFeederWireText + "mm.sq. THHN Cu. Wire ");
-
-                                String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
-
-                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-
-                                for (int i = 0; i < topViews.length; i++) {
-                                    topViews[i].setText(topText);
-
-                                }
-
-                            }
-                        })
+                        .setTitle("Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -1999,11 +1983,54 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                editTextFeederWire.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String newFeederWireText = editTextFeederWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        FeederWire.setText("2 - " + newFeederWireText + "mm.sq. THHN Cu. Wire ");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
-
 
 //second feeder wire update
         FeederWireSecond.setOnClickListener(new View.OnClickListener() {
@@ -2017,31 +2044,8 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Pipe Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String wiresec = editTextpipeWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
-                                // Update TextViews
-                                FeederWireSecond.setText(newTet);
-                                String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
-                                String botText = "GEC: " + newTet;
-
-                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-                                TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                                for (int i = 0; i < topViews.length; i++) {
-                                    topViews[i].setText(topText);
-                                    botViews[i].setText(botText);
-                                }
-
-
-
-
-                            }
-                        })
+                        .setTitle("Pipe Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -2049,11 +2053,63 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                editTextpipeWire.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String wiresec = editTextpipeWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
+                        // Update TextViews
+                        FeederWireSecond.setText(newTet);
+                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
+                        String botText = "GEC: " + newTet;
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                            botViews[i].setText(botText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+
+
+
 //last main  wire update
+        //last main wire update
         MainWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2067,24 +2123,7 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Main Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String AT = ATWire.getText().toString();
-                                String AF = AFWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
-                                // Update TextViews
-                                MainWire.setText(newAfAt);
-
-                                TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
-
-                                for (int i = 0; i < numViews.length; i++) {
-                                    numViews[i].setText(AT + " AT"+ ", 2P ");
-                                }
-
-                            }
-                        })
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -2092,8 +2131,56 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                TextWatcher watcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        String ATText = ATWire.getText().toString().trim();
+                        String AFText = AFWire.getText().toString().trim();
+                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                };
+
+                ATWire.addTextChangedListener(watcher);
+                AFWire.addTextChangedListener(watcher);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String AT = ATWire.getText().toString();
+                        String AF = AFWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
+                        // Update TextViews
+                        MainWire.setText(newAfAt);
+
+                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                        for (int i = 0; i < numViews.length; i++) {
+                            numViews[i].setText(AT + " AT" + ", 2P ");
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
 

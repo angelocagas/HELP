@@ -19,6 +19,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_feeder_wire"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>

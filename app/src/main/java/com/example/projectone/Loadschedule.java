@@ -11,7 +11,8 @@ import android.graphics.Canvas;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -88,16 +89,12 @@ public class Loadschedule extends AppCompatActivity {
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
     TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA, UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
 
-    RelativeLayout aaaa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseHelper = new DatabaseHelper(this);
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadschedule);
-
-
         helper = DatabaseHelper.getInstance(this);
         recyclerView = findViewById(R.id.recylcer_view);
         helper.getAllProjectData();
@@ -1973,25 +1970,7 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Feeder Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String newFeederWireText = editTextFeederWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                FeederWire.setText("2 - " + newFeederWireText + "mm.sq. THHN Cu. Wire ");
-
-                                String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
-
-                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-
-                                for (int i = 0; i < topViews.length; i++) {
-                                    topViews[i].setText(topText);
-
-                                }
-
-                            }
-                        })
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -1999,11 +1978,54 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                editTextFeederWire.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String newFeederWireText = editTextFeederWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        FeederWire.setText("2 - " + newFeederWireText + "mm.sq. THHN Cu. Wire ");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
-
 
 //second feeder wire update
         FeederWireSecond.setOnClickListener(new View.OnClickListener() {
@@ -2018,30 +2040,7 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Pipe Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String wiresec = editTextpipeWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
-                                // Update TextViews
-                                FeederWireSecond.setText(newTet);
-                                String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
-                                String botText = "GEC: " + newTet;
-
-                                TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-                                TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                                for (int i = 0; i < topViews.length; i++) {
-                                    topViews[i].setText(topText);
-                                    botViews[i].setText(botText);
-                                }
-
-
-
-
-                            }
-                        })
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -2049,11 +2048,61 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                editTextpipeWire.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String wiresec = editTextpipeWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
+                        // Update TextViews
+                        FeederWireSecond.setText(newTet);
+                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
+                        String botText = "GEC: " + newTet;
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                            botViews[i].setText(botText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+
 //last main  wire update
+        //last main wire update
         MainWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2067,24 +2116,7 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Main Wire Text")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Get the text from the TextInputEditText
-                                String AT = ATWire.getText().toString();
-                                String AF = AFWire.getText().toString();
-                                // Update the FeederWire with the new text
-                                String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
-                                // Update TextViews
-                                MainWire.setText(newAfAt);
-
-                                TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
-
-                                for (int i = 0; i < numViews.length; i++) {
-                                    numViews[i].setText(AT + " AT"+ ", 2P ");
-                                }
-
-                            }
-                        })
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -2092,10 +2124,60 @@ public class Loadschedule extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                TextWatcher watcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        String ATText = ATWire.getText().toString().trim();
+                        String AFText = AFWire.getText().toString().trim();
+                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                };
+
+                ATWire.addTextChangedListener(watcher);
+                AFWire.addTextChangedListener(watcher);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String AT = ATWire.getText().toString();
+                        String AF = AFWire.getText().toString();
+                        // Update the FeederWire with the new text
+                        String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
+                        // Update TextViews
+                        MainWire.setText(newAfAt);
+
+                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                        for (int i = 0; i < numViews.length; i++) {
+                            numViews[i].setText(AT + " AT" + ", 2P ");
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+
+
 
 
         FeederWireType.setOnClickListener(new View.OnClickListener() {
@@ -2246,7 +2328,6 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         /* -------------------------- PRINT ---------------------- */
         if (id == R.id.save) {
-
             // Array of choices
             final CharSequence[] paperSizes = {"A1", "A3", "20x30 inches"};
 
@@ -2275,16 +2356,10 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
             // Set the 'Save Now' button
             builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
-
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (selectedItem[0] != -1) {
                         String paperSize = (String) paperSizes[selectedItem[0]];
-                        if(currentTableCount < 3){
-                            currentTableCount++;
-                            captureRelativeLayoutAsImage();
-                        }
-
 
                         // Dismiss the paper size selection dialog
                         dialog.dismiss();
@@ -2378,89 +2453,114 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                             e.printStackTrace();
                                         }
 
-                                        // Retrieve RelativeLayout images from SharedPreferences and add them to the PDF
-                                        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                                        for (int i = 1; i <= 3; i++) {
-                                            String keyRela = "relativeLayout" + i;
+                                        // Convert RelativeLayouts to Bitmaps and add them to the PDF
+                                        RelativeLayout relativeLayout = findViewById(R.id.rela);
+                                        RelativeLayout skeletonLayout = findViewById(R.id.skeleton);
 
-                                            String relaImageBase64 = prefs.getString(keyRela, null);
+                                        // Define the new position for the images
+                                        float xPosition = 0; // Default position
+                                        float yPosition = 0; // Default position
 
-                                            if (relaImageBase64 != null) {
-                                                byte[] relaImageBytes = Base64.decode(relaImageBase64, Base64.DEFAULT);
+                                        // Calculate desired width and height for "rela" and "skeleton" RelativeLayouts based on paper size
+                                        int desiredWidth;
+                                        int desiredHeight;
 
-                                                // Convert bytes to Bitmap
-                                                Bitmap relaBitmap = BitmapFactory.decodeByteArray(relaImageBytes, 0, relaImageBytes.length);
+                                        int skeletonDesiredWidth = 0;
+                                        int skeletonDesiredHeight = 0;
 
-                                                // Convert Bitmap to Image
-                                                ByteArrayOutputStream relaStream = new ByteArrayOutputStream();
-                                                relaBitmap.compress(Bitmap.CompressFormat.PNG, 100, relaStream);
-                                                Image relaImage = Image.getInstance(relaStream.toByteArray());
+                                        switch (paperSize.toLowerCase()) {
+                                            case "a1":
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
 
-                                                // Adjust positions and sizes based on paper size
-                                                int desiredWidth;
-                                                int desiredHeight;
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 2.5); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 2.5); // Adjust as needed
 
-                                                // Determine the total height and width of the page
-                                                float pageHeight = pageSize.getHeight();
-                                                float pageWidth = pageSize.getHeight();
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 850; // Adjust as needed (vertical position)
+                                                break;
+                                            case "a3":
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() / 2.7); // Adjust as needed
 
-                                                float xPosition;
-                                                float yPosition;
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 5.1); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 5.1); // Adjust as needed
 
-                                                switch (paperSize.toLowerCase()) {
-                                                    case "a1":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 700 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
-                                                    case "a3":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 370 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
-                                                    case "20x30 inches":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 700 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
-                                                    default:
-                                                        // Default desired width and height
-                                                        desiredWidth = (int) (pageSize.getWidth() - 30);
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = 30; // Adjust as needed
-                                                        yPosition = 30 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
-                                                }
+                                                xPosition = 35; // Adjust as needed (horizontal position)
+                                                yPosition = 425; // Adjust as needed (vertical position);
 
-                                                // Scale the image to fit the desired width and height
-                                                relaImage.scaleToFit(desiredWidth, desiredHeight);
+                                                break;
+                                            case "20x30 inches":
+                                                desiredWidth = (int) (pageSize.getWidth() - 30); // Adjust as needed
+                                                desiredHeight = (int) (relativeLayout.getHeight() - 200); // Adjust as needed
 
+                                                skeletonDesiredWidth = (int) (skeletonLayout.getWidth() / 3); // Adjust as needed
+                                                skeletonDesiredHeight = (int) (skeletonLayout.getHeight() / 3); // Adjust as needed
 
-
-                                                // Calculate the y-coordinate relative to the top of the page
-                                                float yPositionFromTop = pageHeight - yPosition;
-
-                                                // Subtract the desired height of the element to determine the y-coordinate relative to the top
-                                                float topEdgeYPosition = yPositionFromTop - desiredHeight;
-
-
-                                                // Add the RelativeLayout image to the PDF
-                                                relaImage.setAbsolutePosition(xPosition, topEdgeYPosition);
-                                                document.add(relaImage);
-                                            }
+                                                xPosition = 70; // Adjust as needed (horizontal position)
+                                                yPosition = 810; // Adjust as needed (vertical position)
+                                                break;
+                                            default:
+                                                // Default desired width and height
+                                                desiredWidth = relativeLayout.getWidth() - 100; // Adjust as needed
+                                                desiredHeight = relativeLayout.getHeight() - 100; // Adjust as needed
+                                                break;
                                         }
 
+                                        // Create a bitmap from the "rela" RelativeLayout
+                                        Bitmap originalBitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas canvas = new Canvas(originalBitmap);
+                                        relativeLayout.draw(canvas);
 
-// closing the document
+                                        // Scale down the bitmap for "rela" RelativeLayout
+                                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, desiredWidth, desiredHeight, true);
+
+                                        // Add "rela" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        Image relLayoutImage = Image.getInstance(stream.toByteArray());
+
+                                        // Determine the total height of the page
+                                        float pageHeight = pageSize.getHeight();
+
+                                        // Calculate the y-coordinate relative to the top of the page
+                                        float yPositionFromTop = pageHeight - yPosition;
+
+                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
+                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
+
+                                        // Set the position of the element using the calculated y-coordinate relative to the top
+                                        relLayoutImage.setAbsolutePosition(xPosition, topEdgeYPosition);
+
+                                        // Add the "rela" RelativeLayout as Bitmap to the PDF document
+                                        document.add(relLayoutImage);
+
+                                        // Calculate the position of "skeleton" RelativeLayout
+                                        float skeletonXPosition = xPosition + desiredWidth; // Right of "rela"
+                                        float skeletonYPosition = topEdgeYPosition; // Same top position as "rela"
+
+                                        // Create a bitmap from the "skeleton" RelativeLayout
+                                        Bitmap skeletonOriginalBitmap = Bitmap.createBitmap(skeletonLayout.getWidth(), skeletonLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                                        Canvas skeletonCanvas = new Canvas(skeletonOriginalBitmap);
+                                        skeletonLayout.draw(skeletonCanvas);
+
+                                        // Scale down the bitmap for "skeleton" RelativeLayout
+                                        Bitmap skeletonScaledBitmap = Bitmap.createScaledBitmap(skeletonOriginalBitmap, skeletonDesiredWidth, skeletonDesiredHeight, true);
+
+                                        // Add "skeleton" RelativeLayout as Bitmap to the PDF
+                                        ByteArrayOutputStream skeletonStream = new ByteArrayOutputStream();
+                                        skeletonScaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, skeletonStream);
+                                        Image skeletonImage = Image.getInstance(skeletonStream.toByteArray());
+
+                                        // Set the absolute position of the "skeleton" RelativeLayout
+                                        skeletonImage.setAbsolutePosition(skeletonXPosition + 50, skeletonYPosition - 10);
+
+                                        // Add the "skeleton" RelativeLayout as Bitmap to the PDF document
+                                        document.add(skeletonImage);
+
+                                        // closing the document
                                         document.close();
                                         outputStream.close();
-
 
                                         // Show dialog to tell the user that the PDF has been saved
                                         runOnUiThread(new Runnable() {
@@ -2481,7 +2581,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show(); }
+                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                                            }
                                         });
                                     }
                                 } catch (Exception e) {
@@ -2518,10 +2619,12 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
         /* -------------------------- START OF NEXT LOAD SCHEDULE ---------------------- */
 
+
 // Initialize currentTableCount from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         currentTableCount = prefs.getInt("currentTableCount", 0);
         if (id == R.id.nextLS) {
+
             // Check if the maximum number of tables has been reached
             if (currentTableCount < 3) {
                 // Increment the current table count
@@ -2534,21 +2637,13 @@ public  boolean onCreateOptionsMenu(Menu menu){
                 SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
                 editor.putInt("currentTableCount", currentTableCount);
                 editor.apply();
-
-                // Capture the contents of RelativeLayout and save as images in SharedPreferences
-                captureRelativeLayoutAsImage();
-
-                if (currentTableCount != 3) {
-                    // Proceed with inputting data for the next table
-                    // For example, to start a new activity for inputting data
-                    Intent intent = new Intent(this, Inputing.class);
-                    intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
-                    startActivity(intent);
-                    databaseHelper.clearTable();
-                    Toast.makeText(this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Limit of " + currentTableCount + " tables has been reached.", Toast.LENGTH_SHORT).show();
-                }
+                // Proceed with inputting data for the next table
+                // For example, to start a new activity for inputting data
+                Intent intent = new Intent(this, Inputing.class);
+                intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
+                startActivity(intent);
+                databaseHelper.clearTable();
+                Toast.makeText(this, "Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
             } else {
                 // Handle what to do when the maximum number of tables is reached
                 Toast.makeText(this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();
@@ -2556,8 +2651,11 @@ public  boolean onCreateOptionsMenu(Menu menu){
             }
         }
 
-        /* -------------------------- END OF NEXT LOAD SCHEDULE ---------------------- */
 
+
+
+
+        /* -------------------------- END OF NEXT LOAD SCHEDULE ---------------------- */
 
 
         if (id == R.id.resetLS){
@@ -2577,7 +2675,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     // Disregard the load and return home
                     // Clear the currentTableCount from SharedPreferences to reset it to 0
                     SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                    editor.clear(); // Removes all data from SharedPreferences
+                    editor.remove("currentTableCount");
                     editor.apply();
 
 // Update the currentTableCount variable to reflect the change
@@ -2623,42 +2721,4 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         return inSampleSize;
     }
-    // Method to capture the contents of RelativeLayout and save as images in SharedPreferences
-    private void captureRelativeLayoutAsImage() {
-        // Get the RelativeLayout and its child views
-        RelativeLayout relativeLayout = findViewById(R.id.aaaa);
-        RelativeLayout skele = findViewById(R.id.skeleton);
-
-
-        // Store the original top margin
-        RelativeLayout.LayoutParams originalLayoutParams = (RelativeLayout.LayoutParams) relativeLayout.getLayoutParams();
-        int originalTopMargin = originalLayoutParams.topMargin;
-
-        // Adjust the top margin temporarily
-        originalLayoutParams.setMargins(originalLayoutParams.leftMargin, 0, originalLayoutParams.rightMargin, originalLayoutParams.bottomMargin);
-        relativeLayout.setLayoutParams(originalLayoutParams);
-
-        // Convert RelativeLayout to bitmap
-        Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        relativeLayout.draw(canvas);
-
-        // Reset the original margins
-        originalLayoutParams.setMargins(originalLayoutParams.leftMargin, originalTopMargin, originalLayoutParams.rightMargin, originalLayoutParams.bottomMargin);
-        relativeLayout.setLayoutParams(originalLayoutParams);
-
-        // Convert bitmap to byte array
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-
-        // Save byte array in SharedPreferences
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        String keyRela = "relativeLayout" + currentTableCount;
-        editor.putString(keyRela, Base64.encodeToString(byteArray, Base64.DEFAULT));
-        editor.apply();
-    }
-
-
 }

@@ -1591,6 +1591,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
+
 //minimize the space for skeleton display
 
 
@@ -1636,8 +1637,6 @@ public class Loadschedule extends AppCompatActivity {
                 totalATextView.setText(totalA);
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
-
-
             }
 
             if (HIGHA != null)
@@ -1656,6 +1655,7 @@ public class Loadschedule extends AppCompatActivity {
             }
 
         }
+
 
 
 
@@ -2121,8 +2121,13 @@ public class Loadschedule extends AppCompatActivity {
             }
         });*/
 
+        String totalAintent = totalATextView.getText().toString().trim();
+        String totalVAintent = totalATextView.getText().toString().trim();
 
+        intent.putExtra("totalA", totalAintent);
+        intent.putExtra("totalVA", totalVAintent);
 
+        setIntent(intent);
 
 
 

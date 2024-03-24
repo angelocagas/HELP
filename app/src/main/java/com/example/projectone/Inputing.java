@@ -636,8 +636,8 @@ public class Inputing extends AppCompatActivity {
                                 MMPlus.setText("20");//MATIC
                                 CTYPE.setText("PVC");//MATIC
 
-                                computeVA();
-                                computeA();
+                                computeVA1();
+                                computeA1();
 
                                 helper.addNewProject(
                                         ProjectName,
@@ -786,8 +786,7 @@ public class Inputing extends AppCompatActivity {
                                 horses.setVisibility(View.GONE);
                             }
 
-                            computeVA();
-                            computeA();
+
 
                             String add = others.getText().toString();
                             String selectedHP = Horsepower.getText().toString();
@@ -981,12 +980,82 @@ public class Inputing extends AppCompatActivity {
         }
     }
     // Function to find the highest value in the arrayAmp ArrayList
-
     private void updateTotalA() {
         // Update the TotalA TextView with the total A value
         totalAValue = Double.parseDouble(decimalFormat.format(totalAValue)); // Ensure totalAValue has two decimal places
         TotalA.setText(decimalFormat.format(totalAValue));
     }
+
+
+
+
+
+
+
+
+    private void computeA1() {
+
+        if (!VA.getText().toString().isEmpty()) {
+            double vaValue = Double.parseDouble(VA.getText().toString());
+            double aValue = vaValue / 230.00;
+
+            DecimalFormat aFormat = new DecimalFormat("#.##");
+            aFormat.setRoundingMode(RoundingMode.HALF_UP);
+            A.setText(aFormat.format(aValue));
+            totalAValue +=  aValue;
+
+            updateTotalA1();
+
+
+            // Add "A" value to the arrayAmp ArrayList based on selected item
+            String selectedItem = autoCompleteTextView1.getText().toString();
+            if ("ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                arrayAmp.add(aValue);
+            } else if ("Lighting Outlet".equals(selectedItem)) {
+                // If selected item is "Lighting Outlet", add its "A" value to arrayAmp
+                arrayAmp.add(aValue);
+            }
+        }
+    }
+    // Function to find the highest value in the arrayAmp ArrayList
+    private void updateTotalA1() {
+        Intent intent = getIntent();
+        String totalAint = intent.getStringExtra("totalA");
+        int totalA = Integer.parseInt(totalAint);
+        // Update the TotalA TextView with the total A value
+        totalAValue = Double.parseDouble(decimalFormat.format(totalAValue + totalA )); // Ensure totalAValue has two decimal places
+        TotalA.setText(decimalFormat.format(totalAValue));
+    }
+
+    private void computeVA1() {
+
+
+        if (!Quantity.getText().toString().isEmpty() && !Watts.getText().toString().isEmpty()) {
+
+
+            double quantityValue = Double.parseDouble(Quantity.getText().toString());
+            double wattsValue = Double.parseDouble(Watts.getText().toString());
+            double vaValue = quantityValue * wattsValue;
+            // Update the VA TextView with the computed value
+            VA.setText(decimalFormat.format(vaValue));
+
+
+            totalVAValue += vaValue;
+
+            updateTotalVA1();
+        }
+    }
+    private void updateTotalVA1() {
+        // Update the TotalVA TextView with the total VA value
+        Intent intent = getIntent();
+// Retrieve the data associated with the keys "totalA" and "totalVA"
+        String totalVAValue1 = intent.getStringExtra("totalVA");
+        int totalVA1 = Integer.parseInt(totalVAValue1);
+
+        String formattedText = decimalFormat.format(totalVAValue + totalVA1); // Formatting the value plus 6
+        TotalVA.setText(decimalFormat.format(formattedText));
+    }
+
 
 
     private double findHighestAmp() {

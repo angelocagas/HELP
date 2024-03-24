@@ -6,7 +6,8 @@
      <item
           android:title="Add Circuit"
           android:id="@+id/add"
-          app:showAsAction="ifRoom"/>
+          app:showAsAction="ifRoom"
+         android:visible="false"/>
 
 
       <item
@@ -22,7 +23,8 @@
           android:id="@+id/nextLS"/>
       <item
           android:title="Reset current Load Schedule"
-          android:id="@+id/resetLS"/>
+          android:id="@+id/resetLS"
+          android:visible="false"/>
       <item
           android:title="Discard Project"
           android:id="@+id/discard"/>

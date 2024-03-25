@@ -1025,286 +1025,286 @@ public class Loadschedule extends AppCompatActivity {
             }
         });
 
-        dbHelper.getAllAsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
+        dbHelper.getAllATsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
             public void onItemsLoaded(List<String>ASList) {
                 if (ASList != null) {
                     switch (ASList.size()) {
                         case 4:
-                            num4_a1.setText(ASList.get(0) + " A");
-                            num4_a2.setText(ASList.get(1) + " A");
-                            num4_a3.setText(ASList.get(2) + " A");
-                            num4_a4.setText(ASList.get(3) + " A");
+                            num4_a1.setText(ASList.get(0));
+                            num4_a2.setText(ASList.get(1));
+                            num4_a3.setText(ASList.get(2));
+                            num4_a4.setText(ASList.get(3));
                             break;
                         case 6:
-                            num6_a1.setText(ASList.get(0) + " A");
-                            num6_a2.setText(ASList.get(1) + " A");
-                            num6_a3.setText(ASList.get(2) + " A");
-                            num6_a4.setText(ASList.get(3) + " A");
-                            num6_a5.setText(ASList.get(4) + " A");
-                            num6_a6.setText(ASList.get(5) + " A");
+                            num6_a1.setText(ASList.get(0));
+                            num6_a2.setText(ASList.get(1));
+                            num6_a3.setText(ASList.get(2));
+                            num6_a4.setText(ASList.get(3));
+                            num6_a5.setText(ASList.get(4));
+                            num6_a6.setText(ASList.get(5));
                             break;
                         case 8:
-                            num8_a1.setText(ASList.get(0) + " A");
-                            num8_a2.setText(ASList.get(1) + " A");
-                            num8_a3.setText(ASList.get(2) + " A");
-                            num8_a4.setText(ASList.get(3) + " A");
-                            num8_a5.setText(ASList.get(4) + " A");
-                            num8_a6.setText(ASList.get(5) + " A");
-                            num8_a7.setText(ASList.get(6) + " A");
-                            num8_a8.setText(ASList.get(7) + " A");
+                            num8_a1.setText(ASList.get(0));
+                            num8_a2.setText(ASList.get(1));
+                            num8_a3.setText(ASList.get(2));
+                            num8_a4.setText(ASList.get(3));
+                            num8_a5.setText(ASList.get(4));
+                            num8_a6.setText(ASList.get(5));
+                            num8_a7.setText(ASList.get(6));
+                            num8_a8.setText(ASList.get(7));
                             break;
                         case 10:
-                            num10_a1.setText(ASList.get(0) + " A");
-                            num10_a2.setText(ASList.get(1) + " A");
-                            num10_a3.setText(ASList.get(2) + " A");
-                            num10_a4.setText(ASList.get(3) + " A");
-                            num10_a5.setText(ASList.get(4) + " A");
-                            num10_a6.setText(ASList.get(5) + " A");
-                            num10_a7.setText(ASList.get(6) + " A");
-                            num10_a8.setText(ASList.get(7) + " A");
-                            num10_a9.setText(ASList.get(8) + " A");
-                            num10_a10.setText(ASList.get(9) + " A");
+                            num10_a1.setText(ASList.get(0));
+                            num10_a2.setText(ASList.get(1));
+                            num10_a3.setText(ASList.get(2));
+                            num10_a4.setText(ASList.get(3));
+                            num10_a5.setText(ASList.get(4));
+                            num10_a6.setText(ASList.get(5));
+                            num10_a7.setText(ASList.get(6));
+                            num10_a8.setText(ASList.get(7));
+                            num10_a9.setText(ASList.get(8));
+                            num10_a10.setText(ASList.get(9));
                             break;
 
                         case 12:
-                            num12_a1.setText(ASList.get(0) + " A");
-                            num12_a2.setText(ASList.get(1) + " A");
-                            num12_a3.setText(ASList.get(2) + " A");
-                            num12_a4.setText(ASList.get(3) + " A");
-                            num12_a5.setText(ASList.get(4) + " A");
-                            num12_a6.setText(ASList.get(5) + " A");
-                            num12_a7.setText(ASList.get(6) + " A");
-                            num12_a8.setText(ASList.get(7) + " A");
-                            num12_a9.setText(ASList.get(8) + " A");
-                            num12_a10.setText(ASList.get(9) + " A");
-                            num12_a11.setText(ASList.get(10) + " A");
-                            num12_a12.setText(ASList.get(11) + " A");
+                            num12_a1.setText(ASList.get(0));
+                            num12_a2.setText(ASList.get(1));
+                            num12_a3.setText(ASList.get(2));
+                            num12_a4.setText(ASList.get(3));
+                            num12_a5.setText(ASList.get(4));
+                            num12_a6.setText(ASList.get(5));
+                            num12_a7.setText(ASList.get(6));
+                            num12_a8.setText(ASList.get(7));
+                            num12_a9.setText(ASList.get(8));
+                            num12_a10.setText(ASList.get(9));
+                            num12_a11.setText(ASList.get(10));
+                            num12_a12.setText(ASList.get(11));
 
 
                             break;
                         case 14:
-                            num14_a1.setText(ASList.get(0) + " A");
-                            num14_a2.setText(ASList.get(1) + " A");
-                            num14_a3.setText(ASList.get(2) + " A");
-                            num14_a4.setText(ASList.get(3) + " A");
-                            num14_a5.setText(ASList.get(4) + " A");
-                            num14_a6.setText(ASList.get(5) + " A");
-                            num14_a7.setText(ASList.get(6) + " A");
-                            num14_a8.setText(ASList.get(7) + " A");
-                            num14_a9.setText(ASList.get(8) + " A");
-                            num14_a10.setText(ASList.get(9) + " A");
-                            num14_a11.setText(ASList.get(10) + " A");
-                            num14_a12.setText(ASList.get(11) + " A");
-                            num14_a13.setText(ASList.get(11) + " A");
-                            num14_a14.setText(ASList.get(13) + " A");
+                            num14_a1.setText(ASList.get(0));
+                            num14_a2.setText(ASList.get(1));
+                            num14_a3.setText(ASList.get(2));
+                            num14_a4.setText(ASList.get(3));
+                            num14_a5.setText(ASList.get(4));
+                            num14_a6.setText(ASList.get(5));
+                            num14_a7.setText(ASList.get(6));
+                            num14_a8.setText(ASList.get(7));
+                            num14_a9.setText(ASList.get(8));
+                            num14_a10.setText(ASList.get(9));
+                            num14_a11.setText(ASList.get(10));
+                            num14_a12.setText(ASList.get(11));
+                            num14_a13.setText(ASList.get(11));
+                            num14_a14.setText(ASList.get(13));
                             break;
                         case 16:
-                            num16_a1.setText(ASList.get(0) + " A");
-                            num16_a2.setText(ASList.get(1) + " A");
-                            num16_a3.setText(ASList.get(2) + " A");
-                            num16_a4.setText(ASList.get(3) + " A");
-                            num16_a5.setText(ASList.get(4) + " A");
-                            num16_a6.setText(ASList.get(5) + " A");
-                            num16_a7.setText(ASList.get(6) + " A");
-                            num16_a8.setText(ASList.get(7) + " A");
-                            num16_a9.setText(ASList.get(8) + " A");
-                            num16_a10.setText(ASList.get(9) + " A");
-                            num16_a11.setText(ASList.get(10) + " A");
-                            num16_a12.setText(ASList.get(11) + " A");
-                            num16_a13.setText(ASList.get(11) + " A");
-                            num16_a14.setText(ASList.get(13) + " A");
-                            num16_a15.setText(ASList.get(14) + " A");
-                            num16_a16.setText(ASList.get(15) + " A");
+                            num16_a1.setText(ASList.get(0));
+                            num16_a2.setText(ASList.get(1));
+                            num16_a3.setText(ASList.get(2));
+                            num16_a4.setText(ASList.get(3));
+                            num16_a5.setText(ASList.get(4));
+                            num16_a6.setText(ASList.get(5));
+                            num16_a7.setText(ASList.get(6));
+                            num16_a8.setText(ASList.get(7));
+                            num16_a9.setText(ASList.get(8));
+                            num16_a10.setText(ASList.get(9));
+                            num16_a11.setText(ASList.get(10));
+                            num16_a12.setText(ASList.get(11));
+                            num16_a13.setText(ASList.get(11));
+                            num16_a14.setText(ASList.get(13));
+                            num16_a15.setText(ASList.get(14));
+                            num16_a16.setText(ASList.get(15));
                             break;
                         case 18:
-                            num18_a1.setText(ASList.get(0) + " A");
-                            num18_a2.setText(ASList.get(1) + " A");
-                            num18_a3.setText(ASList.get(2) + " A");
-                            num18_a4.setText(ASList.get(3) + " A");
-                            num18_a5.setText(ASList.get(4) + " A");
-                            num18_a6.setText(ASList.get(5) + " A");
-                            num18_a7.setText(ASList.get(6) + " A");
-                            num18_a8.setText(ASList.get(7) + " A");
-                            num18_a9.setText(ASList.get(8) + " A");
-                            num18_a10.setText(ASList.get(9) + " A");
-                            num18_a11.setText(ASList.get(10) + " A");
-                            num18_a12.setText(ASList.get(11) + " A");
-                            num18_a13.setText(ASList.get(11) + " A");
-                            num18_a14.setText(ASList.get(13) + " A");
-                            num18_a15.setText(ASList.get(14) + " A");
-                            num18_a16.setText(ASList.get(15) + " A");
-                            num18_a17.setText(ASList.get(16) + " A");
-                            num18_a18.setText(ASList.get(17) + " A");
+                            num18_a1.setText(ASList.get(0));
+                            num18_a2.setText(ASList.get(1));
+                            num18_a3.setText(ASList.get(2));
+                            num18_a4.setText(ASList.get(3));
+                            num18_a5.setText(ASList.get(4));
+                            num18_a6.setText(ASList.get(5));
+                            num18_a7.setText(ASList.get(6));
+                            num18_a8.setText(ASList.get(7));
+                            num18_a9.setText(ASList.get(8));
+                            num18_a10.setText(ASList.get(9));
+                            num18_a11.setText(ASList.get(10));
+                            num18_a12.setText(ASList.get(11));
+                            num18_a13.setText(ASList.get(11));
+                            num18_a14.setText(ASList.get(13));
+                            num18_a15.setText(ASList.get(14));
+                            num18_a16.setText(ASList.get(15));
+                            num18_a17.setText(ASList.get(16));
+                            num18_a18.setText(ASList.get(17));
 
                             break;
                         case 20:
-                            num20_a1.setText(ASList.get(0) + " A");
-                            num20_a2.setText(ASList.get(1) + " A");
-                            num20_a3.setText(ASList.get(2) + " A");
-                            num20_a4.setText(ASList.get(3) + " A");
-                            num20_a5.setText(ASList.get(4) + " A");
-                            num20_a6.setText(ASList.get(5) + " A");
-                            num20_a7.setText(ASList.get(6) + " A");
-                            num20_a8.setText(ASList.get(7) + " A");
-                            num20_a9.setText(ASList.get(8) + " A");
-                            num20_a10.setText(ASList.get(9) + " A");
-                            num20_a11.setText(ASList.get(10) + " A");
-                            num20_a12.setText(ASList.get(11) + " A");
-                            num20_a13.setText(ASList.get(11) + " A");
-                            num20_a14.setText(ASList.get(13) + " A");
-                            num20_a15.setText(ASList.get(14) + " A");
-                            num20_a16.setText(ASList.get(15) + " A");
-                            num20_a17.setText(ASList.get(16) + " A");
-                            num20_a18.setText(ASList.get(17) + " A");
-                            num20_a19.setText(ASList.get(18) + " A");
-                            num20_a20.setText(ASList.get(19) + " A");
+                            num20_a1.setText(ASList.get(0));
+                            num20_a2.setText(ASList.get(1));
+                            num20_a3.setText(ASList.get(2));
+                            num20_a4.setText(ASList.get(3));
+                            num20_a5.setText(ASList.get(4));
+                            num20_a6.setText(ASList.get(5));
+                            num20_a7.setText(ASList.get(6));
+                            num20_a8.setText(ASList.get(7));
+                            num20_a9.setText(ASList.get(8));
+                            num20_a10.setText(ASList.get(9));
+                            num20_a11.setText(ASList.get(10));
+                            num20_a12.setText(ASList.get(11));
+                            num20_a13.setText(ASList.get(11));
+                            num20_a14.setText(ASList.get(13));
+                            num20_a15.setText(ASList.get(14));
+                            num20_a16.setText(ASList.get(15));
+                            num20_a17.setText(ASList.get(16));
+                            num20_a18.setText(ASList.get(17));
+                            num20_a19.setText(ASList.get(18));
+                            num20_a20.setText(ASList.get(19));
 
 
                             break;
                         case 22:
-                            num22_a1.setText(ASList.get(0) + " A");
-                            num22_a2.setText(ASList.get(1) + " A");
-                            num22_a3.setText(ASList.get(2) + " A");
-                            num22_a4.setText(ASList.get(3) + " A");
-                            num22_a5.setText(ASList.get(4) + " A");
-                            num22_a6.setText(ASList.get(5) + " A");
-                            num22_a7.setText(ASList.get(6) + " A");
-                            num22_a8.setText(ASList.get(7) + " A");
-                            num22_a9.setText(ASList.get(8) + " A");
-                            num22_a10.setText(ASList.get(9) + " A");
-                            num22_a11.setText(ASList.get(10) + " A");
-                            num22_a12.setText(ASList.get(11) + " A");
-                            num22_a13.setText(ASList.get(11) + " A");
-                            num22_a14.setText(ASList.get(13) + " A");
-                            num22_a15.setText(ASList.get(14) + " A");
-                            num22_a16.setText(ASList.get(15) + " A");
-                            num22_a17.setText(ASList.get(16) + " A");
-                            num22_a18.setText(ASList.get(17) + " A");
-                            num22_a19.setText(ASList.get(18) + " A");
-                            num22_a20.setText(ASList.get(19) + " A");
-                            num22_a21.setText(ASList.get(20) + " A");
-                            num22_a22.setText(ASList.get(21) + " A");
+                            num22_a1.setText(ASList.get(0));
+                            num22_a2.setText(ASList.get(1));
+                            num22_a3.setText(ASList.get(2));
+                            num22_a4.setText(ASList.get(3));
+                            num22_a5.setText(ASList.get(4));
+                            num22_a6.setText(ASList.get(5));
+                            num22_a7.setText(ASList.get(6));
+                            num22_a8.setText(ASList.get(7));
+                            num22_a9.setText(ASList.get(8));
+                            num22_a10.setText(ASList.get(9));
+                            num22_a11.setText(ASList.get(10));
+                            num22_a12.setText(ASList.get(11));
+                            num22_a13.setText(ASList.get(11));
+                            num22_a14.setText(ASList.get(13));
+                            num22_a15.setText(ASList.get(14));
+                            num22_a16.setText(ASList.get(15));
+                            num22_a17.setText(ASList.get(16));
+                            num22_a18.setText(ASList.get(17));
+                            num22_a19.setText(ASList.get(18));
+                            num22_a20.setText(ASList.get(19));
+                            num22_a21.setText(ASList.get(20));
+                            num22_a22.setText(ASList.get(21));
 
                             break;
                         case 24:
-                            num24_a1.setText(ASList.get(0) + " A");
-                            num24_a2.setText(ASList.get(1) + " A");
-                            num24_a3.setText(ASList.get(2) + " A");
-                            num24_a4.setText(ASList.get(3) + " A");
-                            num24_a5.setText(ASList.get(4) + " A");
-                            num24_a6.setText(ASList.get(5) + " A");
-                            num24_a7.setText(ASList.get(6) + " A");
-                            num24_a8.setText(ASList.get(7) + " A");
-                            num24_a9.setText(ASList.get(8) + " A");
-                            num24_a10.setText(ASList.get(9) + " A");
-                            num24_a11.setText(ASList.get(10) + " A");
-                            num24_a12.setText(ASList.get(11) + " A");
-                            num24_a13.setText(ASList.get(11) + " A");
-                            num24_a14.setText(ASList.get(13) + " A");
-                            num24_a15.setText(ASList.get(14) + " A");
-                            num24_a16.setText(ASList.get(15) + " A");
-                            num24_a17.setText(ASList.get(16) + " A");
-                            num24_a18.setText(ASList.get(17) + " A");
-                            num24_a19.setText(ASList.get(18) + " A");
-                            num24_a20.setText(ASList.get(19) + " A");
-                            num24_a21.setText(ASList.get(20) + " A");
-                            num24_a22.setText(ASList.get(21) + " A");
-                            num24_a23.setText(ASList.get(22) + " A");
-                            num24_a24.setText(ASList.get(23) + " A");
+                            num24_a1.setText(ASList.get(0));
+                            num24_a2.setText(ASList.get(1));
+                            num24_a3.setText(ASList.get(2));
+                            num24_a4.setText(ASList.get(3));
+                            num24_a5.setText(ASList.get(4));
+                            num24_a6.setText(ASList.get(5));
+                            num24_a7.setText(ASList.get(6));
+                            num24_a8.setText(ASList.get(7));
+                            num24_a9.setText(ASList.get(8));
+                            num24_a10.setText(ASList.get(9));
+                            num24_a11.setText(ASList.get(10));
+                            num24_a12.setText(ASList.get(11));
+                            num24_a13.setText(ASList.get(11));
+                            num24_a14.setText(ASList.get(13));
+                            num24_a15.setText(ASList.get(14));
+                            num24_a16.setText(ASList.get(15));
+                            num24_a17.setText(ASList.get(16));
+                            num24_a18.setText(ASList.get(17));
+                            num24_a19.setText(ASList.get(18));
+                            num24_a20.setText(ASList.get(19));
+                            num24_a21.setText(ASList.get(20));
+                            num24_a22.setText(ASList.get(21));
+                            num24_a23.setText(ASList.get(22));
+                            num24_a24.setText(ASList.get(23));
 
                             break;
                         case 26:
-                            num26_a1.setText(ASList.get(0) + " A");
-                            num26_a2.setText(ASList.get(1) + " A");
-                            num26_a3.setText(ASList.get(2) + " A");
-                            num26_a4.setText(ASList.get(3) + " A");
-                            num26_a5.setText(ASList.get(4) + " A");
-                            num26_a6.setText(ASList.get(5) + " A");
-                            num26_a7.setText(ASList.get(6) + " A");
-                            num26_a8.setText(ASList.get(7) + " A");
-                            num26_a9.setText(ASList.get(8) + " A");
-                            num26_a10.setText(ASList.get(9) + " A");
-                            num26_a11.setText(ASList.get(10) + " A");
-                            num26_a12.setText(ASList.get(11) + " A");
-                            num26_a13.setText(ASList.get(11) + " A");
-                            num26_a14.setText(ASList.get(13) + " A");
-                            num26_a15.setText(ASList.get(14) + " A");
-                            num26_a16.setText(ASList.get(15) + " A");
-                            num26_a17.setText(ASList.get(16) + " A");
-                            num26_a18.setText(ASList.get(17) + " A");
-                            num26_a19.setText(ASList.get(18) + " A");
-                            num26_a20.setText(ASList.get(19) + " A");
-                            num26_a21.setText(ASList.get(20) + " A");
-                            num26_a22.setText(ASList.get(21) + " A");
-                            num26_a23.setText(ASList.get(22) + " A");
-                            num26_a24.setText(ASList.get(23) + " A");
-                            num26_a25.setText(ASList.get(24) + " A");
-                            num26_a26.setText(ASList.get(25) + " A");
+                            num26_a1.setText(ASList.get(0));
+                            num26_a2.setText(ASList.get(1));
+                            num26_a3.setText(ASList.get(2));
+                            num26_a4.setText(ASList.get(3));
+                            num26_a5.setText(ASList.get(4));
+                            num26_a6.setText(ASList.get(5));
+                            num26_a7.setText(ASList.get(6));
+                            num26_a8.setText(ASList.get(7));
+                            num26_a9.setText(ASList.get(8));
+                            num26_a10.setText(ASList.get(9));
+                            num26_a11.setText(ASList.get(10));
+                            num26_a12.setText(ASList.get(11));
+                            num26_a13.setText(ASList.get(11));
+                            num26_a14.setText(ASList.get(13));
+                            num26_a15.setText(ASList.get(14));
+                            num26_a16.setText(ASList.get(15));
+                            num26_a17.setText(ASList.get(16));
+                            num26_a18.setText(ASList.get(17));
+                            num26_a19.setText(ASList.get(18));
+                            num26_a20.setText(ASList.get(19));
+                            num26_a21.setText(ASList.get(20));
+                            num26_a22.setText(ASList.get(21));
+                            num26_a23.setText(ASList.get(22));
+                            num26_a24.setText(ASList.get(23));
+                            num26_a25.setText(ASList.get(24));
+                            num26_a26.setText(ASList.get(25));
 
                             break;
                         case 28:
-                            num28_a1.setText(ASList.get(0) + " A");
-                            num28_a2.setText(ASList.get(1) + " A");
-                            num28_a3.setText(ASList.get(2) + " A");
-                            num28_a4.setText(ASList.get(3) + " A");
-                            num28_a5.setText(ASList.get(4) + " A");
-                            num28_a6.setText(ASList.get(5) + " A");
-                            num28_a7.setText(ASList.get(6) + " A");
-                            num28_a8.setText(ASList.get(7) + " A");
-                            num28_a9.setText(ASList.get(8) + " A");
-                            num28_a10.setText(ASList.get(9) + " A");
-                            num28_a11.setText(ASList.get(10) + " A");
-                            num28_a12.setText(ASList.get(11) + " A");
-                            num28_a13.setText(ASList.get(11) + " A");
-                            num28_a14.setText(ASList.get(13) + " A");
-                            num28_a15.setText(ASList.get(14) + " A");
-                            num28_a16.setText(ASList.get(15) + " A");
-                            num28_a17.setText(ASList.get(16) + " A");
-                            num28_a18.setText(ASList.get(17) + " A");
-                            num28_a19.setText(ASList.get(18) + " A");
-                            num28_a20.setText(ASList.get(19) + " A");
-                            num28_a21.setText(ASList.get(20) + " A");
-                            num28_a22.setText(ASList.get(21) + " A");
-                            num28_a23.setText(ASList.get(22) + " A");
-                            num28_a24.setText(ASList.get(23) + " A");
-                            num28_a25.setText(ASList.get(24) + " A");
-                            num28_a26.setText(ASList.get(25) + " A");
-                            num28_a27.setText(ASList.get(26) + " A");
-                            num28_a28.setText(ASList.get(27) + " A");
+                            num28_a1.setText(ASList.get(0));
+                            num28_a2.setText(ASList.get(1));
+                            num28_a3.setText(ASList.get(2));
+                            num28_a4.setText(ASList.get(3));
+                            num28_a5.setText(ASList.get(4));
+                            num28_a6.setText(ASList.get(5));
+                            num28_a7.setText(ASList.get(6));
+                            num28_a8.setText(ASList.get(7));
+                            num28_a9.setText(ASList.get(8));
+                            num28_a10.setText(ASList.get(9));
+                            num28_a11.setText(ASList.get(10));
+                            num28_a12.setText(ASList.get(11));
+                            num28_a13.setText(ASList.get(11));
+                            num28_a14.setText(ASList.get(13));
+                            num28_a15.setText(ASList.get(14));
+                            num28_a16.setText(ASList.get(15));
+                            num28_a17.setText(ASList.get(16));
+                            num28_a18.setText(ASList.get(17));
+                            num28_a19.setText(ASList.get(18));
+                            num28_a20.setText(ASList.get(19));
+                            num28_a21.setText(ASList.get(20));
+                            num28_a22.setText(ASList.get(21));
+                            num28_a23.setText(ASList.get(22));
+                            num28_a24.setText(ASList.get(23));
+                            num28_a25.setText(ASList.get(24));
+                            num28_a26.setText(ASList.get(25));
+                            num28_a27.setText(ASList.get(26));
+                            num28_a28.setText(ASList.get(27));
 
                             break;
                         case 30:
-                            num30_a1.setText(ASList.get(0) + " A");
-                            num30_a2.setText(ASList.get(1) + " A");
-                            num30_a3.setText(ASList.get(2) + " A");
-                            num30_a4.setText(ASList.get(3) + " A");
-                            num30_a5.setText(ASList.get(4) + " A");
-                            num30_a6.setText(ASList.get(5) + " A");
-                            num30_a7.setText(ASList.get(6) + " A");
-                            num30_a8.setText(ASList.get(7) + " A");
-                            num30_a9.setText(ASList.get(8) + " A");
-                            num30_a10.setText(ASList.get(9) + " A");
-                            num30_a11.setText(ASList.get(10) + " A");
-                            num30_a12.setText(ASList.get(11) + " A");
-                            num30_a13.setText(ASList.get(11) + " A");
-                            num30_a14.setText(ASList.get(13) + " A");
-                            num30_a15.setText(ASList.get(14) + " A");
-                            num30_a16.setText(ASList.get(15) + " A");
-                            num30_a17.setText(ASList.get(16) + " A");
-                            num30_a18.setText(ASList.get(17) + " A");
-                            num30_a19.setText(ASList.get(18) + " A");
-                            num30_a20.setText(ASList.get(19) + " A");
-                            num30_a21.setText(ASList.get(20) + " A");
-                            num30_a22.setText(ASList.get(21) + " A");
-                            num30_a23.setText(ASList.get(22) + " A");
-                            num30_a24.setText(ASList.get(23) + " A");
-                            num30_a25.setText(ASList.get(24) + " A");
-                            num30_a26.setText(ASList.get(25) + " A");
-                            num30_a27.setText(ASList.get(26) + " A");
-                            num30_a28.setText(ASList.get(27) + " A");
-                            num30_a29.setText(ASList.get(28) + " A");
-                            num30_a30.setText(ASList.get(29) + " A");
+                            num30_a1.setText(ASList.get(0));
+                            num30_a2.setText(ASList.get(1));
+                            num30_a3.setText(ASList.get(2));
+                            num30_a4.setText(ASList.get(3));
+                            num30_a5.setText(ASList.get(4));
+                            num30_a6.setText(ASList.get(5));
+                            num30_a7.setText(ASList.get(6));
+                            num30_a8.setText(ASList.get(7));
+                            num30_a9.setText(ASList.get(8));
+                            num30_a10.setText(ASList.get(9));
+                            num30_a11.setText(ASList.get(10));
+                            num30_a12.setText(ASList.get(11));
+                            num30_a13.setText(ASList.get(11));
+                            num30_a14.setText(ASList.get(13));
+                            num30_a15.setText(ASList.get(14));
+                            num30_a16.setText(ASList.get(15));
+                            num30_a17.setText(ASList.get(16));
+                            num30_a18.setText(ASList.get(17));
+                            num30_a19.setText(ASList.get(18));
+                            num30_a20.setText(ASList.get(19));
+                            num30_a21.setText(ASList.get(20));
+                            num30_a22.setText(ASList.get(21));
+                            num30_a23.setText(ASList.get(22));
+                            num30_a24.setText(ASList.get(23));
+                            num30_a25.setText(ASList.get(24));
+                            num30_a26.setText(ASList.get(25));
+                            num30_a27.setText(ASList.get(26));
+                            num30_a28.setText(ASList.get(27));
+                            num30_a29.setText(ASList.get(28));
+                            num30_a30.setText(ASList.get(29));
                             break;
                         default:
                             // Handle other cases if necessary
@@ -2107,8 +2107,77 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+//last feeder wire
 
-//last main  wire update
+        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the TextInputEditText
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
+
+                // Find the TextInputEditText in the inflated layout
+                final TextInputEditText editTextFeederWire4 = dialogView.findViewById(R.id.edit_text_feeder_wire4);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                editTextFeederWire4.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the TextInputEditText
+                        String Value = editTextFeederWire4.getText().toString();
+                        // Update the FeederWire with the new text
+                        FeederWireFourth.setText(" (G)In "+ Value +" mmø IMC PIPE");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+// main  wire update
         //last main wire update
         MainWire.setOnClickListener(new View.OnClickListener() {
             @Override

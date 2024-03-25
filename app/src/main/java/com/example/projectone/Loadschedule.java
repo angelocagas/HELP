@@ -21,8 +21,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.Menu;
@@ -45,6 +49,7 @@ import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.DialogInterface;
 import android.os.Environment;
 import android.widget.Toast;
@@ -64,6 +69,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 import android.graphics.Bitmap;
 import android.view.View;
 
@@ -82,15 +88,15 @@ public class Loadschedule extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
 
 
-
     private ProjectDAO projectDAO;
     DatabaseHelper helper;
     List<ProjectTable> projectTableList;
 
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14,   num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22,num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28,num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB,LAWEHIGHA, SAVEHIGHA,LAWEA, SaveA, UpdatedMainWire,FeederSize,FeederWireType,FeederWireSecond,FeederWireThird,FeederWireFourth,FeederWire,MainWire,totalone,totalVATextView,totalATextView,HighestA,HighestB,TotalB,UnderOneAndTwo,UnderThreeAndFour,TotalUnder,TopOneAndTwo,TopThreeAndFour,TotalTop;
+    TextView num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14, num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22, num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28, num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30, num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB, LAWEHIGHA, SAVEHIGHA, LAWEA, SaveA, UpdatedMainWire, FeederSize, FeederWireType, FeederWireSecond, FeederWireThird, FeederWireFourth, FeederWire, MainWire, totalone, totalVATextView, totalATextView, HighestA, HighestB, TotalB, UnderOneAndTwo, UnderThreeAndFour, TotalUnder, TopOneAndTwo, TopThreeAndFour, TotalTop;
 
     RelativeLayout aaaa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseHelper = new DatabaseHelper(this);
@@ -105,7 +111,7 @@ public class Loadschedule extends AppCompatActivity {
         helper.getAllProjectData();
         totalVATextView = findViewById(R.id.totalVA);
         totalATextView = findViewById(R.id.totalA);
-        HighestA =findViewById(R.id.HIGHA);
+        HighestA = findViewById(R.id.HIGHA);
         HighestB = findViewById(R.id.HighestB);
         totalone = findViewById(R.id.totalONE);
         TotalB = findViewById(R.id.TotalB);
@@ -130,12 +136,12 @@ public class Loadschedule extends AppCompatActivity {
 
 
         // Call the method to get all items list
-     ///   databaseHelper.getAllItemsList();
+        ///   databaseHelper.getAllItemsList();
 
-         num4_1 = findViewById(R.id.num4_1);
-         num4_2 = findViewById(R.id.num4_2);
-         num4_3 = findViewById(R.id.num4_3);
-         num4_4 = findViewById(R.id.num4_4);
+        num4_1 = findViewById(R.id.num4_1);
+        num4_2 = findViewById(R.id.num4_2);
+        num4_3 = findViewById(R.id.num4_3);
+        num4_4 = findViewById(R.id.num4_4);
 
         num6_1 = findViewById(R.id.num6_1);
         num6_2 = findViewById(R.id.num6_2);
@@ -152,7 +158,6 @@ public class Loadschedule extends AppCompatActivity {
         num8_6 = findViewById(R.id.num8_6);
         num8_7 = findViewById(R.id.num8_7);
         num8_8 = findViewById(R.id.num8_8);
-
 
 
         num10_1 = findViewById(R.id.num10_1);
@@ -278,7 +283,6 @@ public class Loadschedule extends AppCompatActivity {
         num22_22 = findViewById(R.id.num22_22);
 
 
-
         num24_1 = findViewById(R.id.num24_1);
         num24_2 = findViewById(R.id.num24_2);
         num24_3 = findViewById(R.id.num24_3);
@@ -303,8 +307,6 @@ public class Loadschedule extends AppCompatActivity {
         num24_22 = findViewById(R.id.num24_22);
         num24_23 = findViewById(R.id.num24_23);
         num24_24 = findViewById(R.id.num24_24);
-
-
 
 
         num26_1 = findViewById(R.id.num26_1);
@@ -333,7 +335,6 @@ public class Loadschedule extends AppCompatActivity {
         num26_24 = findViewById(R.id.num26_24);
         num26_25 = findViewById(R.id.num26_25);
         num26_26 = findViewById(R.id.num26_26);
-
 
 
         num28_1 = findViewById(R.id.num28_1);
@@ -650,74 +651,66 @@ public class Loadschedule extends AppCompatActivity {
         num30_a30 = findViewById(R.id.num30_a30);
 
 
-
-
-
-
-
         num4_a = findViewById(R.id.num4_a);
         num6_a = findViewById(R.id.num6_a);
-        num8_a = findViewById(R.id. num8_a);
-        num10_a = findViewById(R.id. num10_a);
-        num12_a = findViewById(R.id. num12_a);
-        num14_a = findViewById(R.id. num14_a);
-        num16_a = findViewById(R.id. num16_a);
-        num18_a = findViewById(R.id. num18_a);
-        num20_a = findViewById(R.id. num20_a);
-        num22_a = findViewById(R.id. num22_a);
-        num24_a = findViewById(R.id. num24_a);
-        num26_a = findViewById(R.id. num26_a);
-        num28_a = findViewById(R.id. num28_a);
-        num30_a = findViewById(R.id. num30_a);
+        num8_a = findViewById(R.id.num8_a);
+        num10_a = findViewById(R.id.num10_a);
+        num12_a = findViewById(R.id.num12_a);
+        num14_a = findViewById(R.id.num14_a);
+        num16_a = findViewById(R.id.num16_a);
+        num18_a = findViewById(R.id.num18_a);
+        num20_a = findViewById(R.id.num20_a);
+        num22_a = findViewById(R.id.num22_a);
+        num24_a = findViewById(R.id.num24_a);
+        num26_a = findViewById(R.id.num26_a);
+        num28_a = findViewById(R.id.num28_a);
+        num30_a = findViewById(R.id.num30_a);
 
 
-
-
-
-          num4_top = findViewById(R.id.num4_top);
-         num6_top = findViewById(R.id.num6_top);
-         num8_top = findViewById(R.id. num8_top);
-         num10_top = findViewById(R.id. num10_top);
-         num12_top = findViewById(R.id. num12_top);
-         num14_top = findViewById(R.id. num14_top);
-         num16_top = findViewById(R.id. num16_top);
-         num18_top = findViewById(R.id. num18_top);
-         num20_top = findViewById(R.id. num20_top);
-         num22_top = findViewById(R.id. num22_top);
-         num24_top = findViewById(R.id. num24_top);
-         num26_top = findViewById(R.id. num26_top);
-         num28_top = findViewById(R.id. num28_top);
-         num30_top = findViewById(R.id. num30_top);
+        num4_top = findViewById(R.id.num4_top);
+        num6_top = findViewById(R.id.num6_top);
+        num8_top = findViewById(R.id.num8_top);
+        num10_top = findViewById(R.id.num10_top);
+        num12_top = findViewById(R.id.num12_top);
+        num14_top = findViewById(R.id.num14_top);
+        num16_top = findViewById(R.id.num16_top);
+        num18_top = findViewById(R.id.num18_top);
+        num20_top = findViewById(R.id.num20_top);
+        num22_top = findViewById(R.id.num22_top);
+        num24_top = findViewById(R.id.num24_top);
+        num26_top = findViewById(R.id.num26_top);
+        num28_top = findViewById(R.id.num28_top);
+        num30_top = findViewById(R.id.num30_top);
 
         num4_bot = findViewById(R.id.num4_bot);
         num6_bot = findViewById(R.id.num6_bot);
-        num8_bot = findViewById(R.id. num8_bot);
-        num10_bot = findViewById(R.id. num10_bot);
-        num12_bot = findViewById(R.id. num12_bot);
-        num14_bot = findViewById(R.id. num14_bot);
-        num16_bot = findViewById(R.id. num16_bot);
-        num18_bot = findViewById(R.id. num18_bot);
-        num20_bot = findViewById(R.id. num20_bot);
-        num22_bot = findViewById(R.id. num22_bot);
-        num24_bot = findViewById(R.id. num24_bot);
-        num26_bot = findViewById(R.id. num26_bot);
-        num28_bot = findViewById(R.id. num28_bot);
-        num30_bot = findViewById(R.id. num30_bot);
+        num8_bot = findViewById(R.id.num8_bot);
+        num10_bot = findViewById(R.id.num10_bot);
+        num12_bot = findViewById(R.id.num12_bot);
+        num14_bot = findViewById(R.id.num14_bot);
+        num16_bot = findViewById(R.id.num16_bot);
+        num18_bot = findViewById(R.id.num18_bot);
+        num20_bot = findViewById(R.id.num20_bot);
+        num22_bot = findViewById(R.id.num22_bot);
+        num24_bot = findViewById(R.id.num24_bot);
+        num26_bot = findViewById(R.id.num26_bot);
+        num28_bot = findViewById(R.id.num28_bot);
+        num30_bot = findViewById(R.id.num30_bot);
 
-        RelativeLayout RS4  = findViewById(R.id.RS4);
-        RelativeLayout RS6  = findViewById(R.id.RS6);
-        RelativeLayout RS8  = findViewById(R.id.RS8);
-        RelativeLayout RS10  = findViewById(R.id.RS10);
-        RelativeLayout RS12  = findViewById(R.id.RS12);
-        RelativeLayout RS14  = findViewById(R.id.RS14);
-        RelativeLayout RS16  = findViewById(R.id.RS16);
-        RelativeLayout RS18  = findViewById(R.id.RS18);
-        RelativeLayout RS20  = findViewById(R.id.RS20);
-        RelativeLayout RS22  = findViewById(R.id.RS22);
-        RelativeLayout RS24  = findViewById(R.id.RS24);
-        RelativeLayout RS26  = findViewById(R.id.RS26);
-        RelativeLayout RS28  = findViewById(R.id.RS28);
-        RelativeLayout RS30  = findViewById(R.id.RS30);
+        RelativeLayout RS4 = findViewById(R.id.RS4);
+        RelativeLayout RS6 = findViewById(R.id.RS6);
+        RelativeLayout RS8 = findViewById(R.id.RS8);
+        RelativeLayout RS10 = findViewById(R.id.RS10);
+        RelativeLayout RS12 = findViewById(R.id.RS12);
+        RelativeLayout RS14 = findViewById(R.id.RS14);
+        RelativeLayout RS16 = findViewById(R.id.RS16);
+        RelativeLayout RS18 = findViewById(R.id.RS18);
+        RelativeLayout RS20 = findViewById(R.id.RS20);
+        RelativeLayout RS22 = findViewById(R.id.RS22);
+        RelativeLayout RS24 = findViewById(R.id.RS24);
+        RelativeLayout RS26 = findViewById(R.id.RS26);
+        RelativeLayout RS28 = findViewById(R.id.RS28);
+        RelativeLayout RS30 = findViewById(R.id.RS30);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -728,11 +721,11 @@ public class Loadschedule extends AppCompatActivity {
         LAWEHIGHB = findViewById(R.id.LAWEHIGHB);
 
         //updated
-        SharedPreferences sharedPreferences = getSharedPreferences("SharePref",MODE_PRIVATE);
-        String UPDMT = sharedPreferences.getString("UMT","");
-        String FDW = sharedPreferences.getString("UFWT","");
-        String TT = sharedPreferences.getString("TT","");
-        String YY = sharedPreferences.getString("YY","");
+        SharedPreferences sharedPreferences = getSharedPreferences("SharePref", MODE_PRIVATE);
+        String UPDMT = sharedPreferences.getString("UMT", "");
+        String FDW = sharedPreferences.getString("UFWT", "");
+        String TT = sharedPreferences.getString("TT", "");
+        String YY = sharedPreferences.getString("YY", "");
 
 
         Intent intent = getIntent();
@@ -1027,7 +1020,7 @@ public class Loadschedule extends AppCompatActivity {
 
         dbHelper.getAllATsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
-            public void onItemsLoaded(List<String>ASList) {
+            public void onItemsLoaded(List<String> ASList) {
                 if (ASList != null) {
                     switch (ASList.size()) {
                         case 4:
@@ -1313,16 +1306,16 @@ public class Loadschedule extends AppCompatActivity {
                 }
             }
         });
-     ///   List<String> itemSList = getIntent().getStringArrayListExtra("itemListS");
+        ///   List<String> itemSList = getIntent().getStringArrayListExtra("itemListS");
 
         //for display skeleton
         dbHelper.getAllATsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
-            public void onItemsLoaded(List<String>TSList) {
+            public void onItemsLoaded(List<String> TSList) {
                 if (TSList != null) {
                     switch (TSList.size()) {
                         case 4:
-                           RS4.setVisibility(View.VISIBLE);
+                            RS4.setVisibility(View.VISIBLE);
                             RS6.setVisibility(View.GONE);
                             RS8.setVisibility(View.GONE);
                             RS10.setVisibility(View.GONE);
@@ -1389,7 +1382,6 @@ public class Loadschedule extends AppCompatActivity {
                             RS26.setVisibility(View.GONE);
                             RS28.setVisibility(View.GONE);
                             RS30.setVisibility(View.GONE);
-
 
 
                             break;
@@ -1480,7 +1472,6 @@ public class Loadschedule extends AppCompatActivity {
                             RS26.setVisibility(View.GONE);
                             RS28.setVisibility(View.GONE);
                             RS30.setVisibility(View.GONE);
-
 
 
                             break;
@@ -1579,44 +1570,34 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
-
-
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
             String totalVA = intent.getStringExtra("TOTALVA");
             String totalA = intent.getStringExtra("TOTALA");
             String HIGHA = intent.getStringExtra("HIGHA");
-            String Wiretype =intent.getStringExtra("WFG");
+            String Wiretype = intent.getStringExtra("WFG");
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
             String CTR = intent.getStringExtra("CTR");
 
 
-
-
 //minimize the space for skeleton display
 
 
-
-
-            if (totalA == null && HIGHA == null)
-            {
+            if (totalA == null && HIGHA == null) {
                 FeederSize.setText(TT);
                 UpdatedMainWire.setText(YY);
                 MainWire.setText(UPDMT);
 
 
-                if (UPDMT != null)
-                {
+                if (UPDMT != null) {
                     FeederWireType.setText(WFGTYPE);
                 }
 
 
-
-
-                String SAVEA,SAVEHIGHAA;
-                SAVEA = sharedPreferences.getString("TOTALA","");
-                SAVEHIGHAA = sharedPreferences.getString("HIGHAA","");
+                String SAVEA, SAVEHIGHAA;
+                SAVEA = sharedPreferences.getString("TOTALA", "");
+                SAVEHIGHAA = sharedPreferences.getString("HIGHAA", "");
                 totalATextView.setText(SAVEA);
 
                 HighestA.setText(SAVEHIGHAA);
@@ -1641,24 +1622,19 @@ public class Loadschedule extends AppCompatActivity {
                 TotalB.setText(totalA);
             }
 
-            if (HIGHA != null)
-            {
+            if (HIGHA != null) {
                 HighestA.setText(HIGHA);
                 HighestB.setText(HIGHA);
             }
 
-            if (Wiretype != null)
-            {
+            if (Wiretype != null) {
                 FeederWireType.setText(Wiretype);
             }
-            if (PVCUPDATED != null)
-            {
+            if (PVCUPDATED != null) {
                 FeederWireFourth.setText(PVCUPDATED);
             }
 
         }
-
-
 
 
         String SAVEA = totalATextView.getText().toString();
@@ -1701,231 +1677,227 @@ public class Loadschedule extends AppCompatActivity {
         TotalUnder.setText(formattedResultTotalUnder);
 
 
-
-            if (totalUnderValue == 0) {
+        if (totalUnderValue == 0) {
             MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
 
-              }
-            if (totalUnderValue < 15) {
-                MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 16 && totalUnderValue <= 20) {
-                MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue < 15) {
+            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 16 && totalUnderValue <= 20) {
+            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 GHZ");
 
-            }
-            if (totalUnderValue >= 21 && totalUnderValue <= 30) {
-                MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 31 && totalUnderValue <= 40) {
-                MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 41 && totalUnderValue <= 50) {
-                MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 50 && totalUnderValue <= 60) {
-                MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 GHZ");
-            }
+        }
+        if (totalUnderValue >= 21 && totalUnderValue <= 30) {
+            MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 31 && totalUnderValue <= 40) {
+            MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 41 && totalUnderValue <= 50) {
+            MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 50 && totalUnderValue <= 60) {
+            MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 GHZ");
+        }
 
-            if (totalUnderValue >= 71 && totalUnderValue <= 80) {
-                MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 81 && totalUnderValue <= 90) {
-                MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 91 && totalUnderValue <= 100) {
-                MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 101 && totalUnderValue <= 110) {
-                MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 111 && totalUnderValue <= 125) {
-                MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue >= 125 && totalUnderValue <= 150) {
-                MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 GHZ");
-            }
-            if (totalUnderValue > 151) {
-                MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
-            }
-            String PassMainWire = MainWire.getText().toString();
-
-
+        if (totalUnderValue >= 71 && totalUnderValue <= 80) {
+            MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 81 && totalUnderValue <= 90) {
+            MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 91 && totalUnderValue <= 100) {
+            MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 101 && totalUnderValue <= 110) {
+            MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 111 && totalUnderValue <= 125) {
+            MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue >= 125 && totalUnderValue <= 150) {
+            MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 GHZ");
+        }
+        if (totalUnderValue > 151) {
+            MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 GHZ");
+        }
+        String PassMainWire = MainWire.getText().toString();
 
 
-            if (FDW != null) {
-                MainWire.setText(PassMainWire);
-            }
+        if (FDW != null) {
+            MainWire.setText(PassMainWire);
+        }
 
-            if (totalUnderValue >= 1 && totalUnderValue < 25) {
-                FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 25 && totalUnderValue < 30) {
-                FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 30 && totalUnderValue < 40) {
-                FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 40 && totalUnderValue < 55) {
-                FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 55 && totalUnderValue < 75) {
-                FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 75 && totalUnderValue < 95) {
-                FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 95 && totalUnderValue < 115) {
-                FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 115 && totalUnderValue < 130) {
-                FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 130 && totalUnderValue < 150) {
-                FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 150 && totalUnderValue < 170) {
-                FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 170 && totalUnderValue < 205) {
-                FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 205 && totalUnderValue < 240) {
-                FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 240 && totalUnderValue < 285) {
-                FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 285 && totalUnderValue < 320) {
-                FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 320 && totalUnderValue < 345) {
-                FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 345 && totalUnderValue < 360) {
-                FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 360 && totalUnderValue < 425) {
-                FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 425 && totalUnderValue < 490) {
-                FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 490 && totalUnderValue < 530) {
-                FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 530 && totalUnderValue < 535) {
-                FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
-            }
-            if (totalUnderValue >= 535 && totalUnderValue < 595) {
-                FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
-            }
+        if (totalUnderValue >= 1 && totalUnderValue < 25) {
+            FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 25 && totalUnderValue < 30) {
+            FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 30 && totalUnderValue < 40) {
+            FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 40 && totalUnderValue < 55) {
+            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 55 && totalUnderValue < 75) {
+            FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 75 && totalUnderValue < 95) {
+            FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 95 && totalUnderValue < 115) {
+            FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 115 && totalUnderValue < 130) {
+            FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 130 && totalUnderValue < 150) {
+            FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 150 && totalUnderValue < 170) {
+            FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 170 && totalUnderValue < 205) {
+            FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 205 && totalUnderValue < 240) {
+            FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 240 && totalUnderValue < 285) {
+            FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 285 && totalUnderValue < 320) {
+            FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 320 && totalUnderValue < 345) {
+            FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 345 && totalUnderValue < 360) {
+            FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 360 && totalUnderValue < 425) {
+            FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 425 && totalUnderValue < 490) {
+            FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 490 && totalUnderValue < 530) {
+            FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 530 && totalUnderValue < 535) {
+            FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
+        }
+        if (totalUnderValue >= 535 && totalUnderValue < 595) {
+            FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
+        }
 
 
-            String FeederW2 = FeederWire.getText().toString().trim();
+        String FeederW2 = FeederWire.getText().toString().trim();
 
 //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-            if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
 
-            }
-            if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-            }
-            //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+        }
+        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 20 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 25 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+        }
+        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
 
-            if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-            }
+        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 32 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+        }
 
-            //IF FEEDERWIRE IS 60 80   =    22
-            if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-            }
-
-
-            //IF FEEDERWIRE IS 100 to 175   = 30
-
-            if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
-            }
-
-            if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-            }
-
-            if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-            }
+        //IF FEEDERWIRE IS 60 80   =    22
+        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 40 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
 
 
-            //IF FEEDERWIRE IS 200 to 325    50
-            if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
-                FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
-            }
-            if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
-            }
+        //IF FEEDERWIRE IS 100 to 175   = 30
+
+        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 50 mmø IMC PIPE");
+        }
+
+        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
+
+        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
 
 
-            //IF FEEDERWIRE IS  375 to 500    600
-            if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
-            }
-            if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
-            }
-            if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
-                FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
-            }
+        //IF FEEDERWIRE IS 200 to 325    50
+        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 65 mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+            FeederWireFourth.setText("(G)In 80  mmø IMC PIPE");
+        }
+        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+        }
+
+
+        //IF FEEDERWIRE IS  375 to 500    600
+        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+        }
+        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+        }
+        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
+            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+        }
 
 
         String Feeder2 = FeederWireSecond.getText().toString().trim();
         String Feeder3 = FeederWireFourth.getText().toString().trim();
-
 
 
 //for the skeleton displays values
@@ -1963,7 +1935,7 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 //first update
-        FeederWire.setOnClickListener(new View.OnClickListener() {
+      /*  FeederWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Inflate the layout containing the TextInputEditText
@@ -2030,93 +2002,25 @@ public class Loadschedule extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
-//second feeder wire update
-        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
+        FeederWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Inflate the layout containing the TextInputEditText
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
 
-                // Find the TextInputEditText in the inflated layout
-                final TextInputEditText editTextpipeWire = dialogView.findViewById(R.id.edit_text_pipe_wire);
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Pipe Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
+                // Define your list of feed options
+                String[] feedOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80"};
 
-                final AlertDialog dialog = builder.create();
-                dialog.show();
+                // Create ArrayAdapter to hold suggestions
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
 
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                editTextpipeWire.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        positiveButton.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the TextInputEditText
-                        String wiresec = editTextpipeWire.getText().toString();
-                        // Update the FeederWire with the new text
-                        String newTet = ("+ 1 - " + wiresec + " mm.sq. THHN Cu. Wire");
-                        // Update TextViews
-                        FeederWireSecond.setText(newTet);
-                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
-                        String botText = "GEC: " + newTet;
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                            botViews[i].setText(botText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-//last feeder wire
-
-        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the TextInputEditText
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
-
-                // Find the TextInputEditText in the inflated layout
-                final TextInputEditText editTextFeederWire4 = dialogView.findViewById(R.id.edit_text_feeder_wire4);
+                // Set the adapter to AutoCompleteTextView
+                autoCompleteTextView.setAdapter(adapter);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
@@ -2139,7 +2043,79 @@ public class Loadschedule extends AppCompatActivity {
                 positiveButton.setEnabled(false);
 
                 // Set a listener to enable/disable the OK button based on text input
-                editTextFeederWire4.addTextChangedListener(new TextWatcher() {
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Enable OK button when an item is selected
+                        positiveButton.setEnabled(true);
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the selected item from the AutoCompleteTextView
+                        String selectedFeederWire = autoCompleteTextView.getText().toString();
+
+                        // Update the FeederWire with the new text
+                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN Cu. Wire ");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+
+//second feeder wire update
+        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
+
+                // Define your list of pipe wire options
+                String[] pipeWireOptions = new String[]{"14", "22", "30", "50", "60"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Pipe Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                     }
@@ -2158,10 +2134,93 @@ public class Loadschedule extends AppCompatActivity {
                 positiveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Get the text from the TextInputEditText
-                        String Value = editTextFeederWire4.getText().toString();
+                        // Get the text from the AutoCompleteTextView
+                        String selectedPipeWire = autoCompleteTextView.getText().toString();
                         // Update the FeederWire with the new text
-                        FeederWireFourth.setText(" (G)In "+ Value +" mmø IMC PIPE");
+                        String newTet = ("+ 1 - " + selectedPipeWire + " mm.sq. THHN Cu. Wire");
+                        // Update TextViews
+                        FeederWireSecond.setText(newTet);
+                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString();
+                        String botText = "GEC: " + newTet;
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                            botViews[i].setText(botText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+
+//last feeder wire
+        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
+
+                // Define your list of feeder wire options
+                String[] feederWireOptions = new String[]{"20", "25", "32", "40", "50", "65", "80"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the selected item from the AutoCompleteTextView
+                        String selectedFeederWire = autoCompleteTextView.getText().toString();
+                        // Update the FeederWire with the new text
+                        FeederWireFourth.setText(" (G)In " + selectedFeederWire + " mmø IMC PIPE");
 
                         String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString();
 
@@ -2177,17 +2236,29 @@ public class Loadschedule extends AppCompatActivity {
                 });
             }
         });
+
+
 // main  wire update
         //last main wire update
         MainWire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Inflate the layout containing the TextInputEditText
+                // Inflate the layout containing the AutoCompleteTextViews
                 View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
 
-                // Find the TextInputEditText in the inflated layout
-                final TextInputEditText ATWire = dialogView.findViewById(R.id.edit_text_AT_wire);
-                final TextInputEditText AFWire = dialogView.findViewById(R.id.edit_text_AF_wire);
+                // Find the AutoCompleteTextViews in the inflated layout
+                final AutoCompleteTextView ATWire = dialogView.findViewById(R.id.auto_complete_AT_wire);
+                final AutoCompleteTextView AFWire = dialogView.findViewById(R.id.auto_complete_AF_wire);
+
+                // Define your list of AT and AF wire options
+                String[] ATOptions = new String[]{"20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "125", "150", "175"};
+                String[] AFOptions = new String[]{"50", "100", "225"};
+
+                // Create ArrayAdapters to hold options
+                ArrayAdapter<String> ATAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, ATOptions);
+                ArrayAdapter<String> AFAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, AFOptions);
+                ATWire.setAdapter(ATAdapter);
+                AFWire.setAdapter(AFAdapter);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
@@ -2212,7 +2283,8 @@ public class Loadschedule extends AppCompatActivity {
                 // Set a listener to enable/disable the OK button based on text input
                 TextWatcher watcher = new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -2223,19 +2295,37 @@ public class Loadschedule extends AppCompatActivity {
                     }
 
                     @Override
-                    public void afterTextChanged(Editable s) {}
+                    public void afterTextChanged(Editable s) {
+                    }
                 };
 
                 ATWire.addTextChangedListener(watcher);
                 AFWire.addTextChangedListener(watcher);
 
+                // Disable AF input based on the selected AT value
+                ATWire.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String selectedAT = ATWire.getText().toString();
+                        if (selectedAT.equals("20") || selectedAT.equals("30") || selectedAT.equals("40") || selectedAT.equals("50"))
+                            AFWire.setText("50");
+                        else if (selectedAT.equals("60") || selectedAT.equals("70") || selectedAT.equals("80") || selectedAT.equals("90") || selectedAT.equals("100"))
+                            AFWire.setText("100");
+                        else
+                            AFWire.setText("225");
+
+                        // Disable AF input
+                        AFWire.setEnabled(false);
+                    }
+                });
+
                 positiveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Get the text from the TextInputEditText
+                        // Get the text from the AutoCompleteTextViews
                         String AT = ATWire.getText().toString();
                         String AF = AFWire.getText().toString();
-                        // Update the FeederWire with the new text
+                        // Update the MainWire with the new text
                         String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 GHZ");
                         // Update TextViews
                         MainWire.setText(newAfAt);
@@ -2254,13 +2344,14 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+
         FeederWireType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChangeFeederWire.class);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("TOTALA", SAVEA);
-                editor.putString("HIGHAA",SaveHighA);
+                editor.putString("HIGHAA", SaveHighA);
                 editor.apply();
                 startActivity(intent);
             }
@@ -2286,16 +2377,14 @@ public class Loadschedule extends AppCompatActivity {
         setIntent(intent);
 
 
-
-
         rootLayout = findViewById(R.id.zoom);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mGestureDetector = new GestureDetector(this, new GestureListener());
 
 
     }
-    public  void  setRecyclerView(List<ProjectTable> projectTableList)
-    {
+
+    public void setRecyclerView(List<ProjectTable> projectTableList) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dataAdapter = new DataAdapter(this, projectTableList);
         recyclerView.setAdapter(dataAdapter);
@@ -2308,10 +2397,6 @@ public class Loadschedule extends AppCompatActivity {
         mGestureDetector.onTouchEvent(event);
         return true;
     }
-
-
-
-
 
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
@@ -2369,8 +2454,9 @@ public class Loadschedule extends AppCompatActivity {
             return true;
         }
     }
-@Override
-public  boolean onCreateOptionsMenu(Menu menu){
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
@@ -2395,9 +2481,9 @@ public  boolean onCreateOptionsMenu(Menu menu){
 
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.add){
+        if (id == R.id.add) {
             onBackPressed();
         }
         /* -------------------------- PRINT ---------------------- */
@@ -2436,7 +2522,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
                 public void onClick(DialogInterface dialog, int which) {
                     if (selectedItem[0] != -1) {
                         String paperSize = (String) paperSizes[selectedItem[0]];
-                        if(currentTableCount < 3){
+                        if (currentTableCount < 3) {
                             currentTableCount++;
                             captureRelativeLayoutAsImage();
                         }
@@ -2598,7 +2684,6 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                                 relaImage.scaleToFit(desiredWidth, desiredHeight);
 
 
-
                                                 // Calculate the y-coordinate relative to the top of the page
                                                 float yPositionFromTop = pageHeight - yPosition;
 
@@ -2637,7 +2722,8 @@ public  boolean onCreateOptionsMenu(Menu menu){
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show(); }
+                                                Toast.makeText(getApplicationContext(), "Please select a paper size", Toast.LENGTH_SHORT).show();
+                                            }
                                         });
                                     }
                                 } catch (Exception e) {
@@ -2715,8 +2801,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
         /* -------------------------- END OF NEXT LOAD SCHEDULE ---------------------- */
 
 
-
-        if (id == R.id.resetLS){
+        if (id == R.id.resetLS) {
             Toast.makeText(this, "reset current load schedule button", Toast.LENGTH_SHORT).show();
             // Start the Inputing activity
             Intent intent = new Intent(this, Inputing.class);
@@ -2740,9 +2825,9 @@ public  boolean onCreateOptionsMenu(Menu menu){
                     currentTableCount = 0;
 
                     Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
-                     Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
+                    Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                     startActivity(intent);
+                    startActivity(intent);
                 }
             });
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -2779,6 +2864,7 @@ public  boolean onCreateOptionsMenu(Menu menu){
         }
         return inSampleSize;
     }
+
     // Method to capture the contents of RelativeLayout and save as images in SharedPreferences
     private void captureRelativeLayoutAsImage() {
         // Get the RelativeLayout and its child views

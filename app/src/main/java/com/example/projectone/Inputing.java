@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -673,7 +674,8 @@ public class Inputing extends AppCompatActivity {
                                 Horsepower.setText(null);
                                 others.setText(null);
 
-                                proceedWithPreview();
+                                showPercentSelectionDialog();
+
 
                             }
                         });
@@ -934,31 +936,46 @@ public class Inputing extends AppCompatActivity {
 
 
     private void showPercentSelectionDialog() {
-        final CharSequence[] percentChoices = {"10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"};
+        // Inflate the dialog layout XML
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
+
+        final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-        builder.setTitle("Please select percent");
-        builder.setItems(percentChoices, new DialogInterface.OnClickListener() {
+        builder.setTitle("Demand Factor");
+        builder.setView(dialogView);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                TextView demand = findViewById(R.id.demand);
-
-                // The 'which' argument contains the index position of the selected item
-                String selectedPercentText = percentChoices[which].toString();
-                // Remove the '%' sign before converting to integer
-                int selectedPercent = Integer.parseInt(selectedPercentText.replaceAll("[^0-9]", ""));
-                // Multiply the selected percent by 100
-                float multipliedPercent = (float) selectedPercent / 100.0f;
-                String demandtext = String.format("%.2f", multipliedPercent);
-
-                demand.setText(demandtext);
-                // Once percent selection is done, proceed with preview
-                proceedWithPreview();
-
+                String inputText = inputEditText.getText().toString().trim();
+                if (!inputText.isEmpty()) {
+                    int inputPercent = Integer.parseInt(inputText);
+                    if (inputPercent >= 0 && inputPercent <= 100) {
+                        float multipliedPercent = (float) inputPercent / 100.0f;
+                        String demandText = String.format("%.2f", multipliedPercent);
+                        TextView demand = findViewById(R.id.demand);
+                        demand.setText(demandText);
+                        // Once percent selection is done, proceed with preview
+                        proceedWithPreview();
+                    } else {
+                        // Invalid input, show error message or handle accordingly
+                        Toast.makeText(Inputing.this, "Please enter a valid percent (0-100)", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Empty input, show error message or handle accordingly
+                    Toast.makeText(Inputing.this, "Please enter a percent value", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        // Show the percent selection dialog
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
         builder.show();
     }
+
 
 
 

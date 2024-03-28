@@ -1,5 +1,7 @@
 package com.example.projectone;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Update;
@@ -10,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -36,7 +39,7 @@ public class Inputing extends AppCompatActivity {
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower;
     TextInputLayout horses;
-    TextView Counter2, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
+    TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
@@ -102,6 +105,8 @@ public class Inputing extends AppCompatActivity {
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
+        demand = findViewById(R.id.demand);
+
 
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
@@ -679,28 +684,36 @@ public class Inputing extends AppCompatActivity {
                         });
                         // Show the AlertDialog
                         builder.show();
-                    } else {
+                    }
 
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-                        builder.setTitle("Alert");
-                        builder.setMessage("Do you want to proceed?");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    else {
+                        // First, prompt the user if they want to proceed
+                        AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(Inputing.this);
+                        confirmBuilder.setTitle("Alert");
+                        confirmBuilder.setMessage("Do you want to proceed?");
+                        confirmBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // Proceed with preview
-                                proceedWithPreview();
+                                // User wants to proceed, show the percent selection dialog
+                                showPercentSelectionDialog();
                             }
                         });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        confirmBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // User canceled, do nothing
                             }
                         });
-                        // Show the AlertDialog
-                        builder.show();
+                        // Show the confirmation dialog
+                        confirmBuilder.show();
                     }
+
+// Method to show the percent selection dialog
+
+
+// Method to handle the selected percent
+
+
 
 
 
@@ -916,13 +929,40 @@ public class Inputing extends AppCompatActivity {
     }
 
 
+    private void showPercentSelectionDialog() {
+        final CharSequence[] percentChoices = {"10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+        builder.setTitle("Please select percent");
+        builder.setItems(percentChoices, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TextView demand = findViewById(R.id.demand);
+
+                // The 'which' argument contains the index position of the selected item
+                String selectedPercentText = percentChoices[which].toString();
+                // Remove the '%' sign before converting to integer
+                int selectedPercent = Integer.parseInt(selectedPercentText.replaceAll("[^0-9]", ""));
+                // Multiply the selected percent by 100
+                float multipliedPercent = (float) selectedPercent / 100.0f;
+                String demandtext = String.format("%.2f", multipliedPercent);
+
+                demand.setText(demandtext);
+                // Once percent selection is done, proceed with preview
+                proceedWithPreview();
+
+            }
+        });
+        // Show the percent selection dialog
+        builder.show();
+    }
+
 
 
     private void proceedWithPreview() {
 
         double highestAmp = findHighestAmp();
         HighestAmp12.setText(String.valueOf(highestAmp));
-
+        String DEMAND = demand.getText().toString();
         // Once the highest values are determined, create an intent to start the new activity
         String passVA = TotalVA.getText().toString();
         String passA = TotalA.getText().toString();
@@ -936,6 +976,7 @@ public class Inputing extends AppCompatActivity {
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
         intent.putExtra("CTR", skel);
+        intent.putExtra("DEMAND", DEMAND);
         startActivity(intent);
 
     }

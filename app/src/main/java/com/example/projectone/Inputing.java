@@ -274,58 +274,50 @@ public class Inputing extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 isAutoCompleteItemSelected = true;
                 String selectedItem = autoCompleteTextView1.getText().toString();
+                // Disable or enable Quantity input based on selected item
+                if (selectedItem.equals("ACU") || selectedItem.equals("Water Heater") || selectedItem.equals("Range") || selectedItem.equals("Refrigerator") || selectedItem.equals("Spare")) {
+                    Quantity.setEnabled(false);
+                    Quantity.setText("1");
+                } else {
+                    Quantity.setEnabled(true);
+                    Quantity.setText("");
+                }
+
+// Set values based on selected item
                 if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     AT.setText("30");
-                }
-                if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    AT.setText("20"); // Set the default value for other items
-                }
-                if ("Convenience Outlet".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "ACU".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SMM.setText("3.5");
-                    GMM.setText("3.5");
-                }
-                if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SMM.setText("5.5");
-                    GMM.setText("5.5");
-                }
-                if ("Lighting Outlet".equals(selectedItem)) {
-                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                } else if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                    AT.setText("20");
+                } else if ("Lighting Outlet".equals(selectedItem)) {
                     AT.setText("15");
                     SMM.setText("3.5");
                     GMM.setText("3.5");
-
-                }
-
-                if ("Spare".equals(selectedItem)) {
-                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                } else if ("Spare".equals(selectedItem)) {
                     SMM.setText("Stub");
                     GMM.setText("");
                 }
 
-                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SNUM.setText("2");//MATIC
-                    GNUM.setText("1");//MATIC
-                    STYPE.setText("THHN");//MATIC
-                    GTYPE.setText("THW");//MATIC
-                } else{
-                    SNUM.setText("");//MATIC
-                    GNUM.setText("");//MATIC
-                    STYPE.setText("UP");//MATIC
-                    GTYPE.setText("");//MATIC
+// Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
+                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                    SNUM.setText("2");
+                    GNUM.setText("1");
+                    STYPE.setText("THHN");
+                    GTYPE.setText("THW");
+                } else {
+                    SNUM.setText("");
+                    GNUM.setText("");
+                    STYPE.setText("UP");
+                    GTYPE.setText("");
                 }
 
-
+// Manage visibility of "horses" view
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
                 } else {
                     horses.setVisibility(View.GONE);
                 }
+
             }
         });
 

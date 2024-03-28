@@ -2177,7 +2177,7 @@ public class Loadschedule extends AppCompatActivity {
                 final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
 
                 // Define your list of feeder wire options
-                String[] feederWireOptions = new String[]{"20", "25", "32", "40", "50", "65", "80"};
+                String[] feederWireOptions = new String[]{"2", "3.5", "5.5", "8.0", "14","22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250"};
 
                 // Create ArrayAdapter to hold options
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);

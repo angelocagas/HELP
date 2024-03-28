@@ -556,11 +556,26 @@
                     android:layout_marginTop="64dp"
                     android:layout_toEndOf="@id/FeederWire"
                     android:gravity="start"
-                    android:text="(G)In 1 mmø IMC PIPE"
+                    android:text="(G)In 1 mmø"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/Pipetype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_below="@id/border2"
+                    android:layout_marginTop="64dp"
+                    android:layout_toEndOf="@id/FeederWireFourth"
+                    android:gravity="start"
+                    android:text="IMC PIPE"
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck"/>
 
                 <!-- una load schedule  -->
             </RelativeLayout>

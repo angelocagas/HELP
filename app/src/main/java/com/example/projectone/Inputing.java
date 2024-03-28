@@ -40,13 +40,14 @@ import java.util.List;
 public class Inputing extends AppCompatActivity {
     // Declare ArrayList to store "A" values
     ArrayList<Double> arrayAmp = new ArrayList<>();
-    AutoCompleteTextView autoCompleteTextView1, Horsepower;
+    AutoCompleteTextView autoCompleteTextView1, Horsepower,Typeofpipe;
     TextInputLayout horses;
     TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
+    private boolean isAutoCompletePipeSelected = false;
     int counter = 1;
 
     private SharedPreferences sharedPreferences;
@@ -102,6 +103,7 @@ public class Inputing extends AppCompatActivity {
         CTYPE = findViewById(R.id.CTYPE);
         Quantity = findViewById(R.id.Quantity);
         Watts = findViewById(R.id.Watts);
+        Typeofpipe = findViewById(R.id.Typeofpipe);
         Horsepower = findViewById(R.id.horse);
         update = findViewById(R.id.update);
         TotalA = findViewById(R.id.TotalA);
@@ -233,9 +235,38 @@ public class Inputing extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         Horsepower.setAdapter(adapter2);
 
+//adapter for type of pipes
+        String[] pipe = new String[]{"EMT", "PVC", "IMC", "LTFMC"};
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.drop_down_item, pipe);
+        Typeofpipe.setAdapter(adapter3);
 
 
+//selected item automated data
+        Typeofpipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                isAutoCompletePipeSelected = true;
+                String selectedItem = Typeofpipe.getText().toString();
+                if ("EMT".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("EMT");
+                }
+                if ("PVC".equals(selectedItem) ) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("PVC");
+                }
+                if ("IMC".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("IMC");
+                }
+                if ("LTFMC".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("LTFMC");
+                }
 
+
+            }
+        });
 
 //selected item automated data
         autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -416,6 +447,7 @@ public class Inputing extends AppCompatActivity {
                 Watts.clearFocus();
                 Quantity.clearFocus();
                 others.clearFocus();
+                Typeofpipe.clearFocus();
 
 
                 // Check if any of the fields are empty
@@ -545,7 +577,6 @@ public class Inputing extends AppCompatActivity {
                         P.setText("2");//MATIC
                         AF.setText("50");//MATIC
                         MMPlus.setText("20");//MATIC
-                        CTYPE.setText("PVC");//MATIC
                         helper.addNewProject(
                                 ProjectName,
                                 Quantity.getText().toString(),
@@ -575,6 +606,7 @@ public class Inputing extends AppCompatActivity {
                     Watts.setText(null);
                     Horsepower.setText(null);
                     others.setText(null);
+                    Typeofpipe.setText(null);
                     horses.setVisibility(View.GONE);
 
                     intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
@@ -675,6 +707,7 @@ public class Inputing extends AppCompatActivity {
                                 autoCompleteTextView1.setText(null);
                                 Watts.setText(null);
                                 Horsepower.setText(null);
+                                Typeofpipe.setText(null);
                                 others.setText(null);
 
                                 showPercentSelectionDialog();
@@ -870,7 +903,6 @@ public class Inputing extends AppCompatActivity {
                             P.setText("2");
                             AF.setText("50");
                             MMPlus.setText("20");
-                            CTYPE.setText("PVC");
                             helper.updateData(projectTable,
                                     ProjectName,
                                     Quantity.getText().toString()

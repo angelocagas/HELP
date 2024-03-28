@@ -315,8 +315,11 @@ public class Inputing extends AppCompatActivity {
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
+
                 } else {
+
                     horses.setVisibility(View.GONE);
+
                 }
 
             }
@@ -441,6 +444,9 @@ public class Inputing extends AppCompatActivity {
                 Quantity.clearFocus();
                 others.clearFocus();
                 Typeofpipe.clearFocus();
+                Horsepower.clearFocus();
+
+
 
 
                 if (Quantity.getText().toString().isEmpty()) {
@@ -462,6 +468,28 @@ public class Inputing extends AppCompatActivity {
                             .show();
                     return; // Exit the method without proceeding further
                 }
+
+                if (Horsepower.getText().toString().isEmpty() && Horsepower.getVisibility() == View.VISIBLE) {
+                    // Clear focus from other fields
+                    autoCompleteTextView1.clearFocus();
+                    Watts.clearFocus();
+                    Quantity.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if quantity field is empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill Horsepower")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Horsepower.requestFocus(); // Set focus on Quantity field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return;
+                }
+
 
                 if (autoCompleteTextView1.getText().toString().isEmpty()) {
                     // Clear focus from other fields
@@ -709,6 +737,9 @@ public class Inputing extends AppCompatActivity {
             public void onClick(View view) {
 
 
+
+
+
                 // Check if the counter is less than 4
                 if (counter <= 4) {
                     // Create an AlertDialog.Builder instance
@@ -854,10 +885,142 @@ public class Inputing extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Proceed with preview
-                        if(Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty())
-                        {
-                            Toast.makeText(Inputing.this, "Please fill up all the fields", Toast.LENGTH_SHORT).show();
+                        // Clear focus from any view that currently has it
+                        Watts.clearFocus();
+                        Quantity.clearFocus();
+                        others.clearFocus();
+                        Typeofpipe.clearFocus();
+                        Horsepower.clearFocus();
+
+
+
+
+                        if (Quantity.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if quantity field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Quantity")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Quantity.requestFocus(); // Set focus on Quantity field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
                         }
+
+                        if (Horsepower.getText().toString().isEmpty() && Horsepower.getVisibility() == View.VISIBLE) {
+                            // Clear focus from other fields
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Quantity.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if quantity field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Horsepower")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Horsepower.requestFocus(); // Set focus on Quantity field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return;
+                        }
+
+
+                        if (autoCompleteTextView1.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if autoCompleteTextView1 field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill the Item")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            autoCompleteTextView1.requestFocus(); // Set focus on autoCompleteTextView1 field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+
+                        if (Watts.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if watts field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Watts")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Watts.requestFocus(); // Set focus on Watts field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+                        if (Typeofpipe.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+
+                            // Show AlertDialog if type of pipe field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill the type of pipe")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Typeofpipe.requestFocus(); // Set focus on Typeofpipe field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+
+// Check if all fields are empty
+                        if (Quantity.getText().toString().isEmpty() &&
+                                autoCompleteTextView1.getText().toString().isEmpty() &&
+                                Watts.getText().toString().isEmpty() &&
+                                Typeofpipe.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if all fields are empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Fill up all the fields")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Quantity.requestFocus(); // Set focus on Quantity field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+
+                        }
+
                         else
                         {
                             String ProjectName = getIntent().getStringExtra("ProjectName");

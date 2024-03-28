@@ -623,6 +623,7 @@ public class Inputing extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 counter++;
+
                                 // Proceed with preview
                                 Quantity.setText("1");
                                 autoCompleteTextView1.setText("Spare");
@@ -855,6 +856,9 @@ public class Inputing extends AppCompatActivity {
                                 }
 
                             }
+
+                            computeVA();
+                            computeA();
 
                             OPlus.setText("1");
                             V.setText("233");

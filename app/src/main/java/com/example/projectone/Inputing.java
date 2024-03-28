@@ -469,25 +469,25 @@ public class Inputing extends AppCompatActivity {
                     return; // Exit the method without proceeding further
                 }
 
-                if (Horsepower.getText().toString().isEmpty() && Horsepower.getVisibility() == View.VISIBLE) {
+                if (horses.getVisibility() == View.VISIBLE && Horsepower.getText().toString().isEmpty()) {
                     // Clear focus from other fields
                     autoCompleteTextView1.clearFocus();
                     Watts.clearFocus();
                     Quantity.clearFocus();
                     Typeofpipe.clearFocus();
 
-                    // Show AlertDialog if quantity field is empty
+                    // Show AlertDialog if Horsepower field is visible and empty
                     new AlertDialog.Builder(Inputing.this)
                             .setTitle("Alert")
                             .setMessage("Please fill Horsepower")
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Horsepower.requestFocus(); // Set focus on Quantity field
+                                    Horsepower.requestFocus(); // Set focus on Horsepower field
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
-                    return;
+                    return; // Exit the method without proceeding further
                 }
 
 
@@ -915,26 +915,28 @@ public class Inputing extends AppCompatActivity {
                             return; // Exit the method without proceeding further
                         }
 
-                        if (Horsepower.getText().toString().isEmpty() && Horsepower.getVisibility() == View.VISIBLE) {
+                        if (horses.getVisibility() == View.VISIBLE && Horsepower.getText().toString().isEmpty()) {
                             // Clear focus from other fields
                             autoCompleteTextView1.clearFocus();
                             Watts.clearFocus();
                             Quantity.clearFocus();
                             Typeofpipe.clearFocus();
 
-                            // Show AlertDialog if quantity field is empty
+                            // Show AlertDialog if Horsepower field is visible and empty
                             new AlertDialog.Builder(Inputing.this)
                                     .setTitle("Alert")
                                     .setMessage("Please fill Horsepower")
                                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                                            Horsepower.requestFocus(); // Set focus on Quantity field
+                                            Horsepower.requestFocus(); // Set focus on Horsepower field
                                         }
                                     })
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
                             return;
                         }
+
+
 
 
                         if (autoCompleteTextView1.getText().toString().isEmpty()) {

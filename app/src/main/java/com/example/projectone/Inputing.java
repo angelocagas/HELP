@@ -636,8 +636,8 @@ public class Inputing extends AppCompatActivity {
                                 MMPlus.setText("20");//MATIC
                                 CTYPE.setText("PVC");//MATIC
 
-                                computeVA1();
-                                computeA1();
+                                computeVA();
+                                computeA();
 
                                 helper.addNewProject(
                                         ProjectName,

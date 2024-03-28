@@ -12,6 +12,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -50,6 +52,7 @@ public class Inputing extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private DecimalFormat decimalFormat;
     double totalVAValue = 0.00;
+    private AlertDialog dialog;
     double totalAValue = 0.00;
     int cirnum;
     ProjectTable projectTable;
@@ -934,6 +937,7 @@ public class Inputing extends AppCompatActivity {
 
     }
 
+    //demand factor
 
     private void showPercentSelectionDialog() {
         // Inflate the dialog layout XML
@@ -944,37 +948,74 @@ public class Inputing extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
         builder.setTitle("Demand Factor");
         builder.setView(dialogView);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String inputText = inputEditText.getText().toString().trim();
-                if (!inputText.isEmpty()) {
-                    int inputPercent = Integer.parseInt(inputText);
-                    if (inputPercent >= 0 && inputPercent <= 100) {
-                        float multipliedPercent = (float) inputPercent / 100.0f;
-                        String demandText = String.format("%.2f", multipliedPercent);
-                        TextView demand = findViewById(R.id.demand);
-                        demand.setText(demandText);
-                        // Once percent selection is done, proceed with preview
-                        proceedWithPreview();
-                    } else {
-                        // Invalid input, show error message or handle accordingly
-                        Toast.makeText(Inputing.this, "Please enter a valid percent (0-100)", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // Empty input, show error message or handle accordingly
-                    Toast.makeText(Inputing.this, "Please enter a percent value", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
+        // Disable the positive button initially
+        builder.setPositiveButton("OK", null);
+
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        builder.show();
+
+        // Create the dialog
+        dialog = builder.create();
+
+        // Set up a listener to enable/disable the positive button based on input validity
+        inputEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String inputText = s.toString().trim();
+                if (!inputText.isEmpty()) {
+                    int inputPercent = Integer.parseInt(inputText);
+                    if (inputPercent >= 1 && inputPercent <= 100) {
+                        // Enable the OK button if input is valid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    } else {
+                        // Disable the OK button if input is invalid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                } else {
+                    // Disable the OK button if input is empty
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                }
+            }
+        });
+
+        // Set click listener for the positive button
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on OK button
+                        String inputText = inputEditText.getText().toString().trim();
+                        int inputPercent = Integer.parseInt(inputText);
+                        float multipliedPercent = (float) inputPercent / 100.0f;
+                        String demandText = String.format("%.2f", multipliedPercent);
+                        TextView demand = findViewById(R.id.demand);
+                        demand.setText(demandText);
+                        // Once percent selection is done, proceed with preview
+                        proceedWithPreview();
+                        // Dismiss the dialog
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        // Show the dialog
+        dialog.show();
     }
+
 
 
 

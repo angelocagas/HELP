@@ -2,6 +2,7 @@ package com.example.projectone.Helper;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Pair;
 import android.widget.Toast;
 
 import com.example.projectone.Databases.DatabaseClient;
@@ -108,6 +109,12 @@ public class DatabaseHelper {
         AllProject allProject = new AllProject();
         allProject.execute();
     }
+
+
+
+
+
+
     public void getAllItemsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
         class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
             @Override
@@ -140,6 +147,109 @@ public class DatabaseHelper {
         GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
         getAllItemsTask.execute();
     }
+    /*public void getAForLightingOutlet(final Context context, final OnItemsLoadedListener listener) {
+        class GetAForLightingOutletTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectAForLightingOutlet();
+            }
+
+            @Override
+            protected void onPostExecute(List<String> aList) {
+                super.onPostExecute(aList);
+                if (aList != null && !aList.isEmpty()) {
+                    listener.onItemsLoaded(aList);
+                } else {
+                    Toast.makeText(context, "No A values found for lighting outlet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAForLightingOutletTask getAForLightingOutletTask = new GetAForLightingOutletTask();
+        getAForLightingOutletTask.execute();
+    }
+    public void getAForACURefrigerator(final Context context, final OnItemsLoadedListener listener) {
+        class GetAForACURefrigeratorTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectAForACURefrigerator();
+            }
+
+            @Override
+            protected void onPostExecute(List<String> aList) {
+                super.onPostExecute(aList);
+                if (aList != null && !aList.isEmpty()) {
+                    listener.onItemsLoaded(aList);
+                } else {
+                    Toast.makeText(context, "No A values found for ACU/Refrigerator", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAForACURefrigeratorTask getAForACURefrigeratorTask = new GetAForACURefrigeratorTask();
+        getAForACURefrigeratorTask.execute();
+    }*/
+
+
+    public void getAForACURefrigerator(final Context context, final OnItemsLoadedListener listener) {
+        class GetAForACURefrigeratorTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectAForACURefrigerator();
+            }
+
+            @Override
+            protected void onPostExecute(List<String> aList) {
+                super.onPostExecute(aList);
+                if (aList != null && !aList.isEmpty()) {
+                    listener.onItemsLoaded(aList);
+                } else {
+                    getAForLightingOutlet(context, listener);
+                }
+            }
+        }
+
+        GetAForACURefrigeratorTask getAForACURefrigeratorTask = new GetAForACURefrigeratorTask();
+        getAForACURefrigeratorTask.execute();
+    }
+
+    public void getAForLightingOutlet(final Context context, final OnItemsLoadedListener listener) {
+        class GetAForLightingOutletTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectAForLightingOutlet();
+            }
+
+            @Override
+            protected void onPostExecute(List<String> aList) {
+                super.onPostExecute(aList);
+                if (aList != null && !aList.isEmpty()) {
+                    listener.onItemsLoaded(aList);
+                } else {
+                    Toast.makeText(context, "No A values found for lighting outlet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAForLightingOutletTask getAForLightingOutletTask = new GetAForLightingOutletTask();
+        getAForLightingOutletTask.execute();
+    }
+
+
+
+
     public void getAllATsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
         class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
             @Override
@@ -173,8 +283,10 @@ public class DatabaseHelper {
         getAllItemsTask.execute();
     }
 
+
+
     public void getAllAsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
-        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+        class GetAllAsTask extends AsyncTask<Void, Void, List<String>> {
             @Override
             protected List<String> doInBackground(Void... voids) {
                 // Retrieve all items from the ProjectTable
@@ -191,19 +303,18 @@ public class DatabaseHelper {
             }
 
             @Override
-            protected void onPostExecute(List<String> itemList) {
-                super.onPostExecute(itemList);
-                if (itemList != null && !itemList.isEmpty()) {
-                    // Notify the listener with the list of items
-                    listener.onItemsLoaded(itemList);
+            protected void onPostExecute(List<String> aList) {
+                super.onPostExecute(aList);
+                if (aList != null && !aList.isEmpty()) {
+                    listener.onItemsLoaded(aList);
                 } else {
-                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "No A values found", Toast.LENGTH_SHORT).show();
                 }
             }
         }
 
-        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
-        getAllItemsTask.execute();
+        GetAllAsTask getAllAsTask = new GetAllAsTask();
+        getAllAsTask.execute();
     }
 
 
@@ -239,7 +350,6 @@ public class DatabaseHelper {
         GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
         getAllItemsTask.execute();
     }
-
 //update project
     public void updateData(ProjectTable projectTable, String ProjectName, String Quantity, String Item, String OPlus, String V, String VA, String A, String P, String AT, String AF, String SNUM, String SMM, String STYPE, String GNUM, String GMM, String GTYPE, String MMPlus, String CTYPE)
     {
@@ -266,6 +376,7 @@ public class DatabaseHelper {
                 projectTable.setGTYPE(GTYPE);
                 projectTable.setMMPlus(MMPlus);
                 projectTable.setCTYPE(CTYPE);
+
                 DatabaseClient.getInstance(context)
                         .getProjectDatabase()
                         .projectDAO()
@@ -285,6 +396,8 @@ public class DatabaseHelper {
         UpdateProjectData updateProjectData = new UpdateProjectData();
         updateProjectData.execute();
     }
+
+
 
     // Add this method in your DatabaseHelper class
     public void clearTable() {

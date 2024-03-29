@@ -30,6 +30,18 @@ public interface ProjectDAO {
     @Update
     void updateData(ProjectTable projectTable);
 
+    // For getting all items
+    @Query("SELECT DISTINCT Item FROM projecttable")
+    List<String> selectDistinctItems();
+
+    // For getting A values for items starting with "ACU" or "Refrigerator"
+    @Query("SELECT A FROM projecttable WHERE Item LIKE 'ACU%' OR Item = 'Refrigerator'")
+    List<String> selectAForACURefrigerator();
+
+    // For getting A values for items starting with "lighting outlet"
+    @Query("SELECT A FROM projecttable WHERE Item LIKE 'Lighting Outlet%'")
+    List<String> selectAForLightingOutlet();
+
 
     // Add this method to delete all projects from the table
     @Query("DELETE FROM projecttable")

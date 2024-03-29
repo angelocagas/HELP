@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.example.projectone.Databases.ProjectTable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.projectone.Helper.DatabaseHelper;
 
@@ -48,12 +53,38 @@ public class Home extends Fragment {
 
                 builder.setView(dialogView)
                         .setTitle("Choose Main Pipe")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("OK", null) // Initially set to null
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing if cancelled
+                            }
+                        });
+                final AlertDialog dialog = builder.create();
+
+                dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialogInterface) {
+                        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                        positiveButton.setEnabled(false); // Initially disable the OK button
+
+                        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
+                            }
+                        });
+
+                        positiveButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
                                 String selectedMainPipe = autoCompleteTextView.getText().toString();
-
-
 
                                 // Access the SharedPreferences file and remove the currentTableCount value
                                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
@@ -64,18 +95,19 @@ public class Home extends Fragment {
                                 Intent intent = new Intent(getActivity(), Inputing.class);
                                 intent.putExtra("mainPipe", selectedMainPipe);
                                 startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing if cancelled
+                                databaseHelper.clearTable();
+
+                                dialog.dismiss();
                             }
                         });
-                builder.show();
-            }
+                    }
+                });
 
+                dialog.show();
+            }
         });
+
+
 
         return view;
     }

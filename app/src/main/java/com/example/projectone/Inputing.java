@@ -42,7 +42,7 @@ public class Inputing extends AppCompatActivity {
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower,Typeofpipe;
     TextInputLayout horses;
-    TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
+    TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt ,TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
@@ -112,11 +112,22 @@ public class Inputing extends AppCompatActivity {
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
         demand = findViewById(R.id.demand);
+        Mainpipetxt = findViewById(R.id.Mainpipe);
+        TOTALAtxt = findViewById(R.id.TOTALA);
+        TOTALVAtxt = findViewById(R.id.TOTALVA);
+
 
 
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
         CNM.setText(Cirnum);
+
+        // Retrieve the value of "mainPipe" from the Intent extras
+        String mainPipe = getIntent().getStringExtra("mainPipe");
+
+        // Now you can use the "mainPipe" value as needed in this activity
+
+        Mainpipetxt.setText(mainPipe + " PIPE");
 
         try {
             cirnum = Integer.parseInt(CNM.getText().toString().trim());
@@ -815,7 +826,6 @@ public class Inputing extends AppCompatActivity {
                                         MMPlus.getText().toString(),
                                         CTYPE.getText().toString()
 
-
                                 );
                                 Quantity.setText(null);
                                 autoCompleteTextView1.setText(null);
@@ -1169,7 +1179,8 @@ public class Inputing extends AppCompatActivity {
                                     ,GMM.getText().toString()
                                     ,GTYPE.getText().toString()
                                     ,MMPlus.getText().toString()
-                                    ,CTYPE.getText().toString());
+                                    ,CTYPE.getText().toString()
+                                   );
                             Toast.makeText(Inputing.this, "Data Updated", Toast.LENGTH_SHORT).show();
 
 
@@ -1310,6 +1321,7 @@ public class Inputing extends AppCompatActivity {
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
         String skel = Counter2.getText().toString();
+        String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
 
@@ -1319,6 +1331,7 @@ public class Inputing extends AppCompatActivity {
         intent.putExtra("HIGHA", passHIGHEST);
         intent.putExtra("CTR", skel);
         intent.putExtra("DEMAND", DEMAND);
+        intent.putExtra("mainpipo", mainpipo);
         startActivity(intent);
 
     }

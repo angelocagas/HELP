@@ -1,14 +1,10 @@
 package com.example.projectone.Helper;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import androidx.room.DatabaseView;
-
 import com.example.projectone.Databases.DatabaseClient;
-import com.example.projectone.Databases.ProjectDAO;
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Loadschedule;
 
@@ -30,6 +26,7 @@ public class DatabaseHelper {
         return new DatabaseHelper(context);
     }
 
+    //addnew projecttable
     public void addNewProject(String ProjectName, String Quantity, String Item, String OPlus, String V, String VA, String A, String P, String AT, String AF, String SNUM, String SMM, String STYPE, String GNUM, String GMM, String GTYPE, String MMPlus, String CTYPE)
     {
         class NewProject extends AsyncTask<Void, Void, ProjectTable>
@@ -81,6 +78,9 @@ public class DatabaseHelper {
 
     }
 
+
+
+    //getting all data of project
     public void getAllProjectData()
     {
         class AllProject extends AsyncTask<Void,Void,List<ProjectTable>>
@@ -108,7 +108,6 @@ public class DatabaseHelper {
         AllProject allProject = new AllProject();
         allProject.execute();
     }
-
     public void getAllItemsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
         class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
             @Override
@@ -173,39 +172,8 @@ public class DatabaseHelper {
         GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
         getAllItemsTask.execute();
     }
-    public void getAllAsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
-        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
-            @Override
-            protected List<String> doInBackground(Void... voids) {
-                // Retrieve all items from the ProjectTable
-                List<ProjectTable> projectTables = DatabaseClient.getInstance(context)
-                        .getProjectDatabase()
-                        .projectDAO()
-                        .selectA();
-                List<String> AList = new ArrayList<>();
-                for (ProjectTable projectTable : projectTables) {
-                    // Add each item to the itemList
-                    AList.add(projectTable.getA());
-                }
-                return AList;
-            }
 
-            @Override
-            protected void onPostExecute(List<String> itemList) {
-                super.onPostExecute(itemList);
-                if (itemList != null && !itemList.isEmpty()) {
-                    // Notify the listener with the list of items
-                    listener.onItemsLoaded(itemList);
-                } else {
-                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
-        getAllItemsTask.execute();
-    }
-
+//update project
     public void updateData(ProjectTable projectTable, String ProjectName, String Quantity, String Item, String OPlus, String V, String VA, String A, String P, String AT, String AF, String SNUM, String SMM, String STYPE, String GNUM, String GMM, String GTYPE, String MMPlus, String CTYPE)
     {
         class UpdateProjectData extends AsyncTask<Void,Void,ProjectTable>
@@ -231,7 +199,6 @@ public class DatabaseHelper {
                 projectTable.setGTYPE(GTYPE);
                 projectTable.setMMPlus(MMPlus);
                 projectTable.setCTYPE(CTYPE);
-
                 DatabaseClient.getInstance(context)
                         .getProjectDatabase()
                         .projectDAO()
@@ -251,8 +218,6 @@ public class DatabaseHelper {
         UpdateProjectData updateProjectData = new UpdateProjectData();
         updateProjectData.execute();
     }
-
-
 
     // Add this method in your DatabaseHelper class
     public void clearTable() {
@@ -278,6 +243,7 @@ public class DatabaseHelper {
         clearTableTask.execute();
     }
     // Assuming this is in the activity where you want to start the next activity
+
 
 
 

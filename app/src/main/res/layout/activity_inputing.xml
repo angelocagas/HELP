@@ -423,6 +423,39 @@
         android:text="12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+             <TextView
+            android:visibility="gone"
+            android:textSize="20dp"
+            android:id="@+id/Mainpipe"
+            android:text="CTYPE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <TextView
+                android:visibility="gone"
+                android:textSize="20dp"
+                android:id="@+id/Demandfactor"
+                android:text="CTYPE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:visibility="gone"
+                android:textSize="20dp"
+                android:id="@+id/TOTALA"
+                android:text="CTYPE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:visibility="gone"
+                android:textSize="20dp"
+                android:id="@+id/TOTALVA"
+                android:text="CTYPE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
 
 
 

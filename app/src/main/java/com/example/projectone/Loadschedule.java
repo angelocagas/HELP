@@ -2740,6 +2740,7 @@ public class Loadschedule extends AppCompatActivity {
                     intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
                     startActivity(intent);
                     databaseHelper.clearTable();
+
                     Toast.makeText(this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Limit of " + currentTableCount + " tables has been reached.", Toast.LENGTH_SHORT).show();
@@ -2759,6 +2760,7 @@ public class Loadschedule extends AppCompatActivity {
             // Start the Inputing activity
             Intent intent = new Intent(this, Inputing.class);
             startActivity(intent);
+            databaseHelper.clearTable();
 
         }
         if (id == R.id.discard) {
@@ -2780,6 +2782,7 @@ public class Loadschedule extends AppCompatActivity {
                     Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    databaseHelper.clearTable();
                     startActivity(intent);
                 }
             });

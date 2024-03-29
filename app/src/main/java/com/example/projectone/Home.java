@@ -95,6 +95,7 @@ public class Home extends Fragment {
                                 Intent intent = new Intent(getActivity(), Inputing.class);
                                 intent.putExtra("mainPipe", selectedMainPipe);
                                 startActivity(intent);
+                                databaseHelper.clearTable();
 
                                 dialog.dismiss();
                             }

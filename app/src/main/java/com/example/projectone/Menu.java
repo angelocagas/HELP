@@ -31,7 +31,6 @@ public class Menu extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         viewPager2 = findViewById(R.id.viewPager);
-
         viewPager = new ViewPager(this);
         viewPager2.setAdapter(viewPager);
 

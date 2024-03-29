@@ -1497,6 +1497,7 @@ public class Inputing extends AppCompatActivity {
     private void proceedToMenuActivity() {
         Intent intent = new Intent(Inputing.this, Menu.class);
         startActivity(intent);
+
     }
 
 }

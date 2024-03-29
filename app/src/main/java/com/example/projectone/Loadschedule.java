@@ -739,6 +739,55 @@ public class Loadschedule extends AppCompatActivity {
 
         final DatabaseHelper dbHelper = new DatabaseHelper(this);
 
+        dbHelper.getAllAsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
+            @Override
+            public void onItemsLoaded(List<String> items) {
+                double total = 0.0;
+
+                // Iterate through the items and sum them up
+                for (String item : items) {
+                    try {
+                        double value = Double.parseDouble(item);
+                        total += value;
+                    } catch (NumberFormatException e) {
+                        // Handle parsing errors if any
+                        e.printStackTrace();
+                    }
+                }
+
+                // Format the total to display with two decimal places
+                String formattedTotalA = String.format("%.2f", total);
+                // Display a toast with the formatted total and a message
+                totalATextView.setText(formattedTotalA);
+
+            }
+        });
+
+        dbHelper.getAllVAsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
+            @Override
+            public void onItemsLoaded(List<String> items) {
+                double total = 0.0;
+
+                // Iterate through the items and sum them up
+                for (String item : items) {
+                    try {
+                        double value = Double.parseDouble(item);
+                        total += value;
+                    } catch (NumberFormatException e) {
+                        // Handle parsing errors if any
+                        e.printStackTrace();
+                    }
+                }
+
+                // Format the total to display with two decimal places
+                String formattedTotalVA = String.format("%.2f", total);
+                // Display a toast with the formatted total and a message
+                totalVATextView.setText(formattedTotalVA);
+
+            }
+        });
+
+
         dbHelper.getAllItemsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
             public void onItemsLoaded(List<String> itemSList) {
@@ -1581,7 +1630,6 @@ public class Loadschedule extends AppCompatActivity {
 
         if (intent != null) {
             String PassMain = intent.getStringExtra("Value");
-            String totalVA = intent.getStringExtra("TOTALVA");
             String totalA = intent.getStringExtra("TOTALA");
             String HIGHA = intent.getStringExtra("HIGHA");
             String Wiretype = intent.getStringExtra("WFG");
@@ -1610,10 +1658,10 @@ public class Loadschedule extends AppCompatActivity {
                 }
 
 
-                String SAVEA, SAVEHIGHAA;
-                SAVEA = sharedPreferences.getString("TOTALA", "");
+                String SAVEHIGHAA;
+
                 SAVEHIGHAA = sharedPreferences.getString("HIGHAA", "");
-                totalATextView.setText(SAVEA);
+
 
                 HighestA.setText(SAVEHIGHAA);
                 HighestB.setText(HighestA.getText().toString());
@@ -1627,16 +1675,13 @@ public class Loadschedule extends AppCompatActivity {
 
             }
 
-            if (totalVA != null) {
-                totalVATextView.setText(totalVA);
-            }
+
 
             if (CTR != null) {
                 CTRtv.setText(CTR);
             }
 
             if (totalA != null) {
-                totalATextView.setText(totalA);
                 totalone.setText(totalA);
                 TotalB.setText(totalA);
             }
@@ -2309,25 +2354,8 @@ public class Loadschedule extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-      /*  MainWire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChangeMain.class);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("TOTALA", SAVEA);
-                editor.putString("HIGHAA",SaveHighA);
-                editor.apply();
-                startActivity(intent);
-            }
-        });*/
 
-        String totalAintent = totalATextView.getText().toString().trim();
-        String totalVAintent = totalATextView.getText().toString().trim();
 
-        intent.putExtra("totalA", totalAintent);
-        intent.putExtra("totalVA", totalVAintent);
-
-        setIntent(intent);
 
 
         rootLayout = findViewById(R.id.zoom);

@@ -173,6 +173,73 @@ public class DatabaseHelper {
         getAllItemsTask.execute();
     }
 
+    public void getAllAsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
+        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                // Retrieve all items from the ProjectTable
+                List<ProjectTable> projectTables = DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectA();
+                List<String> AList = new ArrayList<>();
+                for (ProjectTable projectTable : projectTables) {
+                    // Add each item to the itemList
+                    AList.add(projectTable.getA());
+                }
+                return AList;
+            }
+
+            @Override
+            protected void onPostExecute(List<String> itemList) {
+                super.onPostExecute(itemList);
+                if (itemList != null && !itemList.isEmpty()) {
+                    // Notify the listener with the list of items
+                    listener.onItemsLoaded(itemList);
+                } else {
+                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
+        getAllItemsTask.execute();
+    }
+
+
+    public void getAllVAsAndStartNextActivity(final Context context, final OnItemsLoadedListener listener) {
+        class GetAllItemsTask extends AsyncTask<Void, Void, List<String>> {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                // Retrieve all items from the ProjectTable
+                List<ProjectTable> projectTables = DatabaseClient.getInstance(context)
+                        .getProjectDatabase()
+                        .projectDAO()
+                        .selectVA();
+                List<String> VAList = new ArrayList<>();
+                for (ProjectTable projectTable : projectTables) {
+                    // Add each item to the itemList
+                    VAList.add(projectTable.getVA());
+                }
+                return VAList;
+            }
+
+            @Override
+            protected void onPostExecute(List<String> itemList) {
+                super.onPostExecute(itemList);
+                if (itemList != null && !itemList.isEmpty()) {
+                    // Notify the listener with the list of items
+                    listener.onItemsLoaded(itemList);
+                } else {
+                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
+        getAllItemsTask.execute();
+    }
+
 //update project
     public void updateData(ProjectTable projectTable, String ProjectName, String Quantity, String Item, String OPlus, String V, String VA, String A, String P, String AT, String AF, String SNUM, String SMM, String STYPE, String GNUM, String GMM, String GTYPE, String MMPlus, String CTYPE)
     {

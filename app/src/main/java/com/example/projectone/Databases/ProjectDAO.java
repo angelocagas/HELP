@@ -21,6 +21,12 @@ public interface ProjectDAO {
     @Query("SELECT * FROM projecttable")
     List<ProjectTable> selectAT();
 
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectA();
+
+    @Query("SELECT * FROM projecttable")
+    List<ProjectTable> selectVA();
+
     @Update
     void updateData(ProjectTable projectTable);
 

@@ -2654,26 +2654,88 @@ public class Loadschedule extends AppCompatActivity {
 
                                                 switch (paperSize.toLowerCase()) {
                                                     case "a1":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                        xPosition = (pageWidth - desiredWidth) + 20;
-                                                        yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
+                                                        if(currentTableCount == 1) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
+                                                            yPosition = 1050 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+                                                        if(currentTableCount == 2) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
+                                                            yPosition = 900 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+                                                        if(currentTableCount == 3) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 20;
+                                                            yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+
                                                     case "a3":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5);
-                                                        xPosition = (pageWidth - desiredWidth) + 20;
-                                                        yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
+                                                        if(currentTableCount == 1) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2);
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4);
+                                                            xPosition = (pageWidth - desiredWidth) + 700;
+                                                            yPosition = 580 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+                                                        if(currentTableCount == 2) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2);
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4);
+                                                            xPosition = (pageWidth - desiredWidth) + 700;
+                                                            yPosition = 450 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+                                                        if(currentTableCount == 3) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth());
+                                                            desiredHeight = (int) (pageSize.getHeight() / 5.5);
+                                                            xPosition = (pageWidth - desiredWidth) + 20;
+                                                            yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
                                                     case "20x30 inches":
-                                                        // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                        xPosition = (pageWidth - desiredWidth) + 20;
-                                                        yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
-                                                        break;
+                                                        if(currentTableCount == 1) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
+                                                            yPosition = 1040 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+
+                                                        if(currentTableCount == 2) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
+                                                            yPosition = 890 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
+                                                        if(currentTableCount == 3) {
+                                                            // Adjust as needed
+                                                            desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
+                                                            desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
+                                                            xPosition = (pageWidth - desiredWidth) + 20;
+                                                            yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
+                                                            break;
+                                                        }
                                                     default:
                                                         // Default desired width and height
                                                         desiredWidth = (int) (pageSize.getWidth() - 30);

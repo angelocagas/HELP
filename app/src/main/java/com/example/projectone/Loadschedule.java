@@ -2855,25 +2855,26 @@ public class Loadschedule extends AppCompatActivity {
         editor.apply();
     }
 
-        @Override
-        public void onBackPressed() {
-            // Check if RS30 is visible
-            if ( RS30.getVisibility() == View.VISIBLE) {
-                // If RS30 is visible, show an alert dialog indicating it can't go back
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("You cannot go back from this point.");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.show();
-            } else {
-                // If RS30 is not visible, allow the default back button functionality
-                super.onBackPressed();
-            }
+    @Override
+    public void onBackPressed() {
+        // Check if RS30 is not null and visible
+        if (RS30 != null && RS30.getVisibility() == View.VISIBLE) {
+            // If RS30 is visible, show an alert dialog indicating it can't go back
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("You cannot go back from this point.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+        } else {
+            // If RS30 is null or not visible, allow the default back button functionality
+            super.onBackPressed();
         }
+    }
+
 
 
 }

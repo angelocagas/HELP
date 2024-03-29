@@ -2515,6 +2515,9 @@ public class Loadschedule extends AppCompatActivity {
                 }
             });
 
+            /* -------------------------- START OF PRINT ---------------------- */
+
+
             // Set the 'Save Now' button
             builder.setPositiveButton("Save Now", new DialogInterface.OnClickListener() {
 
@@ -2652,24 +2655,24 @@ public class Loadschedule extends AppCompatActivity {
                                                 switch (paperSize.toLowerCase()) {
                                                     case "a1":
                                                         // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 700 + (i - 1) * desiredHeight; // Adjust as needed
+                                                        desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
+                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
+                                                        xPosition = (pageWidth - desiredWidth) + 20;
+                                                        yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
                                                         break;
                                                     case "a3":
                                                         // Adjust as needed
                                                         desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 370 + (i - 1) * desiredHeight; // Adjust as needed
+                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5);
+                                                        xPosition = (pageWidth - desiredWidth) + 20;
+                                                        yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
                                                         break;
                                                     case "20x30 inches":
                                                         // Adjust as needed
-                                                        desiredWidth = (int) (pageSize.getWidth());
-                                                        desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                        xPosition = (pageWidth - desiredWidth) / 2;
-                                                        yPosition = 700 + (i - 1) * desiredHeight; // Adjust as needed
+                                                        desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
+                                                        desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
+                                                        xPosition = (pageWidth - desiredWidth) + 20;
+                                                        yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
                                                         break;
                                                     default:
                                                         // Default desired width and height
@@ -2681,7 +2684,7 @@ public class Loadschedule extends AppCompatActivity {
                                                 }
 
                                                 // Scale the image to fit the desired width and height
-                                                relaImage.scaleToFit(desiredWidth, desiredHeight);
+                                                relaImage.scaleToFit((float) (desiredWidth * 1.5), desiredHeight);
 
 
                                                 // Calculate the y-coordinate relative to the top of the page

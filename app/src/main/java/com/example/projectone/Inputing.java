@@ -1,5 +1,7 @@
 package com.example.projectone;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Update;
@@ -10,12 +12,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,18 +40,20 @@ import java.util.List;
 public class Inputing extends AppCompatActivity {
     // Declare ArrayList to store "A" values
     ArrayList<Double> arrayAmp = new ArrayList<>();
-    AutoCompleteTextView autoCompleteTextView1, Horsepower;
+    AutoCompleteTextView autoCompleteTextView1, Horsepower,Typeofpipe;
     TextInputLayout horses;
-    TextView Counter2, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
+    TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt ,TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
+    private boolean isAutoCompletePipeSelected = false;
     int counter = 1;
 
     private SharedPreferences sharedPreferences;
     private DecimalFormat decimalFormat;
     double totalVAValue = 0.00;
+    private AlertDialog dialog;
     double totalAValue = 0.00;
     int cirnum;
     ProjectTable projectTable;
@@ -95,6 +103,7 @@ public class Inputing extends AppCompatActivity {
         CTYPE = findViewById(R.id.CTYPE);
         Quantity = findViewById(R.id.Quantity);
         Watts = findViewById(R.id.Watts);
+        Typeofpipe = findViewById(R.id.Typeofpipe);
         Horsepower = findViewById(R.id.horse);
         update = findViewById(R.id.update);
         TotalA = findViewById(R.id.TotalA);
@@ -102,10 +111,23 @@ public class Inputing extends AppCompatActivity {
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
         Counter2 = findViewById(R.id.counter2);
+        demand = findViewById(R.id.demand);
+        Mainpipetxt = findViewById(R.id.Mainpipe);
+        TOTALAtxt = findViewById(R.id.TOTALA);
+        TOTALVAtxt = findViewById(R.id.TOTALVA);
+
+
 
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
         CNM.setText(Cirnum);
+
+        // Retrieve the value of "mainPipe" from the Intent extras
+        String mainPipe = getIntent().getStringExtra("mainPipe");
+
+        // Now you can use the "mainPipe" value as needed in this activity
+
+        Mainpipetxt.setText(mainPipe + " PIPE");
 
         try {
             cirnum = Integer.parseInt(CNM.getText().toString().trim());
@@ -224,68 +246,93 @@ public class Inputing extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         Horsepower.setAdapter(adapter2);
 
-
-
+//adapter for type of pipes
+        String[] pipe = new String[]{"EMT", "PVC", "IMC", "LTFMC"};
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.drop_down_item, pipe);
+        Typeofpipe.setAdapter(adapter3);
 
 
 //selected item automated data
+        Typeofpipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                isAutoCompletePipeSelected = true;
+                String selectedItem = Typeofpipe.getText().toString();
+                if ("EMT".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("EMT");
+                }
+                if ("PVC".equals(selectedItem) ) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("PVC");
+                }
+                if ("IMC".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("IMC");
+                }
+                if ("LTFMC".equals(selectedItem)) {
+                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
+                    CTYPE.setText("LTFMC");
+                }
+
+
+            }
+        });
+
+//selected item automated data
+        Quantity.setEnabled(true);
         autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 isAutoCompleteItemSelected = true;
+
                 String selectedItem = autoCompleteTextView1.getText().toString();
+                // Disable or enable Quantity input based on selected item
+                if (selectedItem.equals("ACU") || selectedItem.equals("Water Heater") || selectedItem.equals("Range") || selectedItem.equals("Refrigerator") || selectedItem.equals("Spare")) {
+                    Quantity.setEnabled(false);
+                    Quantity.setText("1");
+                } else {
+                    Quantity.setEnabled(true);
+                }
+
+// Set values based on selected item
                 if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     AT.setText("30");
-                }
-                if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    AT.setText("20"); // Set the default value for other items
-                }
-                if ("Convenience Outlet".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "ACU".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SMM.setText("3.5");
-                    GMM.setText("3.5");
-                }
-                if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SMM.setText("5.5");
-                    GMM.setText("5.5");
-                }
-                if ("Lighting Outlet".equals(selectedItem)) {
-                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                } else if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                    AT.setText("20");
+                } else if ("Lighting Outlet".equals(selectedItem)) {
                     AT.setText("15");
                     SMM.setText("3.5");
                     GMM.setText("3.5");
-
-                }
-
-                if ("Spare".equals(selectedItem)) {
-                    // If the user chooses Lighting Outlet, set the value of AT to 15
+                } else if ("Spare".equals(selectedItem)) {
                     SMM.setText("Stub");
                     GMM.setText("");
                 }
 
-                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    SNUM.setText("2");//MATIC
-                    GNUM.setText("1");//MATIC
-                    STYPE.setText("THHN");//MATIC
-                    GTYPE.setText("THW");//MATIC
-                } else{
-                    SNUM.setText("");//MATIC
-                    GNUM.setText("");//MATIC
-                    STYPE.setText("UP");//MATIC
-                    GTYPE.setText("");//MATIC
+// Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
+                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                    SNUM.setText("2");
+                    GNUM.setText("1");
+                    STYPE.setText("THHN");
+                    GTYPE.setText("THW");
+                } else {
+                    SNUM.setText("");
+                    GNUM.setText("");
+                    STYPE.setText("UP");
+                    GTYPE.setText("");
                 }
 
-
+// Manage visibility of "horses" view
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
+
                 } else {
+
                     horses.setVisibility(View.GONE);
+
                 }
+
             }
         });
 
@@ -407,23 +454,139 @@ public class Inputing extends AppCompatActivity {
                 Watts.clearFocus();
                 Quantity.clearFocus();
                 others.clearFocus();
+                Typeofpipe.clearFocus();
+                Horsepower.clearFocus();
 
 
-                // Check if any of the fields are empty
-                if (Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty()) {
-                    // Show AlertDialog if any field is empty
+
+
+                if (Quantity.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    autoCompleteTextView1.clearFocus();
+                    Watts.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if quantity field is empty
                     new AlertDialog.Builder(Inputing.this)
                             .setTitle("Alert")
-                            .setMessage("Please fill all the fields")
+                            .setMessage("Please fill Quantity")
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with nothing
+                                    Quantity.requestFocus(); // Set focus on Quantity field
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                     return; // Exit the method without proceeding further
-                } else {
+                }
+
+                if (horses.getVisibility() == View.VISIBLE && Horsepower.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    autoCompleteTextView1.clearFocus();
+                    Watts.clearFocus();
+                    Quantity.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if Horsepower field is visible and empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill Horsepower")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Horsepower.requestFocus(); // Set focus on Horsepower field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return; // Exit the method without proceeding further
+                }
+
+
+                if (autoCompleteTextView1.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    Quantity.clearFocus();
+                    Watts.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if autoCompleteTextView1 field is empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill the Item")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    autoCompleteTextView1.requestFocus(); // Set focus on autoCompleteTextView1 field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return; // Exit the method without proceeding further
+                }
+
+                if (Watts.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    Quantity.clearFocus();
+                    autoCompleteTextView1.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if watts field is empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill Watts")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Watts.requestFocus(); // Set focus on Watts field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return; // Exit the method without proceeding further
+                }
+                if (Typeofpipe.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    Quantity.clearFocus();
+                    autoCompleteTextView1.clearFocus();
+                    Watts.clearFocus();
+
+                    // Show AlertDialog if type of pipe field is empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Please fill the type of pipe")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Typeofpipe.requestFocus(); // Set focus on Typeofpipe field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return; // Exit the method without proceeding further
+                }
+
+// Check if all fields are empty
+                if (Quantity.getText().toString().isEmpty() &&
+                        autoCompleteTextView1.getText().toString().isEmpty() &&
+                        Watts.getText().toString().isEmpty() &&
+                        Typeofpipe.getText().toString().isEmpty()) {
+                    // Clear focus from other fields
+                    Quantity.clearFocus();
+                    autoCompleteTextView1.clearFocus();
+                    Watts.clearFocus();
+                    Typeofpipe.clearFocus();
+
+                    // Show AlertDialog if all fields are empty
+                    new AlertDialog.Builder(Inputing.this)
+                            .setTitle("Alert")
+                            .setMessage("Fill up all the fields")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Quantity.requestFocus(); // Set focus on Quantity field
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                }
+
+                else {
 
                     // WHEN DATA IS OK PROCEED TO LOADSCHEDULE
                     //computation total
@@ -536,7 +699,6 @@ public class Inputing extends AppCompatActivity {
                         P.setText("2");//MATIC
                         AF.setText("50");//MATIC
                         MMPlus.setText("20");//MATIC
-                        CTYPE.setText("PVC");//MATIC
                         helper.addNewProject(
                                 ProjectName,
                                 Quantity.getText().toString(),
@@ -566,6 +728,7 @@ public class Inputing extends AppCompatActivity {
                     Watts.setText(null);
                     Horsepower.setText(null);
                     others.setText(null);
+                    Typeofpipe.setText(null);
                     horses.setVisibility(View.GONE);
 
                     intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
@@ -583,6 +746,9 @@ public class Inputing extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
+
+
 
 
                 // Check if the counter is less than 4
@@ -618,6 +784,7 @@ public class Inputing extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 counter++;
+
                                 // Proceed with preview
                                 Quantity.setText("1");
                                 autoCompleteTextView1.setText("Spare");
@@ -659,37 +826,17 @@ public class Inputing extends AppCompatActivity {
                                         MMPlus.getText().toString(),
                                         CTYPE.getText().toString()
 
-
                                 );
                                 Quantity.setText(null);
                                 autoCompleteTextView1.setText(null);
                                 Watts.setText(null);
                                 Horsepower.setText(null);
+                                Typeofpipe.setText(null);
                                 others.setText(null);
 
-                                proceedWithPreview();
-
-                            }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // User canceled, do nothing
-                            }
-                        });
-                        // Show the AlertDialog
-                        builder.show();
-                    } else {
+                                showPercentSelectionDialog();
 
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-                        builder.setTitle("Alert");
-                        builder.setMessage("Do you want to proceed?");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Proceed with preview
-                                proceedWithPreview();
                             }
                         });
                         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -701,6 +848,35 @@ public class Inputing extends AppCompatActivity {
                         // Show the AlertDialog
                         builder.show();
                     }
+
+                    else {
+                        // First, prompt the user if they want to proceed
+                        AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(Inputing.this);
+                        confirmBuilder.setTitle("Alert");
+                        confirmBuilder.setMessage("Do you want to proceed?");
+                        confirmBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User wants to proceed, show the percent selection dialog
+                                showPercentSelectionDialog();
+                            }
+                        });
+                        confirmBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User canceled, do nothing
+                            }
+                        });
+                        // Show the confirmation dialog
+                        confirmBuilder.show();
+                    }
+
+// Method to show the percent selection dialog
+
+
+// Method to handle the selected percent
+
+
 
 
 
@@ -719,10 +895,144 @@ public class Inputing extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Proceed with preview
-                        if(Quantity.getText().toString().isEmpty() || autoCompleteTextView1.getText().toString().isEmpty() || Watts.getText().toString().isEmpty())
-                        {
-                            Toast.makeText(Inputing.this, "Please fill up all the fields", Toast.LENGTH_SHORT).show();
+                        // Clear focus from any view that currently has it
+                        Watts.clearFocus();
+                        Quantity.clearFocus();
+                        others.clearFocus();
+                        Typeofpipe.clearFocus();
+                        Horsepower.clearFocus();
+
+
+
+
+                        if (Quantity.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if quantity field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Quantity")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Quantity.requestFocus(); // Set focus on Quantity field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
                         }
+
+                        if (horses.getVisibility() == View.VISIBLE && Horsepower.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Quantity.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if Horsepower field is visible and empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Horsepower")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Horsepower.requestFocus(); // Set focus on Horsepower field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return;
+                        }
+
+
+
+
+                        if (autoCompleteTextView1.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if autoCompleteTextView1 field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill the Item")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            autoCompleteTextView1.requestFocus(); // Set focus on autoCompleteTextView1 field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+
+                        if (Watts.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if watts field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill Watts")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Watts.requestFocus(); // Set focus on Watts field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+                        if (Typeofpipe.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+
+                            // Show AlertDialog if type of pipe field is empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Please fill the type of pipe")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Typeofpipe.requestFocus(); // Set focus on Typeofpipe field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            return; // Exit the method without proceeding further
+                        }
+
+// Check if all fields are empty
+                        if (Quantity.getText().toString().isEmpty() &&
+                                autoCompleteTextView1.getText().toString().isEmpty() &&
+                                Watts.getText().toString().isEmpty() &&
+                                Typeofpipe.getText().toString().isEmpty()) {
+                            // Clear focus from other fields
+                            Quantity.clearFocus();
+                            autoCompleteTextView1.clearFocus();
+                            Watts.clearFocus();
+                            Typeofpipe.clearFocus();
+
+                            // Show AlertDialog if all fields are empty
+                            new AlertDialog.Builder(Inputing.this)
+                                    .setTitle("Alert")
+                                    .setMessage("Fill up all the fields")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Quantity.requestFocus(); // Set focus on Quantity field
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+
+                        }
+
                         else
                         {
                             String ProjectName = getIntent().getStringExtra("ProjectName");
@@ -843,12 +1153,14 @@ public class Inputing extends AppCompatActivity {
 
                             }
 
+                            computeVA();
+                            computeA();
+
                             OPlus.setText("1");
                             V.setText("233");
                             P.setText("2");
                             AF.setText("50");
                             MMPlus.setText("20");
-                            CTYPE.setText("PVC");
                             helper.updateData(projectTable,
                                     ProjectName,
                                     Quantity.getText().toString()
@@ -867,7 +1179,8 @@ public class Inputing extends AppCompatActivity {
                                     ,GMM.getText().toString()
                                     ,GTYPE.getText().toString()
                                     ,MMPlus.getText().toString()
-                                    ,CTYPE.getText().toString());
+                                    ,CTYPE.getText().toString()
+                                   );
                             Toast.makeText(Inputing.this, "Data Updated", Toast.LENGTH_SHORT).show();
 
 
@@ -915,6 +1228,86 @@ public class Inputing extends AppCompatActivity {
 
     }
 
+    //demand factor
+
+    private void showPercentSelectionDialog() {
+        // Inflate the dialog layout XML
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
+
+        final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+        builder.setTitle("Demand Factor");
+        builder.setView(dialogView);
+
+        // Disable the positive button initially
+        builder.setPositiveButton("OK", null);
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Create the dialog
+        dialog = builder.create();
+
+        // Set up a listener to enable/disable the positive button based on input validity
+        inputEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String inputText = s.toString().trim();
+                if (!inputText.isEmpty()) {
+                    int inputPercent = Integer.parseInt(inputText);
+                    if (inputPercent >= 1 && inputPercent <= 100) {
+                        // Enable the OK button if input is valid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    } else {
+                        // Disable the OK button if input is invalid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                } else {
+                    // Disable the OK button if input is empty
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                }
+            }
+        });
+
+        // Set click listener for the positive button
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on OK button
+                        String inputText = inputEditText.getText().toString().trim();
+                        int inputPercent = Integer.parseInt(inputText);
+                        float multipliedPercent = (float) inputPercent / 100.0f;
+                        String demandText = String.format("%.2f", multipliedPercent);
+                        TextView demand = findViewById(R.id.demand);
+                        demand.setText(demandText);
+                        // Once percent selection is done, proceed with preview
+                        proceedWithPreview();
+                        // Dismiss the dialog
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        // Show the dialog
+        dialog.show();
+    }
+
+
 
 
 
@@ -922,12 +1315,13 @@ public class Inputing extends AppCompatActivity {
 
         double highestAmp = findHighestAmp();
         HighestAmp12.setText(String.valueOf(highestAmp));
-
+        String DEMAND = demand.getText().toString();
         // Once the highest values are determined, create an intent to start the new activity
         String passVA = TotalVA.getText().toString();
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
         String skel = Counter2.getText().toString();
+        String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
 
@@ -936,6 +1330,8 @@ public class Inputing extends AppCompatActivity {
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
         intent.putExtra("CTR", skel);
+        intent.putExtra("DEMAND", DEMAND);
+        intent.putExtra("mainpipo", mainpipo);
         startActivity(intent);
 
     }
@@ -1101,6 +1497,7 @@ public class Inputing extends AppCompatActivity {
     private void proceedToMenuActivity() {
         Intent intent = new Intent(Inputing.this, Menu.class);
         startActivity(intent);
+
     }
 
 }

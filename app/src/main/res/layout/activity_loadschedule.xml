@@ -100,6 +100,25 @@
                         android:textSize="9dp"
                         android:textStyle="bold"
                         tools:ignore="TextSizeCheck" />
+                    
+                    <ImageView
+
+                        android:layout_width="24dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="174dp"
+                        android:src="@color/white"/>
+                    
+                    <TextView
+                        android:id="@+id/demandfactor1"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="25dp"
+                        android:text="100"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="180dp"
+                        android:textSize="9.6dp"/>
 
                     <TextView
                         android:id="@+id/HIGHA"
@@ -215,7 +234,7 @@
                         tools:ignore="TextSizeCheck" />
 
                     <TextView
-
+                        android:id="@+id/demandfactor2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="180.6dp"
@@ -395,7 +414,7 @@
                     android:layout_marginLeft="540dp"
                     android:layout_marginTop="88dp"
                     android:gravity="start"
-                    android:text="80 AT, 1O0 AF, 2P, 230V, 60 GHZ"
+                    android:text="80 AT, 1O0 AF, 2P, 230V, 60 HZ"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -539,11 +558,26 @@
                     android:layout_marginTop="64dp"
                     android:layout_toEndOf="@id/FeederWire"
                     android:gravity="start"
-                    android:text="(G)In 1 mmø IMC PIPE"
+                    android:text="(G)In 1 mmø"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/Pipetype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_below="@id/border2"
+                    android:layout_marginTop="64dp"
+                    android:layout_toEndOf="@id/FeederWireFourth"
+                    android:gravity="start"
+                    android:text="IMC PIPE"
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck"/>
 
                 <!-- una load schedule  -->
             </RelativeLayout>

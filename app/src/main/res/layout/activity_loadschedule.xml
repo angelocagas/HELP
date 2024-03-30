@@ -127,7 +127,6 @@
                         android:textColor="@color/black"
                         android:textSize="9dp"
                         android:textStyle="bold"
-
                         tools:ignore="TextSizeCheck" />
 
                     <TextView
@@ -385,7 +384,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="18dp"
                     android:layout_toEndOf="@+id/totalVA"
-                    android:text="1122.26"
+                    android:text="0.1"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="8dp"
@@ -498,21 +497,7 @@
                     android:visibility="gone"
                     tools:ignore="TextSizeCheck" />
 
-                <TextView
-                    android:id="@+id/FeederWireType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/border2"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="55dp"
-                    android:layout_toEndOf="@id/FeederWireSecond"
-                    android:gravity="start"
-                    android:text="THHN"
-                    android:textColor="@color/black"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:visibility="invisible"
-                    tools:ignore="TextSizeCheck" />
+
 
                 <TextView
 
@@ -538,7 +523,6 @@
                     android:layout_below="@id/border2"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="55dp"
-                    android:layout_toEndOf="@id/FeederWireType"
                     android:gravity="start"
                     android:text="Cu. Wire"
                     android:textColor="@color/black"

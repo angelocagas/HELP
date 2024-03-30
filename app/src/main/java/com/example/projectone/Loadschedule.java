@@ -1708,9 +1708,10 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
+        double demand = Double.parseDouble(demandfactor1.getText().toString());
 
         double totalOneValue = Double.parseDouble(totalone.getText().toString());
-        double topOneAndTwoValue = totalOneValue * 0.80;
+        double topOneAndTwoValue = totalOneValue * demand;
         TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
         String formattedResult = decimalFormat.format(topOneAndTwoValue);
         TopOneAndTwo.setText(formattedResult);
@@ -1727,7 +1728,7 @@ public class Loadschedule extends AppCompatActivity {
         TotalTop.setText(formattedResultFinalTop);
 
         double totalBValue = Double.parseDouble(TotalB.getText().toString());
-        double underOneAndTwoValue = totalBValue * 0.80;
+        double underOneAndTwoValue = totalBValue * demand;
         underOneAndTwoValue = Math.round(underOneAndTwoValue * 100.0) / 100.0;
         String formattedResultUnderOneAndTwo = decimalFormat.format(underOneAndTwoValue);
         UnderOneAndTwo.setText(formattedResultUnderOneAndTwo);

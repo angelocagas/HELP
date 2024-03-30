@@ -142,7 +142,7 @@ public class Inputing extends AppCompatActivity {
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
         if (isEditMode) {
             //populate the value in textview
-            counter();
+
             projectTable = (ProjectTable) getIntent().getSerializableExtra("ProjectTable");
             assert projectTable != null;
 
@@ -1545,6 +1545,7 @@ public class Inputing extends AppCompatActivity {
                 .show();
     }
 
+
     private void proceedToMenuActivity() {
         Intent intent = new Intent(Inputing.this, Menu.class);
         startActivity(intent);
@@ -1565,14 +1566,12 @@ public class Inputing extends AppCompatActivity {
 
 
                         case 1:
-
                             CircuitNum.setText("CIRCUIT NO. 2");
                             break;
                         case 2:
                             CircuitNum.setText("CIRCUIT NO. 3");
                             break;
                         case 3:
-
                             CircuitNum.setText("CIRCUIT NO. 4");
                             break;
                         case 4:

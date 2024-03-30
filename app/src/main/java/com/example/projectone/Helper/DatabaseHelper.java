@@ -147,54 +147,7 @@ public class DatabaseHelper {
         GetAllItemsTask getAllItemsTask = new GetAllItemsTask();
         getAllItemsTask.execute();
     }
-    /*public void getAForLightingOutlet(final Context context, final OnItemsLoadedListener listener) {
-        class GetAForLightingOutletTask extends AsyncTask<Void, Void, List<String>> {
-            @Override
-            protected List<String> doInBackground(Void... voids) {
-                return DatabaseClient.getInstance(context)
-                        .getProjectDatabase()
-                        .projectDAO()
-                        .selectAForLightingOutlet();
-            }
 
-            @Override
-            protected void onPostExecute(List<String> aList) {
-                super.onPostExecute(aList);
-                if (aList != null && !aList.isEmpty()) {
-                    listener.onItemsLoaded(aList);
-                } else {
-                    Toast.makeText(context, "No A values found for lighting outlet", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        GetAForLightingOutletTask getAForLightingOutletTask = new GetAForLightingOutletTask();
-        getAForLightingOutletTask.execute();
-    }
-    public void getAForACURefrigerator(final Context context, final OnItemsLoadedListener listener) {
-        class GetAForACURefrigeratorTask extends AsyncTask<Void, Void, List<String>> {
-            @Override
-            protected List<String> doInBackground(Void... voids) {
-                return DatabaseClient.getInstance(context)
-                        .getProjectDatabase()
-                        .projectDAO()
-                        .selectAForACURefrigerator();
-            }
-
-            @Override
-            protected void onPostExecute(List<String> aList) {
-                super.onPostExecute(aList);
-                if (aList != null && !aList.isEmpty()) {
-                    listener.onItemsLoaded(aList);
-                } else {
-                    Toast.makeText(context, "No A values found for ACU/Refrigerator", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        GetAForACURefrigeratorTask getAForACURefrigeratorTask = new GetAForACURefrigeratorTask();
-        getAForACURefrigeratorTask.execute();
-    }*/
 
 
     public void getAForACURefrigerator(final Context context, final OnItemsLoadedListener listener) {

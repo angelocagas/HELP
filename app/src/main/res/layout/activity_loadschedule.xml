@@ -113,10 +113,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:gravity="center"
+            android:text="Electrical"
             android:textAlignment="center"
-            android:textSize="8sp"
             android:textColor="@color/black"
-            android:text="Electrical" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/tvSheetNo"
@@ -222,7 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="95dp"
-                        android:text="60.78"
+                        android:text="1.1"
                         android:textColor="@color/black"
                         android:textSize="9dp"
                         android:textStyle="bold"

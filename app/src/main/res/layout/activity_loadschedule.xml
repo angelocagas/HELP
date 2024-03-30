@@ -876,7 +876,7 @@
                         android:id="@+id/RS6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
+                     android:visibility="gone"
 
                         >
 
@@ -894,7 +894,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="230dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="35dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -1061,7 +1061,8 @@
                         android:id="@+id/RS8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                      >
 
 
                         <ImageView
@@ -1071,17 +1072,6 @@
                             android:layout_marginLeft="20dp"
                             android:src="@drawable/s8" />
 
-                        <TextView
-                            android:id="@+id/num8_top"
-                            android:layout_width="196dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginLeft="235dp"
-                            android:layout_marginTop="10dp"
-                            android:maxLines="2"
-                            android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
-                            android:textSize="10dp"
-                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/num8_1"
@@ -1286,6 +1276,18 @@
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/num8_top"
+                            android:layout_width="196dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginLeft="235dp"
+                            android:layout_marginTop="27dp"
+                            android:maxLines="2"
+                            android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
 
                     </RelativeLayout>
                     <!-- skel 10-->
@@ -1293,7 +1295,7 @@
                         android:id="@+id/RS10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+android:visibility="gone"                        >
 
 
                         <ImageView
@@ -1306,10 +1308,10 @@
 
                         <TextView
                             android:id="@+id/num10_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="230dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="220dp"
+                            android:layout_marginTop="30dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -1571,7 +1573,7 @@
                         android:id="@+id/RS12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                      android:visibility="gone" >
 
 
                         <ImageView
@@ -1584,10 +1586,10 @@
 
                         <TextView
                             android:id="@+id/num12_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="225dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="30dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -1895,7 +1897,8 @@
                         android:id="@+id/RS14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                       >
 
 
                         <ImageView
@@ -1908,10 +1911,10 @@
 
                         <TextView
                             android:id="@+id/num14_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="215dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="26dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -2266,18 +2269,21 @@
                         android:id="@+id/RS16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:layout_marginTop="17dp"
+                        android:visibility="gone"
+                       >
 
 
                         <ImageView
                             android:id="@+id/s16"
                             android:layout_width="400dp"
                             android:layout_height="500dp"
+
                             android:src="@drawable/s16" />
 
                         <TextView
                             android:id="@+id/num16_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="10dp"
@@ -2679,6 +2685,7 @@
                         android:id="@+id/RS18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
                         android:visibility="gone"
                         >
 
@@ -2694,7 +2701,7 @@
 
                         <TextView
                             android:id="@+id/num18_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="5dp"
@@ -3141,6 +3148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
+                        android:layout_marginTop="17dp"
                         >
 
 
@@ -3154,10 +3162,10 @@
 
                         <TextView
                             android:id="@+id/num20_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -3646,6 +3654,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
+                        android:layout_marginTop="27dp"
                         >
 
 
@@ -3662,7 +3671,7 @@
 
                         <TextView
                             android:id="@+id/num22_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:text="using: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire "
@@ -4198,6 +4207,7 @@
                         android:id="@+id/RS24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         android:visibility="gone">
 
 
@@ -4210,7 +4220,7 @@
 
                         <TextView
                             android:id="@+id/num24_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="5dp"
@@ -4790,6 +4800,7 @@
                         android:id="@+id/RS26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
                         android:visibility="gone">
 
 
@@ -4802,7 +4813,7 @@
 
                         <TextView
                             android:id="@+id/num26_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="5dp"
@@ -5428,6 +5439,7 @@
                         android:id="@+id/RS28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
                         android:visibility="gone">
 
 
@@ -5441,7 +5453,7 @@
 
                         <TextView
                             android:id="@+id/num28_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="5dp"
@@ -6128,7 +6140,7 @@
 
                         <TextView
                             android:id="@+id/num30_top"
-                            android:layout_width="182dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="15dp"

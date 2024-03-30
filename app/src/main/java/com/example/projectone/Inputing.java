@@ -42,7 +42,7 @@ public class Inputing extends AppCompatActivity {
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe;
     TextInputLayout horses;
-    TextView Counter2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
+    TextView CircuitNum2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
@@ -115,7 +115,7 @@ public class Inputing extends AppCompatActivity {
         Mainpipetxt = findViewById(R.id.Mainpipe);
         TOTALAtxt = findViewById(R.id.TOTALA);
         TOTALVAtxt = findViewById(R.id.TOTALVA);
-
+        CircuitNum2 = findViewById(R.id.TOTALVA);
 
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
@@ -138,29 +138,33 @@ public class Inputing extends AppCompatActivity {
 
         }
 
+
         // Check if editing mode is enabled
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
         if (isEditMode) {
             //populate the value in textview
 
+
+
             projectTable = (ProjectTable) getIntent().getSerializableExtra("ProjectTable");
             assert projectTable != null;
 
-            CircuitNum.setText("Update");
+
             Quantity.setText(projectTable.getQuantity());
             String quan = projectTable.getQuantity();
             String item = projectTable.getItem();
             String VAs = projectTable.getVA();
             String Ctype = projectTable.getCTYPE();
 
-
+            CircuitNum.setVisibility(View.GONE);
             // If editing mode is enabled, disable the "Next" button
             preview.setVisibility(View.GONE);
             next.setVisibility(View.GONE);
             preview2.setVisibility(View.VISIBLE);
             update.setVisibility(View.VISIBLE);
-
-
+            CircuitNum2.setVisibility(View.VISIBLE);
+            CircuitNum.setText("Update");
+            CircuitNum2.setText("Update");
             // Check if item starts with "LIGHTING OUTLET"
             if (item.startsWith("Lighting Outlet")) {
                 autoCompleteTextView1.setText("Lighting Outlet");
@@ -292,9 +296,6 @@ public class Inputing extends AppCompatActivity {
 
 
 
-        //for counter update
-
-        counter();
 //adapter for ITEMS
         String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator", "Spare"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);

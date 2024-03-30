@@ -2,14 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="850dp"
-    android:layout_height="15dp"
+    android:layout_height="wrap_content"
     android:gravity="start"
     android:id="@+id/edit"
-    android:layout_marginTop="-6dp"
-    android:layout_marginBottom="-2dp"
     android:orientation="horizontal"
+    android:layout_marginTop="1.4dp"
     tools:ignore="MissingDefaultResource">
 
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <View
+        android:layout_alignBottom="@+id/as"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginBottom="-0.5dp"
+                    android:background="@android:color/black"/>
+
+                <LinearLayout
+                    android:id="@+id/as"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
 
         <TextView
@@ -18,36 +32,57 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
+            android:layout_gravity="center"
+
             android:text="1"
             android:textAlignment="center"
-            android:textSize="8dp"
+            android:textSize="9dp"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:textStyle="bold"
             android:id="@+id/Quantity"
             android:layout_width="70dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="1"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="1.3dp"
+            android:layout_height="wrap_content">
+
+
+
         <TextView
             android:textStyle="bold"
             android:id="@+id/Item"
-            android:layout_width="110dp"
+            android:textColor="@color/black"
+            android:layout_width="93.7dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:text="Conveniec Outlet"
-            android:textAlignment="center"
+            android:layout_marginLeft="12dp"
+            android:text="Lighting outlet 120W \n (leaving room)"
             android:textSize="8dp"
+            android:ellipsize="end"
+            android:paddingBottom="0dp"
+
+            android:layout_marginTop="-2dp"
             tools:ignore="TextSizeCheck" />
+
+
+
+
+        </LinearLayout>
         <TextView
             android:textStyle="bold"
             android:id="@+id/OPlus"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
             android:text="1"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -55,9 +90,10 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/V"
-            android:layout_width="53dp"
+            android:layout_width="40dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="10dp"
             android:text="230"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -65,7 +101,8 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/VA"
-            android:layout_width="20dp"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="3240"
@@ -75,7 +112,8 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/A"
-            android:layout_width="85dp"
+            android:layout_gravity="center"
+            android:layout_width="80.5dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:maxLength="5"
@@ -86,9 +124,10 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/P"
+            android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="4dp"
             android:text="2"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -96,9 +135,10 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/AT"
+            android:layout_gravity="center"
             android:layout_width="45dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="3dp"
             android:text="15"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -106,6 +146,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/AF"
+            android:layout_gravity="center"
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -117,18 +158,20 @@
             android:textStyle="bold"
             android:id="@+id/SNUM"
             android:layout_width="33dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="2.4dp"
             android:text="2"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
         <TextView
             android:textStyle="bold"
+            android:layout_gravity="center"
             android:id="@+id/SMM"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="3dp"
             android:text="5.5"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -137,8 +180,9 @@
             android:textStyle="bold"
             android:id="@+id/STYPE"
             android:layout_width="37dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="0dp"
             android:text="THHN"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -146,6 +190,7 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/GNUM"
+            android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -157,8 +202,9 @@
             android:textStyle="bold"
             android:id="@+id/GMM"
             android:layout_width="30dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="2.5dp"
             android:text="3.5"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -167,8 +213,9 @@
             android:textStyle="bold"
             android:id="@+id/GTYPE"
             android:layout_width="30dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
+            android:layout_marginLeft="0dp"
             android:text="THHN"
             android:textAlignment="center"
             android:textSize="8dp"
@@ -177,7 +224,8 @@
             android:textStyle="bold"
             android:id="@+id/MMPlus"
             android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="1dp"
             android:text="20"
@@ -188,6 +236,7 @@
             android:textStyle="bold"
             android:id="@+id/CTYPE"
             android:layout_width="60dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="PVC"
@@ -195,6 +244,11 @@
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
 
+
+                </LinearLayout>
+
+
+        </RelativeLayout>
 
 
 

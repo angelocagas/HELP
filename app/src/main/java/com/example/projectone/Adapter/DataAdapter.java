@@ -2,11 +2,15 @@ package com.example.projectone.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectone.Databases.ProjectTable;
 import com.example.projectone.Helper.DatabaseHelper;
+import com.example.projectone.Inputing;
+import com.example.projectone.Loadschedule;
 import com.example.projectone.R;
-import com.example.projectone.UpdateDataActivity;
+
 import com.google.protobuf.StringValue;
 
 import org.w3c.dom.Text;
@@ -47,12 +53,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (projectTableList != null && projectTableList.size() > 0)
         {
             ProjectTable projectTable = projectTableList.get(position);
-            holder.NumberId.setText(String.valueOf(projectTable.getId()));
+            holder.NumberId.setText(String.valueOf(position + 1));// reset sa chk item number sa recycler viewer
             holder.Quantity.setText(String.valueOf(projectTable.getQuantity()));
             holder.Item.setText(String.valueOf(projectTable.getItem()));
             holder.OPlus.setText(String.valueOf(projectTable.getOPlus()));
@@ -74,23 +81,27 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,UpdateDataActivity.class);
+                    Intent intent = new Intent(context, Inputing.class);
                     intent.putExtra("ProjectTable",projectTable);
+                    intent.putExtra("EditMode", true); // Pass true to indicate editing mode
+
                     context.startActivity(intent);
                 }
             });
+
         }
     }
 
     @Override
     public int getItemCount() {
-        return projectTableList.size()
-                ;
+        // Limiting the number of items displayed to 30 at most
+        return Math.min(projectTableList.size(), 31);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView NumberId, Quantity,Item, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE;
         LinearLayout edit;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             NumberId = itemView.findViewById(R.id.NumberId);
@@ -113,6 +124,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             CTYPE = itemView.findViewById(R.id.CTYPE);
             edit = itemView.findViewById(R.id.edit);
 
+
         }
     }
+
 }

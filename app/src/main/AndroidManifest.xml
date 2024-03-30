@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +30,12 @@
         <activity
             android:name=".UpdateDataActivity"
             android:exported="false" />
+        <activity android:name=".ChangePipeSize"
+        android:exported="false" />
+        <activity android:name=".Changefirst"
+        android:exported="false" />
+
+
         <activity
             android:name=".Loadschedule"
             android:exported="false"
@@ -57,6 +64,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

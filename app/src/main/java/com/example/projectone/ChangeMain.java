@@ -47,11 +47,12 @@ public class ChangeMain extends AppCompatActivity {
                     AF.setError("Put Some Value For AMPERE FRAME");
                 }
                 else {
-                    UpdateMain.setText(AMT + " AT, " + AMF + " AF, 2P, 230V, 60 GHZ");
+                    UpdateMain.setText(AMT + " AT, " + AMF + " AF, 2P, 230V, 60 HZ");
                     String updatedMainText = UpdateMain.getText().toString().trim();
                     Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("UMT", updatedMainText);
+                    intent.putExtra("executeCode3", true);
                     editor.apply();
                     startActivity(intent);
                     finish();

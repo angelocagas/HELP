@@ -2586,6 +2586,42 @@ public class Loadschedule extends AppCompatActivity {
                 String electrical = etElectrical.getText().toString();
                 String sheetNo = etSheetNo.getText().toString();
 
+// Check each string and assign a space if it's empty
+                if (engineerName.isEmpty()) {
+                    engineerName = " ";
+                }
+                if (proposedProjName.isEmpty()) {
+                    proposedProjName = " ";
+                }
+                if (location.isEmpty()) {
+                    location = " ";
+                }
+                if (owner.isEmpty()) {
+                    owner = " ";
+                }
+                if (address.isEmpty()) {
+                    address = " ";
+                }
+                if (revision1.isEmpty()) {
+                    revision1 = " ";
+                }
+                if (designedBy.isEmpty()) {
+                    designedBy = " ";
+                }
+                if (certifiedBy.isEmpty()) {
+                    certifiedBy = " ";
+                }
+                if (revision2.isEmpty()) {
+                    revision2 = " ";
+                }
+                if (electrical.isEmpty()) {
+                    electrical = " ";
+                }
+                if (sheetNo.isEmpty()) {
+                    sheetNo = " ";
+                }
+
+
                 // Set text to TextViews
                 tvEngineerName.setText(engineerName.toUpperCase());
                 tvProposedProjName.setText(proposedProjName.toUpperCase());
@@ -2883,9 +2919,9 @@ public class Loadschedule extends AppCompatActivity {
                                                     yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
                                                 }
 
-                                                imageEngineerName.setAbsolutePosition(550, 150);
-                                                imageProposedProjName.setAbsolutePosition(890, 130);
-                                                imageOwner.setAbsolutePosition(1300, 130);
+                                                imageEngineerName.setAbsolutePosition(500, 150);
+                                                imageProposedProjName.setAbsolutePosition(775, 140);
+                                                imageOwner.setAbsolutePosition(1180, 140);
                                                 imageElectrical.setAbsolutePosition(2020, 130);
                                                 imageSheetNo.setAbsolutePosition(2270, 100);
                                                 imageDesignedBy.setAbsolutePosition(1800, 170);
@@ -2978,9 +3014,9 @@ public class Loadschedule extends AppCompatActivity {
                                                     yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
                                                 }
 
-                                                imageEngineerName.setAbsolutePosition(520, 100);
-                                                imageProposedProjName.setAbsolutePosition(840, 130 - 50);
-                                                imageOwner.setAbsolutePosition(1200, 130 - 50);
+                                                imageEngineerName.setAbsolutePosition(460, 100);
+                                                imageProposedProjName.setAbsolutePosition(710, 130 - 50);
+                                                imageOwner.setAbsolutePosition(1070, 130 - 50);
                                                 imageElectrical.setAbsolutePosition(1870, 80);
                                                 imageSheetNo.setAbsolutePosition(2060, 50);
                                                 imageDesignedBy.setAbsolutePosition(1650, 100);

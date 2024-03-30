@@ -87,6 +87,14 @@ import android.view.View;
 
 public class Loadschedule extends AppCompatActivity {
 
+    private double totalValue = 0.0;
+
+    private double topOneAndTwoValue;
+
+    private double topThreeAndFourValue;
+
+
+
     private RecyclerView recyclerView;
     private DataAdapter dataAdapter;
     private RelativeLayout rootLayout;
@@ -112,6 +120,8 @@ public class Loadschedule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseHelper = new DatabaseHelper(this);
+
+
 
 
         super.onCreate(savedInstanceState);
@@ -742,6 +752,7 @@ public class Loadschedule extends AppCompatActivity {
         String YY = sharedPreferences.getString("YY", "");
 
 
+
         Intent intent = getIntent();
 
 
@@ -754,13 +765,14 @@ public class Loadschedule extends AppCompatActivity {
         dbHelper.getAllAsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
             public void onItemsLoaded(List<String> items) {
-                double total = 0.0;
+                // Reset total value before calculating
+                totalValue = 0.0;
 
                 // Iterate through the items and sum them up
                 for (String item : items) {
                     try {
                         double value = Double.parseDouble(item);
-                        total += value;
+                        totalValue += value;
                     } catch (NumberFormatException e) {
                         // Handle parsing errors if any
                         e.printStackTrace();
@@ -768,14 +780,18 @@ public class Loadschedule extends AppCompatActivity {
                 }
 
                 // Format the total to display with two decimal places
-                String formattedTotalA = String.format("%.2f", total);
+                String formattedTotalA = String.format("%.2f", totalValue);
                 // Display a toast with the formatted total and a message
                 totalATextView.setText(formattedTotalA);
                 totalone.setText(formattedTotalA);
                 TotalB.setText(formattedTotalA);
 
+                // Call the interface method to pass the total value outside of the onItemsLoaded method
+                onTotalValueCalculated(totalValue);
             }
         });
+
+
 
 //TOTAL VA
         dbHelper.getAllVAsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
@@ -1710,22 +1726,22 @@ public class Loadschedule extends AppCompatActivity {
 
         double demand = Double.parseDouble(demandfactor1.getText().toString());
 
-        double totalOneValue = Double.parseDouble(totalone.getText().toString());
-        double topOneAndTwoValue = totalOneValue * demand;
-        TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
-        String formattedResult = decimalFormat.format(topOneAndTwoValue);
-        TopOneAndTwo.setText(formattedResult);
+        double totalOneValue = totalValue;
 
-        double highestAValue = Double.parseDouble(HighestA.getText().toString());
+
+        double topOneAndTwoValue = totalOneValue * demand;
+
+
+        /* double highestAValue = Double.parseDouble(HighestA.getText().toString());
         double topThreeAndFourValue = highestAValue * 0.25;
         topThreeAndFourValue = Math.round(topThreeAndFourValue * 100.0) / 100.0;
         String formattedResulttwo = decimalFormat.format(topThreeAndFourValue);
-        TopThreeAndFour.setText(formattedResulttwo);
+        TopThreeAndFour.setText(formattedResulttwo); */
 
-        double totalTopValue = topOneAndTwoValue + topThreeAndFourValue;
+       /* double totalTopValue = topOneAndTwoValue + topThreeAndFourValue;
         totalTopValue = Math.round(totalTopValue * 100.0) / 100.0;
         String formattedResultFinalTop = decimalFormat.format(totalTopValue);
-        TotalTop.setText(formattedResultFinalTop);
+        TotalTop.setText(formattedResultFinalTop);  */
 
         double totalBValue = Double.parseDouble(TotalB.getText().toString());
         double underOneAndTwoValue = totalBValue * demand;
@@ -3181,11 +3197,19 @@ public class Loadschedule extends AppCompatActivity {
         if (highestValue > 0) {
             HighestA.setText(String.format("%.2f", highestValue));
             HighestB.setText(String.format("%.2f", highestValue));
+
+            topThreeAndFourValue = highestValue * 0.25;
+
+            topThreeAndFourValue = Math.round(topThreeAndFourValue * 100.0) / 100.0;
+            String formattedResulttwo = decimalFormat.format(topThreeAndFourValue);
+            TopThreeAndFour.setText(formattedResulttwo);
+
         } else {
             HighestA.setText("0.00");
             HighestB.setText("0.00");
         }
     }
+
 
 
     // Method to find the highest A value from a list of A values
@@ -3204,6 +3228,29 @@ public class Loadschedule extends AppCompatActivity {
     private void startFindingHighestAValues() {
         getHighestAValues();
 
+    }
+
+    public void onTotalValueCalculated(double totalValue) {
+        double demand = Double.parseDouble(demandfactor1.getText().toString());
+
+        double totalOneValue = totalValue;
+
+        topOneAndTwoValue = totalOneValue * demand;
+
+        Toast.makeText(getApplicationContext(), totalValue + " and " + topOneAndTwoValue, Toast.LENGTH_SHORT).show();
+        TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
+        String formattedResult = decimalFormat.format(topOneAndTwoValue);
+        TopOneAndTwo.setText(formattedResult);
+        sumOfLeftAndRightTop();
+
+    }
+
+    private void sumOfLeftAndRightTop() {
+        double value1 = topOneAndTwoValue;
+        double value2 = topThreeAndFourValue;
+
+        double sum = value1 + value2;
+        TotalTop.setText(String.valueOf(sum));
     }
 
 

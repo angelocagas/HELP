@@ -7,6 +7,133 @@
     android:layout_height="match_parent"
     tools:context=".Loadschedule">
 
+    <RelativeLayout
+        android:id="@+id/infoTexts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEngineerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="Engineer Name"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="6sp" />
+
+        <TextView
+            android:id="@+id/tvProposedProjName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:text="Proposed Project Name"
+            />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="4sp"
+            android:textColor="@color/black"
+            android:text="Location" />
+
+        <TextView
+            android:id="@+id/tvOwner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:text="Owner" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="4sp"
+            android:textColor="@color/black"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/tvRevision1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Revision 1" />
+
+        <TextView
+            android:id="@+id/tvDesignedBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="5sp"
+            android:textColor="@color/black"
+            android:text="Designed By" />
+
+        <TextView
+            android:id="@+id/tvCertifiedBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="5sp"
+            android:textColor="@color/black"
+            android:text="Certified By" />
+
+        <TextView
+            android:id="@+id/tvRevision2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="4sp"
+            android:textColor="@color/black"
+            android:text="Revision 2" />
+
+        <TextView
+            android:id="@+id/tvElectrical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:text="Electrical" />
+
+        <TextView
+            android:id="@+id/tvSheetNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sheet No"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="8sp" />
+
+    </RelativeLayout>
+
+
+
+
 
     <RelativeLayout
 
@@ -14,6 +141,7 @@
         android:layout_width="1400dp"
         android:layout_height="2500dp"
         android:layout_marginStart="5dp"
+        android:paddingTop="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,12 +149,13 @@
         <RelativeLayout
             android:id="@+id/aaaa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-130dp">
 
 
             <RelativeLayout
                 android:id="@+id/rela"
-                android:layout_width="800dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="130dp">
 
@@ -577,6 +706,7 @@
                     android:id="@+id/skeleton"
                     android:layout_width="435dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
                     android:layout_marginStart="850dp">
 
                     <!-- skel 4-->
@@ -584,7 +714,6 @@
                         android:id="@+id/RS4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="100dp"
                         android:visibility="gone">
 
                         <TextView
@@ -747,9 +876,8 @@
                         android:id="@+id/RS6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="110dp"
+                        android:visibility="gone"
 
-android:visibility="gone"
                         >
 
 
@@ -933,7 +1061,6 @@ android:visibility="gone"
                         android:id="@+id/RS8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="100dp"
                         android:visibility="gone">
 
 
@@ -1166,7 +1293,6 @@ android:visibility="gone"
                         android:id="@+id/RS10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="85dp"
                         android:visibility="gone">
 
 
@@ -1445,7 +1571,6 @@ android:visibility="gone"
                         android:id="@+id/RS12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="85dp"
                         android:visibility="gone">
 
 
@@ -1770,7 +1895,6 @@ android:visibility="gone"
                         android:id="@+id/RS14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="65dp"
                         android:visibility="gone">
 
 
@@ -2142,7 +2266,6 @@ android:visibility="gone"
                         android:id="@+id/RS16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:visibility="gone">
 
 
@@ -2556,7 +2679,6 @@ android:visibility="gone"
                         android:id="@+id/RS18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:visibility="gone"
                         >
 
@@ -3018,7 +3140,6 @@ android:visibility="gone"
                         android:id="@+id/RS20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:visibility="gone"
                         >
 
@@ -3524,7 +3645,6 @@ android:visibility="gone"
                         android:id="@+id/RS22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
                         android:visibility="gone"
                         >
 
@@ -4078,7 +4198,6 @@ android:visibility="gone"
                         android:id="@+id/RS24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:visibility="gone">
 
 
@@ -4671,7 +4790,6 @@ android:visibility="gone"
                         android:id="@+id/RS26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
                         android:visibility="gone">
 
 
@@ -5310,7 +5428,6 @@ android:visibility="gone"
                         android:id="@+id/RS28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
                         android:visibility="gone">
 
 
@@ -5997,7 +6114,7 @@ android:visibility="gone"
                         android:id="@+id/RS30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="40dp"
                         android:visibility="gone">
 
 

@@ -69,7 +69,7 @@ public class DatabaseHelper {
                 super.onPostExecute(projectTable);
                 if (projectTable != null)
                 {
-                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -139,7 +139,7 @@ public class DatabaseHelper {
                     // Notify the listener with the list of items
                     listener.onItemsLoaded(itemList);
                 } else {
-                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -238,7 +238,7 @@ public class DatabaseHelper {
                 if (aList != null && !aList.isEmpty()) {
                     listener.onItemsLoaded(aList);
                 } else {
-                    Toast.makeText(context, "No A values found for lighting outlet", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(context, "No A values found for lighting outlet", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -274,7 +274,7 @@ public class DatabaseHelper {
                     // Notify the listener with the list of items
                     listener.onItemsLoaded(itemList);
                 } else {
-                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -308,7 +308,7 @@ public class DatabaseHelper {
                 if (aList != null && !aList.isEmpty()) {
                     listener.onItemsLoaded(aList);
                 } else {
-                    Toast.makeText(context, "No A values found", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "No A values found", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -342,7 +342,7 @@ public class DatabaseHelper {
                     // Notify the listener with the list of items
                     listener.onItemsLoaded(itemList);
                 } else {
-                    Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "No items found", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -389,7 +389,7 @@ public class DatabaseHelper {
                 super.onPostExecute(projectTable);
                 if (projectTable !=null)
                 {
-                    Toast.makeText(context, "UPDATED", Toast.LENGTH_SHORT).show();
+                 //Toast.makeText(context, "UPDATED", Toast.LENGTH_SHORT).show();
                 }
             }
         }

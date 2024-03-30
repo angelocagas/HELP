@@ -40,15 +40,15 @@ import java.util.List;
 public class Inputing extends AppCompatActivity {
     // Declare ArrayList to store "A" values
     ArrayList<Double> arrayAmp = new ArrayList<>();
-    AutoCompleteTextView autoCompleteTextView1, Horsepower,Typeofpipe;
+    AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe;
     TextInputLayout horses;
-    TextView Counter2,demand, HighestAmp12, CNM,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt ,TOTALAtxt, TOTALVAtxt;
+    TextView Counter2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
     private boolean isAutoCompletePipeSelected = false;
-    int counter = 1;
+
 
     private SharedPreferences sharedPreferences;
     private DecimalFormat decimalFormat;
@@ -56,12 +56,13 @@ public class Inputing extends AppCompatActivity {
     private AlertDialog dialog;
     double totalAValue = 0.00;
     int cirnum;
+
     ProjectTable projectTable;
     ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         // Clear the SharedPreferences when the activity is first initialized
@@ -74,7 +75,7 @@ public class Inputing extends AppCompatActivity {
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         sharedPreferences = getPreferences(MODE_PRIVATE);
         others = findViewById(R.id.others);
-        counter = 1; // reset yung sa counter dun sa input display
+
 
 
         setContentView(R.layout.activity_inputing);
@@ -110,12 +111,10 @@ public class Inputing extends AppCompatActivity {
         TotalVA = findViewById(R.id.TotalVA);
         CNM = findViewById(R.id.CNM);
         HighestAmp12 = findViewById(R.id.HighestAmp);
-        Counter2 = findViewById(R.id.counter2);
         demand = findViewById(R.id.demand);
         Mainpipetxt = findViewById(R.id.Mainpipe);
         TOTALAtxt = findViewById(R.id.TOTALA);
         TOTALVAtxt = findViewById(R.id.TOTALVA);
-
 
 
         Intent intent = getIntent();
@@ -124,6 +123,9 @@ public class Inputing extends AppCompatActivity {
 
         // Retrieve the value of "mainPipe" from the Intent extras
         String mainPipe = getIntent().getStringExtra("mainPipe");
+
+
+
 
         // Now you can use the "mainPipe" value as needed in this activity
 
@@ -140,22 +142,23 @@ public class Inputing extends AppCompatActivity {
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
         if (isEditMode) {
             //populate the value in textview
-            projectTable = (ProjectTable)getIntent().getSerializableExtra("ProjectTable");
+            counter();
+            projectTable = (ProjectTable) getIntent().getSerializableExtra("ProjectTable");
             assert projectTable != null;
 
+            CircuitNum.setText("Update");
             Quantity.setText(projectTable.getQuantity());
             String quan = projectTable.getQuantity();
             String item = projectTable.getItem();
-            String  VAs = projectTable.getVA();
+            String VAs = projectTable.getVA();
+            String Ctype = projectTable.getCTYPE();
 
 
             // If editing mode is enabled, disable the "Next" button
             preview.setVisibility(View.GONE);
             next.setVisibility(View.GONE);
-            CircuitNum.setText("Update");
             preview2.setVisibility(View.VISIBLE);
             update.setVisibility(View.VISIBLE);
-
 
 
             // Check if item starts with "LIGHTING OUTLET"
@@ -167,16 +170,54 @@ public class Inputing extends AppCompatActivity {
                 autoCompleteTextView1.setText("ACU");
                 horses.setVisibility(View.VISIBLE);
                 //for HORSEPOWER DISPLAY
-                int startIndex = item.indexOf("ACU ");
-                int endIndex = item.indexOf("PH");
+                int startIndex = item.indexOf('U');
+                int endIndex = item.indexOf("HP");
                 if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
                     // Extract the interval
                     String interval = item.substring(startIndex + 1, endIndex).trim();
+                    Toast.makeText(Inputing.this, interval, Toast.LENGTH_SHORT).show();
+                    if(interval.equals("1/6")){
+                        Horsepower.setText("1/6");
+                    } else if(interval.equals("1/4")){
+                        Horsepower.setText("1/4");
 
-                    // Display the interval in horsepower
-                    Horsepower.setText(interval);
+                    } else if(interval.equals("1/3")){
+                        Horsepower.setText("1/3");
+
+                    } else if(interval.equals("0.5")){
+                        Horsepower.setText("0.5");
+
+                    } else if(interval.equals("0.75")){
+                        Horsepower.setText("0.75");
+
+                    } else if(interval.equals("1")){
+                        Horsepower.setText("1");
+
+                    } else if(interval.equals("1.5")){
+                        Horsepower.setText("1.5");
+
+                    } else if(interval.equals("2")){
+                        Horsepower.setText("2");
+
+                    } else if(interval.equals("3")){
+                        Horsepower.setText("3");
+
+                    } else if(interval.equals("5")){
+                        Horsepower.setText("5");
+
+                    } else if(interval.equals("7.5")){
+                        Horsepower.setText("7.5");
+
+                    }else if(interval.equals("10")){
+                        Horsepower.setText("10");
+
+                    }else{
+                        Horsepower.setText("");
+
+                    }
 
                 }
+
 
             } else if (item.startsWith("Convenience Outlet")) {
                 autoCompleteTextView1.setText("Convenience Outlet");
@@ -186,9 +227,25 @@ public class Inputing extends AppCompatActivity {
                 autoCompleteTextView1.setText("Range");
             } else if (item.startsWith("Refrigerator")) {
                 autoCompleteTextView1.setText("Refrigerator");
-            }else if (item.startsWith("Spare")) {
+            } else if (item.startsWith("Spare")) {
                 autoCompleteTextView1.setText("Spare");
             }
+
+            //populate type of pipe
+            if (Ctype.startsWith("EMT")){
+                Typeofpipe.setText("EMT");
+                CTYPE.setText("EMT");
+            } else if (Ctype.startsWith("PVC")){
+                Typeofpipe.setText("PVC");
+                CTYPE.setText("PVC");
+            } else if(Ctype.startsWith("IMC")){
+                Typeofpipe.setText("IMC");
+                CTYPE.setText("IMC");
+            } else if(Ctype.startsWith("LTFMC")){
+                Typeofpipe.setText("LTFMC");
+                CTYPE.setText("LTFMC");
+            }
+
 
             TextInputEditText descpop = findViewById(R.id.others); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
             TextInputEditText wattspop = findViewById(R.id.Watts); // Replace R.id.textInputEditTextId with the actual ID of your TextInputEditText
@@ -201,7 +258,7 @@ public class Inputing extends AppCompatActivity {
                 // If quantity is not 1, calculate watts and display the result
                 int quantity = Integer.parseInt(quan);
                 int vas = Integer.parseInt(VAs);
-                int wattsup = vas / quantity ;
+                int wattsup = vas / quantity;
                 wattspop.setText(String.valueOf(wattsup));
             }
 
@@ -224,20 +281,22 @@ public class Inputing extends AppCompatActivity {
             }
 
 
-
-
-
         } else {
             // Otherwise, enable the "Next" button
             next.setVisibility(View.VISIBLE);
-           preview.setVisibility(View.VISIBLE);
+            preview.setVisibility(View.VISIBLE);
             horses.setVisibility(View.GONE);
             update.setVisibility(View.GONE);
             preview2.setVisibility(View.GONE);
         }
 
+
+
+        //for counter update
+
+        counter();
 //adapter for ITEMS
-        String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator","Spare"};
+        String[] other = new String[]{"Lighting Outlet", "Convenience Outlet", "ACU", "Water Heater", "Range", "Refrigerator", "Spare"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.drop_down_item, other);
         autoCompleteTextView1.setAdapter(adapter1);
 
@@ -262,7 +321,7 @@ public class Inputing extends AppCompatActivity {
                     // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     CTYPE.setText("EMT");
                 }
-                if ("PVC".equals(selectedItem) ) {
+                if ("PVC".equals(selectedItem)) {
                     // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     CTYPE.setText("PVC");
                 }
@@ -458,8 +517,6 @@ public class Inputing extends AppCompatActivity {
                 Horsepower.clearFocus();
 
 
-
-
                 if (Quantity.getText().toString().isEmpty()) {
                     // Clear focus from other fields
                     autoCompleteTextView1.clearFocus();
@@ -584,18 +641,13 @@ public class Inputing extends AppCompatActivity {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
 
-                }
-
-                else {
+                } else {
 
                     // WHEN DATA IS OK PROCEED TO LOADSCHEDULE
                     //computation total
 
                     computeVA();
                     computeA();
-                    counter++;
-                    CircuitNum.setText("CIRCUIT NO. " + counter);
-                    Counter2.setText(String.valueOf(counter));
                     String ProjectName = getIntent().getStringExtra("ProjectName");
 
                     //IF EMPTY ALERT
@@ -608,7 +660,7 @@ public class Inputing extends AppCompatActivity {
                         String add = others.getText().toString();
                         String selectedHP = Horsepower.getText().toString();
 
-                        if ("Convenience Outlet".equals(selectedItem) ||"Spare".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                        if ("Convenience Outlet".equals(selectedItem) || "Spare".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
 
                             if (!add.isEmpty()) {
                                 if (!selectedItem.isEmpty()) {
@@ -619,7 +671,7 @@ public class Inputing extends AppCompatActivity {
                                 autoCompleteTextView1.setText(selectedItem);
                             }
 
-                        } else if ("Lighting Outlet".equals(selectedItem) ) {
+                        } else if ("Lighting Outlet".equals(selectedItem)) {
 
 
                             if (!add.isEmpty()) {
@@ -639,7 +691,7 @@ public class Inputing extends AppCompatActivity {
                                 autoCompleteTextView1.setText(selectedItem);
                             }
 
-                        }else if ("ACU".equals(selectedItem) ) {
+                        } else if ("ACU".equals(selectedItem)) {
 
 
                             if (!add.isEmpty()) {
@@ -649,7 +701,7 @@ public class Inputing extends AppCompatActivity {
                                     selectedItem = selectedHP;
                                 }
                                 autoCompleteTextView1.setText(selectedItem);
-                            }else if (!selectedHP.isEmpty()) {
+                            } else if (!selectedHP.isEmpty()) {
                                 if (!selectedItem.isEmpty()) {
                                     selectedItem += " " + selectedHP + "HP";
                                 } else {
@@ -663,11 +715,12 @@ public class Inputing extends AppCompatActivity {
 
 
 
-                        // counter para sa skel
-                        String counterText = Counter2.getText().toString();
+                        String counterText = CircuitNum.getText().toString();
+                        String numberPart = counterText.replaceAll("\\D+", ""); // Remove all non-digit characters
+
 
 // Convert the text to an integer value
-                        int ctrValue = Integer.parseInt(counterText);
+                        int ctrValue = Integer.parseInt(numberPart);
 
 // Check if the counter value is greater than or equal to 30
                         if (ctrValue >= 31) {
@@ -721,7 +774,6 @@ public class Inputing extends AppCompatActivity {
                         );
                     }
                     SharedPreferences.Editor editor = finalSharedPreferences.edit();
-                    editor.putInt("counter", counter);
                     editor.apply();
                     Quantity.setText(null);
                     autoCompleteTextView1.setText(null);
@@ -730,10 +782,11 @@ public class Inputing extends AppCompatActivity {
                     others.setText(null);
                     Typeofpipe.setText(null);
                     horses.setVisibility(View.GONE);
-
+                    counter();
                     intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
                 }
-            } });
+            }
+        });
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -747,12 +800,14 @@ public class Inputing extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String counterText = CircuitNum.getText().toString();
+                String numberPart = counterText.replaceAll("\\D+", ""); // Remove all non-digit characters
 
 
-
-
+// Convert the text to an integer value
+                int ctrValue = Integer.parseInt(numberPart);
                 // Check if the counter is less than 4
-                if (counter <= 4) {
+                if (ctrValue <= 4) {
                     // Create an AlertDialog.Builder instance
                     AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
@@ -773,68 +828,23 @@ public class Inputing extends AppCompatActivity {
                     dialog.show();
                 } else {
 
-                    if  (counter == 6 || counter == 8 || counter == 10 || counter == 12 || counter == 14 || counter == 16 || counter == 18 || counter == 20 || counter == 22 || counter == 24 || counter == 26 || counter == 28 || counter == 30) {
+                    if (ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 || ctrValue == 30) {
                         // Create an AlertDialog.Builder instance
-                        String ProjectName = getIntent().getStringExtra("ProjectName");
+
+
+
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
                         builder.setTitle("Alert");
                         builder.setMessage("You are trying to preview with an odd number. Do you want to continue and add 1 spare?");
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                counter++;
 
-                                // Proceed with preview
-                                Quantity.setText("1");
-                                autoCompleteTextView1.setText("Spare");
-                                OPlus.setText("1");//MATIC
-                                V.setText("230");//MATIC
-                                Watts.setText("1500");
-                                P.setText("2");//MATIC
-                                AT.setText("20");
-                                AF.setText("50");//MATIC
-                                SNUM.setText("");//MATIC
-                                SMM.setText("Stub");
-                                STYPE.setText("UP");//MATIC
-                                GNUM.setText("");//MATIC
-                                GMM.setText("");//MATIC
-                                GTYPE.setText("THW");//MATIC
-                                MMPlus.setText("20");//MATIC
-                                CTYPE.setText("PVC");//MATIC
+                                showPercentSelectionDialogwithspare();
 
-                                computeVA();
-                                computeA();
-
-                                helper.addNewProject(
-                                        ProjectName,
-                                        Quantity.getText().toString(),
-                                        autoCompleteTextView1.getText().toString(),
-                                        OPlus.getText().toString(),
-                                        V.getText().toString(),
-                                        VA.getText().toString(),
-                                        A.getText().toString(),
-                                        P.getText().toString(),
-                                        AT.getText().toString(),
-                                        AF.getText().toString(),
-                                        SNUM.getText().toString(),
-                                        SMM.getText().toString(),
-                                        STYPE.getText().toString(),
-                                        GNUM.getText().toString(),
-                                        GMM.getText().toString(),
-                                        GTYPE.getText().toString(),
-                                        MMPlus.getText().toString(),
-                                        CTYPE.getText().toString()
-
-                                );
-                                Quantity.setText(null);
-                                autoCompleteTextView1.setText(null);
-                                Watts.setText(null);
-                                Horsepower.setText(null);
-                                Typeofpipe.setText(null);
-                                others.setText(null);
-
-                                showPercentSelectionDialog();
 
 
                             }
@@ -847,9 +857,7 @@ public class Inputing extends AppCompatActivity {
                         });
                         // Show the AlertDialog
                         builder.show();
-                    }
-
-                    else {
+                    } else {
                         // First, prompt the user if they want to proceed
                         AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(Inputing.this);
                         confirmBuilder.setTitle("Alert");
@@ -877,12 +885,9 @@ public class Inputing extends AppCompatActivity {
 // Method to handle the selected percent
 
 
-
-
-
-
                 }
-            } });
+            }
+        });
 
         preview2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -901,8 +906,6 @@ public class Inputing extends AppCompatActivity {
                         others.clearFocus();
                         Typeofpipe.clearFocus();
                         Horsepower.clearFocus();
-
-
 
 
                         if (Quantity.getText().toString().isEmpty()) {
@@ -945,8 +948,6 @@ public class Inputing extends AppCompatActivity {
                                     .show();
                             return;
                         }
-
-
 
 
                         if (autoCompleteTextView1.getText().toString().isEmpty()) {
@@ -1031,10 +1032,7 @@ public class Inputing extends AppCompatActivity {
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
 
-                        }
-
-                        else
-                        {
+                        } else {
                             String ProjectName = getIntent().getStringExtra("ProjectName");
                             // PROCEED
                             String selectedItem = autoCompleteTextView1.getText().toString();
@@ -1052,7 +1050,7 @@ public class Inputing extends AppCompatActivity {
                                 SMM.setText("3.5");
                                 GMM.setText("3.5");
                             }
-                            if ("Water Heater".equals(selectedItem) ||  "Range".equals(selectedItem)) {
+                            if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem)) {
                                 // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                                 SMM.setText("5.5");
                                 GMM.setText("5.5");
@@ -1071,20 +1069,20 @@ public class Inputing extends AppCompatActivity {
                                 GMM.setText("");
                             }
 
-                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
                                 // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                                 SNUM.setText("2");//MATIC
                                 GNUM.setText("1");//MATIC
                                 STYPE.setText("THHN");//MATIC
                                 GTYPE.setText("THW");//MATIC
-                            } else{
+                            } else {
                                 SNUM.setText("");//MATIC
                                 GNUM.setText("");//MATIC
                                 STYPE.setText("UP");//MATIC
                                 GTYPE.setText("");//MATIC
                             }
 
-                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
 
                             }
 
@@ -1097,11 +1095,10 @@ public class Inputing extends AppCompatActivity {
                             }
 
 
-
                             String add = others.getText().toString();
                             String selectedHP = Horsepower.getText().toString();
 
-                            if ("Convenience Outlet".equals(selectedItem) ||"Spare".equals(selectedItem) ||"Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                            if ("Convenience Outlet".equals(selectedItem) || "Spare".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
 
                                 if (!add.isEmpty()) {
                                     if (!selectedItem.isEmpty()) {
@@ -1112,7 +1109,7 @@ public class Inputing extends AppCompatActivity {
                                     autoCompleteTextView1.setText(selectedItem);
                                 }
 
-                            } else if ("Lighting Outlet".equals(selectedItem) ) {
+                            } else if ("Lighting Outlet".equals(selectedItem)) {
 
 
                                 if (!add.isEmpty()) {
@@ -1132,7 +1129,7 @@ public class Inputing extends AppCompatActivity {
                                     autoCompleteTextView1.setText(selectedItem);
                                 }
 
-                            }else if ("ACU".equals(selectedItem) ) {
+                            } else if ("ACU".equals(selectedItem)) {
 
 
                                 if (!add.isEmpty()) {
@@ -1142,7 +1139,7 @@ public class Inputing extends AppCompatActivity {
                                         selectedItem = selectedHP;
                                     }
                                     autoCompleteTextView1.setText(selectedItem);
-                                }else if (!selectedHP.isEmpty()) {
+                                } else if (!selectedHP.isEmpty()) {
                                     if (!selectedItem.isEmpty()) {
                                         selectedItem += " " + selectedHP + "HP";
                                     } else {
@@ -1164,23 +1161,23 @@ public class Inputing extends AppCompatActivity {
                             helper.updateData(projectTable,
                                     ProjectName,
                                     Quantity.getText().toString()
-                                    ,autoCompleteTextView1.getText().toString()
-                                    ,OPlus.getText().toString()
-                                    ,V.getText().toString()
-                                    ,VA.getText().toString()
-                                    ,A.getText().toString()
-                                    ,P.getText().toString()
-                                    ,AT.getText().toString()
-                                    ,AF.getText().toString()
-                                    ,SNUM.getText().toString()
-                                    ,SMM.getText().toString()
-                                    ,STYPE.getText().toString()
-                                    ,GNUM.getText().toString()
-                                    ,GMM.getText().toString()
-                                    ,GTYPE.getText().toString()
-                                    ,MMPlus.getText().toString()
-                                    ,CTYPE.getText().toString()
-                                   );
+                                    , autoCompleteTextView1.getText().toString()
+                                    , OPlus.getText().toString()
+                                    , V.getText().toString()
+                                    , VA.getText().toString()
+                                    , A.getText().toString()
+                                    , P.getText().toString()
+                                    , AT.getText().toString()
+                                    , AF.getText().toString()
+                                    , SNUM.getText().toString()
+                                    , SMM.getText().toString()
+                                    , STYPE.getText().toString()
+                                    , GNUM.getText().toString()
+                                    , GMM.getText().toString()
+                                    , GTYPE.getText().toString()
+                                    , MMPlus.getText().toString()
+                                    , CTYPE.getText().toString()
+                            );
                             Toast.makeText(Inputing.this, "Data Updated", Toast.LENGTH_SHORT).show();
 
 
@@ -1199,21 +1196,10 @@ public class Inputing extends AppCompatActivity {
                 builder.show();
 
 
-
             }
 
 
-
-
-
-
-
-
-
-
-             });
-
-
+        });
 
 
         imageView = findViewById(R.id.back);
@@ -1256,10 +1242,12 @@ public class Inputing extends AppCompatActivity {
         // Set up a listener to enable/disable the positive button based on input validity
         inputEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -1306,10 +1294,139 @@ public class Inputing extends AppCompatActivity {
         // Show the dialog
         dialog.show();
     }
+    private void showPercentSelectionDialogwithspare() {
+
+        // Inflate the dialog layout XML
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
+
+        final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
 
 
 
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
+        builder.setTitle("Demand Factor");
+        builder.setView(dialogView);
+
+        // Disable the positive button initially
+        builder.setPositiveButton("OK", null);
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Create the dialog
+        dialog = builder.create();
+
+        // Set up a listener to enable/disable the positive button based on input validity
+        inputEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String inputText = s.toString().trim();
+                if (!inputText.isEmpty()) {
+                    int inputPercent = Integer.parseInt(inputText);
+                    if (inputPercent >= 1 && inputPercent <= 100) {
+                        // Enable the OK button if input is valid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    } else {
+                        // Disable the OK button if input is invalid
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                } else {
+                    // Disable the OK button if input is empty
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                }
+            }
+        });
+
+        // Set click listener for the positive button
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String ProjectName = getIntent().getStringExtra("ProjectName");
+                        // Proceed with preview
+                        Quantity.setText("1");
+                        autoCompleteTextView1.setText("Spare");
+                        OPlus.setText("1");//MATIC
+                        V.setText("230");//MATIC
+                        Watts.setText("1500");
+                        P.setText("2");//MATIC
+                        AT.setText("20");
+                        AF.setText("50");//MATIC
+                        SNUM.setText("");//MATIC
+                        SMM.setText("Stub");
+                        STYPE.setText("UP");//MATIC
+                        GNUM.setText("");//MATIC
+                        GMM.setText("");//MATIC
+                        GTYPE.setText("");//MATIC
+                        MMPlus.setText("20");//MATIC
+                        CTYPE.setText("PVC");//MATIC
+
+                        computeVA();
+                        computeA();
+
+                        helper.addNewProject(
+                                ProjectName,
+                                Quantity.getText().toString(),
+                                autoCompleteTextView1.getText().toString(),
+                                OPlus.getText().toString(),
+                                V.getText().toString(),
+                                VA.getText().toString(),
+                                A.getText().toString(),
+                                P.getText().toString(),
+                                AT.getText().toString(),
+                                AF.getText().toString(),
+                                SNUM.getText().toString(),
+                                SMM.getText().toString(),
+                                STYPE.getText().toString(),
+                                GNUM.getText().toString(),
+                                GMM.getText().toString(),
+                                GTYPE.getText().toString(),
+                                MMPlus.getText().toString(),
+                                CTYPE.getText().toString()
+
+                        );
+                        Quantity.setText(null);
+                        autoCompleteTextView1.setText(null);
+                        Watts.setText(null);
+                        Horsepower.setText(null);
+                        Typeofpipe.setText(null);
+                        others.setText(null);
+
+                        // Handle click on OK button
+                        String inputText = inputEditText.getText().toString().trim();
+                        int inputPercent = Integer.parseInt(inputText);
+                        float multipliedPercent = (float) inputPercent / 100.0f;
+                        String demandText = String.format("%.2f", multipliedPercent);
+                        TextView demand = findViewById(R.id.demand);
+                        demand.setText(demandText);
+                        // Once percent selection is done, proceed with preview
+                        proceedWithPreview();
+                        // Dismiss the dialog
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        // Show the dialog
+        dialog.show();
+    }
 
     private void proceedWithPreview() {
 
@@ -1320,7 +1437,7 @@ public class Inputing extends AppCompatActivity {
         String passVA = TotalVA.getText().toString();
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
-        String skel = Counter2.getText().toString();
+//        String skel = Counter2.getText().toString();
         String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
@@ -1329,7 +1446,7 @@ public class Inputing extends AppCompatActivity {
         intent.putExtra("TOTALVA", passVA);
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
-        intent.putExtra("CTR", skel);
+       // intent.putExtra("CTR", skel);
         intent.putExtra("DEMAND", DEMAND);
         intent.putExtra("mainpipo", mainpipo);
         startActivity(intent);
@@ -1347,10 +1464,12 @@ public class Inputing extends AppCompatActivity {
             updateTotalVA();
         }
     }
+
     private void updateTotalVA() {
         // Update the TotalVA TextView with the total VA value
         TotalVA.setText(decimalFormat.format(totalVAValue));
     }
+
     private void computeA() {
         if (!VA.getText().toString().isEmpty()) {
             double vaValue = Double.parseDouble(VA.getText().toString());
@@ -1375,6 +1494,7 @@ public class Inputing extends AppCompatActivity {
             }
         }
     }
+
     // Function to find the highest value in the arrayAmp ArrayList
     private void updateTotalA() {
         // Update the TotalA TextView with the total A value
@@ -1382,75 +1502,6 @@ public class Inputing extends AppCompatActivity {
         TotalA.setText(decimalFormat.format(totalAValue));
     }
 
-
-
-
-
-
-
-
-    private void computeA1() {
-
-        if (!VA.getText().toString().isEmpty()) {
-            double vaValue = Double.parseDouble(VA.getText().toString());
-            double aValue = vaValue / 230.00;
-
-            DecimalFormat aFormat = new DecimalFormat("#.##");
-            aFormat.setRoundingMode(RoundingMode.HALF_UP);
-            A.setText(aFormat.format(aValue));
-            totalAValue +=  aValue;
-
-            updateTotalA1();
-
-
-            // Add "A" value to the arrayAmp ArrayList based on selected item
-            String selectedItem = autoCompleteTextView1.getText().toString();
-            if ("ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                arrayAmp.add(aValue);
-            } else if ("Lighting Outlet".equals(selectedItem)) {
-                // If selected item is "Lighting Outlet", add its "A" value to arrayAmp
-                arrayAmp.add(aValue);
-            }
-        }
-    }
-    // Function to find the highest value in the arrayAmp ArrayList
-    private void updateTotalA1() {
-        Intent intent = getIntent();
-        String totalAint = intent.getStringExtra("totalA");
-        int totalA = Integer.parseInt(totalAint);
-        // Update the TotalA TextView with the total A value
-        totalAValue = Double.parseDouble(decimalFormat.format(totalAValue + totalA )); // Ensure totalAValue has two decimal places
-        TotalA.setText(decimalFormat.format(totalAValue));
-    }
-
-    private void computeVA1() {
-
-
-        if (!Quantity.getText().toString().isEmpty() && !Watts.getText().toString().isEmpty()) {
-
-
-            double quantityValue = Double.parseDouble(Quantity.getText().toString());
-            double wattsValue = Double.parseDouble(Watts.getText().toString());
-            double vaValue = quantityValue * wattsValue;
-            // Update the VA TextView with the computed value
-            VA.setText(decimalFormat.format(vaValue));
-
-
-            totalVAValue += vaValue;
-
-            updateTotalVA1();
-        }
-    }
-    private void updateTotalVA1() {
-        // Update the TotalVA TextView with the total VA value
-        Intent intent = getIntent();
-// Retrieve the data associated with the keys "totalA" and "totalVA"
-        String totalVAValue1 = intent.getStringExtra("totalVA");
-        int totalVA1 = Integer.parseInt(totalVAValue1);
-
-        String formattedText = decimalFormat.format(totalVAValue + totalVA1); // Formatting the value plus 6
-        TotalVA.setText(decimalFormat.format(formattedText));
-    }
 
 
 
@@ -1498,6 +1549,148 @@ public class Inputing extends AppCompatActivity {
         Intent intent = new Intent(Inputing.this, Menu.class);
         startActivity(intent);
 
+    }
+
+    private void counter(){
+        final DatabaseHelper dbHelper = new DatabaseHelper(this);
+        dbHelper.getAllItemsAndStartNextActivity(Inputing.this, new DatabaseHelper.OnItemsLoadedListener() {
+            @Override
+            public void onItemsLoaded(List<String> itemSList) {
+
+                if (itemSList == null || itemSList.isEmpty()) {
+                    CircuitNum.setText("CIRCUIT NO. 1");
+                } else {
+
+                    switch (itemSList.size()) {
+
+
+                        case 1:
+
+                            CircuitNum.setText("CIRCUIT NO. 2");
+                            break;
+                        case 2:
+                            CircuitNum.setText("CIRCUIT NO. 3");
+                            break;
+                        case 3:
+
+                            CircuitNum.setText("CIRCUIT NO. 4");
+                            break;
+                        case 4:
+
+                            CircuitNum.setText("CIRCUIT NO. 5");
+                            break;
+                        case 5:
+
+                            CircuitNum.setText("CIRCUIT NO. 6");
+                            break;
+                        case 6:
+
+                            CircuitNum.setText("CIRCUIT NO. 7");
+                            break;
+                        case 7:
+
+                            CircuitNum.setText("CIRCUIT NO. 8");
+                            break;
+                        case 8:
+
+                            CircuitNum.setText("CIRCUIT NO. 9");
+                            break;
+                        case 9:
+
+                            CircuitNum.setText("CIRCUIT NO. 10");
+                            break;
+                        case 10:
+
+                            CircuitNum.setText("CIRCUIT NO. 11");
+                            break;
+                        case 11:
+
+                            CircuitNum.setText("CIRCUIT NO. 12");
+                            break;
+                        case 12:
+
+                            CircuitNum.setText("CIRCUIT NO. 13");
+                            break;
+                        case 13:
+
+                            CircuitNum.setText("CIRCUIT NO. 14");
+                            break;
+                        case 14:
+
+                            CircuitNum.setText("CIRCUIT NO. 15");
+                            break;
+                        case 15:
+
+                            CircuitNum.setText("CIRCUIT NO. 16");
+                            break;
+                        case 16:
+
+                            CircuitNum.setText("CIRCUIT NO. 17");
+                            break;
+                        case 17:
+
+                            CircuitNum.setText("CIRCUIT NO. 18");
+                            break;
+                        case 18:
+
+                            CircuitNum.setText("CIRCUIT NO. 19");
+                            break;
+                        case 19:
+
+                            CircuitNum.setText("CIRCUIT NO. 20");
+                            break;
+                        case 20:
+
+                            CircuitNum.setText("CIRCUIT NO. 21");
+                            break;
+                        case 21:
+
+                            CircuitNum.setText("CIRCUIT NO. 22");
+                            break;
+
+                        case 22:
+
+                            CircuitNum.setText("CIRCUIT NO. 23");
+                            break;
+                        case 23:
+
+                            CircuitNum.setText("CIRCUIT NO. 24");
+                            break;
+                        case 24:
+
+                            CircuitNum.setText("CIRCUIT NO. 25");
+                            break;
+                        case 25:
+
+                            CircuitNum.setText("CIRCUIT NO. 26");
+                            break;
+                        case 26:
+
+                            CircuitNum.setText("CIRCUIT NO. 26");
+                            break;
+                        case 27:
+
+                            CircuitNum.setText("CIRCUIT NO. 28");
+                            break;
+                        case 28:
+
+                            CircuitNum.setText("CIRCUIT NO. 29");
+                            break;
+                        case 29:
+
+                            CircuitNum.setText("CIRCUIT NO. 30");
+                            break;
+
+
+                        case 30:
+                            CircuitNum.setText("CIRCUIT NO. Max");
+                            break;
+                        default:
+                            // Handle other cases if necessary
+                    }
+                }
+            }
+        });
     }
 
 }

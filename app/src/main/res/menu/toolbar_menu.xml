@@ -7,7 +7,7 @@
           android:title="Add Circuit"
           android:id="@+id/add"
           app:showAsAction="ifRoom"
-         android:visible="false"/>
+         />
 
 
       <item

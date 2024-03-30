@@ -277,6 +277,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sheet No.:"
+            android:maxLength="2"
             android:textStyle="bold"/>
 
         <com.google.android.material.textfield.TextInputLayout

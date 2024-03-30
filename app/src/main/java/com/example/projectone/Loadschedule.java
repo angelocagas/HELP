@@ -2561,6 +2561,19 @@ public class Loadschedule extends AppCompatActivity {
                 TextView tvElectrical = findViewById(R.id.tvElectrical);
                 TextView tvSheetNo = findViewById(R.id.tvSheetNo);
 
+                TextView tvEngineerNameA3 = findViewById(R.id.tvEngineerNameA3);
+                TextView tvProposedProjNameA3 = findViewById(R.id.tvProposedProjNameA3);
+                TextView tvLocationA3 = findViewById(R.id.tvLocationA3);
+                TextView tvOwnerA3 = findViewById(R.id.tvOwnerA3);
+                TextView tvAddressA3 = findViewById(R.id.tvAddressA3);
+                TextView tvRevision1A3 = findViewById(R.id.tvRevision1A3);
+                TextView tvDesignedByA3 = findViewById(R.id.tvDesignedByA3);
+                TextView tvCertifiedByA3 = findViewById(R.id.tvCertifiedByA3);
+                TextView tvRevision2A3 = findViewById(R.id.tvRevision2A3);
+                TextView tvElectricalA3 = findViewById(R.id.tvElectricalA3);
+                TextView tvSheetNoA3 = findViewById(R.id.tvSheetNoA3);
+
+
                 String engineerName = etEngineerName.getText().toString();
                 String proposedProjName = etProposedProjName.getText().toString();
                 String location = etLocation.getText().toString();
@@ -2585,6 +2598,19 @@ public class Loadschedule extends AppCompatActivity {
                 tvRevision2.setText(revision2.toUpperCase());
                 tvElectrical.setText(electrical.toUpperCase());
                 tvSheetNo.setText(sheetNo.toUpperCase());
+
+                tvEngineerNameA3.setText(engineerName.toUpperCase());
+                tvProposedProjNameA3.setText(proposedProjName.toUpperCase());
+                tvLocationA3.setText(location.toUpperCase());
+                tvOwnerA3.setText(owner.toUpperCase());
+                tvAddressA3.setText(address.toUpperCase());
+                tvRevision1A3.setText(revision1.toUpperCase());
+                tvDesignedByA3.setText(designedBy.toUpperCase());
+                tvCertifiedByA3.setText(certifiedBy.toUpperCase());
+                tvRevision2A3.setText(revision2.toUpperCase());
+                tvElectricalA3.setText(electrical.toUpperCase());
+                tvSheetNoA3.setText(sheetNo.toUpperCase());
+
 
 
 
@@ -2724,6 +2750,19 @@ public class Loadschedule extends AppCompatActivity {
                                         Bitmap bitmapLocation = convertViewToBitmap(tvLocation);
                                         Bitmap bitmapAddress = convertViewToBitmap(tvAddress);
 
+                                        Bitmap bitmapEngineerNameA3 = convertViewToBitmap(tvEngineerNameA3);
+                                        Bitmap bitmapProposedProjNameA3 = convertViewToBitmap(tvProposedProjNameA3);
+                                        Bitmap bitmapOwnerA3 = convertViewToBitmap(tvOwnerA3);
+                                        Bitmap bitmapElectricalA3 = convertViewToBitmap(tvElectricalA3);
+                                        Bitmap bitmapSheetNoA3 = convertViewToBitmap(tvSheetNoA3);
+                                        Bitmap bitmapDesignedByA3 = convertViewToBitmap(tvDesignedByA3);
+                                        Bitmap bitmapCertifiedByA3 = convertViewToBitmap(tvCertifiedByA3);
+                                        Bitmap bitmapRevision2A3 = convertViewToBitmap(tvRevision2A3);
+                                        Bitmap bitmapLocationA3 = convertViewToBitmap(tvLocationA3);
+                                        Bitmap bitmapAddressA3 = convertViewToBitmap(tvAddressA3);
+
+
+
 
 
                                         // Convert Bitmaps to Images
@@ -2766,6 +2805,48 @@ public class Loadschedule extends AppCompatActivity {
                                         ByteArrayOutputStream streamAddress = new ByteArrayOutputStream();
                                         bitmapAddress.compress(Bitmap.CompressFormat.PNG, 100, streamAddress);
                                         Image imageAdress = Image.getInstance(streamAddress.toByteArray());
+
+
+                                        ByteArrayOutputStream streamEngineerNameA3 = new ByteArrayOutputStream();
+                                        bitmapEngineerNameA3.compress(Bitmap.CompressFormat.PNG, 100, streamEngineerNameA3);
+                                        Image imageEngineerNameA3 = Image.getInstance(streamEngineerNameA3.toByteArray());
+
+                                        ByteArrayOutputStream streamProposedProjNameA3 = new ByteArrayOutputStream();
+                                        bitmapProposedProjNameA3.compress(Bitmap.CompressFormat.PNG, 100, streamProposedProjNameA3);
+                                        Image imageProposedProjNameA3 = Image.getInstance(streamProposedProjNameA3.toByteArray());
+
+                                        ByteArrayOutputStream streamOwnerA3 = new ByteArrayOutputStream();
+                                        bitmapOwnerA3.compress(Bitmap.CompressFormat.PNG, 100, streamOwnerA3);
+                                        Image imageOwnerA3 = Image.getInstance(streamOwnerA3.toByteArray());
+
+                                        ByteArrayOutputStream streamElectricalA3 = new ByteArrayOutputStream();
+                                        bitmapElectricalA3.compress(Bitmap.CompressFormat.PNG, 100, streamElectricalA3);
+                                        Image imageElectricalA3 = Image.getInstance(streamElectricalA3.toByteArray());
+
+                                        ByteArrayOutputStream streamSheetNoA3 = new ByteArrayOutputStream();
+                                        bitmapSheetNoA3.compress(Bitmap.CompressFormat.PNG, 100, streamSheetNoA3);
+                                        Image imageSheetNoA3 = Image.getInstance(streamSheetNoA3.toByteArray());
+
+                                        ByteArrayOutputStream streamDesignedByA3 = new ByteArrayOutputStream();
+                                        bitmapDesignedByA3.compress(Bitmap.CompressFormat.PNG, 100, streamDesignedByA3);
+                                        Image imageDesignedByA3 = Image.getInstance(streamDesignedByA3.toByteArray());
+
+                                        ByteArrayOutputStream streamCertifiedByA3 = new ByteArrayOutputStream();
+                                        bitmapCertifiedByA3.compress(Bitmap.CompressFormat.PNG, 100, streamCertifiedByA3);
+                                        Image imageCertifiedByA3 = Image.getInstance(streamCertifiedByA3.toByteArray());
+
+                                        ByteArrayOutputStream streamRevision2A3 = new ByteArrayOutputStream();
+                                        bitmapRevision2A3.compress(Bitmap.CompressFormat.PNG, 100, streamRevision2A3);
+                                        Image imageRevision2A3 = Image.getInstance(streamRevision2A3.toByteArray());
+
+                                        ByteArrayOutputStream streamLocationA3 = new ByteArrayOutputStream();
+                                        bitmapLocationA3.compress(Bitmap.CompressFormat.PNG, 100, streamLocationA3);
+                                        Image imageLocationA3 = Image.getInstance(streamLocationA3.toByteArray());
+
+                                        ByteArrayOutputStream streamAddressA3 = new ByteArrayOutputStream();
+                                        bitmapAddressA3.compress(Bitmap.CompressFormat.PNG, 100, streamAddressA3);
+                                        Image imageAddressA3 = Image.getInstance(streamAddressA3.toByteArray());
+
 
                                         // Adjust positions and sizes based on paper size
                                         int desiredWidth = 0;
@@ -2813,6 +2894,18 @@ public class Loadschedule extends AppCompatActivity {
                                                 imageAdress.setAbsolutePosition(1200, 85);
                                                 imageLocation.setAbsolutePosition(850, 85);
 
+                                                // Add the Images to the document
+                                                document.add(imageEngineerName);
+                                                document.add(imageProposedProjName);
+                                                document.add(imageOwner);
+                                                document.add(imageElectrical);
+                                                document.add(imageSheetNo);
+                                                document.add(imageDesignedBy);
+                                                document.add(imageCertifiedBy);
+                                                document.add(imageRevision2);
+                                                document.add(imageAdress);
+                                                document.add(imageLocation);
+
                                                 break;
 
 
@@ -2838,16 +2931,28 @@ public class Loadschedule extends AppCompatActivity {
                                                     yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
                                                 }
 
-                                                imageEngineerName.setAbsolutePosition(225, 75);
-                                                imageProposedProjName.setAbsolutePosition(445, 65);
-                                                imageOwner.setAbsolutePosition(650, 65);
-                                                imageElectrical.setAbsolutePosition(1010, 65);
-                                                imageSheetNo.setAbsolutePosition(1135, 50);
-                                                imageDesignedBy.setAbsolutePosition(1800 / 2, 170 / 2);
-                                                imageCertifiedBy.setAbsolutePosition(1800 / 2, 120 / 2);
-                                                imageRevision2.setAbsolutePosition(1800 / 2, 85 / 2);
-                                                imageAdress.setAbsolutePosition(1200 / 2, 85 / 2);
-                                                imageLocation.setAbsolutePosition(850 / 2, 85 / 2);
+                                                imageEngineerNameA3.setAbsolutePosition(245, 75);
+                                                imageProposedProjNameA3.setAbsolutePosition(445, 65);
+                                                imageOwnerA3.setAbsolutePosition(650, 65);
+                                                imageElectricalA3.setAbsolutePosition(1010, 65);
+                                                imageSheetNoA3.setAbsolutePosition(1135, 50);
+                                                imageDesignedByA3.setAbsolutePosition(890, 85);
+                                                imageCertifiedByA3.setAbsolutePosition(890, 60);
+                                                imageRevision2A3.setAbsolutePosition(890, 45);
+                                                imageAddressA3.setAbsolutePosition(600, 44);
+                                                imageLocationA3.setAbsolutePosition(415, 44);
+
+                                                document.add(imageEngineerNameA3);
+                                                document.add(imageProposedProjNameA3);
+                                                document.add(imageOwnerA3);
+                                                document.add(imageElectricalA3);
+                                                document.add(imageSheetNoA3);
+                                                document.add(imageDesignedByA3);
+                                                document.add(imageCertifiedByA3);
+                                                document.add(imageRevision2A3);
+                                                document.add(imageAddressA3);
+                                                document.add(imageLocationA3);
+
 
                                                 break;
 
@@ -2884,6 +2989,18 @@ public class Loadschedule extends AppCompatActivity {
                                                 imageAdress.setAbsolutePosition(1100, 37);
                                                 imageLocation.setAbsolutePosition(750, 37);
 
+                                                // Add the Images to the document
+                                                document.add(imageEngineerName);
+                                                document.add(imageProposedProjName);
+                                                document.add(imageOwner);
+                                                document.add(imageElectrical);
+                                                document.add(imageSheetNo);
+                                                document.add(imageDesignedBy);
+                                                document.add(imageCertifiedBy);
+                                                document.add(imageRevision2);
+                                                document.add(imageAdress);
+                                                document.add(imageLocation);
+
                                                 break;
                                             default:
                                                 // Default desired width and height
@@ -2908,17 +3025,10 @@ public class Loadschedule extends AppCompatActivity {
                                         // Add the RelativeLayout image to the PDF
                                         relaImage.setAbsolutePosition(xPosition, topEdgeYPosition);
 
-                                        // Add the Images to the document
-                                        document.add(imageEngineerName);
-                                        document.add(imageProposedProjName);
-                                        document.add(imageOwner);
-                                        document.add(imageElectrical);
-                                        document.add(imageSheetNo);
-                                        document.add(imageDesignedBy);
-                                        document.add(imageCertifiedBy);
-                                        document.add(imageRevision2);
-                                        document.add(imageAdress);
-                                        document.add(imageLocation);
+
+
+
+
                                         document.add(relaImage);
                                     }
                                 }

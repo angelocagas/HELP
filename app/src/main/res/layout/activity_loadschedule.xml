@@ -131,6 +131,128 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/infoTexts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEngineerNameA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="Engineer Name"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="4sp" />
+
+        <TextView
+            android:id="@+id/tvProposedProjNameA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="6sp"
+            android:textColor="@color/black"
+            android:text="Proposed Project Name" />
+
+        <TextView
+            android:id="@+id/tvLocationA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="2sp"
+            android:textColor="@color/black"
+            android:text="Location" />
+
+        <TextView
+            android:id="@+id/tvOwnerA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="6sp"
+            android:textColor="@color/black"
+            android:text="Owner" />
+
+        <TextView
+            android:id="@+id/tvAddressA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="2sp"
+            android:textColor="@color/black"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/tvRevision1A3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Revision 1" />
+
+        <TextView
+            android:id="@+id/tvDesignedByA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="3sp"
+            android:textColor="@color/black"
+            android:text="Designed By" />
+
+        <TextView
+            android:id="@+id/tvCertifiedByA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="3sp"
+            android:textColor="@color/black"
+            android:text="Certified By" />
+
+        <TextView
+            android:id="@+id/tvRevision2A3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="2sp"
+            android:textColor="@color/black"
+            android:text="Revision 2" />
+
+        <TextView
+            android:id="@+id/tvElectricalA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="Electrical"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="6sp" />
+
+        <TextView
+            android:id="@+id/tvSheetNoA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sheet No"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="6sp" />
+
+    </RelativeLayout>
+
 
 
 
@@ -6115,6 +6237,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
+                        android:layout_marginLeft="50dp"
                         android:visibility="gone">
 
 

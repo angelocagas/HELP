@@ -3039,8 +3039,11 @@ public class Loadschedule extends AppCompatActivity {
             topThreeAndFourValue = Math.round(topThreeAndFourValue * 100.0) / 100.0;
             String formattedResulttwo = decimalFormat.format(topThreeAndFourValue);
 
+            underThreeAndFourValue = Math.round(underThreeAndFourValue * 100.0) / 100.0;
+            String formattedResulttwo2 = decimalFormat.format(underThreeAndFourValue);
 
             TopThreeAndFour.setText(formattedResulttwo);
+            UnderThreeAndFour.setText(formattedResulttwo2);
 
         } else {
             HighestA.setText("0.00");
@@ -3078,7 +3081,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-        Toast.makeText(getApplicationContext(), totalValue + " and " + topOneAndTwoValue, Toast.LENGTH_SHORT).show();
+
         TopOneAndTwo.setText(String.valueOf(topOneAndTwoValue));
         String formattedResult = decimalFormat.format(topOneAndTwoValue);
         TopOneAndTwo.setText(formattedResult);

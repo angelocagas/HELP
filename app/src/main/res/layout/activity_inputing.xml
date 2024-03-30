@@ -69,19 +69,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="27dp" />
-            <TextView
-                android:id="@+id/CircuitNum2"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/textbox"
-                android:backgroundTint="#ECE8E8"
-                android:fontFamily="serif-monospace"
-                android:text="Update"
-                android:visibility="gone"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="27dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

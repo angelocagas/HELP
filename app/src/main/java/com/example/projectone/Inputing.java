@@ -162,9 +162,9 @@ public class Inputing extends AppCompatActivity {
             next.setVisibility(View.GONE);
             preview2.setVisibility(View.VISIBLE);
             update.setVisibility(View.VISIBLE);
-            CircuitNum2.setVisibility(View.VISIBLE);
-            CircuitNum.setText("Update");
-            CircuitNum2.setText("Update");
+
+
+
             // Check if item starts with "LIGHTING OUTLET"
             if (item.startsWith("Lighting Outlet")) {
                 autoCompleteTextView1.setText("Lighting Outlet");
@@ -792,7 +792,7 @@ public class Inputing extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed(); // Call onBackPressed() method when the button is clicked
+                showBackAlert();
             }
         });
         preview.setOnClickListener(new View.OnClickListener() {
@@ -1526,6 +1526,35 @@ public class Inputing extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "You can't back the application until the project is done", Toast.LENGTH_SHORT).show();
+    }
+    private void showBackAlert() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Back")
+                .setMessage("Are you sure you want to go back?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Perform the back action
+                        finish(); // Close the activity or any other action you want
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+
+    public void onBackPressedtrue() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish(); // Close the activity
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     private void showConfirmationDialog() {

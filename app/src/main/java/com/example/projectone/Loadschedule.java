@@ -3003,26 +3003,34 @@ public class Loadschedule extends AppCompatActivity {
                                                     desiredHeight = (int) (pageSize.getHeight() / 4);
                                                     xPosition = (pageWidth - desiredWidth) + 700;
                                                     yPosition = 580 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
-                                                }
 
-                                                if(currentTableCount == 2) {
+                                                }else if(currentTableCount == 2) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth() * 2);
                                                     desiredHeight = (int) (pageSize.getHeight() / 4);
                                                     xPosition = (pageWidth - desiredWidth) + 700;
                                                     yPosition = 450 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
-                                                }
-
-                                                if(currentTableCount == 3) {
+                                                }else if(currentTableCount == 3) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth());
                                                     desiredHeight = (int) (pageSize.getHeight() / 5.5);
                                                     xPosition = (pageWidth - desiredWidth) + 20;
                                                     yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
                                                 }
+
+                                                imageEngineerName.setAbsolutePosition(225, 75);
+                                                imageProposedProjName.setAbsolutePosition(445, 65);
+                                                imageOwner.setAbsolutePosition(650, 65);
+                                                imageElectrical.setAbsolutePosition(1010, 65);
+                                                imageSheetNo.setAbsolutePosition(1135, 50);
+                                                imageDesignedBy.setAbsolutePosition(1800 / 2, 170 / 2);
+                                                imageCertifiedBy.setAbsolutePosition(1800 / 2, 120 / 2);
+                                                imageRevision2.setAbsolutePosition(1800 / 2, 85 / 2);
+                                                imageAdress.setAbsolutePosition(1200 / 2, 85 / 2);
+                                                imageLocation.setAbsolutePosition(850 / 2, 85 / 2);
+
+                                                break;
+
 
                                             case "20x30 inches":
                                                 if(currentTableCount == 1) {
@@ -3031,25 +3039,32 @@ public class Loadschedule extends AppCompatActivity {
                                                     desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
                                                     xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
                                                     yPosition = 1040 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
-                                                }
-
-                                                if(currentTableCount == 2) {
+                                                } else if(currentTableCount == 2) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
                                                     desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
                                                     xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
                                                     yPosition = 890 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
-                                                }
-                                                if(currentTableCount == 3) {
+                                                } else if(currentTableCount == 3) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
                                                     desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
                                                     xPosition = (pageWidth - desiredWidth) + 20;
                                                     yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
-                                                    break;
                                                 }
+
+                                                imageEngineerName.setAbsolutePosition(520, 100);
+                                                imageProposedProjName.setAbsolutePosition(840, 130 - 50);
+                                                imageOwner.setAbsolutePosition(1200, 130 - 50);
+                                                imageElectrical.setAbsolutePosition(1870, 80);
+                                                imageSheetNo.setAbsolutePosition(2060, 50);
+                                                imageDesignedBy.setAbsolutePosition(1650, 100);
+                                                imageCertifiedBy.setAbsolutePosition(1650, 60);
+                                                imageRevision2.setAbsolutePosition(1650, 35);
+                                                imageAdress.setAbsolutePosition(1100, 37);
+                                                imageLocation.setAbsolutePosition(750, 37);
+
+                                                break;
                                             default:
                                                 // Default desired width and height
                                                 desiredWidth = (int) (pageSize.getWidth() - 30);

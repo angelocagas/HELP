@@ -52,7 +52,7 @@ public class Home extends Fragment {
                 autoCompleteTextView.setAdapter(adapter);
 
                 builder.setView(dialogView)
-                        .setTitle("Choose Main Pipe")
+                        .setTitle("Select type of Conduit")
                         .setPositiveButton("OK", null) // Initially set to null
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override

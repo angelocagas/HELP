@@ -179,7 +179,7 @@
         app:boxBackgroundColor="@color/white"
         android:layout_marginStart="30dp"
         android:backgroundTint="@color/black"
-        android:hint="Type of Pipe"
+        android:hint="Type of Conduit"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         >
 

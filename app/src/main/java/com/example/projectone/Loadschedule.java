@@ -1809,7 +1809,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Feeder Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -1880,7 +1880,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Pipe Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -1962,7 +1962,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Feeder Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -2045,7 +2045,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Main Wire Text")
+                        .setTitle("Update AT and AF")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

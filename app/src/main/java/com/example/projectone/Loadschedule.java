@@ -3485,7 +3485,6 @@ public class Loadschedule extends AppCompatActivity {
             // If there's no comma, simply take the whole text
             desiredSubstring = fullText;
         }
-        Toast.makeText(getApplicationContext(), desiredSubstring, Toast.LENGTH_SHORT).show();
 
 
         TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};

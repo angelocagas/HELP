@@ -411,7 +411,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("2.20");
                         VA.setText("506");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "1/4":
                         Watts.setText("667");
@@ -419,7 +419,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("2.90");
                         VA.setText("667");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "1/3":
                         Watts.setText("828");
@@ -427,7 +427,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("3.60");
                         VA.setText("828");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "1/2":
                         Watts.setText("1127");
@@ -435,7 +435,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("4.90");
                         VA.setText("1127");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "3/4":
                         Watts.setText("1587");
@@ -443,7 +443,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("6.90");
                         VA.setText("1587");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "1":
                         Watts.setText("1840");
@@ -451,15 +451,15 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("8.00");
                         VA.setText("1840");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "1 1/2":
                         Watts.setText("2300");
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
+                        SMM.setText("3.5");
+                        GMM.setText("3.5");
                         A.setText("10.00");
                         VA.setText("2300");
-                        AT.setText("30");
+                        AT.setText("20");
                         break;
                     case "2":
                         Watts.setText("2760");
@@ -479,27 +479,27 @@ public class Inputing extends AppCompatActivity {
                         break;
                     case "5":
                         Watts.setText("6440");
-                        SMM.setText("5.5");
+                        SMM.setText("8.0");
                         GMM.setText("5.5");
                         A.setText("28.00");
                         VA.setText("6440");
-                        AT.setText("40");
+                        AT.setText("50");
                         break;
                     case "7 1/2":
                         Watts.setText("9220");
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
+                        SMM.setText("22");
+                        GMM.setText("8.0");
                         A.setText("40.00");
                         VA.setText("9220");
-                        AT.setText("40");
+                        AT.setText("70");
                         break;
                     case "10":
                         Watts.setText("11500");
-                        SMM.setText("8.0");
+                        SMM.setText("30");
                         GMM.setText("8.0");
                         A.setText("50.00");
                         VA.setText("11500");
-                        AT.setText("50");
+                        AT.setText("90");
                         break;
                     default:
                         // Default case if none of the above conditions match

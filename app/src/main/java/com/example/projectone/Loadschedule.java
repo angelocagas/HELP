@@ -1101,6 +1101,8 @@ public class Loadschedule extends AppCompatActivity {
                         num30_28.setText(itemSList.get(27));
                         num30_29.setText(itemSList.get(28));
                         num30_30.setText(itemSList.get(29));
+
+
                         break;
                     default:
                         // Handle other cases if necessary
@@ -3486,6 +3488,9 @@ public class Loadschedule extends AppCompatActivity {
             }
         }
     }
+
+
+
 
 
 }

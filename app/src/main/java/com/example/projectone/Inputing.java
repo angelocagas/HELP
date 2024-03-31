@@ -126,7 +126,7 @@ public class Inputing extends AppCompatActivity {
         // Retrieve the value of "mainPipe" from the Intent extras
         String mainPipe = getIntent().getStringExtra("mainPipe");
 
-
+        counter();
 
 
         // Now you can use the "mainPipe" value as needed in this activity
@@ -1264,13 +1264,9 @@ public class Inputing extends AppCompatActivity {
                 String inputText = s.toString().trim();
                 if (!inputText.isEmpty()) {
                     int inputPercent = Integer.parseInt(inputText);
-                    if (inputPercent >= 1 && inputPercent <= 100) {
-                        // Enable the OK button if input is valid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-                    } else {
-                        // Disable the OK button if input is invalid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }
+                    // Enable the OK button if input is valid
+                    // Disable the OK button if input is invalid
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(inputPercent >= 1 && inputPercent <= 100);
                 } else {
                     // Disable the OK button if input is empty
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
@@ -1346,13 +1342,9 @@ public class Inputing extends AppCompatActivity {
                 String inputText = s.toString().trim();
                 if (!inputText.isEmpty()) {
                     int inputPercent = Integer.parseInt(inputText);
-                    if (inputPercent >= 1 && inputPercent <= 100) {
-                        // Enable the OK button if input is valid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-                    } else {
-                        // Disable the OK button if input is invalid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }
+                    // Enable the OK button if input is valid
+                    // Disable the OK button if input is invalid
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(inputPercent >= 1 && inputPercent <= 100);
                 } else {
                     // Disable the OK button if input is empty
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
@@ -1425,8 +1417,10 @@ public class Inputing extends AppCompatActivity {
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
                         demand.setText(demandText);
+
                         // Once percent selection is done, proceed with preview
                         proceedWithPreview();
+                        counter();
                         // Dismiss the dialog
                         dialog.dismiss();
                     }
@@ -1544,6 +1538,7 @@ public class Inputing extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Perform the back action
+
                         finish(); // Close the activity or any other action you want
                     }
                 })

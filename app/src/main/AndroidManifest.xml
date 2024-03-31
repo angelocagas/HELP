@@ -24,6 +24,10 @@
         <activity
             android:name=".ChangeFeederWire"
             android:exported="false" />
+
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
         <activity
             android:name=".PanelBoard"
             android:exported="false" />

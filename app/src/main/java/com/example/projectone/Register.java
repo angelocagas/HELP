@@ -128,8 +128,6 @@ public class Register extends AppCompatActivity {
                     }
                 },3000);
 
-                return;
-
             }
             else
             {

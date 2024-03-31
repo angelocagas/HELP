@@ -41,7 +41,7 @@ public class Inputing extends AppCompatActivity {
     // Declare ArrayList to store "A" values
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe;
-    TextInputLayout horses;
+    TextInputLayout horses,hintitem,hintconduit;
     TextView CircuitNum2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
@@ -84,6 +84,8 @@ public class Inputing extends AppCompatActivity {
         CircuitNum = findViewById(R.id.CircuitNum);
         autoCompleteTextView1 = findViewById(R.id.Items);
         horses = findViewById(R.id.horses);
+        hintitem = findViewById(R.id.hintitem);
+        hintconduit = findViewById(R.id.hintconduit);
         next = findViewById(R.id.next);
         preview = findViewById(R.id.preview);
         preview2 = findViewById(R.id.preview2);
@@ -124,7 +126,7 @@ public class Inputing extends AppCompatActivity {
         // Retrieve the value of "mainPipe" from the Intent extras
         String mainPipe = getIntent().getStringExtra("mainPipe");
 
-
+        counter();
 
 
         // Now you can use the "mainPipe" value as needed in this activity
@@ -142,8 +144,6 @@ public class Inputing extends AppCompatActivity {
         // Check if editing mode is enabled
         boolean isEditMode = getIntent().getBooleanExtra("EditMode", false);
         if (isEditMode) {
-            //populate the value in textview
-
 
 
             projectTable = (ProjectTable) getIntent().getSerializableExtra("ProjectTable");
@@ -188,17 +188,17 @@ public class Inputing extends AppCompatActivity {
                     } else if(interval.equals("1/3")){
                         Horsepower.setText("1/3");
 
-                    } else if(interval.equals("0.5")){
-                        Horsepower.setText("0.5");
+                    } else if(interval.equals("1/2")){
+                        Horsepower.setText("1/2");
 
-                    } else if(interval.equals("0.75")){
-                        Horsepower.setText("0.75");
+                    } else if(interval.equals("3/4")){
+                        Horsepower.setText("3/4");
 
                     } else if(interval.equals("1")){
                         Horsepower.setText("1");
 
-                    } else if(interval.equals("1.5")){
-                        Horsepower.setText("1.5");
+                    } else if(interval.equals("1 1/2")){
+                        Horsepower.setText("1 1/2");
 
                     } else if(interval.equals("2")){
                         Horsepower.setText("2");
@@ -209,8 +209,8 @@ public class Inputing extends AppCompatActivity {
                     } else if(interval.equals("5")){
                         Horsepower.setText("5");
 
-                    } else if(interval.equals("7.5")){
-                        Horsepower.setText("7.5");
+                    } else if(interval.equals("7 1/2")){
+                        Horsepower.setText("7 1/2");
 
                     }else if(interval.equals("10")){
                         Horsepower.setText("10");
@@ -302,7 +302,7 @@ public class Inputing extends AppCompatActivity {
         autoCompleteTextView1.setAdapter(adapter1);
 
 //adapter(dropdown) for Horse power
-        String[] hp = new String[]{"1/6", "1/4", "1/3", "0.5", "0.75", "1", "1.5", "2", "3", "5", "7.5", "10"};
+        String[] hp = new String[]{"1/6", "1/4", "1/3", "1/2", "3/4", "1", "1 1/2", "2", "3", "5", "7 1/2", "10"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.drop_down_item, hp);
         Horsepower.setAdapter(adapter2);
 
@@ -339,8 +339,7 @@ public class Inputing extends AppCompatActivity {
             }
         });
 
-//selected item automated data
-        Quantity.setEnabled(true);
+
         autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -356,9 +355,9 @@ public class Inputing extends AppCompatActivity {
                 }
 
 // Set values based on selected item
-                if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem)) {
                     AT.setText("30");
-                } else if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                } else if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
                     AT.setText("20");
                 } else if ("Lighting Outlet".equals(selectedItem)) {
                     AT.setText("15");
@@ -412,6 +411,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("2.20");
                         VA.setText("506");
+                        AT.setText("20");
                         break;
                     case "1/4":
                         Watts.setText("667");
@@ -419,6 +419,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("2.90");
                         VA.setText("667");
+                        AT.setText("20");
                         break;
                     case "1/3":
                         Watts.setText("828");
@@ -426,20 +427,23 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("3.60");
                         VA.setText("828");
+                        AT.setText("20");
                         break;
-                    case "0.5":
+                    case "1/2":
                         Watts.setText("1127");
                         SMM.setText("3.5");
                         GMM.setText("3.5");
                         A.setText("4.90");
                         VA.setText("1127");
+                        AT.setText("20");
                         break;
-                    case "0.75":
+                    case "3/4":
                         Watts.setText("1587");
                         SMM.setText("3.5");
                         GMM.setText("3.5");
                         A.setText("6.90");
                         VA.setText("1587");
+                        AT.setText("20");
                         break;
                     case "1":
                         Watts.setText("1840");
@@ -447,13 +451,15 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("3.5");
                         A.setText("8.00");
                         VA.setText("1840");
+                        AT.setText("20");
                         break;
-                    case "1.5":
+                    case "1 1/2":
                         Watts.setText("2300");
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
+                        SMM.setText("3.5");
+                        GMM.setText("3.5");
                         A.setText("10.00");
                         VA.setText("2300");
+                        AT.setText("20");
                         break;
                     case "2":
                         Watts.setText("2760");
@@ -461,6 +467,7 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("5.5");
                         A.setText("12.00");
                         VA.setText("2760");
+                        AT.setText("30");
                         break;
                     case "3":
                         Watts.setText("3910");
@@ -468,27 +475,31 @@ public class Inputing extends AppCompatActivity {
                         GMM.setText("5.5");
                         A.setText("17.00");
                         VA.setText("3910");
+                        AT.setText("30");
                         break;
                     case "5":
                         Watts.setText("6440");
-                        SMM.setText("5.5");
+                        SMM.setText("8.0");
                         GMM.setText("5.5");
                         A.setText("28.00");
                         VA.setText("6440");
+                        AT.setText("50");
                         break;
-                    case "7.5":
+                    case "7 1/2":
                         Watts.setText("9220");
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
+                        SMM.setText("22");
+                        GMM.setText("8.0");
                         A.setText("40.00");
                         VA.setText("9220");
+                        AT.setText("70");
                         break;
                     case "10":
                         Watts.setText("11500");
-                        SMM.setText("5.5");
-                        GMM.setText("5.5");
+                        SMM.setText("30");
+                        GMM.setText("8.0");
                         A.setText("50.00");
                         VA.setText("11500");
+                        AT.setText("90");
                         break;
                     default:
                         // Default case if none of the above conditions match
@@ -499,7 +510,8 @@ public class Inputing extends AppCompatActivity {
             }
         });
         SharedPreferences finalSharedPreferences = sharedPreferences;
-
+//selected item automated data
+        Quantity.setEnabled(true);
 //NEXT BUTTON
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -724,7 +736,7 @@ public class Inputing extends AppCompatActivity {
                         int ctrValue = Integer.parseInt(numberPart);
 
 // Check if the counter value is greater than or equal to 30
-                        if (ctrValue >= 31) {
+                        if (ctrValue >= 30) {
                             // Create an AlertDialog.Builder instance
                             AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
@@ -829,7 +841,7 @@ public class Inputing extends AppCompatActivity {
                     dialog.show();
                 } else {
 
-                    if (ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 || ctrValue == 30) {
+                    if (ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 ) {
                         // Create an AlertDialog.Builder instance
 
 
@@ -1038,11 +1050,11 @@ public class Inputing extends AppCompatActivity {
                             // PROCEED
                             String selectedItem = autoCompleteTextView1.getText().toString();
                             String selectedWatts = Watts.getText().toString();
-                            if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
+                            if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem)) {
                                 // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                                 AT.setText("30");
                             }
-                            if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem)) {
+                            if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
                                 // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                                 AT.setText("20"); // Set the default value for other items
                             }
@@ -1083,9 +1095,6 @@ public class Inputing extends AppCompatActivity {
                                 GTYPE.setText("");//MATIC
                             }
 
-                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Spare".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-
-                            }
 
 
                             if ("ACU".equals(selectedItem)) {
@@ -1255,13 +1264,9 @@ public class Inputing extends AppCompatActivity {
                 String inputText = s.toString().trim();
                 if (!inputText.isEmpty()) {
                     int inputPercent = Integer.parseInt(inputText);
-                    if (inputPercent >= 1 && inputPercent <= 100) {
-                        // Enable the OK button if input is valid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-                    } else {
-                        // Disable the OK button if input is invalid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }
+                    // Enable the OK button if input is valid
+                    // Disable the OK button if input is invalid
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(inputPercent >= 1 && inputPercent <= 100);
                 } else {
                     // Disable the OK button if input is empty
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
@@ -1337,13 +1342,9 @@ public class Inputing extends AppCompatActivity {
                 String inputText = s.toString().trim();
                 if (!inputText.isEmpty()) {
                     int inputPercent = Integer.parseInt(inputText);
-                    if (inputPercent >= 1 && inputPercent <= 100) {
-                        // Enable the OK button if input is valid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-                    } else {
-                        // Disable the OK button if input is invalid
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }
+                    // Enable the OK button if input is valid
+                    // Disable the OK button if input is invalid
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(inputPercent >= 1 && inputPercent <= 100);
                 } else {
                     // Disable the OK button if input is empty
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
@@ -1416,8 +1417,10 @@ public class Inputing extends AppCompatActivity {
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
                         demand.setText(demandText);
+
                         // Once percent selection is done, proceed with preview
                         proceedWithPreview();
+                        counter();
                         // Dismiss the dialog
                         dialog.dismiss();
                     }
@@ -1535,6 +1538,7 @@ public class Inputing extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Perform the back action
+
                         finish(); // Close the activity or any other action you want
                     }
                 })
@@ -1712,7 +1716,7 @@ public class Inputing extends AppCompatActivity {
 
 
                         case 30:
-                            CircuitNum.setText("CIRCUIT NO. Max");
+                            CircuitNum.setText("CIRCUIT NO. 30");
                             break;
                         default:
                             // Handle other cases if necessary

@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:layout_marginTop="10dp"
+            android:paddingBottom="100dp"
             android:text="Our app brings the realm of electrical design to your fingertips. Developed in compliance with the thesis requirements of BS Electrical Engineering students at Don Honorio Ventura State University (DHVSU).\n\nHELP is the collaborative effort of:\n\n- Jason N. David\n- Miguel Angelo S. Larios\n- Adan Angelo P. Uganiza\n- Charles Terren L. Pineda\n- Raniel A. Hipolito\n- Alvin M. Tayag Jr.\n- David Joshua C. Balaoro\n- Christian Angelo D. Cagas\n\nWith HELP, you can simulate up to three load schedules simultaneously, ensuring efficient planning and management. Our app operates on a fixed voltage of 230 volts and is tailored specifically for single-phase electrical systems.\n\nEmpower your electrical design process with HELP – your ultimate companion for efficient planning and electrical designing."
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />

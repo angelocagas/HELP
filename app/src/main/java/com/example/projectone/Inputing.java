@@ -1695,7 +1695,7 @@ public class Inputing extends AppCompatActivity {
                             break;
                         case 26:
 
-                            CircuitNum.setText("CIRCUIT NO. 26");
+                            CircuitNum.setText("CIRCUIT NO. 27");
                             break;
                         case 27:
 

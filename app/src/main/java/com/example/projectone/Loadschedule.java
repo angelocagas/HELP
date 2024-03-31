@@ -98,6 +98,9 @@ public class Loadschedule extends AppCompatActivity {
     private double topThreeAndFourValue;
     private double underOneAndTwoValue;
 
+    private boolean disableMenuItem = false;
+
+
     private double underThreeAndFourValue;
 
     private RecyclerView recyclerView;
@@ -824,6 +827,7 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+
 //DISPLAY SA SKELETON NAME
         dbHelper.getAllItemsAndStartNextActivity(Loadschedule.this, new DatabaseHelper.OnItemsLoadedListener() {
             @Override
@@ -1398,7 +1402,10 @@ public class Loadschedule extends AppCompatActivity {
                             num30_a28.setText(ASList.get(27));
                             num30_a29.setText(ASList.get(28));
                             num30_a30.setText(ASList.get(29));
+
+
                             break;
+
                         default:
                             // Handle other cases if necessary
                     }
@@ -1659,6 +1666,7 @@ public class Loadschedule extends AppCompatActivity {
                             RS26.setVisibility(GONE);
                             RS28.setVisibility(GONE);
                             RS30.setVisibility(View.VISIBLE);
+                            disableMenuItem = true;
 
                             break;
                         default:
@@ -2229,8 +2237,17 @@ public class Loadschedule extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.add) {
-            onBackPressed();
+            if (disableMenuItem) {
+                Toast.makeText(getApplicationContext(), "You cannot add more circuits because you have reached the maximum limit of 30.", Toast.LENGTH_SHORT).show();
+                item.setEnabled(false);
+            }else{
+                onBackPressed();
+            }
         }
+
+
+        // Check if the flag is true, if so, disable the menu item
+
         /* -------------------------- START OF PRINT ---------------------- */
 
         if (id == R.id.save) {

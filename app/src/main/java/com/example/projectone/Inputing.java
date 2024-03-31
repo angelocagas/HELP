@@ -871,25 +871,30 @@ public class Inputing extends AppCompatActivity {
                         // Show the AlertDialog
                         builder.show();
                     } else {
-                        // First, prompt the user if they want to proceed
-                        AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(Inputing.this);
-                        confirmBuilder.setTitle("Alert");
-                        confirmBuilder.setMessage("Do you want to proceed?");
-                        confirmBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // User wants to proceed, show the percent selection dialog
-                                showPercentSelectionDialog();
-                            }
-                        });
-                        confirmBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // User canceled, do nothing
-                            }
-                        });
-                        // Show the confirmation dialog
-                        confirmBuilder.show();
+                        if(ctrValue < 30) {
+                            // First, prompt the user if they want to proceed
+                            AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(Inputing.this);
+                            confirmBuilder.setTitle("Alert");
+                            confirmBuilder.setMessage("Do you want to proceed?");
+                            confirmBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // User wants to proceed, show the percent selection dialog
+                                    showPercentSelectionDialog();
+                                }
+                            });
+                            confirmBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // User canceled, do nothing
+                                }
+                            });
+                            // Show the confirmation dialog
+                            confirmBuilder.show();
+                        }
+                        else{
+                            showPercentSelectionDialog();
+                        }
                     }
 
 // Method to show the percent selection dialog

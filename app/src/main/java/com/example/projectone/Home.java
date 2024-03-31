@@ -36,6 +36,7 @@ public class Home extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Button create = view.findViewById(R.id.create);
+        Button about = view.findViewById(R.id.about);
         databaseHelper = new DatabaseHelper(getActivity());
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +105,15 @@ public class Home extends Fragment {
                 });
 
                 dialog.show();
+            }
+        });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start the AboutActivity
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
             }
         });
 

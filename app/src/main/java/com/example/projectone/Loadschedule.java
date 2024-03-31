@@ -1686,30 +1686,16 @@ public class Loadschedule extends AppCompatActivity {
             String PVCUPDATED = intent.getStringExtra("NUMPVC");
             String WFGTYPE = intent.getStringExtra("WFG");
             // Retrieving demand and mainpipe values from Intent
-            String demand = intent.getStringExtra("DEMAND");
+
             String mainpipe = intent.getStringExtra("mainpipo");
 
-// Retrieving saved demand value from SharedPreferences
             SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-            String savedDemand = preferences.getString("demand", null);
 
             // Retrieving saved mainpipe value from SharedPreferences
             String savedMainpipe = preferences.getString("mainpipe", null);
+// Retrieving saved demand value from SharedPreferences
 
-// Using the retrieved demand value
-            if (demand != null) {
-                // If demand is provided in the intent, use it
-                demandfactor1.setText(demand);
-                demandfactor2.setText(demand);
-            } else if (savedDemand != null) {
-                // If demand is not provided in the intent but was previously saved in SharedPreferences, use the saved value
-                demandfactor1.setText(savedDemand);
-                demandfactor2.setText(savedDemand);
-            } else {
-                // If neither the demand is provided in the intent nor a saved value is available, set default values or handle the case as needed
-                demandfactor1.setText("0.80");
-                demandfactor2.setText("0.80");
-            }
+
 
 // Using the retrieved mainpipe value
             if (mainpipe != null) {
@@ -1723,64 +1709,14 @@ public class Loadschedule extends AppCompatActivity {
                 Pipetype.setText("IMC PIPE");
             }
 
-            if (totalA == null && HIGHA == null) {
-                FeederSize.setText(TT);
-                UpdatedMainWire.setText(YY);
-                MainWire.setText(UPDMT);
 
 
 
 
-
-
-            }
-            // Assuming lastDemand is a class-level variable to store the last non-null demand value
-
-
-
-
-            if (PVCUPDATED != null) {
-                FeederWireFourth.setText(PVCUPDATED);
-            }
 
         }
 
 
-        double demand = Double.parseDouble(demandfactor1.getText().toString());
-
-        double totalOneValue = totalValue;
-
-
-        double topOneAndTwoValue = totalOneValue * demand;
-
-
-        /* double highestAValue = Double.parseDouble(HighestA.getText().toString());
-        double topThreeAndFourValue = highestAValue * 0.25;
-        topThreeAndFourValue = Math.round(topThreeAndFourValue * 100.0) / 100.0;
-        String formattedResulttwo = decimalFormat.format(topThreeAndFourValue);
-        TopThreeAndFour.setText(formattedResulttwo); */
-
-       /* double totalTopValue = topOneAndTwoValue + topThreeAndFourValue;
-        totalTopValue = Math.round(totalTopValue * 100.0) / 100.0;
-        String formattedResultFinalTop = decimalFormat.format(totalTopValue);
-        TotalTop.setText(formattedResultFinalTop);  */
-
-       /* double totalBValue = Double.parseDouble(TotalB.getText().toString());
-        double underOneAndTwoValue = totalBValue * demand;
-        underOneAndTwoValue = Math.round(underOneAndTwoValue * 100.0) / 100.0;
-        String formattedResultUnderOneAndTwo = decimalFormat.format(underOneAndTwoValue);
-        UnderOneAndTwo.setText(formattedResultUnderOneAndTwo);
-
-        double highestBValue = Double.parseDouble(HighestB.getText().toString());
-        double underThreeAndFourValue = highestBValue * 1.5;
-        underThreeAndFourValue = Math.round(underThreeAndFourValue * 100.0) / 100.0;
-        String formattedResultUnderThreeAndFour = decimalFormat.format(underThreeAndFourValue);
-        UnderThreeAndFour.setText(formattedResultUnderThreeAndFour);*/
-
-        /*double totalUnderValue = underOneAndTwoValue + underThreeAndFourValue;
-        totalUnderValue = Math.round(totalUnderValue * 100.0) / 100.0;
-        String formattedResultTotalUnder = decimalFormat.format(totalUnderValue);
-        TotalUnder.setText(formattedResultTotalUnder);*/
 
 
 
@@ -3196,6 +3132,26 @@ public class Loadschedule extends AppCompatActivity {
     }
 
     public void onTotalValueCalculated(double totalValue) {
+
+        Intent intent = getIntent();
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String savedDemand = preferences.getString("demand", null);
+        String demand1 = intent.getStringExtra("DEMAND");
+// Using the retrieved demand value
+        if (demand1 != null) {
+            // If demand is provided in the intent, use it
+            demandfactor1.setText(demand1);
+            demandfactor2.setText(demand1);
+        } else if (savedDemand != null) {
+            // If demand is not provided in the intent but was previously saved in SharedPreferences, use the saved value
+            demandfactor1.setText(savedDemand);
+            demandfactor2.setText(savedDemand);
+        } else {
+            // If neither the demand is provided in the intent nor a saved value is available, set default values or handle the case as needed
+            demandfactor1.setText("0.80");
+            demandfactor2.setText("0.80");
+        }
+
         double demand = Double.parseDouble(demandfactor1.getText().toString());
 
         double totalOneValue = totalValue;

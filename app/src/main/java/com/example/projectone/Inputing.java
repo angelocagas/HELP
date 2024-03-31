@@ -368,6 +368,12 @@ public class Inputing extends AppCompatActivity {
                     GMM.setText("");
                 }
 
+                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)){
+                    MMPlus.setText("20");
+                }else{
+                    MMPlus.setText("");
+                }
+
 // Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
                 if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
                     SNUM.setText("2");
@@ -385,6 +391,7 @@ public class Inputing extends AppCompatActivity {
                 if ("ACU".equals(selectedItem)) {
                     horses.setVisibility(View.VISIBLE);
                     Quantity.setText("1");
+
 
                 } else {
 
@@ -412,6 +419,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("2.20");
                         VA.setText("506");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "1/4":
                         Watts.setText("667");
@@ -420,6 +428,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("2.90");
                         VA.setText("667");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "1/3":
                         Watts.setText("828");
@@ -428,6 +437,8 @@ public class Inputing extends AppCompatActivity {
                         A.setText("3.60");
                         VA.setText("828");
                         AT.setText("20");
+                        MMPlus.setText("20");
+
                         break;
                     case "1/2":
                         Watts.setText("1127");
@@ -436,6 +447,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("4.90");
                         VA.setText("1127");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "3/4":
                         Watts.setText("1587");
@@ -444,6 +456,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("6.90");
                         VA.setText("1587");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "1":
                         Watts.setText("1840");
@@ -452,6 +465,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("8.00");
                         VA.setText("1840");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "1 1/2":
                         Watts.setText("2300");
@@ -460,6 +474,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("10.00");
                         VA.setText("2300");
                         AT.setText("20");
+                        MMPlus.setText("20");
                         break;
                     case "2":
                         Watts.setText("2760");
@@ -468,6 +483,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("12.00");
                         VA.setText("2760");
                         AT.setText("30");
+                        MMPlus.setText("20");
                         break;
                     case "3":
                         Watts.setText("3910");
@@ -476,6 +492,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("17.00");
                         VA.setText("3910");
                         AT.setText("30");
+                        MMPlus.setText("20");
                         break;
                     case "5":
                         Watts.setText("6440");
@@ -484,6 +501,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("28.00");
                         VA.setText("6440");
                         AT.setText("50");
+                        MMPlus.setText("20");
                         break;
                     case "7 1/2":
                         Watts.setText("9220");
@@ -492,6 +510,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("40.00");
                         VA.setText("9220");
                         AT.setText("70");
+                        MMPlus.setText("25");
                         break;
                     case "10":
                         Watts.setText("11500");
@@ -500,6 +519,7 @@ public class Inputing extends AppCompatActivity {
                         A.setText("50.00");
                         VA.setText("11500");
                         AT.setText("90");
+                        MMPlus.setText("32");
                         break;
                     default:
                         // Default case if none of the above conditions match
@@ -764,7 +784,6 @@ public class Inputing extends AppCompatActivity {
                         V.setText("230");//MATIC
                         P.setText("2");//MATIC
                         AF.setText("50");//MATIC
-                        MMPlus.setText("20");//MATIC
                         helper.addNewProject(
                                 ProjectName,
                                 Quantity.getText().toString(),
@@ -1086,6 +1105,11 @@ public class Inputing extends AppCompatActivity {
                                 SMM.setText("Stub");
                                 GMM.setText("");
                             }
+                            if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)){
+                                MMPlus.setText("20");
+                            }else{
+                                MMPlus.setText("");
+                            }
 
                             if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
                                 // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
@@ -1112,6 +1136,122 @@ public class Inputing extends AppCompatActivity {
 
                             String add = others.getText().toString();
                             String selectedHP = Horsepower.getText().toString();
+                            switch (selectedHP) {
+                                case "1/6":
+                                    Watts.setText("506");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("2.20");
+                                    VA.setText("506");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "1/4":
+                                    Watts.setText("667");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("2.90");
+                                    VA.setText("667");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "1/3":
+                                    Watts.setText("828");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("3.60");
+                                    VA.setText("828");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+
+                                    break;
+                                case "1/2":
+                                    Watts.setText("1127");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("4.90");
+                                    VA.setText("1127");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "3/4":
+                                    Watts.setText("1587");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("6.90");
+                                    VA.setText("1587");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "1":
+                                    Watts.setText("1840");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("8.00");
+                                    VA.setText("1840");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "1 1/2":
+                                    Watts.setText("2300");
+                                    SMM.setText("3.5");
+                                    GMM.setText("3.5");
+                                    A.setText("10.00");
+                                    VA.setText("2300");
+                                    AT.setText("20");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "2":
+                                    Watts.setText("2760");
+                                    SMM.setText("5.5");
+                                    GMM.setText("5.5");
+                                    A.setText("12.00");
+                                    VA.setText("2760");
+                                    AT.setText("30");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "3":
+                                    Watts.setText("3910");
+                                    SMM.setText("5.5");
+                                    GMM.setText("5.5");
+                                    A.setText("17.00");
+                                    VA.setText("3910");
+                                    AT.setText("30");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "5":
+                                    Watts.setText("6440");
+                                    SMM.setText("8.0");
+                                    GMM.setText("5.5");
+                                    A.setText("28.00");
+                                    VA.setText("6440");
+                                    AT.setText("50");
+                                    MMPlus.setText("20");
+                                    break;
+                                case "7 1/2":
+                                    Watts.setText("9220");
+                                    SMM.setText("22");
+                                    GMM.setText("8.0");
+                                    A.setText("40.00");
+                                    VA.setText("9220");
+                                    AT.setText("70");
+                                    MMPlus.setText("25");
+                                    break;
+                                case "10":
+                                    Watts.setText("11500");
+                                    SMM.setText("30");
+                                    GMM.setText("8.0");
+                                    A.setText("50.00");
+                                    VA.setText("11500");
+                                    AT.setText("90");
+                                    MMPlus.setText("32");
+                                    break;
+                                default:
+                                    // Default case if none of the above conditions match
+
+                                    break;
+
+                            }
 
                             if ("Convenience Outlet".equals(selectedItem) || "Spare".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
 
@@ -1125,6 +1265,11 @@ public class Inputing extends AppCompatActivity {
                                 }
 
                             } else if ("Lighting Outlet".equals(selectedItem)) {
+
+
+
+
+
 
 
                                 if (!add.isEmpty()) {
@@ -1172,7 +1317,7 @@ public class Inputing extends AppCompatActivity {
                             V.setText("233");
                             P.setText("2");
                             AF.setText("50");
-                            MMPlus.setText("20");
+
                             helper.updateData(projectTable,
                                     ProjectName,
                                     Quantity.getText().toString()

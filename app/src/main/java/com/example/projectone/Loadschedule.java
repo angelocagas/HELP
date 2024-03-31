@@ -1668,6 +1668,7 @@ public class Loadschedule extends AppCompatActivity {
                             RS30.setVisibility(View.VISIBLE);
                             disableMenuItem = true;
 
+                            //dito
                             break;
                         default:
                             // Handle other cases if necessary

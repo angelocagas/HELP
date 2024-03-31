@@ -6958,7 +6958,7 @@ android:visibility="gone"                        >
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="170dp"
                             android:layout_marginTop="73dp"
-                            android:layout_marginEnd="240dp"
+                            android:layout_marginEnd="200dp"
                             android:text="125 A"
                             android:textSize="12dp" />
 

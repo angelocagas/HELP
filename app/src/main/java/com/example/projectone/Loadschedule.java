@@ -3160,7 +3160,11 @@ public class Loadschedule extends AppCompatActivity {
                     double highestACUA = findHighestA(aList);
                     if (highestACUA > 0) {
                         updateUI(highestACUA);
+
+                        sumOfLeftAndRightTop();
+
                     }
+
 
             }
         });

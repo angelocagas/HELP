@@ -1660,6 +1660,7 @@ public class Loadschedule extends AppCompatActivity {
                             RS28.setVisibility(GONE);
                             RS30.setVisibility(View.VISIBLE);
 
+                            //dito
                             break;
                         default:
                             // Handle other cases if necessary

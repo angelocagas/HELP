@@ -1809,7 +1809,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Feeder Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -1880,7 +1880,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Pipe Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -1962,7 +1962,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Feeder Wire")
+                        .setTitle("Update Feeder Wire")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -2045,7 +2045,7 @@ public class Loadschedule extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
-                        .setTitle("Main Wire Text")
+                        .setTitle("Update AT and AF")
                         .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -2301,107 +2301,99 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         currentTableCount = prefs.getInt("currentTableCount", 0);
         if (id == R.id.nextLS) {
-            // Check if the maximum number of tables has been reached
-            if (currentTableCount < 3) {
-                // Increment the current table count
-                currentTableCount++;
+            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+            LayoutInflater inflater = Loadschedule.this.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.dialog_choose_main_pipe, null);
+            final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
+
+            // Set up AutoCompleteTextView with options
+            String[] mainPipeOptions = {"EMT", "PVC", "IMC", "LTFMC"};
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
+            autoCompleteTextView.setAdapter(adapter);
+
+            builder.setView(dialogView)
+                    .setTitle("Choose Main Pipe")
+                    .setPositiveButton("OK", null) // Initially set to null
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do nothing if canceled
+                        }
+                    });
+            final AlertDialog dialog = builder.create();
+
+            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface dialogInterface) {
+                    Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                    positiveButton.setEnabled(false); // Initially disable the OK button
+
+                    autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
+                        }
+                    });
+
+                    positiveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String selectedMainPipe = autoCompleteTextView.getText().toString();
+                            if (currentTableCount < 3) {
+                                // Increment the current table count
+                                currentTableCount++;
+                                Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
+
+                                // Save the updated currentTableCount using SharedPreferences
+                                SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+                                editor.putInt("currentTableCount", currentTableCount);
+                                editor.apply();
+
+                                // Capture the contents of RelativeLayout and save as images in SharedPreferences
+                                captureRelativeLayoutAsImage();
+                            }
+
+                            if (currentTableCount != 3) {
+                                // Increment the current table count again if it's less than 3
 
 
-                Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
+                                Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
 
-                // Save the updated currentTableCount using SharedPreferences
-                SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                editor.putInt("currentTableCount", currentTableCount);
-                editor.apply();
+                                // Save the updated currentTableCount using SharedPreferences
+                                SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+                                editor.putInt("currentTableCount", currentTableCount);
+                                editor.apply();
 
-                // Capture the contents of RelativeLayout and save as images in SharedPreferences
-                captureRelativeLayoutAsImage();
+                                // Proceed with inputting data for the next table
+                                // For example, to start a new activity for inputting data
+                                Intent intent = new Intent(Loadschedule.this, Inputing.class);
+                                intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
+                                intent.putExtra("mainPipe", selectedMainPipe);
+                                startActivity(intent);
+                                databaseHelper.clearTable();
 
-                if (currentTableCount != 3) {
-                    // Proceed with inputting data for the next table
-                    // For example, to start a new activity for inputting data
+                                Toast.makeText(Loadschedule.this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Handle what to do when the maximum number of tables is reached
+                                Toast.makeText(Loadschedule.this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();
+                                // You can handle the maximum limit scenario here
+                            }
+                            dialog.dismiss();
+                        }
+                    });
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                            LayoutInflater inflater = Loadschedule.this.getLayoutInflater();
-                            View dialogView = inflater.inflate(R.layout.dialog_choose_main_pipe, null);
-                            final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
-
-                            // Set up AutoCompleteTextView with options
-                            String[] mainPipeOptions = {"EMT", "PVC", "IMC", "LTFMC"};
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
-                            autoCompleteTextView.setAdapter(adapter);
-
-                            builder.setView(dialogView)
-                                    .setTitle("Choose Main Pipe")
-                                    .setPositiveButton("OK", null) // Initially set to null
-                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            // Do nothing if cancelled
-                                        }
-                                    });
-                            final AlertDialog dialog = builder.create();
-
-                            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                                @Override
-                                public void onShow(DialogInterface dialogInterface) {
-                                    Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                                    positiveButton.setEnabled(false); // Initially disable the OK button
-
-                                    autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                                        @Override
-                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                                        @Override
-                                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                                        @Override
-                                        public void afterTextChanged(Editable s) {
-                                            positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
-                                        }
-                                    });
-
-                                    positiveButton.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            String selectedMainPipe = autoCompleteTextView.getText().toString();
-
-                                            // Access the SharedPreferences file and remove the currentTableCount value
-                                            SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                                            editor.clear(); // Removes all data from SharedPreferences
-                                            editor.apply();
-
-                                            // Start Inputing activity
-                                            Intent intent = new Intent(Loadschedule.this, Inputing.class);
-                                            intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
-                                            intent.putExtra("mainPipe", selectedMainPipe);
-                                            startActivity(intent);
-                                            databaseHelper.clearTable();
-
-
-
-
-
-                                            dialog.dismiss();
-                                        }
-                                    });
-                                }
-                            });
-
-                            dialog.show();
-
-
-
-                    Toast.makeText(this, "Table Saved. Num of tables: " + currentTableCount, Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Limit of " + currentTableCount + " tables has been reached.", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                // Handle what to do when the maximum number of tables is reached
-                Toast.makeText(this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();
-                // You can handle the maximum limit scenario here
-            }
+            });
+
+            dialog.show();
         }
+
 
         /* -------------------------- END OF NEXT LOAD SCHEDULE ---------------------- */
 

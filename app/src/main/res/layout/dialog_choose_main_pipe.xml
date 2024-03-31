@@ -16,7 +16,7 @@
         app:boxBackgroundColor="@color/white"
         android:layout_marginStart="30dp"
         android:backgroundTint="@color/black"
-        android:hint="Choose Main Pipe"
+        android:hint="Select"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         >
 

@@ -1680,13 +1680,8 @@ public class Loadschedule extends AppCompatActivity {
 
 
         if (intent != null) {
-            String totalA = intent.getStringExtra("TOTALA");
-            String HIGHA = intent.getStringExtra("HIGHA");
-            String Wiretype = intent.getStringExtra("WFG");
-            String PVCUPDATED = intent.getStringExtra("NUMPVC");
-            String WFGTYPE = intent.getStringExtra("WFG");
-            // Retrieving demand and mainpipe values from Intent
 
+            // Retrieving demand and mainpipe values from Intent
             String mainpipe = intent.getStringExtra("mainpipo");
 
             SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -1734,7 +1729,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
 
                 // Define your list of feed options
-                String[] feedOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80"};
+                String[] feedOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80"};
 
                 // Create ArrayAdapter to hold suggestions
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
@@ -1807,7 +1802,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
 
                 // Define your list of pipe wire options
-                String[] pipeWireOptions = new String[]{"8", "14", "22", "30", "50", "60"};
+                String[] pipeWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "50", "60"};
 
                 // Create ArrayAdapter to hold options
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
@@ -1889,7 +1884,7 @@ public class Loadschedule extends AppCompatActivity {
                 final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
 
                 // Define your list of feeder wire options
-                String[] feederWireOptions = new String[]{"2", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80", "100", "125", "150", "175", "200", "250"};
+                String[] feederWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80", "100", "125", "150", "175", "200", "250"};
 
                 // Create ArrayAdapter to hold options
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
@@ -3138,21 +3133,32 @@ public class Loadschedule extends AppCompatActivity {
         String savedDemand = preferences.getString("demand", null);
         String demand1 = intent.getStringExtra("DEMAND");
 // Using the retrieved demand value
-        if (demand1 != null) {
+
+        String demandString = null;
+        if (intent != null) {  if (demand1 != null) {
             // If demand is provided in the intent, use it
             demandfactor1.setText(demand1);
             demandfactor2.setText(demand1);
+            demandString = (demand1);
         } else if (savedDemand != null) {
             // If demand is not provided in the intent but was previously saved in SharedPreferences, use the saved value
             demandfactor1.setText(savedDemand);
             demandfactor2.setText(savedDemand);
+            demandString = (savedDemand);
         } else {
             // If neither the demand is provided in the intent nor a saved value is available, set default values or handle the case as needed
             demandfactor1.setText("0.80");
             demandfactor2.setText("0.80");
-        }
+        }}
 
-        double demand = Double.parseDouble(demandfactor1.getText().toString());
+        // Parse demandString to double
+        double demand;
+        try {
+            demand = Double.parseDouble(demandString);
+        } catch (NumberFormatException e) {
+            // Handle the case where demandString is not a valid number
+            demand = 0.80; // Set a default value or handle the error as appropriate
+        }
 
         double totalOneValue = totalValue;
 
@@ -3244,13 +3250,13 @@ public class Loadschedule extends AppCompatActivity {
         }
 
         if (sum2 >= 1 && sum2 < 25) {
-            FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
+            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
         }
         if (sum2 >= 25 && sum2 < 30) {
-            FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
+            FeederWire.setText("2 - 8.0.mm.sq. THHN Cu. Wire");
         }
         if (sum2 >= 30 && sum2 < 40) {
-            FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
+            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
         }
         if (sum2 >= 40 && sum2 < 55) {
             FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
@@ -3311,16 +3317,16 @@ public class Loadschedule extends AppCompatActivity {
         String FeederW2 = FeederWire.getText().toString().trim();
 
 //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
             FeederWireFourth.setText("(G)In 20 mmø");
 
         }
-        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
             FeederWireFourth.setText("(G)In 20 mmø");
         }
-        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
+        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
             FeederWireFourth.setText("(G)In 20 mmø");
         }

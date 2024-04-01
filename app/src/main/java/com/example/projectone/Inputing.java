@@ -179,7 +179,7 @@ public class Inputing extends AppCompatActivity {
                 if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
                     // Extract the interval
                     String interval = item.substring(startIndex + 1, endIndex).trim();
-                    Toast.makeText(Inputing.this, interval, Toast.LENGTH_SHORT).show();
+
                     if(interval.equals("1/6")){
                         Horsepower.setText("1/6");
                     } else if(interval.equals("1/4")){
@@ -1343,7 +1343,7 @@ public class Inputing extends AppCompatActivity {
 
                         }
 
-                        proceedWithPreview();
+                        proceedWithPreview1();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -1589,6 +1589,30 @@ public class Inputing extends AppCompatActivity {
 
         // Show the dialog
         dialog.show();
+    }
+
+    private void proceedWithPreview1() {
+
+        double highestAmp = findHighestAmp();
+        HighestAmp12.setText(String.valueOf(highestAmp));
+        // Once the highest values are determined, create an intent to start the new activity
+        String passVA = TotalVA.getText().toString();
+        String passA = TotalA.getText().toString();
+        String passHIGHEST = HighestAmp12.getText().toString();
+//        String skel = Counter2.getText().toString();
+        String mainpipo = Mainpipetxt.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+
+
+        // Pass the necessary data to the loadsched through the intent
+        intent.putExtra("TOTALVA", passVA);
+        intent.putExtra("TOTALA", passA);
+        intent.putExtra("HIGHA", passHIGHEST);
+        // intent.putExtra("CTR", skel);
+
+        intent.putExtra("mainpipo", mainpipo);
+        startActivity(intent);
+
     }
 
     private void proceedWithPreview() {

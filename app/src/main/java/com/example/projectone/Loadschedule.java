@@ -3129,41 +3129,39 @@ public class Loadschedule extends AppCompatActivity {
     public void onTotalValueCalculated(double totalValue) {
 
         Intent intent = getIntent();
-        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        String savedDemand = preferences.getString("demand", null);
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         String demand1 = intent.getStringExtra("DEMAND");
 // Using the retrieved demand value
 
         String demandString = null;
-        if (intent != null) {  if (demand1 != null) {
+
+        if(demand1 != null && !demand1.isEmpty()) {
+            demandfactor1.setText(demand1);
+            demandfactor2.setText(demand1);
+        }
+          if (demand1 != null && !demand1.equals("0")) {
             // If demand is provided in the intent, use it
+
+              SharedPreferences.Editor myEdit = sharedPreferences.edit();
+              myEdit.putString("DEMAND", demand1);
+              myEdit.apply();
+        } else  {
+              // Get the saved value from SharedPreferences
+              demand1 = sharedPreferences.getString("DEMAND", "");
+
             demandfactor1.setText(demand1);
             demandfactor2.setText(demand1);
             demandString = (demand1);
-        } else if (savedDemand != null) {
-            // If demand is not provided in the intent but was previously saved in SharedPreferences, use the saved value
-            demandfactor1.setText(savedDemand);
-            demandfactor2.setText(savedDemand);
-            demandString = (savedDemand);
-        } else {
-            // If neither the demand is provided in the intent nor a saved value is available, set default values or handle the case as needed
-            demandfactor1.setText("0.80");
-            demandfactor2.setText("0.80");
-        }}
+        }
 
         // Parse demandString to double
-        double demand;
-        try {
-            demand = Double.parseDouble(demandString);
-        } catch (NumberFormatException e) {
-            // Handle the case where demandString is not a valid number
-            demand = 0.80; // Set a default value or handle the error as appropriate
-        }
+
 
         double totalOneValue = totalValue;
 
-
-        topOneAndTwoValue = totalOneValue * demand;
+        String demand5 =demandfactor1.getText().toString();
+        double demandrer =Double.parseDouble(demand5);
+        topOneAndTwoValue = totalOneValue * demandrer;
 
 
 

@@ -2152,9 +2152,12 @@ public class Loadschedule extends AppCompatActivity {
             if (disableMenuItem) {
                 Toast.makeText(getApplicationContext(), "You cannot add more circuits because you have reached the maximum limit of 30.", Toast.LENGTH_SHORT).show();
                 item.setEnabled(false);
-            }else{
-                onBackPressed();
+            }else {
+                // Start the InputActivity
+                Intent intent = new Intent(this, Inputing.class);
+                startActivity(intent);
             }
+            return true;
         }
 
 

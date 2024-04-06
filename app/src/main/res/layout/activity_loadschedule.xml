@@ -808,7 +808,7 @@
                     android:layout_marginTop="64dp"
                     android:layout_toEndOf="@id/FeederWireFourth"
                     android:gravity="start"
-                    android:text="IMC PIPE"
+                    android:text="pop PIPE"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -838,7 +838,7 @@
                         android:id="@+id/RS4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                       >
 
                         <TextView
                             android:id="@+id/CTRtv"

@@ -122,16 +122,33 @@ public class Inputing extends AppCompatActivity {
         Intent intent = getIntent();
         String Cirnum = intent.getStringExtra("CNM");
         CNM.setText(Cirnum);
+        counter();
 
         // Retrieve the value of "mainPipe" from the Intent extras
         String mainPipe = getIntent().getStringExtra("mainPipe");
 
-        counter();
+
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
 
-        // Now you can use the "mainPipe" value as needed in this activity
+// Logic for handling mainpipe value
+        if (mainPipe != null && !mainPipe.isEmpty()) {
+            Mainpipetxt.setText(mainPipe + " PIPE");
 
-        Mainpipetxt.setText(mainPipe + " PIPE");
+
+            SharedPreferences.Editor myEdit = preferences.edit();
+            myEdit.putString("mainpipe", mainPipe);
+            myEdit.apply();
+
+        } else {
+
+            mainPipe = preferences.getString("mainpipe", "");
+
+            if (!mainPipe.isEmpty()) {
+
+                Mainpipetxt.setText(mainPipe);
+            }
+        }
 
         try {
             cirnum = Integer.parseInt(CNM.getText().toString().trim());
@@ -1599,8 +1616,6 @@ public class Inputing extends AppCompatActivity {
         String passVA = TotalVA.getText().toString();
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
-//        String skel = Counter2.getText().toString();
-        String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
 
 
@@ -1608,9 +1623,6 @@ public class Inputing extends AppCompatActivity {
         intent.putExtra("TOTALVA", passVA);
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
-        // intent.putExtra("CTR", skel);
-
-        intent.putExtra("mainpipo", mainpipo);
         startActivity(intent);
 
     }
@@ -1627,6 +1639,8 @@ public class Inputing extends AppCompatActivity {
 //        String skel = Counter2.getText().toString();
         String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
+
+
 
 
         // Pass the necessary data to the loadsched through the intent

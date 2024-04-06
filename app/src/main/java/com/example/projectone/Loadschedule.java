@@ -1679,382 +1679,12 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
-        if (intent != null) {
 
-            // Retrieving demand and mainpipe values from Intent
-            String mainpipe = intent.getStringExtra("mainpipo");
 
-            SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-            // Retrieving saved mainpipe value from SharedPreferences
-            String savedMainpipe = preferences.getString("mainpipe", null);
-// Retrieving saved demand value from SharedPreferences
 
 
 
-// Using the retrieved mainpipe value
-            if (mainpipe != null) {
-                // If mainpipe is provided in the intent, use it
-                Pipetype.setText(mainpipe);
-            } else if (savedMainpipe != null) {
-                // If mainpipe is not provided in the intent but was previously saved in SharedPreferences, use the saved value
-                Pipetype.setText(savedMainpipe);
-            } else {
-                // If neither the mainpipe is provided in the intent nor a saved value is available, set a default value or handle the case as needed
-                Pipetype.setText("IMC PIPE");
-            }
-
-
-
-
-
-
-        }
-
-
-
-
-
-
-//first update
-
-
-        FeederWire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
-
-                // Define your list of feed options
-                String[] feedOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80"};
-
-                // Create ArrayAdapter to hold suggestions
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
-
-                // Set the adapter to AutoCompleteTextView
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Enable OK button when an item is selected
-                        positiveButton.setEnabled(true);
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the selected item from the AutoCompleteTextView
-                        String selectedFeederWire = autoCompleteTextView.getText().toString();
-
-                        // Update the FeederWire with the new text
-                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN Cu. Wire ");
-
-                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-//second feeder wire update
-        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
-
-                // Define your list of pipe wire options
-                String[] pipeWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "50", "60"};
-
-                // Create ArrayAdapter to hold options
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        positiveButton.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the AutoCompleteTextView
-                        String selectedPipeWire = autoCompleteTextView.getText().toString();
-                        // Update the FeederWire with the new text
-                        String newTet = ("+ 1 - " + selectedPipeWire + " mm.sq. THHN Cu. Wire");
-                        // Update TextViews
-                        FeederWireSecond.setText(newTet);
-                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
-                        String botText = "GEC: " + newTet;
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                            botViews[i].setText(botText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-//last feeder wire
-        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
-
-                // Define your list of feeder wire options
-                String[] feederWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80", "100", "125", "150", "175", "200", "250"};
-
-                // Create ArrayAdapter to hold options
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        positiveButton.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the selected item from the AutoCompleteTextView
-                        String selectedFeederWire = autoCompleteTextView.getText().toString();
-                        // Update the FeederWire with the new text
-                        FeederWireFourth.setText(" (G)In " + selectedFeederWire + " mmø");
-
-                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-// main  wire update
-        //last main wire update
-        MainWire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextViews
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
-
-                // Find the AutoCompleteTextViews in the inflated layout
-                final AutoCompleteTextView ATWire = dialogView.findViewById(R.id.auto_complete_AT_wire);
-                final AutoCompleteTextView AFWire = dialogView.findViewById(R.id.auto_complete_AF_wire);
-
-                // Define your list of AT and AF wire options
-                String[] ATOptions = new String[]{"20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "125", "150", "175"};
-                String[] AFOptions = new String[]{"50", "100", "225"};
-
-                // Create ArrayAdapters to hold options
-                ArrayAdapter<String> ATAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, ATOptions);
-                ArrayAdapter<String> AFAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, AFOptions);
-                ATWire.setAdapter(ATAdapter);
-                AFWire.setAdapter(AFAdapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update AT and AF")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                TextWatcher watcher = new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        String ATText = ATWire.getText().toString().trim();
-                        String AFText = AFWire.getText().toString().trim();
-                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                };
-
-                ATWire.addTextChangedListener(watcher);
-                AFWire.addTextChangedListener(watcher);
-
-                // Disable AF input based on the selected AT value
-                ATWire.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedAT = ATWire.getText().toString();
-                        if (selectedAT.equals("20") || selectedAT.equals("30") || selectedAT.equals("40") || selectedAT.equals("50"))
-                            AFWire.setText("50");
-                        else if (selectedAT.equals("60") || selectedAT.equals("70") || selectedAT.equals("80") || selectedAT.equals("90") || selectedAT.equals("100"))
-                            AFWire.setText("100");
-                        else
-                            AFWire.setText("225");
-
-                        // Disable AF input
-                        AFWire.setEnabled(false);
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the AutoCompleteTextViews
-                        String AT = ATWire.getText().toString();
-                        String AF = AFWire.getText().toString();
-                        // Update the MainWire with the new text
-                        String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 HZ");
-                        // Update TextViews
-                        MainWire.setText(newAfAt);
-
-                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
-
-                        for (int i = 0; i < numViews.length; i++) {
-                            numViews[i].setText(AT + " AT" + ", 2P ");
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
 
 
 
@@ -2278,6 +1908,8 @@ public class Loadschedule extends AppCompatActivity {
                                 SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
                                 editor.putInt("currentTableCount", currentTableCount);
                                 editor.apply();
+
+
 
                                 // Capture the contents of RelativeLayout and save as images in SharedPreferences
                                 captureRelativeLayoutAsImage();
@@ -3130,32 +2762,52 @@ public class Loadschedule extends AppCompatActivity {
     }
 
     public void onTotalValueCalculated(double totalValue) {
-
         Intent intent = getIntent();
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
         String demand1 = intent.getStringExtra("DEMAND");
-// Using the retrieved demand value
+        String mainpipe = intent.getStringExtra("mainpipo");
 
-        String demandString = null;
 
-        if(demand1 != null && !demand1.isEmpty()) {
+// Logic for handling mainpipe value
+        if (mainpipe != null && !mainpipe.isEmpty()) {
+            Pipetype.setText(mainpipe);
+
+
+            SharedPreferences.Editor myEdit = preferences.edit();
+            myEdit.putString("mainpipe", mainpipe);
+            myEdit.apply();
+
+        } else {
+
+            mainpipe = preferences.getString("mainpipe", "");
+
+            if (!mainpipe.isEmpty()) {
+
+                Pipetype.setText(mainpipe);
+            }
+        }
+
+// Additional logic for demand
+        if (demand1 != null && !demand1.isEmpty()) {
             demandfactor1.setText(demand1);
             demandfactor2.setText(demand1);
-        }
-          if (demand1 != null && !demand1.equals("0")) {
-            // If demand is provided in the intent, use it
 
-              SharedPreferences.Editor myEdit = sharedPreferences.edit();
-              myEdit.putString("DEMAND", demand1);
-              myEdit.apply();
-        } else  {
-              // Get the saved value from SharedPreferences
-              demand1 = sharedPreferences.getString("DEMAND", "");
 
-            demandfactor1.setText(demand1);
-            demandfactor2.setText(demand1);
-            demandString = (demand1);
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.putString("DEMAND", demand1);
+            myEdit.apply();
+        } else {
+
+            demand1 = sharedPreferences.getString("DEMAND", "");
+
+            if (!demand1.isEmpty()) {
+                demandfactor1.setText(demand1);
+                demandfactor2.setText(demand1);
+            }
         }
+
 
         // Parse demandString to double
 
@@ -3174,6 +2826,450 @@ public class Loadschedule extends AppCompatActivity {
         TopOneAndTwo.setText(formattedResult);
         UnderOneAndTwo.setText(formattedResult);
         sumOfLeftAndRightTop();
+
+
+        //first update
+
+
+        FeederWire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
+
+                // Define your list of feed options
+                String[] feedOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
+
+                // Create ArrayAdapter to hold suggestions
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
+
+                // Set the adapter to AutoCompleteTextView
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Enable OK button when an item is selected
+                        positiveButton.setEnabled(true);
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the selected item from the AutoCompleteTextView
+                        String selectedFeederWire = autoCompleteTextView.getText().toString();
+
+                        // Update the FeederWire with the new text
+                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN Cu. Wire ");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+
+                        if(selectedFeederWire.equals("2") || selectedFeederWire.equals("3.5")|| selectedFeederWire.equals("5.5")||selectedFeederWire.equals("8")||selectedFeederWire.equals("14")||selectedFeederWire.equals("22")||selectedFeederWire.equals("30")){
+
+                            String botText = "GEC: " + " + 1 - 8.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+                        }else if(selectedFeederWire.equals("38") ||selectedFeederWire.equals("50")){
+                            String botText = "GEC: " + " + 1 - 14.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+
+                        }else if(selectedFeederWire.equals("60") ||selectedFeederWire.equals("80")){
+                            String botText = "GEC: " + " + 1 - 22.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+
+                        }
+                        else if(selectedFeederWire.equals("100")||selectedFeederWire.equals("125")||selectedFeederWire.equals("150") ||selectedFeederWire.equals("175")){
+                            String botText = "GEC: " + " + 1 - 30.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+                        }
+                        else if(selectedFeederWire.equals("200") ||selectedFeederWire.equals("250") ||selectedFeederWire.equals("325")){
+                            String botText = "GEC: " + " + 1 - 50.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+                        }
+
+                        else if(selectedFeederWire.equals("375")|| selectedFeederWire.equals("400")|| selectedFeederWire.equals("500")){
+                            String botText = "GEC: " + " + 1 - 60.0mm.sq. THHN Cu. Wire" ;
+
+                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                            for (int i = 0; i < botViews.length; i++) {
+
+                                botViews[i].setText(botText);
+                            }
+
+                        }
+
+
+
+
+
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+//second feeder wire update
+        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
+
+                // Define your list of pipe wire options
+                String[] pipeWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "50", "60"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the AutoCompleteTextView
+                        String selectedPipeWire = autoCompleteTextView.getText().toString();
+                        // Update the FeederWire with the new text
+                        String newTet = ("+ 1 - " + selectedPipeWire + " mm.sq. THHN Cu. Wire");
+                        // Update TextViews
+                        FeederWireSecond.setText(newTet);
+                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+                        String botText = "GEC: " + newTet;
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                            botViews[i].setText(botText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+//last feeder wire
+        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
+
+                // Define your list of feeder wire options
+                String[] feederWireOptions = new String[]{"15", "20", "25", "32", "40", "50", "65", "80", "90", "100"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the selected item from the AutoCompleteTextView
+                        String selectedFeederWire = autoCompleteTextView.getText().toString();
+                        // Update the FeederWire with the new text
+                        FeederWireFourth.setText(" (G)In " + selectedFeederWire + " mmø");
+
+                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
+
+                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                        for (int i = 0; i < topViews.length; i++) {
+                            topViews[i].setText(topText);
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+// main  wire update
+        //last main wire update
+        MainWire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextViews
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
+
+                // Find the AutoCompleteTextViews in the inflated layout
+                final AutoCompleteTextView ATWire = dialogView.findViewById(R.id.auto_complete_AT_wire);
+                final AutoCompleteTextView AFWire = dialogView.findViewById(R.id.auto_complete_AF_wire);
+
+                // Define your list of AT and AF wire options
+                String[] ATOptions = new String[]{"20", "30", "40", "50", "60", "70", "80", "90", "100","125","150", "175" ,"200","225", "250","300","350","400","500","600","700","800","1000","1200","1600","2000","2500","3000","4000","5000","6000"};
+                String[] AFOptions = new String[]{"50", "100","125","150", "225","250","400","600","800","1200","1600","2000","2500","3000","4000","5000","6000"};
+
+                // Create ArrayAdapters to hold options
+                ArrayAdapter<String> ATAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, ATOptions);
+                ArrayAdapter<String> AFAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, AFOptions);
+                ATWire.setAdapter(ATAdapter);
+                AFWire.setAdapter(AFAdapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update AT and AF")
+                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                TextWatcher watcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        String ATText = ATWire.getText().toString().trim();
+                        String AFText = AFWire.getText().toString().trim();
+                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                };
+
+                ATWire.addTextChangedListener(watcher);
+                AFWire.addTextChangedListener(watcher);
+
+                // Disable AF input based on the selected AT value
+                ATWire.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String selectedAT = ATWire.getText().toString();
+                        if (selectedAT.equals("20") || selectedAT.equals("30") || selectedAT.equals("40") || selectedAT.equals("50")||selectedAT.equals("60") || selectedAT.equals("70")|| selectedAT.equals("80")|| selectedAT.equals("90"))
+                            AFWire.setText("100");
+                        else if (  selectedAT.equals("100"))
+                            AFWire.setText("125");
+                        else if (  selectedAT.equals("125"))
+                            AFWire.setText("150");
+                        else if (  selectedAT.equals("150") ||selectedAT.equals("175")||selectedAT.equals("200"))
+                            AFWire.setText("225");
+                        else if (  selectedAT.equals("225") ||selectedAT.equals("250"))
+                            AFWire.setText("250");
+                        else if ( selectedAT.equals("300")||selectedAT.equals("350")|| selectedAT.equals("400"))
+                            AFWire.setText("400");
+                        else if ( selectedAT.equals("500")|| selectedAT.equals("600"))
+                            AFWire.setText("600");
+                        else if (   selectedAT.equals("700")|| selectedAT.equals("800"))
+                            AFWire.setText("800");
+                        else if (  selectedAT.equals("1000") || selectedAT.equals("1200"))
+                            AFWire.setText("1200");
+                        else if (  selectedAT.equals("1600"))
+                            AFWire.setText("1600");
+                        else if (  selectedAT.equals("2000"))
+                            AFWire.setText("2000");
+                        else if (  selectedAT.equals("2500"))
+                            AFWire.setText("2500");
+                        else if (  selectedAT.equals("3000"))
+                            AFWire.setText("3000");
+                        else if (  selectedAT.equals("4000"))
+                            AFWire.setText("4000");
+                        else if (  selectedAT.equals("5000"))
+                            AFWire.setText("5000");
+                        else
+                            AFWire.setText("6000");
+
+                        // Disable AF input
+                        AFWire.setEnabled(false);
+                    }
+                });
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Get the text from the AutoCompleteTextViews
+                        String AT = ATWire.getText().toString();
+                        String AF = AFWire.getText().toString();
+                        // Update the MainWire with the new text
+                        String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 HZ");
+                        // Update TextViews
+                        MainWire.setText(newAfAt);
+
+                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                        for (int i = 0; i < numViews.length; i++) {
+                            numViews[i].setText(AT + " AT" + ", 2P ");
+                        }
+
+                        // Dismiss the dialog after OK button is clicked
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
 
     }
 
@@ -3246,6 +3342,9 @@ public class Loadschedule extends AppCompatActivity {
         String PassMainWire = MainWire.getText().toString();
 
 
+
+
+
         if (FDW != null) {
             MainWire.setText(PassMainWire);
         }
@@ -3268,6 +3367,9 @@ public class Loadschedule extends AppCompatActivity {
         if (sum2 >= 75 && sum2 < 95) {
             FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
         }
+
+
+
         if (sum2 >= 95 && sum2 < 115) {
             FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
         }
@@ -3321,6 +3423,7 @@ public class Loadschedule extends AppCompatActivity {
         if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
             FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
             FeederWireFourth.setText("(G)In 20 mmø");
+            num4_bot.setText("");
 
         }
         if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {

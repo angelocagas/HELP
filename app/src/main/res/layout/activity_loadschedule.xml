@@ -277,16 +277,40 @@
             android:layout_marginTop="-130dp">
 
 
+
             <RelativeLayout
                 android:id="@+id/rela"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="130dp">
 
+
+                <TextView
+                    android:id="@+id/countTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PB-MAIN"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:textSize="15dp"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/PB1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PB-MAIN"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/black"/>
                 <ImageView
                     android:id="@+id/border1"
                     android:layout_width="799dp"
                     android:layout_height="43dp"
+                 android:layout_alignTop="@id/PB1"
+                    android:layout_marginTop="20dp"
                     android:layout_alignParentStart="true"
                     android:background="@drawable/boardupper" />
 
@@ -814,6 +838,7 @@
                     android:textStyle="bold"
                     tools:ignore="TextSizeCheck"/>
 
+
                 <!-- una load schedule  -->
             </RelativeLayout>
 
@@ -825,6 +850,8 @@
                 android:layout_marginStart="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
+
 
                 <RelativeLayout
                     android:id="@+id/skeleton"
@@ -838,6 +865,7 @@
                         android:id="@+id/RS4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                        >
 
                         <TextView
@@ -848,6 +876,7 @@
                             android:layout_marginTop="40dp"
                             android:text="CTR holder"
                             android:textSize="10dp" />
+
 
                         <ImageView
                             android:id="@+id/s4"
@@ -978,6 +1007,20 @@
                             android:layout_marginEnd="210dp"
                             android:text="12.0 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num4_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="12dp" />
 
 
                         <TextView
@@ -995,6 +1038,7 @@
 
 
                     </RelativeLayout>
+
                     <!-- skel 6-->
                     <RelativeLayout
                         android:id="@+id/RS6"
@@ -1029,6 +1073,7 @@
                             android:layout_height="30dp"
                             android:layout_marginTop="113dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1040,6 +1085,7 @@
                             android:layout_marginLeft="310dp"
                             android:layout_marginTop="113dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1050,6 +1096,7 @@
                             android:layout_height="30dp"
                             android:layout_marginTop="170dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1061,6 +1108,7 @@
                             android:layout_marginLeft="310dp"
                             android:layout_marginTop="170dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1071,6 +1119,7 @@
                             android:layout_height="30dp"
                             android:layout_marginTop="225dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1082,6 +1131,7 @@
                             android:layout_marginLeft="310dp"
                             android:layout_marginTop="225dp"
                             android:maxLines="2"
+                            android:gravity="center"
                             android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
@@ -1164,6 +1214,21 @@
                             android:layout_marginEnd="215dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/num6_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="34dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -1389,6 +1454,21 @@
 
 
                         <TextView
+                            android:id="@+id/num8_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
+
+                        <TextView
                             android:id="@+id/num8_bot"
                             android:layout_width="182dp"
                             android:layout_height="wrap_content"
@@ -1419,7 +1499,7 @@
                         android:id="@+id/RS10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-android:visibility="gone"                        >
+                        android:visibility="gone">
 
 
                         <ImageView
@@ -1677,6 +1757,22 @@ android:visibility="gone"                        >
                             android:text="125 A"
                             android:textSize="12dp" />
 
+                        <TextView
+                            android:id="@+id/num10_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
+
+
 
                         <TextView
                             android:id="@+id/num10_bot"
@@ -1697,7 +1793,8 @@ android:visibility="gone"                        >
                         android:id="@+id/RS12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                      android:visibility="gone" >
+                        android:visibility="gone"
+                   >
 
 
                         <ImageView
@@ -2000,6 +2097,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="225dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num12_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -2370,6 +2481,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="230dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num14_ab"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -2788,6 +2913,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="230dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num16_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -2810,7 +2949,7 @@ android:visibility="gone"                        >
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
-                        android:visibility="gone"
+                    android:visibility="gone"
                         >
 
 
@@ -3250,6 +3389,20 @@ android:visibility="gone"                        >
                             android:layout_marginTop="58dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num18_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -3271,7 +3424,7 @@ android:visibility="gone"                        >
                         android:id="@+id/RS20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
+                       android:visibility="gone"
                         android:layout_marginTop="17dp"
                         >
 
@@ -3756,6 +3909,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="242dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num20_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="105dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -3777,8 +3944,8 @@ android:visibility="gone"                        >
                         android:id="@+id/RS22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         android:layout_marginTop="27dp"
+                        android:visibility="gone"
                         >
 
 
@@ -4309,6 +4476,19 @@ android:visibility="gone"                        >
                             android:layout_marginTop="53dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num22_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -4903,6 +5083,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="230dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num24_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -5542,6 +5736,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="240dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num26_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -5564,7 +5772,8 @@ android:visibility="gone"                        >
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                       >
 
 
                         <ImageView
@@ -6229,6 +6438,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="239dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num28_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginStart="115dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView
@@ -6251,8 +6474,9 @@ android:visibility="gone"                        >
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
+                        android:visibility="gone"
                         android:layout_marginLeft="50dp"
-                        android:visibility="gone">
+                        >
 
 
                         <ImageView
@@ -6961,6 +7185,20 @@ android:visibility="gone"                        >
                             android:layout_marginEnd="200dp"
                             android:text="125 A"
                             android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/num30_ab"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginStart="102dp"
+                            android:text="PB-MAIN"
+                            android:maxLines="2"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:textSize="11dp" />
 
 
                         <TextView

@@ -48,7 +48,7 @@ public class Home extends Fragment {
                 final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
                 // Set up AutoCompleteTextView with options
-                String[] mainPipeOptions = {"EMT", "PVC", "IMC", "LTFMC"};
+                String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
                 autoCompleteTextView.setAdapter(adapter);
 

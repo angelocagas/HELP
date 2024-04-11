@@ -1883,7 +1883,7 @@ public class Loadschedule extends AppCompatActivity {
             final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
             // Set up AutoCompleteTextView with options
-            String[] mainPipeOptions = {"EMT", "PVC", "IMC", "LTFMC"};
+            String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
             autoCompleteTextView.setAdapter(adapter);
 

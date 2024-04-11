@@ -262,9 +262,6 @@ public class Inputing extends AppCompatActivity {
             } else if(Ctype.startsWith("IMC")){
                 Typeofpipe.setText("IMC");
                 CTYPE.setText("IMC");
-            } else if(Ctype.startsWith("LTFMC")){
-                Typeofpipe.setText("LTFMC");
-                CTYPE.setText("LTFMC");
             }
 
 
@@ -324,7 +321,7 @@ public class Inputing extends AppCompatActivity {
         Horsepower.setAdapter(adapter2);
 
 //adapter for type of pipes
-        String[] pipe = new String[]{"EMT", "PVC", "IMC", "LTFMC"};
+        String[] pipe = new String[]{"EMT", "PVC", "IMC"};
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.drop_down_item, pipe);
         Typeofpipe.setAdapter(adapter3);
 
@@ -347,10 +344,7 @@ public class Inputing extends AppCompatActivity {
                     // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
                     CTYPE.setText("IMC");
                 }
-                if ("LTFMC".equals(selectedItem)) {
-                    // If the user chooses Water Heater or Range or Refrigerator, set the value of AT to 30
-                    CTYPE.setText("LTFMC");
-                }
+
 
 
             }

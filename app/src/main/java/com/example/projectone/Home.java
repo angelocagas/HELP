@@ -42,69 +42,11 @@ public class Home extends Fragment {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.dialog_choose_main_pipe, null);
-                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
-                // Set up AutoCompleteTextView with options
-                String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
-                autoCompleteTextView.setAdapter(adapter);
-
-                builder.setView(dialogView)
-                        .setTitle("Select type of Conduit")
-                        .setPositiveButton("OK", null) // Initially set to null
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing if cancelled
-                            }
-                        });
-                final AlertDialog dialog = builder.create();
-
-                dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                    @Override
-                    public void onShow(DialogInterface dialogInterface) {
-                        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                        positiveButton.setEnabled(false); // Initially disable the OK button
-
-                        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
-                            }
-                        });
-
-                        positiveButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String selectedMainPipe = autoCompleteTextView.getText().toString();
-
-                                // Access the SharedPreferences file and remove the currentTableCount value
-                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
-                                editor.clear(); // Removes all data from SharedPreferences
-                                editor.apply();
-
-                                // Start Inputing activity
-                                Intent intent = new Intent(getActivity(), Inputing.class);
-                                intent.putExtra("mainPipe", selectedMainPipe);
-                                startActivity(intent);
-                                databaseHelper.clearTable();
-
-                                dialog.dismiss();
-                            }
-                        });
-                    }
-                });
-
-                dialog.show();
+                // Start Inputing activity
+                Intent intent = new Intent(getActivity(), Inputing.class);
+                startActivity(intent);
+                databaseHelper.clearTable();
             }
         });
 

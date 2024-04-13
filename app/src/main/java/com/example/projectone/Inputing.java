@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -124,31 +125,9 @@ public class Inputing extends AppCompatActivity {
         CNM.setText(Cirnum);
         counter();
 
-        // Retrieve the value of "mainPipe" from the Intent extras
-        String mainPipe = getIntent().getStringExtra("mainPipe");
 
 
-        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-
-// Logic for handling mainpipe value
-        if (mainPipe != null && !mainPipe.isEmpty()) {
-            Mainpipetxt.setText(mainPipe + " PIPE");
-
-
-            SharedPreferences.Editor myEdit = preferences.edit();
-            myEdit.putString("mainpipe", mainPipe);
-            myEdit.apply();
-
-        } else {
-
-            mainPipe = preferences.getString("mainpipe", "");
-
-            if (!mainPipe.isEmpty()) {
-
-                Mainpipetxt.setText(mainPipe);
-            }
-        }
 
         try {
             cirnum = Integer.parseInt(CNM.getText().toString().trim());
@@ -1392,9 +1371,10 @@ public class Inputing extends AppCompatActivity {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
 
         final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
+        final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-        builder.setTitle("Demand Factor");
+        builder.setTitle("Please fill this out.");
         builder.setView(dialogView);
 
         // Disable the positive button initially
@@ -1454,18 +1434,46 @@ public class Inputing extends AppCompatActivity {
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
                         demand.setText(demandText);
+
+                        // Store the selected value from AutoCompleteTextView to Mainpipetxt
+                        String selectedPipe = autoCompleteTextView.getText().toString().trim();
+                        Mainpipetxt.setText(selectedPipe);
+
                         // Once percent selection is done, proceed with preview
                         proceedWithPreview();
                         // Dismiss the dialog
                         dialog.dismiss();
                     }
                 });
+
+            }
+        });
+
+        // Set up AutoCompleteTextView with options for selecting type of conduit
+        String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Inputing.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
+        autoCompleteTextView.setAdapter(adapter);
+
+        // Set up a listener for the AutoCompleteTextView to enable/disable the OK button based on selection
+        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
             }
         });
 
         // Show the dialog
         dialog.show();
     }
+
     private void showPercentSelectionDialogwithspare() {
 
         // Inflate the dialog layout XML

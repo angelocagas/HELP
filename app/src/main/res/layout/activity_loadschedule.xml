@@ -277,7 +277,7 @@
             android:layout_marginTop="-130dp">
 
 
-
+            <!-- unang skeleton na madidisplay kapag 4 ang mga item  -->
             <RelativeLayout
                 android:id="@+id/rela"
                 android:layout_width="wrap_content"
@@ -289,29 +289,30 @@
                     android:id="@+id/countTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PB-MAIN"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    android:textSize="15dp"
                     android:layout_alignParentStart="true"
-                    android:textColor="@color/black"/>
+                    android:text="PB-MAIN"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/PB1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PB-MAIN"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
                     android:layout_alignParentStart="true"
-                    android:textColor="@color/black"/>
+                    android:text="PB-MAIN"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/border1"
                     android:layout_width="799dp"
                     android:layout_height="43dp"
-                 android:layout_alignTop="@id/PB1"
-                    android:layout_marginTop="20dp"
+                    android:layout_alignTop="@id/PB1"
                     android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/boardupper" />
 
 
@@ -375,25 +376,25 @@
                         android:textSize="9dp"
                         android:textStyle="bold"
                         tools:ignore="TextSizeCheck" />
-                    
+
                     <ImageView
 
                         android:layout_width="24dp"
                         android:layout_height="10dp"
-                        android:layout_marginTop="2dp"
                         android:layout_marginLeft="174dp"
-                        android:src="@color/white"/>
-                    
+                        android:layout_marginTop="2dp"
+                        android:src="@color/white" />
+
                     <TextView
                         android:id="@+id/demandfactor1"
-                        android:layout_marginTop="1dp"
                         android:layout_width="25dp"
-                        android:text="00.00"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_height="10dp"
                         android:layout_marginLeft="180dp"
-                        android:textSize="9.6dp"/>
+                        android:layout_marginTop="1dp"
+                        android:text="00.00"
+                        android:textColor="@color/black"
+                        android:textSize="9.6dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/HIGHA"
@@ -695,7 +696,6 @@
                     tools:ignore="TextSizeCheck" />
 
 
-
                 <TextView
                     android:id="@+id/MainWirePass"
                     android:layout_width="wrap_content"
@@ -717,10 +717,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/border2"
-                    android:layout_marginLeft="475dp"
+                    android:layout_marginLeft="432dp"
                     android:layout_marginTop="55dp"
                     android:gravity="start"
-                    android:text="2 - 1.0mm.sq. THHN Cu. Wire "
+                    android:text="2 - 500.0mm.sq. THHN/THWN-2 Cu. Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -738,9 +738,8 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    tools:ignore="TextSizeCheck"
                     android:visibility="invisible"
-                    />
+                    tools:ignore="TextSizeCheck" />
 
                 <TextView
                     android:id="@+id/FeederWireSecond"
@@ -751,7 +750,7 @@
                     android:layout_marginTop="47dp"
                     android:layout_toEndOf="@id/FeederWire"
                     android:gravity="bottom"
-                    android:text="+ 1 - 2.0 mm.sq. THHN Cu.Wire"
+                    android:text=" + 1 - 60.0 mm.sq. THHN/THWN-2 Cu. Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
@@ -773,7 +772,6 @@
                     android:textStyle="bold"
                     android:visibility="gone"
                     tools:ignore="TextSizeCheck" />
-
 
 
                 <TextView
@@ -804,8 +802,8 @@
                     android:text="Cu. Wire"
                     android:textColor="@color/black"
                     android:textSize="9dp"
-                    android:visibility="invisible"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
@@ -827,8 +825,8 @@
                     android:id="@+id/Pipetype"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
                     android:layout_below="@id/border2"
+                    android:layout_marginStart="3dp"
                     android:layout_marginTop="64dp"
                     android:layout_toEndOf="@id/FeederWireFourth"
                     android:gravity="start"
@@ -836,13 +834,12 @@
                     android:textColor="@color/black"
                     android:textSize="9dp"
                     android:textStyle="bold"
-                    tools:ignore="TextSizeCheck"/>
+                    tools:ignore="TextSizeCheck" />
 
 
                 <!-- una load schedule  -->
             </RelativeLayout>
 
-            <!-- unang skeleton na madidisplay kapag 4 ang mga item  -->
             <RelativeLayout
                 android:id="@+id/lc1"
                 android:layout_width="wrap_content"
@@ -892,7 +889,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginLeft="230dp"
                             android:layout_marginTop="40dp"
-                            android:text="USE: 2 - 1.0mm.sq. THHN Cu. Wire + 2 - 1.0mm.sq. THHN Cu. Wire"
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -906,8 +903,7 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="ACU 2.0 HP
-                (Living Room)"
+                            android:text="ACU 2.0 HP(Living Room)"
                             android:textAlignment="center"
                             android:textSize="12dp" />
 
@@ -1044,7 +1040,7 @@
                         android:id="@+id/RS6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                     android:visibility="gone"
+                  android:visibility="gone"
 
                         >
 
@@ -1062,7 +1058,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="230dp"
-                            android:layout_marginTop="35dp"
+                            android:layout_marginTop="26dp"
                             android:text="Loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -1250,7 +1246,8 @@
                         android:id="@+id/RS8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:layout_marginTop="20dp"
+                       android:visibility="gone"
                       >
 
 
@@ -1486,9 +1483,9 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginLeft="235dp"
-                            android:layout_marginTop="27dp"
-                            android:maxLines="2"
-                            android:text="Loading..."
+                            android:layout_marginTop="10dp"
+                            android:maxLines="3"
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -1499,7 +1496,9 @@
                         android:id="@+id/RS10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:layout_marginTop="15dp"
+                        android:visibility="gone"
+                        >
 
 
                         <ImageView
@@ -1515,8 +1514,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="220dp"
-                            android:layout_marginTop="30dp"
-                            android:text="Loading..."
+                            android:layout_marginTop="13dp"
+                            android:text="loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -1793,6 +1792,7 @@
                         android:id="@+id/RS12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:visibility="gone"
                    >
 
@@ -1810,7 +1810,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="225dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="13dp"
                             android:text="Loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -2132,6 +2132,7 @@
                         android:id="@+id/RS14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:visibility="gone"
                        >
 
@@ -2149,7 +2150,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="215dp"
-                            android:layout_marginTop="26dp"
+                            android:layout_marginTop="12dp"
                             android:text="Loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -2518,8 +2519,8 @@
                         android:id="@+id/RS16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:visibility="gone"
+                        android:layout_marginTop="27dp"
+                      android:visibility="gone"
                        >
 
 
@@ -2533,9 +2534,9 @@
                         <TextView
                             android:id="@+id/num16_top"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="0dp"
                             android:text="Loading..."
                             android:textSize="11dp"
                             android:textStyle="bold" />
@@ -2948,7 +2949,7 @@
                         android:id="@+id/RS18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="23dp"
+                        android:layout_marginTop="28dp"
                     android:visibility="gone"
                         >
 
@@ -2967,7 +2968,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="5dp"
                             android:text="Loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -3443,7 +3443,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
                             android:layout_marginTop="10dp"
-                            android:text="Loading..."
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -3954,7 +3954,6 @@
                             android:layout_width="400dp"
                             android:layout_height="675dp"
                             android:layout_marginLeft="2dp"
-                            android:layout_marginTop="-15dp"
                             android:src="@drawable/s22"
 
                             />
@@ -3973,10 +3972,10 @@
                             android:id="@+id/num22_1"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="65dp"
+                            android:layout_marginTop="80dp"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="1 Loading..."
+                            android:text="Loading..."
                             android:textAlignment="center"
                             android:textSize="12dp" />
 
@@ -3985,7 +3984,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="65dp"
+                            android:layout_marginTop="80dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -3996,7 +3995,7 @@
                             android:id="@+id/num22_3"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="114dp"
+                            android:layout_marginTop="129dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4008,7 +4007,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="114dp"
+                            android:layout_marginTop="129dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4019,7 +4018,7 @@
                             android:id="@+id/num22_5"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="160dp"
+                            android:layout_marginTop="175dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4031,7 +4030,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="160dp"
+                            android:layout_marginTop="175dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4042,7 +4041,7 @@
                             android:id="@+id/num22_7"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="209dp"
+                            android:layout_marginTop="224dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4054,7 +4053,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="209dp"
+                            android:layout_marginTop="224dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4065,7 +4064,7 @@
                             android:id="@+id/num22_9"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="254dp"
+                            android:layout_marginTop="269dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4077,7 +4076,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="254dp"
+                            android:layout_marginTop="269dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4088,7 +4087,7 @@
                             android:id="@+id/num22_11"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="300dp"
+                            android:layout_marginTop="315dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4100,7 +4099,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="300dp"
+                            android:layout_marginTop="315dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4111,7 +4110,7 @@
                             android:id="@+id/num22_13"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="349dp"
+                            android:layout_marginTop="364dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4123,7 +4122,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="349dp"
+                            android:layout_marginTop="364dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4134,7 +4133,7 @@
                             android:id="@+id/num22_15"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="396dp"
+                            android:layout_marginTop="411dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4146,7 +4145,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="396dp"
+                            android:layout_marginTop="411dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4157,7 +4156,7 @@
                             android:id="@+id/num22_17"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="443dp"
+                            android:layout_marginTop="458dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4169,7 +4168,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="280dp"
-                            android:layout_marginTop="443dp"
+                            android:layout_marginTop="458dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4180,7 +4179,7 @@
                             android:id="@+id/num22_19"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="490dp"
+                            android:layout_marginTop="505dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4192,7 +4191,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="490dp"
+                            android:layout_marginTop="505dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4203,7 +4202,7 @@
                             android:id="@+id/num22_21"
                             android:layout_width="119dp"
                             android:layout_height="30dp"
-                            android:layout_marginTop="538dp"
+                            android:layout_marginTop="553dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4215,7 +4214,7 @@
                             android:layout_width="119dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="275dp"
-                            android:layout_marginTop="538dp"
+                            android:layout_marginTop="553dp"
                             android:gravity="center"
                             android:maxLines="2"
                             android:text="1 Loading..."
@@ -4228,7 +4227,7 @@
                             android:layout_width="40dp"
                             android:layout_height="13dp"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="83dp"
+                            android:layout_marginTop="98dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A"
@@ -4239,7 +4238,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="214dp"
-                            android:layout_marginTop="83dp"
+                            android:layout_marginTop="98dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A"
@@ -4250,7 +4249,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="130dp"
+                            android:layout_marginTop="145dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A3"
@@ -4261,7 +4260,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="130dp"
+                            android:layout_marginTop="145dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A4"
@@ -4272,7 +4271,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="179dp"
+                            android:layout_marginTop="189dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4283,7 +4282,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="179dp"
+                            android:layout_marginTop="189dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A6"
@@ -4294,7 +4293,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="225dp"
+                            android:layout_marginTop="238dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A7"
@@ -4305,7 +4304,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="225dp"
+                            android:layout_marginTop="238dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A8"
@@ -4316,7 +4315,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="272dp"
+                            android:layout_marginTop="285dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4327,7 +4326,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="272dp"
+                            android:layout_marginTop="285dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4338,7 +4337,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="319dp"
+                            android:layout_marginTop="328dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4349,7 +4348,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="319dp"
+                            android:layout_marginTop="328dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4360,7 +4359,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="367dp"
+                            android:layout_marginTop="377dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4371,7 +4370,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="367dp"
+                            android:layout_marginTop="377dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4383,7 +4382,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="414dp"
+                            android:layout_marginTop="424dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4394,7 +4393,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="414dp"
+                            android:layout_marginTop="424dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4405,7 +4404,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="460dp"
+                            android:layout_marginTop="470dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4416,7 +4415,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="460dp"
+                            android:layout_marginTop="470dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4427,7 +4426,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="508dp"
+                            android:layout_marginTop="518dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4438,7 +4437,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="508dp"
+                            android:layout_marginTop="518dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4449,7 +4448,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="142dp"
-                            android:layout_marginTop="555dp"
+                            android:layout_marginTop="565dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A9"
@@ -4460,7 +4459,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                            android:layout_marginLeft="214dp"
-                            android:layout_marginTop="555dp"
+                            android:layout_marginTop="565dp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="79.99 A5"
@@ -4473,7 +4472,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="230dp"
-                            android:layout_marginTop="53dp"
+                            android:layout_marginTop="68dp"
                             android:text="125 A"
                             android:textSize="12dp" />
                         <TextView
@@ -4497,7 +4496,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="245dp"
-                            android:layout_marginTop="640dp"
+                            android:layout_marginTop="650dp"
                             android:maxLines="2"
                             android:text="Loading..."
                             android:textSize="10dp"
@@ -4511,8 +4510,9 @@
                         android:id="@+id/RS24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:visibility="gone">
+                        android:layout_marginTop="29dp"
+                        android:visibility="gone"
+                         >
 
 
                         <ImageView
@@ -4527,8 +4527,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="5dp"
-                            android:text="Loading..."
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -5118,8 +5117,9 @@
                         android:id="@+id/RS26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="23dp"
-                        android:visibility="gone">
+                        android:layout_marginTop="28dp"
+                        android:visibility="gone"
+                        >
 
 
                         <ImageView
@@ -5134,8 +5134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="5dp"
-                            android:text="Loading..."
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -5771,7 +5770,7 @@
                         android:id="@+id/RS28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="26dp"
                         android:visibility="gone"
                        >
 
@@ -5789,8 +5788,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="205dp"
-                            android:layout_marginTop="5dp"
-                            android:text="Loading..."
+                            android:layout_marginTop="3dp"
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 
@@ -6474,8 +6473,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:visibility="gone"
                         android:layout_marginLeft="50dp"
+                        android:visibility="gone"
                         >
 
 
@@ -6491,9 +6490,9 @@
                             android:id="@+id/num30_top"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="205dp"
-                            android:layout_marginTop="15dp"
-                            android:text="Loading..."
+                            android:layout_marginLeft="187dp"
+                            android:layout_marginTop="5dp"
+                            android:text="USE: 2 - 500.0mm\u00B2 THHN/THWN-2 Cu. Wire\n+ 1 - 60.0 mm\u00B2 THHN/THWN-2 Cu. Wire\n(G)In 1 mm\u00B2 EMP PIPE"
                             android:textSize="10dp"
                             android:textStyle="bold" />
 

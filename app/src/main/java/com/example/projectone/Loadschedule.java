@@ -2882,7 +2882,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
 
                 // Define your list of feed options
-                String[] feedOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
+                String[] feedOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
 
                 // Create ArrayAdapter to hold suggestions
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
@@ -2926,7 +2926,7 @@ public class Loadschedule extends AppCompatActivity {
                         String selectedFeederWire = autoCompleteTextView.getText().toString();
 
                         // Update the FeederWire with the new text
-                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN Cu. Wire ");
+                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN/THWN-2 Cu. Wire ");
 
                         String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
 
@@ -2940,7 +2940,7 @@ public class Loadschedule extends AppCompatActivity {
 
                         if(selectedFeederWire.equals("2") || selectedFeederWire.equals("3.5")|| selectedFeederWire.equals("5.5")||selectedFeederWire.equals("8")||selectedFeederWire.equals("14")||selectedFeederWire.equals("22")||selectedFeederWire.equals("30")){
 
-                            String botText = "GEC: " + " + 1 - 8.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -2950,7 +2950,7 @@ public class Loadschedule extends AppCompatActivity {
                             }
 
                         }else if(selectedFeederWire.equals("38") ||selectedFeederWire.equals("50")){
-                            String botText = "GEC: " + " + 1 - 14.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -2961,7 +2961,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
                         }else if(selectedFeederWire.equals("60") ||selectedFeederWire.equals("80")){
-                            String botText = "GEC: " + " + 1 - 22.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -2973,7 +2973,7 @@ public class Loadschedule extends AppCompatActivity {
 
                         }
                         else if(selectedFeederWire.equals("100")||selectedFeederWire.equals("125")||selectedFeederWire.equals("150") ||selectedFeederWire.equals("175")){
-                            String botText = "GEC: " + " + 1 - 30.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -2984,7 +2984,7 @@ public class Loadschedule extends AppCompatActivity {
 
                         }
                         else if(selectedFeederWire.equals("200") ||selectedFeederWire.equals("250") ||selectedFeederWire.equals("325")){
-                            String botText = "GEC: " + " + 1 - 50.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 50.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -2996,7 +2996,7 @@ public class Loadschedule extends AppCompatActivity {
                         }
 
                         else if(selectedFeederWire.equals("375")|| selectedFeederWire.equals("400")|| selectedFeederWire.equals("500")){
-                            String botText = "GEC: " + " + 1 - 60.0mm.sq. THHN/THW-2 Cu. Wire" ;
+                            String botText = "GEC: " + " + 1 - 60.0mm.sq. THHN/THWN-2 Cu. Wire" ;
 
                             TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
@@ -3031,7 +3031,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
 
                 // Define your list of pipe wire options
-                String[] pipeWireOptions = new String[]{"2", "3.5", "5.5", "8", "14", "22", "30", "50", "60"};
+                String[] pipeWireOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "50", "60"};
 
                 // Create ArrayAdapter to hold options
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
@@ -3080,7 +3080,7 @@ public class Loadschedule extends AppCompatActivity {
                         // Get the text from the AutoCompleteTextView
                         String selectedPipeWire = autoCompleteTextView.getText().toString();
                         // Update the FeederWire with the new text
-                        String newTet = ("+ 1 - " + selectedPipeWire + " mm.sq. THHN/THW-2 Cu. Wire");
+                        String newTet = ("+ 1 - " + selectedPipeWire + "mm.sq. THHN/THWN-2 Cu. Wire");
                         // Update TextViews
                         FeederWireSecond.setText(newTet);
                         String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
@@ -3336,228 +3336,393 @@ public class Loadschedule extends AppCompatActivity {
         String FDW = sharedPreferences.getString("UFWT", "");
 
         if (sum2 == 0) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
+            MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
 
         }
-        if (sum2 < 15) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
+        else if (sum2 < 16) {
+            MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 >= 16 && sum2 <= 20) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
+        else if (sum2 >= 17 && sum2 <= 24) {
+            MainWire.setText("30 AT, 100 AF, 2P, 230V, 60 HZ");
 
         }
-        if (sum2 >= 21 && sum2 <= 30) {
-            MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 HZ");
+
+        else if (sum2 >= 25 && sum2 <= 32) {
+            MainWire.setText("40 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 >= 31 && sum2 <= 40) {
-            MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 HZ");
+        else if (sum2 >= 33 && sum2 <= 40) {
+            MainWire.setText("50 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 >= 41 && sum2 <= 50) {
-            MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 50 && sum2 <= 60) {
+
+        else if (sum2 >= 41 && sum2 <= 48) {
             MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 HZ");
         }
+        else if (sum2 >= 49 && sum2 <= 56) {
+            MainWire.setText("70 AT, 100 AF, 2P, 230V, 60 HZ");
+        }
 
-        if (sum2 >= 71 && sum2 <= 80) {
-            MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 HZ");
+        else if (sum2 >= 57 && sum2 <= 80) {
+            MainWire.setText("100 AT, 125 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 >= 81 && sum2 <= 90) {
-            MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 HZ");
+        else if (sum2 >= 81 && sum2 <= 100) {
+            MainWire.setText("125 AT, 150 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 >= 91 && sum2 <= 100) {
-            MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 101 && sum2 <= 110) {
-            MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 111 && sum2 <= 125) {
-            MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 125 && sum2 <= 150) {
+        else if (sum2 >= 101 && sum2 <= 120) {
             MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 HZ");
         }
-        if (sum2 > 151) {
+        else if (sum2 >= 121 && sum2 <= 140) {
             MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 HZ");
         }
+        else if (sum2 >= 141 && sum2 <= 160) {
+            MainWire.setText("200 AT, 225 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 161 && sum2 <= 180) {
+            MainWire.setText("225 AT, 250 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 181 && sum2 <= 200) {
+            MainWire.setText("250 AT, 250 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 201 && sum2 <= 240) {
+            MainWire.setText("300 AT, 400 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 241 && sum2 <= 280) {
+            MainWire.setText("350 AT, 400 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 281 && sum2 <= 320) {
+            MainWire.setText("400 AT, 400 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 321 && sum2 <= 400) {
+            MainWire.setText("500 AT, 600 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 401 && sum2 <= 480) {
+            MainWire.setText("600 AT, 600 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 481 && sum2 <= 560) {
+            MainWire.setText("700 AT, 800 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 561 && sum2 <= 640) {
+            MainWire.setText("800 AT, 800 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 641 && sum2 <= 800) {
+            MainWire.setText("1000 AT, 1200 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 801 && sum2 <= 960) {
+            MainWire.setText("1200 AT, 1200 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 961 && sum2 <= 1280) {
+            MainWire.setText("1600 AT, 1600 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 1281 && sum2 <= 1600) {
+            MainWire.setText("2000 AT, 2000 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 1601 && sum2 <= 2000) {
+            MainWire.setText("2500 AT, 2500 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 2001 && sum2 <= 2400) {
+            MainWire.setText("3000 AT, 3000 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 2401 && sum2 <= 3200) {
+            MainWire.setText("4000 AT, 4000 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 3201 && sum2 <= 4000) {
+            MainWire.setText("5000 AT, 5000 AF, 2P, 230V, 60 HZ");
+        }
+        else if (sum2 >= 4001 && sum2 <= 4800) {
+            MainWire.setText("6000 AT, 6000 AF, 2P, 230V, 60 HZ");
+        }
+
+
+
+
         String PassMainWire = MainWire.getText().toString();
+        if ( PassMainWire.equals("20 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 3.5mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 3.5mm.sq. THHN/THWN-2 Cu. Wire");
 
+        }
+        else if (PassMainWire.equals("30 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 5.5mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 3.5mm.sq. THHN/THWN-2 Cu. Wire");
+        }
 
+        else if (PassMainWire.equals("40 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 5.5mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 5.5mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if ( PassMainWire.equals("50 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 5.5mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 8.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
 
+        else if (PassMainWire.equals("60 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 5.5mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 14.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("70 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 22.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
 
+        else if (PassMainWire.equals("100 AT, 125 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 30.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("125 AT, 150 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 38.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("150 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 50.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("175 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 60.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("200 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 80.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("225 AT, 250 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 100.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("250 AT, 250 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 125.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("300 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 150.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("350 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 175.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("400 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 200.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("500 AT, 600 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 30.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 250.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("600 AT, 600 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 38.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 325.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("700 AT, 800 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 50.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 375.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("800 AT, 800 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 50.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 400.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("1000 AT, 1200 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText("+ 1 - 60.0mm.sq. THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 500.0mm.sq. THHN/THWN-2 Cu. Wire");
+        }
 
         if (FDW != null) {
             MainWire.setText(PassMainWire);
         }
 
-        if (sum2 >= 1 && sum2 < 25) {
-            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 25 && sum2 < 30) {
-            FeederWire.setText("2 - 8.0.mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 30 && sum2 < 40) {
-            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 40 && sum2 < 55) {
-            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 55 && sum2 < 75) {
-            FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 75 && sum2 < 95) {
-            FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
-        }
-
-
-
-        if (sum2 >= 95 && sum2 < 115) {
-            FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 115 && sum2 < 130) {
-            FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 130 && sum2 < 150) {
-            FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 150 && sum2 < 170) {
-            FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 170 && sum2 < 205) {
-            FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 205 && sum2 < 240) {
-            FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 240 && sum2 < 285) {
-            FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 285 && sum2 < 320) {
-            FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 320 && sum2 < 345) {
-            FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 345 && sum2 < 360) {
-            FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 360 && sum2 < 425) {
-            FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 425 && sum2 < 490) {
-            FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 490 && sum2 < 530) {
-            FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 530 && sum2 < 535) {
-            FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 535 && sum2 < 595) {
-            FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
-        }
-
 
         String FeederW2 = FeederWire.getText().toString().trim();
 
-//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
+//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0mm.sq.
+        if (FeederW2.equals("2 - 3.5mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
-            num4_bot.setText("");
+
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+
 
         }
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 5.5mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 8.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 14.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
-            FeederWireFourth.setText("(G)In 20 mmø");
-        }
-        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 22.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 25 mmø");
-        }
-        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN/THW-2 Cu. Wire");
-            FeederWireFourth.setText("(G)In 32 mmø");
-        }
-        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
 
-        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN/THW-2 Cu. Wire");
-            FeederWireFourth.setText("(G)In 32 mmø");
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 30.0mm.sq. THHN/THWN-2 Cu. Wire")) {
+            FeederWireFourth.setText("(G)In 32 mmø");
+            String botText = "GEC: + 1 - 8.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
+        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0mm.sq.
+
+        else if (FeederW2.equals("2 - 38.0mm.sq. THHN/THWN-2 Cu. Wire")) {
+            FeederWireFourth.setText("(G)In 32 mmø");
+
+            String botText = "GEC: + 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
+        else if (FeederW2.equals("2 - 50.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 40 mmø");
+            String botText = "GEC: + 1 - 14.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
         //IF FEEDERWIRE IS 60 80   =    22
-        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 60.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 40 mmø");
+            String botText = "GEC: + 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 80.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 22.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
 
         //IF FEEDERWIRE IS 100 to 175   = 30
 
-        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 100.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 125.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
-        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 150.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
+            String botText = "GEC: + 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
-        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 175.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
-        }
+            String botText = "GEC: + 1 - 30.0mm.sq. THHN/THWN-2 Cu. Wire";
 
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
 
         //IF FEEDERWIRE IS 200 to 325    50
-        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 200.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
+            String botText = "GEC: + 1 - 50.0mm.sq. THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN/THW-2 Cu. Wire");
+        else if (FeederW2.equals("2 - 250.0mm.sq. THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 80  mmø");
-        }
-        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN/THW-2 Cu. Wire");
-        }
+            String botText = "GEC: + 1 - 50.0mm.sq. THHN/THWN-2 Cu. Wire";
 
+            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
-        //IF FEEDERWIRE IS  375 to 500    600
-        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN/THW-2 Cu. Wire");
-        }
-        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN/THW-2 Cu. Wire");
-        }
-        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN/THW-2 Cu. Wire");
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
 

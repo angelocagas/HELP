@@ -127,7 +127,7 @@ public class Loadschedule extends AppCompatActivity {
     List<ProjectTable> projectTableList;
 
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView PB1,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab, Pipetype, demandfactor1, demandfactor2, num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14, num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22, num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28, num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30, num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB, LAWEHIGHA, SAVEHIGHA, LAWEA, SaveA, UpdatedMainWire, FeederSize, FeederWireSecond, FeederWireThird, FeederWireFourth, FeederWire, MainWire, totalone, totalVATextView, totalATextView, HighestA, HighestB, TotalB, UnderOneAndTwo, UnderThreeAndFour, TotalUnder, TopOneAndTwo, TopThreeAndFour, TotalTop;
+    TextView num2_a1,num2_a2,num2_1,num2_2,num2_a,num2_ab,num2_top,num2_bot,PB1,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab, Pipetype, demandfactor1, demandfactor2, num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14, num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22, num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28, num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30, num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB, LAWEHIGHA, SAVEHIGHA, LAWEA, SaveA, UpdatedMainWire, FeederSize, FeederWireSecond, FeederWireThird, FeederWireFourth, FeederWire, MainWire, totalone, totalVATextView, totalATextView, HighestA, HighestB, TotalB, UnderOneAndTwo, UnderThreeAndFour, TotalUnder, TopOneAndTwo, TopThreeAndFour, TotalTop;
 
     RelativeLayout aaaa, RS30;
 
@@ -175,6 +175,10 @@ public class Loadschedule extends AppCompatActivity {
 
         // Call the method to get all items list
         ///   databaseHelper.getAllItemsList();
+        num2_1 = findViewById(R.id.num2_1);
+        num2_2 = findViewById(R.id.num2_2);
+
+
 
         num4_1 = findViewById(R.id.num4_1);
         num4_2 = findViewById(R.id.num4_2);
@@ -436,6 +440,9 @@ public class Loadschedule extends AppCompatActivity {
         num30_29 = findViewById(R.id.num30_29);
         num30_30 = findViewById(R.id.num30_30);
 
+        num2_a1 = findViewById(R.id.num2_a1);
+        num2_a2 = findViewById(R.id.num2_a2);
+
         num4_a1 = findViewById(R.id.num4_a1);
         num4_a2 = findViewById(R.id.num4_a2);
         num4_a3 = findViewById(R.id.num4_a3);
@@ -688,7 +695,7 @@ public class Loadschedule extends AppCompatActivity {
         num30_a29 = findViewById(R.id.num30_a29);
         num30_a30 = findViewById(R.id.num30_a30);
 
-
+        num2_a = findViewById(R.id.num2_a);
         num4_a = findViewById(R.id.num4_a);
         num6_a = findViewById(R.id.num6_a);
         num8_a = findViewById(R.id.num8_a);
@@ -703,7 +710,7 @@ public class Loadschedule extends AppCompatActivity {
         num26_a = findViewById(R.id.num26_a);
         num28_a = findViewById(R.id.num28_a);
         num30_a = findViewById(R.id.num30_a);
-
+        num2_ab = findViewById(R.id.num2_ab);
         num4_ab = findViewById(R.id.num4_ab);
         num6_ab = findViewById(R.id.num6_ab);
         num8_ab = findViewById(R.id.num8_ab);
@@ -719,7 +726,7 @@ public class Loadschedule extends AppCompatActivity {
         num28_ab = findViewById(R.id.num28_ab);
         num30_ab = findViewById(R.id.num30_ab);
 
-
+        num2_top = findViewById(R.id.num2_top);
         num4_top = findViewById(R.id.num4_top);
         num6_top = findViewById(R.id.num6_top);
         num8_top = findViewById(R.id.num8_top);
@@ -734,7 +741,7 @@ public class Loadschedule extends AppCompatActivity {
         num26_top = findViewById(R.id.num26_top);
         num28_top = findViewById(R.id.num28_top);
         num30_top = findViewById(R.id.num30_top);
-
+        num2_bot = findViewById(R.id.num2_bot);
         num4_bot = findViewById(R.id.num4_bot);
         num6_bot = findViewById(R.id.num6_bot);
         num8_bot = findViewById(R.id.num8_bot);
@@ -750,6 +757,7 @@ public class Loadschedule extends AppCompatActivity {
         num28_bot = findViewById(R.id.num28_bot);
         num30_bot = findViewById(R.id.num30_bot);
         countTextView = findViewById(R.id.countTextView);
+        RelativeLayout RS2 = findViewById(R.id.RS2);
         RelativeLayout RS4 = findViewById(R.id.RS4);
         RelativeLayout RS6 = findViewById(R.id.RS6);
         RelativeLayout RS8 = findViewById(R.id.RS8);
@@ -850,6 +858,11 @@ public class Loadschedule extends AppCompatActivity {
             @Override
             public void onItemsLoaded(List<String> itemSList) {
                 switch (itemSList.size()) {
+                    case 2:
+                        num2_1.setText(itemSList.get(0));
+                        num2_2.setText(itemSList.get(1));
+
+                        break;
                     case 4:
                         num4_1.setText(itemSList.get(0));
                         num4_2.setText(itemSList.get(1));
@@ -1144,6 +1157,11 @@ public class Loadschedule extends AppCompatActivity {
             public void onItemsLoaded(List<String> ASList) {
                 if (ASList != null) {
                     switch (ASList.size()) {
+                        case 2:
+                            num2_a1.setText(ASList.get(0));
+                            num2_a2.setText(ASList.get(1));
+
+                            break;
                         case 4:
                             num4_a1.setText(ASList.get(0));
                             num4_a2.setText(ASList.get(1));
@@ -1438,7 +1456,26 @@ public class Loadschedule extends AppCompatActivity {
             public void onItemsLoaded(List<String> TSList) {
                 if (TSList != null) {
                     switch (TSList.size()) {
+                        case 2:
+                            RS2.setVisibility(View.VISIBLE);
+                            RS4.setVisibility(GONE);
+                            RS6.setVisibility(GONE);
+                            RS8.setVisibility(GONE);
+                            RS10.setVisibility(GONE);
+                            RS12.setVisibility(GONE);
+                            RS14.setVisibility(GONE);
+                            RS16.setVisibility(GONE);
+                            RS18.setVisibility(GONE);
+                            RS20.setVisibility(GONE);
+                            RS22.setVisibility(GONE);
+                            RS24.setVisibility(GONE);
+                            RS26.setVisibility(GONE);
+                            RS28.setVisibility(GONE);
+                            RS30.setVisibility(GONE);
+
+                            break;
                         case 4:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(View.VISIBLE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1456,6 +1493,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 6:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(View.VISIBLE);
                             RS8.setVisibility(GONE);
@@ -1474,6 +1512,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 8:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(View.VISIBLE);
@@ -1492,6 +1531,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 10:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1511,6 +1551,7 @@ public class Loadschedule extends AppCompatActivity {
                             break;
 
                         case 12:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1528,6 +1569,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 14:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1546,6 +1588,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 16:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1564,6 +1607,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 18:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1582,6 +1626,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 20:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1600,6 +1645,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 22:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1617,6 +1663,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 24:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1634,6 +1681,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 26:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1651,6 +1699,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 28:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1669,6 +1718,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 30:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -2931,7 +2981,7 @@ public class Loadschedule extends AppCompatActivity {
                         String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
 
 
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
 
                         for (int i = 0; i < topViews.length; i++) {
                             topViews[i].setText(topText);
@@ -2942,7 +2992,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             String botText = "GEC: " + " + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -2952,7 +3002,7 @@ public class Loadschedule extends AppCompatActivity {
                         }else if(selectedFeederWire.equals("38") ||selectedFeederWire.equals("50")){
                             String botText = "GEC: " + " + 1 - 14.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -2963,7 +3013,7 @@ public class Loadschedule extends AppCompatActivity {
                         }else if(selectedFeederWire.equals("60") ||selectedFeederWire.equals("80")){
                             String botText = "GEC: " + " + 1 - 22.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -2975,7 +3025,7 @@ public class Loadschedule extends AppCompatActivity {
                         else if(selectedFeederWire.equals("100")||selectedFeederWire.equals("125")||selectedFeederWire.equals("150") ||selectedFeederWire.equals("175")){
                             String botText = "GEC: " + " + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -2986,7 +3036,7 @@ public class Loadschedule extends AppCompatActivity {
                         else if(selectedFeederWire.equals("200") ||selectedFeederWire.equals("250") ||selectedFeederWire.equals("325")){
                             String botText = "GEC: " + " + 1 - 50.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -2998,7 +3048,7 @@ public class Loadschedule extends AppCompatActivity {
                         else if(selectedFeederWire.equals("375")|| selectedFeederWire.equals("400")|| selectedFeederWire.equals("500")){
                             String botText = "GEC: " + " + 1 - 60.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
 
-                            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
                             for (int i = 0; i < botViews.length; i++) {
 
@@ -3086,7 +3136,7 @@ public class Loadschedule extends AppCompatActivity {
                         String topText = "USE " + FeederWire.getText().toString() + "\n"+ newTet+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
 
 
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
 
 
                         for (int i = 0; i < topViews.length; i++) {
@@ -3166,7 +3216,7 @@ public class Loadschedule extends AppCompatActivity {
 
                         String topText = "USE " + FeederWire.getText().toString()+ "\n" + FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
 
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+                        TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
 
                         for (int i = 0; i < topViews.length; i++) {
                             topViews[i].setText(topText);
@@ -3298,7 +3348,7 @@ public class Loadschedule extends AppCompatActivity {
                         // Update TextViews
                         MainWire.setText(newAfAt);
 
-                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+                        TextView[] numViews = {num2_a,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
 
                         for (int i = 0; i < numViews.length; i++) {
                             numViews[i].setText(AT + " AT" + ", 2P ");
@@ -3537,7 +3587,7 @@ public class Loadschedule extends AppCompatActivity {
 
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3550,7 +3600,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 20 mmø");
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3561,7 +3611,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 20 mmø");
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3572,7 +3622,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 20 mmø");
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3583,7 +3633,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 25 mmø");
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3594,7 +3644,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 32 mmø");
             String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3608,7 +3658,7 @@ public class Loadschedule extends AppCompatActivity {
 
             String botText = "GEC: + 1 - 14.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3619,7 +3669,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 40 mmø");
             String botText = "GEC: + 1 - 14.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3632,7 +3682,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 40 mmø");
             String botText = "GEC: + 1 - 22.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3643,7 +3693,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 50 mmø");
             String botText = "GEC: + 1 - 22.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3658,7 +3708,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 50 mmø");
             String botText = "GEC: + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3669,7 +3719,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 50 mmø");
             String botText = "GEC: + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3681,7 +3731,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 65 mmø");
             String botText = "GEC: + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3693,7 +3743,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 65 mmø");
             String botText = "GEC: + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3706,7 +3756,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 65 mmø");
             String botText = "GEC: + 1 - 50.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3717,7 +3767,7 @@ public class Loadschedule extends AppCompatActivity {
             FeederWireFourth.setText("(G)In 80  mmø");
             String botText = "GEC: + 1 - 50.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < botViews.length; i++) {
 
@@ -3736,8 +3786,8 @@ public class Loadschedule extends AppCompatActivity {
 
             String botText = "GEC:" + Feeder2;
 
-            TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+            TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < topViews.length; i++) {
                 topViews[i].setText(topText);
@@ -3760,7 +3810,7 @@ public class Loadschedule extends AppCompatActivity {
         }
 
 
-        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+        TextView[] numViews = {num2_a,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
 
         for (int i = 0; i < numViews.length; i++) {
             numViews[i].setText(desiredSubstring);
@@ -3773,6 +3823,7 @@ public class Loadschedule extends AppCompatActivity {
 
         // Increment the current table count again if it's less than 3
         if (PBMAINCTR == 0) {
+            num2_ab.setText("PB-MAIN");
             num4_ab.setText("PB-MAIN");
             num6_ab.setText("PB-MAIN");
             num8_ab.setText("PB-MAIN");
@@ -3789,6 +3840,7 @@ public class Loadschedule extends AppCompatActivity {
             num30_ab.setText("PB-MAIN");
             PB1.setText("PB-MAIN");
         }if (PBMAINCTR == 1) {
+            num2_ab.setText("PB-1");
             num4_ab.setText("PB-1");
             num6_ab.setText("PB-1");
             num8_ab.setText("PB-1");
@@ -3805,6 +3857,7 @@ public class Loadschedule extends AppCompatActivity {
             num30_ab.setText("PB-1");
             PB1.setText("PB-1");
         }if (PBMAINCTR == 2) {
+            num2_ab.setText("PB-2");
             num4_ab.setText("PB-2");
             num6_ab.setText("PB-2");
             num8_ab.setText("PB-2");

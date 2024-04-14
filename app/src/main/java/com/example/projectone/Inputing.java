@@ -829,13 +829,13 @@ public class Inputing extends AppCompatActivity {
 // Convert the text to an integer value
                 int ctrValue = Integer.parseInt(numberPart);
                 // Check if the counter is less than 4
-                if (ctrValue <= 4) {
+                if (ctrValue <= 2) {
                     // Create an AlertDialog.Builder instance
                     AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
 
                     // Set the dialog title and message
                     builder.setTitle("Alert");
-                    builder.setMessage("You need to add at least 4 items before previewing");
+                    builder.setMessage("You need to add at least 2 items before previewing");
 
                     // Add an OK button with a click listener that dismisses the dialog
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -850,7 +850,7 @@ public class Inputing extends AppCompatActivity {
                     dialog.show();
                 } else {
 
-                    if (ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 ) {
+                    if (ctrValue == 4 ||ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 ) {
                         // Create an AlertDialog.Builder instance
 
 

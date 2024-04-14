@@ -1166,7 +1166,7 @@
                         android:id="@+id/RS6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                  android:visibility="gone"
+
 
                         >
 
@@ -1184,7 +1184,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="230dp"
-                            android:layout_marginTop="26dp"
+                            android:layout_marginTop="28dp"
                             android:text="Loading..."
                             android:textSize="10dp"
                             android:textStyle="bold" />

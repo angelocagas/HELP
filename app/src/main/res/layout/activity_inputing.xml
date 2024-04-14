@@ -123,34 +123,10 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        app:boxBackgroundMode="outline"
-        app:boxBackgroundColor="@color/white"
-        android:layout_marginStart="30dp"
-        android:backgroundTint="@color/black"
-        app:hintTextColor="@color/black"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Quantity"
-            android:inputType="number"
-            android:enabled="false"
-            android:textColor="@color/black"
-            android:maxLines="1"
-
-            ></com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Wat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -167,12 +143,90 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Watts"
+            android:textColor="@color/black"
             android:inputType="number"
             android:maxLines="1"
             tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Watlo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:boxBackgroundMode="outline"
+                app:boxBackgroundColor="@color/white"
+                android:layout_marginStart="30dp"
+                android:backgroundTint="@color/black"
+                app:hintTextColor="@color/black"
+                android:hint="Watts"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
 
-    <com.google.android.material.textfield.TextInputLayout
+                <AutoCompleteTextView
+                    android:id="@+id/Wattslo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:inputType="none"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/quant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                app:boxBackgroundMode="outline"
+                app:boxBackgroundColor="@color/white"
+                android:layout_marginStart="30dp"
+                android:backgroundTint="@color/black"
+                app:hintTextColor="@color/black"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Quantity"
+                    android:inputType="number"
+                    android:enabled="false"
+
+                    android:textColor="@color/black"
+                    android:maxLines="1"
+
+                    ></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/quantlo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:boxBackgroundMode="outline"
+                app:boxBackgroundColor="@color/white"
+                android:layout_marginStart="30dp"
+                android:backgroundTint="@color/black"
+                app:hintTextColor="@color/black"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:id="@+id/Quantitylo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:inputType="none"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/hintconduit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

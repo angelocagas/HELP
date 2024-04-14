@@ -36,18 +36,22 @@ import com.itextpdf.text.log.Counter;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Inputing extends AppCompatActivity {
     // Declare ArrayList to store "A" values
     ArrayList<Double> arrayAmp = new ArrayList<>();
-    AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe;
-    TextInputLayout horses,hintitem,hintconduit;
+    AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe,Wattslo,Quantitylo;
+    TextInputLayout horses,hintitem,hintconduit,quant,quantlo,Wat,Watlo;
     TextView CircuitNum2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
     TextInputEditText Quantity, Watts, Others;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
+    private boolean isAutoCompleteLOSelected = false;
     private boolean isAutoCompletePipeSelected = false;
 
 
@@ -86,6 +90,11 @@ public class Inputing extends AppCompatActivity {
         autoCompleteTextView1 = findViewById(R.id.Items);
         horses = findViewById(R.id.horses);
         hintitem = findViewById(R.id.hintitem);
+      //  quant = findViewById(R.id.quant);
+        Watlo= findViewById(R.id.Watlo);
+       // quantlo = findViewById(R.id.quantlo);
+        Wat = findViewById(R.id.Wat);
+        Wattslo = findViewById(R.id.Wattslo);
         hintconduit = findViewById(R.id.hintconduit);
         next = findViewById(R.id.next);
         preview = findViewById(R.id.preview);
@@ -164,7 +173,61 @@ public class Inputing extends AppCompatActivity {
             // Check if item starts with "LIGHTING OUTLET"
             if (item.startsWith("Lighting Outlet")) {
                 autoCompleteTextView1.setText("Lighting Outlet");
+                Wat.setVisibility(View.GONE);
+                Watlo.setVisibility(View.VISIBLE);
+
+                int startIndex = item.indexOf(',');
+                int endIndex = item.indexOf('W');
+                if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+                    // Extract the interval
+                    String interval = item.substring(startIndex + 1, endIndex).trim();
+
+                    if (interval.equals("100")) {
+                        Wattslo.setText("100");
+                    } else if (interval.equals("95")) {
+                        Wattslo.setText("95");
+                    } else if (interval.equals("90")) {
+                        Wattslo.setText("90");
+                    } else if (interval.equals("85")) {
+                        Wattslo.setText("85");
+                    } else if (interval.equals("80")) {
+                        Wattslo.setText("80");
+                    } else if (interval.equals("75")) {
+                        Wattslo.setText("75");
+                    } else if (interval.equals("70")) {
+                        Wattslo.setText("70");
+                    } else if (interval.equals("65")) {
+                        Wattslo.setText("65");
+                    } else if (interval.equals("60")) {
+                        Wattslo.setText("60");
+                    } else if (interval.equals("55")) {
+                        Wattslo.setText("55");
+                    } else if (interval.equals("50")) {
+                        Wattslo.setText("50");
+                    } else if (interval.equals("45")) {
+                        Wattslo.setText("45");
+                    } else if (interval.equals("40")) {
+                        Wattslo.setText("40");
+                    } else if (interval.equals("35")) {
+                        Wattslo.setText("35");
+                    } else if (interval.equals("30")) {
+                        Wattslo.setText("30");
+                    } else if (interval.equals("25")) {
+                        Wattslo.setText("25");
+                    } else if (interval.equals("20")) {
+                        Wattslo.setText("20");
+                    } else if (interval.equals("15")) {
+                        Wattslo.setText("15");
+                    } else if (interval.equals("10")) {
+                        Wattslo.setText("10");
+                    } else if (interval.equals("5")) {
+                        Wattslo.setText("5");
+                    } else {
+                        Wattslo.setText("");
+                    }
+                }
             }
+
             // Check if item starts with "ACU"
             else if (item.startsWith("ACU")) {
                 autoCompleteTextView1.setText("ACU");
@@ -304,6 +367,75 @@ public class Inputing extends AppCompatActivity {
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.drop_down_item, pipe);
         Typeofpipe.setAdapter(adapter3);
 
+        //adapter(dropdown) for watt of lighting outlet
+        String[] lo = new String[]{"100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5"};
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<>(this, R.layout.drop_down_item, lo);
+        Wattslo.setAdapter(adapter4);
+
+        // Define the maximum quantities for each wattage
+        Map<String, Integer> maxQuantities = new HashMap<>();
+        maxQuantities.put("100", 27);
+        maxQuantities.put("95", 29);
+        maxQuantities.put("90", 30);
+        maxQuantities.put("85", 32);
+        maxQuantities.put("80", 34);
+        maxQuantities.put("75", 36);
+        maxQuantities.put("70", 39);
+        maxQuantities.put("65", 42);
+        maxQuantities.put("60", 46);
+        maxQuantities.put("55", 50);
+        maxQuantities.put("50", 55);
+        maxQuantities.put("45", 61);
+        maxQuantities.put("40", 69);
+        maxQuantities.put("35", 78);
+        maxQuantities.put("30", 92);
+        maxQuantities.put("25", 110);
+        maxQuantities.put("20", 138);
+        maxQuantities.put("15", 183);
+        maxQuantities.put("10", 275);
+        maxQuantities.put("5", 550);
+
+        Wattslo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                isAutoCompleteLOSelected = true;
+                String selectedItem = Wattslo.getText().toString();
+                if (maxQuantities.containsKey(selectedItem)) {
+                    int maxQuantity = maxQuantities.get(selectedItem);
+                    Watts.setText(selectedItem);
+                    final int finalMaxQuantity = maxQuantity;
+                    Quantity.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if (!s.toString().isEmpty()) {
+                                int input = Integer.parseInt(s.toString());
+                                if (input < 1 || input > finalMaxQuantity) {
+                                    Quantity.setError("Quantity must be between 1 and " + finalMaxQuantity);
+                                    next.setEnabled(false);
+                                } else {
+                                    Quantity.setError(null);
+                                    next.setEnabled(true);
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    Quantity.setError(null);
+                    next.setEnabled(true);
+                    Quantity.setText(null);
+                    Watts.setText(null);
+                }
+            }
+        });
+
+
+
 
 //selected item automated data
         Typeofpipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -330,67 +462,100 @@ public class Inputing extends AppCompatActivity {
         });
 
 
-        autoCompleteTextView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                isAutoCompleteItemSelected = true;
+        autoCompleteTextView1.setOnItemClickListener((adapterView, view, i, l) -> {
+            isAutoCompleteItemSelected = true;
+            isAutoCompleteLOSelected = true;
+            String selectedItem = autoCompleteTextView1.getText().toString();
 
-                String selectedItem = autoCompleteTextView1.getText().toString();
-                // Disable or enable Quantity input based on selected item
-                if (selectedItem.equals("ACU") || selectedItem.equals("Water Heater") || selectedItem.equals("Range") || selectedItem.equals("Refrigerator") || selectedItem.equals("Spare")) {
-                    Quantity.setEnabled(false);
-                    Quantity.setText("1");
-                } else {
-                    Quantity.setEnabled(true);
-                }
-
-// Set values based on selected item
-                if ("Water Heater".equals(selectedItem) || "Range".equals(selectedItem)) {
-                    AT.setText("30");
-                } else if ("Convenience Outlet".equals(selectedItem) || "ACU".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    AT.setText("20");
-                } else if ("Lighting Outlet".equals(selectedItem)) {
+            // Disable or enable Quantity input based on selected item
+            boolean disableQuantityInput = false;
+            switch (selectedItem) {
+                case "Lighting Outlet":
                     AT.setText("15");
                     SMM.setText("3.5");
                     GMM.setText("3.5");
-                } else if ("Spare".equals(selectedItem)) {
-                    SMM.setText("Stub");
-                    GMM.setText("");
-                }
-
-                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "Spare".equals(selectedItem) || "Refrigerator".equals(selectedItem)){
                     MMPlus.setText("20");
-                }else{
-                    MMPlus.setText("");
-                }
+                    Wat.setVisibility(View.GONE);
+                    Watlo.setVisibility(View.VISIBLE);
+                    break;
+                case "Convenience Outlet":
+                    Wat.setVisibility(View.VISIBLE);
+                    Watlo.setVisibility(View.GONE);
+                    Watts.setEnabled(false);
+                    Watts.setText("180");
+                    MMPlus.setText("20");
+                    disableQuantityInput = true;
+                    break;
+                default:
+                    Wat.setVisibility(View.VISIBLE);
+                    Watlo.setVisibility(View.GONE);
+                    Quantity.setError(null);
+                    next.setEnabled(true);
+                    Quantity.setText("");
+                    Watts.setText("");
+                    Watts.setEnabled(true);
+                    break;
+            }
 
-// Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
-                if ("Lighting Outlet".equals(selectedItem) || "Convenience Outlet".equals(selectedItem) || "Water Heater".equals(selectedItem) || "Range".equals(selectedItem) || "ACU".equals(selectedItem) || "Refrigerator".equals(selectedItem)) {
-                    SNUM.setText("2");
-                    GNUM.setText("1");
-                    STYPE.setText("THHN");
-                    GTYPE.setText("THW");
-                } else {
-                    SNUM.setText("");
-                    GNUM.setText("");
-                    STYPE.setText("UP");
-                    GTYPE.setText("");
-                }
+            // Set values based on selected item
+            switch (selectedItem) {
+                case "Water Heater":
+                case "Range":
+                    AT.setText("30");
+                    break;
+                case "Convenience Outlet":
+                case "ACU":
+                case "Spare":
+                case "Refrigerator":
+                    AT.setText("20");
+                    break;
+                default:
+                    break;
+            }
 
-// Manage visibility of "horses" view
-                if ("ACU".equals(selectedItem)) {
-                    horses.setVisibility(View.VISIBLE);
-                    Quantity.setText("1");
+            // Manage visibility of "horses" view
+            horses.setVisibility("ACU".equals(selectedItem) ? View.VISIBLE : View.GONE);
+            if ("ACU".equals(selectedItem)) Quantity.setText("1");
 
+            // Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
+            if (Arrays.asList("Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "ACU", "Refrigerator").contains(selectedItem)) {
+                SNUM.setText("2");
+                GNUM.setText("1");
+                STYPE.setText("THHN");
+                GTYPE.setText("THW");
+            } else {
+                SNUM.setText("");
+                GNUM.setText("");
+                STYPE.setText("UP");
+                GTYPE.setText("");
+            }
 
-                } else {
+            // Restrict input to numbers between 1 and 20 for Quantity if needed
+            if (disableQuantityInput) {
+                Quantity.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-                    horses.setVisibility(View.GONE);
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-                }
-
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if (!s.toString().isEmpty()) {
+                            int input = Integer.parseInt(s.toString());
+                            if (input < 1 || input > 20) {
+                                Quantity.setError("Input must be between 1 and 20");
+                                next.setEnabled(false);
+                            } else {
+                                Quantity.setError(null);
+                                next.setEnabled(true);
+                            }
+                        }
+                    }
+                });
             }
         });
+
 
 
 //selected horsepower automated data
@@ -538,6 +703,7 @@ public class Inputing extends AppCompatActivity {
                 others.clearFocus();
                 Typeofpipe.clearFocus();
                 Horsepower.clearFocus();
+
 
 
                 if (Quantity.getText().toString().isEmpty()) {
@@ -803,6 +969,11 @@ public class Inputing extends AppCompatActivity {
                     Horsepower.setText(null);
                     others.setText(null);
                     Typeofpipe.setText(null);
+                    Wattslo.setText(null);
+                    Quantity.setError(null);
+
+                    Wat.setVisibility(View.VISIBLE);
+                    Watlo .setVisibility(View.GONE);
                     horses.setVisibility(View.GONE);
                     counter();
                     intent.putExtra("ItemData", autoCompleteTextView1.getText().toString());
@@ -1480,12 +1651,11 @@ public class Inputing extends AppCompatActivity {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
 
         final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
-
-
+        final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
-        builder.setTitle("Demand Factor");
+        builder.setTitle("Please fill this out.");
         builder.setView(dialogView);
 
         // Disable the positive button initially
@@ -1595,6 +1765,9 @@ public class Inputing extends AppCompatActivity {
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
                         demand.setText(demandText);
+                        // Store the selected value from AutoCompleteTextView to Mainpipetxt
+                        String selectedPipe = autoCompleteTextView.getText().toString().trim();
+                        Mainpipetxt.setText(selectedPipe);
 
                         // Once percent selection is done, proceed with preview
                         proceedWithPreview();
@@ -1603,6 +1776,26 @@ public class Inputing extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+            }
+        });
+        // Set up AutoCompleteTextView with options for selecting type of conduit
+        String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Inputing.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
+        autoCompleteTextView.setAdapter(adapter);
+
+        // Set up a listener for the AutoCompleteTextView to enable/disable the OK button based on selection
+        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
             }
         });
 

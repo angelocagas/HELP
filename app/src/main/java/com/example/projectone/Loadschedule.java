@@ -2698,13 +2698,14 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                         // Add the RelativeLayout image to the PDF
-                                        relaImage.setAbsolutePosition(xPosition, topEdgeYPosition);
-
-
-
-
 
                                         document.add(relaImage);
+                                        if (currentTableCount > 0) {
+                                            document.newPage();
+                                        }
+
+
+
                                     }
                                 }
 

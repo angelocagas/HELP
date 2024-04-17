@@ -1927,51 +1927,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
         if (id == R.id.nextLS) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-            LayoutInflater inflater = Loadschedule.this.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.dialog_choose_main_pipe, null);
-            final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
-
-            // Set up AutoCompleteTextView with options
-            String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
-            autoCompleteTextView.setAdapter(adapter);
-
-            builder.setView(dialogView)
-                    .setTitle("Choose Main Pipe")
-                    .setPositiveButton("OK", null) // Initially set to null
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing if canceled
-                        }
-                    });
-            final AlertDialog dialog = builder.create();
-
-            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                @Override
-                public void onShow(DialogInterface dialogInterface) {
-                    Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                    positiveButton.setEnabled(false); // Initially disable the OK button
-
-                    autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
-                        }
-                    });
-
-                    positiveButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String selectedMainPipe = autoCompleteTextView.getText().toString();
-
 
 
                             if (currentTableCount < 3) {
@@ -2012,7 +1967,6 @@ public class Loadschedule extends AppCompatActivity {
                                 // For example, to start a new activity for inputting data
                                 Intent intent = new Intent(Loadschedule.this, Inputing.class);
                                 intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
-                                intent.putExtra("mainPipe", selectedMainPipe);
                                 startActivity(intent);
                                 databaseHelper.clearTable();
 
@@ -2026,16 +1980,6 @@ public class Loadschedule extends AppCompatActivity {
 
 
 
-
-
-                            dialog.dismiss();
-                        }
-                    });
-
-                }
-            });
-
-            dialog.show();
         }
 
 
@@ -3428,99 +3372,96 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref", MODE_PRIVATE);
         String FDW = sharedPreferences.getString("UFWT", "");
 
-        if (sum2 == 0) {
-            MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
 
-        }
-        else if (sum2 < 16) {
+      if (sum2 == 0 && sum2 <= 16.99) {
             MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 17 && sum2 <= 24) {
+        else if (sum2 >= 17 && sum2 <= 24.99){
             MainWire.setText("30 AT, 100 AF, 2P, 230V, 60 HZ");
 
         }
 
-        else if (sum2 >= 25 && sum2 <= 32) {
+        else if (sum2 >= 25 && sum2 <= 32.99) {
             MainWire.setText("40 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 33 && sum2 <= 40) {
+        else if (sum2 >= 33 && sum2 <= 40.99){
             MainWire.setText("50 AT, 100 AF, 2P, 230V, 60 HZ");
         }
 
-        else if (sum2 >= 41 && sum2 <= 48) {
+        else if (sum2 >= 41 && sum2 <= 48.99){
             MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 49 && sum2 <= 56) {
+        else if (sum2 >= 49 && sum2 <= 56.99){
             MainWire.setText("70 AT, 100 AF, 2P, 230V, 60 HZ");
         }
 
-        else if (sum2 >= 57 && sum2 <= 80) {
+        else if (sum2 >= 57 && sum2 <= 80.99){
             MainWire.setText("100 AT, 125 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 81 && sum2 <= 100) {
+        else if (sum2 >= 81 && sum2 <= 100.99){
             MainWire.setText("125 AT, 150 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 101 && sum2 <= 120) {
+        else if (sum2 >= 101 && sum2 <= 120.99){
             MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 121 && sum2 <= 140) {
+        else if (sum2 >= 121 && sum2 <= 140.99){
             MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 141 && sum2 <= 160) {
+        else if (sum2 >= 141 && sum2 <= 160.99){
             MainWire.setText("200 AT, 225 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 161 && sum2 <= 180) {
+        else if (sum2 >= 161 && sum2 <= 180.99){
             MainWire.setText("225 AT, 250 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 181 && sum2 <= 200) {
+        else if (sum2 >= 181 && sum2 <= 200.99){
             MainWire.setText("250 AT, 250 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 201 && sum2 <= 240) {
+        else if (sum2 >= 201 && sum2 <= 240.99){
             MainWire.setText("300 AT, 400 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 241 && sum2 <= 280) {
+        else if (sum2 >= 241 && sum2 <= 280.99){
             MainWire.setText("350 AT, 400 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 281 && sum2 <= 320) {
+        else if (sum2 >= 281 && sum2 <= 320.99){
             MainWire.setText("400 AT, 400 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 321 && sum2 <= 400) {
+        else if (sum2 >= 321 && sum2 <= 400.99){
             MainWire.setText("500 AT, 600 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 401 && sum2 <= 480) {
+        else if (sum2 >= 401 && sum2 <= 480.99){
             MainWire.setText("600 AT, 600 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 481 && sum2 <= 560) {
+        else if (sum2 >= 481 && sum2 <= 560.99){
             MainWire.setText("700 AT, 800 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 561 && sum2 <= 640) {
+        else if (sum2 >= 561 && sum2 <= 640.99){
             MainWire.setText("800 AT, 800 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 641 && sum2 <= 800) {
+        else if (sum2 >= 641 && sum2 <= 800.99){
             MainWire.setText("1000 AT, 1200 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 801 && sum2 <= 960) {
+        else if (sum2 >= 801 && sum2 <= 960.99){
             MainWire.setText("1200 AT, 1200 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 961 && sum2 <= 1280) {
+        else if (sum2 >= 961 && sum2 <= 1280.99){
             MainWire.setText("1600 AT, 1600 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 1281 && sum2 <= 1600) {
+        else if (sum2 >= 1281 && sum2 <= 1600.99){
             MainWire.setText("2000 AT, 2000 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 1601 && sum2 <= 2000) {
+        else if (sum2 >= 1601 && sum2 <= 2000.99){
             MainWire.setText("2500 AT, 2500 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 2001 && sum2 <= 2400) {
+        else if (sum2 >= 2001 && sum2 <= 2400.99){
             MainWire.setText("3000 AT, 3000 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 2401 && sum2 <= 3200) {
+        else if (sum2 >= 2401 && sum2 <= 3200.99){
             MainWire.setText("4000 AT, 4000 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 3201 && sum2 <= 4000) {
+        else if (sum2 >= 3201 && sum2 <= 4000.99){
             MainWire.setText("5000 AT, 5000 AF, 2P, 230V, 60 HZ");
         }
-        else if (sum2 >= 4001 && sum2 <= 4800) {
+        else if (sum2 >= 4001 && sum2 <= 4800.99){
             MainWire.setText("6000 AT, 6000 AF, 2P, 230V, 60 HZ");
         }
 

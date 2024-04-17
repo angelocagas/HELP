@@ -43,6 +43,11 @@ public class Home extends Fragment {
             @Override
             public void onClick(View view) {
 
+                // Access the SharedPreferences file and remove the currentTableCount value
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+                editor.clear(); // Removes all data from SharedPreferences
+                editor.apply();
+
                 // Start Inputing activity
                 Intent intent = new Intent(getActivity(), Inputing.class);
                 startActivity(intent);

@@ -70,4 +70,35 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:text="Add Loadschedule Name"
+        android:textStyle="bold"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="@color/black"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:hint="PB - Main"
+            android:id="@+id/editTextLoadname"/>
+
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 </LinearLayout>

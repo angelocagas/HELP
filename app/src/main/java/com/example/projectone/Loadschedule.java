@@ -93,7 +93,7 @@ import android.view.View;
 public class Loadschedule extends AppCompatActivity {
 
     private static final String PREFS_NAME = "MyPrefsFile";
-    private static final String COUNT_KEY = "PBMAINCTR";
+
 
     private double totalValue = 0.0;
 
@@ -785,8 +785,8 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref", MODE_PRIVATE);
 
         SharedPreferences pref2 = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        PBMAINCTR = pref2.getInt(COUNT_KEY, 0);
-        updateCountText();
+
+
 
 
 
@@ -1987,8 +1987,8 @@ public class Loadschedule extends AppCompatActivity {
                                 editor.putInt("currentTableCount", currentTableCount);
                                 editor.apply();
 
-                                updateCountText();
-                                saveCountToSharedPreferences();
+
+
 
 
 
@@ -2066,8 +2066,7 @@ public class Loadschedule extends AppCompatActivity {
 // Update the currentTableCount variable to reflect the change
                     currentTableCount = 0;
                     PBMAINCTR= 0;
-                    updateCountText();
-                    saveCountToSharedPreferences();
+
 
                     Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
@@ -2859,6 +2858,50 @@ public class Loadschedule extends AppCompatActivity {
 
         String demand1 = intent.getStringExtra("DEMAND");
         String mainpipe = intent.getStringExtra("mainpipo");
+        String loadnamesave = intent.getStringExtra("loadnamesave");
+
+
+        // Logic for handling mainpipe value
+        if (loadnamesave != null && !loadnamesave.isEmpty()) {
+            PB1.setText(loadnamesave);
+
+
+
+
+
+
+                TextView[] nameViews = {num2_ab,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab};
+
+
+                for (int i = 0; i < nameViews.length; i++) {
+                    nameViews[i].setText(loadnamesave);
+                }
+
+
+
+            SharedPreferences.Editor myEdit = preferences.edit();
+            myEdit.putString("loadnamesave", loadnamesave);
+            myEdit.apply();
+
+        } else {
+
+            loadnamesave = preferences.getString("loadnamesave", "");
+
+            if (!loadnamesave.isEmpty()) {
+
+                PB1.setText(loadnamesave);
+
+                TextView[] nameViews = {num2_ab,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab};
+
+                for (int i = 0; i < nameViews.length; i++) {
+                    nameViews[i].setText(loadnamesave);
+                }
+
+            }
+        }
+
+
+
 
 
 // Logic for handling mainpipe value
@@ -3818,7 +3861,7 @@ public class Loadschedule extends AppCompatActivity {
     }
 
 
-    private void updateCountText() {
+   /* private void updateCountText() {
         countTextView.setText(String.valueOf(PBMAINCTR));
 
         // Increment the current table count again if it's less than 3
@@ -3839,7 +3882,8 @@ public class Loadschedule extends AppCompatActivity {
             num28_ab.setText("PB-MAIN");
             num30_ab.setText("PB-MAIN");
             PB1.setText("PB-MAIN");
-        }if (PBMAINCTR == 1) {
+        }
+        if (PBMAINCTR == 1) {
             num2_ab.setText("PB-1");
             num4_ab.setText("PB-1");
             num6_ab.setText("PB-1");
@@ -3856,7 +3900,8 @@ public class Loadschedule extends AppCompatActivity {
             num28_ab.setText("PB-1");
             num30_ab.setText("PB-1");
             PB1.setText("PB-1");
-        }if (PBMAINCTR == 2) {
+        }
+        if (PBMAINCTR == 2) {
             num2_ab.setText("PB-2");
             num4_ab.setText("PB-2");
             num6_ab.setText("PB-2");
@@ -3874,14 +3919,9 @@ public class Loadschedule extends AppCompatActivity {
             num30_ab.setText("PB-2");
             PB1.setText("PB-2");
         }
-    }
+    }*/
 
-    private void saveCountToSharedPreferences() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(COUNT_KEY, PBMAINCTR);
-        editor.apply();
-    }
+
 
 
 }

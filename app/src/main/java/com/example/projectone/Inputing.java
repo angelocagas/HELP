@@ -46,9 +46,9 @@ public class Inputing extends AppCompatActivity {
     ArrayList<Double> arrayAmp = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView1, Horsepower, Typeofpipe,Wattslo,Quantitylo;
     TextInputLayout horses,hintitem,hintconduit,quant,quantlo,Wat,Watlo;
-    TextView CircuitNum2, demand, HighestAmp12, CNM, TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
+    TextView CircuitNum2, demand, HighestAmp12, CNM, loadname,TotalVA, TotalA, others, CircuitNum, OPlus, V, VA, A, P, AT, AF, SNUM, SMM, STYPE, GNUM, GMM, GTYPE, MMPlus, CTYPE, Mainpipetxt, TOTALAtxt, TOTALVAtxt;
     Button next, preview, preview2, back, update;
-    TextInputEditText Quantity, Watts, Others;
+    TextInputEditText Quantity, Watts, Others, editTextLoadname;
     DatabaseHelper helper;
     private boolean isAutoCompleteItemSelected = false;
     private boolean isAutoCompleteLOSelected = false;
@@ -98,6 +98,7 @@ public class Inputing extends AppCompatActivity {
         hintconduit = findViewById(R.id.hintconduit);
         next = findViewById(R.id.next);
         preview = findViewById(R.id.preview);
+        loadname = findViewById(R.id.loadname);
         preview2 = findViewById(R.id.preview2);
         OPlus = findViewById(R.id.OPlus);
         V = findViewById(R.id.V);
@@ -418,9 +419,11 @@ public class Inputing extends AppCompatActivity {
                                 if (input < 1 || input > finalMaxQuantity) {
                                     Quantity.setError("Quantity must be between 1 and " + finalMaxQuantity);
                                     next.setEnabled(false);
+                                    update.setEnabled(false);
                                 } else {
                                     Quantity.setError(null);
                                     next.setEnabled(true);
+                                    update.setEnabled(true);
                                 }
                             }
                         }
@@ -428,6 +431,7 @@ public class Inputing extends AppCompatActivity {
                 } else {
                     Quantity.setError(null);
                     next.setEnabled(true);
+                    update.setEnabled(true);
                     Quantity.setText(null);
                     Watts.setText(null);
                 }
@@ -467,8 +471,6 @@ public class Inputing extends AppCompatActivity {
             isAutoCompleteLOSelected = true;
             String selectedItem = autoCompleteTextView1.getText().toString();
 
-            // Disable or enable Quantity input based on selected item
-            boolean disableQuantityInput = false;
             switch (selectedItem) {
                 case "Lighting Outlet":
                     AT.setText("15");
@@ -481,10 +483,15 @@ public class Inputing extends AppCompatActivity {
                 case "Convenience Outlet":
                     Wat.setVisibility(View.VISIBLE);
                     Watlo.setVisibility(View.GONE);
-                    Watts.setEnabled(false);
                     Watts.setText("180");
                     MMPlus.setText("20");
-                    disableQuantityInput = true;
+                    AT.setText("20");
+
+                    break;
+                case "Range":
+                MMPlus.setText("20");
+                AT.setText("30");
+                    Quantity.setText("1");
                     break;
                 default:
                     Wat.setVisibility(View.VISIBLE);
@@ -494,44 +501,94 @@ public class Inputing extends AppCompatActivity {
                     Quantity.setText("");
                     Watts.setText("");
                     Watts.setEnabled(true);
+
                     break;
             }
 
             // Set values based on selected item
             switch (selectedItem) {
-                case "Water Heater":
                 case "Range":
                     AT.setText("30");
                     break;
-                case "Convenience Outlet":
+
                 case "ACU":
-                case "Spare":
-                case "Refrigerator":
+
                     AT.setText("20");
+
                     break;
+                case "Spare":
+                    Quantity.setText("1");
+                    AT.setText("20");
+                    SMM.setText("Stub");
+                    GMM.setText("");
+                    MMPlus.setText("20");
+                    break;
+                case "Water Heater":
+                    Wat.setVisibility(View.VISIBLE);
+                    Watlo.setVisibility(View.GONE);
+                    MMPlus.setText("20");
+                    AT.setText("30");
+                    // Limit Quantity input between 1 and 100
+                    Quantity.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if (!s.toString().isEmpty()) {
+                                int input = Integer.parseInt(s.toString());
+                                if (input < 1 || input > 100) {
+                                    Quantity.setError("Input must be between 1 and 100");
+                                    next.setEnabled(false);
+                                } else {
+                                    Quantity.setError(null);
+                                    next.setEnabled(true);
+                                }
+                            }
+                        }
+                    });
+                    break;
+                case "Refrigerator":
+                    Wat.setVisibility(View.VISIBLE);
+                    Watlo.setVisibility(View.GONE);
+
+                    MMPlus.setText("20");
+                    AT.setText("20");
+                    // Limit Quantity input between 1 and 100
+                    Quantity.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if (!s.toString().isEmpty()) {
+                                int input = Integer.parseInt(s.toString());
+                                if (input < 1 || input > 100) {
+                                    Quantity.setError("Input must be between 1 and 100");
+                                    next.setEnabled(false);
+                                } else {
+                                    Quantity.setError(null);
+                                    next.setEnabled(true);
+                                }
+                            }
+                        }
+                    });
+                    break;
+
                 default:
                     break;
             }
 
-            // Manage visibility of "horses" view
-            horses.setVisibility("ACU".equals(selectedItem) ? View.VISIBLE : View.GONE);
-            if ("ACU".equals(selectedItem)) Quantity.setText("1");
 
-            // Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
-            if (Arrays.asList("Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "ACU", "Refrigerator").contains(selectedItem)) {
-                SNUM.setText("2");
-                GNUM.setText("1");
-                STYPE.setText("THHN");
-                GTYPE.setText("THW");
-            } else {
-                SNUM.setText("");
-                GNUM.setText("");
-                STYPE.setText("UP");
-                GTYPE.setText("");
-            }
 
             // Restrict input to numbers between 1 and 20 for Quantity if needed
-            if (disableQuantityInput) {
+            if ("Convenience Outlet".equals(selectedItem)) {
                 Quantity.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -554,6 +611,26 @@ public class Inputing extends AppCompatActivity {
                     }
                 });
             }
+
+
+            // Manage visibility of "horses" view
+            horses.setVisibility("ACU".equals(selectedItem) ? View.VISIBLE : View.GONE);
+            if ("ACU".equals(selectedItem)) Quantity.setText("1");
+
+            // Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
+            if (Arrays.asList("Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "ACU", "Refrigerator").contains(selectedItem)) {
+                SNUM.setText("2");
+                GNUM.setText("1");
+                STYPE.setText("THHN");
+                GTYPE.setText("THW");
+            } else {
+                SNUM.setText("");
+                GNUM.setText("");
+                STYPE.setText("UP");
+                GTYPE.setText("");
+            }
+
+
         });
 
 
@@ -687,6 +764,8 @@ public class Inputing extends AppCompatActivity {
         SharedPreferences finalSharedPreferences = sharedPreferences;
 //selected item automated data
         Quantity.setEnabled(true);
+
+
 //NEXT BUTTON
         next.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -970,7 +1049,7 @@ public class Inputing extends AppCompatActivity {
                     others.setText(null);
                     Typeofpipe.setText(null);
                     Wattslo.setText(null);
-                    Quantity.setError(null);
+
 
                     Wat.setVisibility(View.VISIBLE);
                     Watlo .setVisibility(View.GONE);
@@ -1099,6 +1178,7 @@ public class Inputing extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Proceed with preview
                         // Clear focus from any view that currently has it
+
                         Watts.clearFocus();
                         Quantity.clearFocus();
                         others.clearFocus();
@@ -1538,102 +1618,74 @@ public class Inputing extends AppCompatActivity {
     //demand factor
 
     private void showPercentSelectionDialog() {
-        // Inflate the dialog layout XML
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
-
-        final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
+        final EditText loadNameEditText = dialogView.findViewById(R.id.editTextLoadname);
+        final EditText percentEditText = dialogView.findViewById(R.id.editTextPercent);
         final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Inputing.this);
         builder.setTitle("Please fill this out.");
         builder.setView(dialogView);
-
-        // Disable the positive button initially
         builder.setPositiveButton("OK", null);
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog dialog = builder.create();
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        dialog.setOnShowListener(dialogInterface -> {
+            final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            updatePositiveButtonState(positiveButton, percentEditText, autoCompleteTextView);
 
-        // Create the dialog
-        dialog = builder.create();
+            positiveButton.setOnClickListener(view -> {
+                String inputText = percentEditText.getText().toString().trim();
+                String autoCompleteText = autoCompleteTextView.getText().toString().trim();
+                String loadName1 = loadNameEditText.getText().toString().trim();
 
-        // Set up a listener to enable/disable the positive button based on input validity
-        inputEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String inputText = s.toString().trim();
-                if (!inputText.isEmpty()) {
-                    int inputPercent = Integer.parseInt(inputText);
-                    // Enable the OK button if input is valid
-                    // Disable the OK button if input is invalid
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(inputPercent >= 1 && inputPercent <= 100);
-                } else {
-                    // Disable the OK button if input is empty
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                }
-            }
-        });
-
-        // Set click listener for the positive button
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                // Check the initial state of the input field
-                if (inputEditText.getText().toString().trim().isEmpty()) {
-                    // If input is empty, disable the OK button
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                }
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Handle click on OK button
-                        String inputText = inputEditText.getText().toString().trim();
+                if (!inputText.isEmpty() && !autoCompleteText.isEmpty() && !loadName1.isEmpty()) {
+                    try {
                         int inputPercent = Integer.parseInt(inputText);
                         float multipliedPercent = (float) inputPercent / 100.0f;
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
+
+
                         demand.setText(demandText);
 
-                        // Store the selected value from AutoCompleteTextView to Mainpipetxt
-                        String selectedPipe = autoCompleteTextView.getText().toString().trim();
+                        String selectedPipe = autoCompleteText;
                         Mainpipetxt.setText(selectedPipe);
-
-                        // Once percent selection is done, proceed with preview
+                        loadname.setText(loadName1); // Save the input to nameLS
                         proceedWithPreview();
-                        // Dismiss the dialog
                         dialog.dismiss();
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(Inputing.this, "Invalid input for percent", Toast.LENGTH_SHORT).show();
                     }
-                });
-
-            }
+                } else {
+                    Toast.makeText(Inputing.this, "Please fill out all fields.", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
-        // Set up AutoCompleteTextView with options for selecting type of conduit
         String[] mainPipeOptions = {"EMT", "PVC", "IMC"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(Inputing.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
         autoCompleteTextView.setAdapter(adapter);
 
-        // Set up a listener for the AutoCompleteTextView to enable/disable the OK button based on selection
-        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+        percentEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                updatePositiveButtonState(dialog.getButton(AlertDialog.BUTTON_POSITIVE), percentEditText, autoCompleteTextView);
             }
+        });
+
+        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -1641,16 +1693,31 @@ public class Inputing extends AppCompatActivity {
             }
         });
 
-        // Show the dialog
         dialog.show();
     }
+
+    private void updatePositiveButtonState(Button positiveButton, EditText percentEditText, AutoCompleteTextView autoCompleteTextView) {
+        String inputText = percentEditText.getText().toString().trim();
+        boolean percentValid = !inputText.isEmpty();
+        if (percentValid) {
+            try {
+                int inputPercent = Integer.parseInt(inputText);
+                percentValid = inputPercent >= 1 && inputPercent <= 100;
+            } catch (NumberFormatException e) {
+                percentValid = false;
+            }
+        }
+        positiveButton.setEnabled(percentValid && !TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
+    }
+
 
     private void showPercentSelectionDialogwithspare() {
 
         // Inflate the dialog layout XML
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_percent, null);
-
         final EditText inputEditText = dialogView.findViewById(R.id.editTextPercent);
+        final EditText loadNameEditText = dialogView.findViewById(R.id.editTextLoadname);
+
         final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
 
@@ -1761,18 +1828,17 @@ public class Inputing extends AppCompatActivity {
                         // Handle click on OK button
                         String inputText = inputEditText.getText().toString().trim();
                         int inputPercent = Integer.parseInt(inputText);
+                        String loadName1 = loadNameEditText.getText().toString().trim();
                         float multipliedPercent = (float) inputPercent / 100.0f;
                         String demandText = String.format("%.2f", multipliedPercent);
                         TextView demand = findViewById(R.id.demand);
                         demand.setText(demandText);
-                        // Store the selected value from AutoCompleteTextView to Mainpipetxt
+                        loadname.setText(loadName1);
                         String selectedPipe = autoCompleteTextView.getText().toString().trim();
                         Mainpipetxt.setText(selectedPipe);
-
-                        // Once percent selection is done, proceed with preview
                         proceedWithPreview();
                         counter();
-                        // Dismiss the dialog
+
                         dialog.dismiss();
                     }
                 });
@@ -1807,14 +1873,10 @@ public class Inputing extends AppCompatActivity {
 
         double highestAmp = findHighestAmp();
         HighestAmp12.setText(String.valueOf(highestAmp));
-        // Once the highest values are determined, create an intent to start the new activity
         String passVA = TotalVA.getText().toString();
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
-
-
-        // Pass the necessary data to the loadsched through the intent
         intent.putExtra("TOTALVA", passVA);
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
@@ -1827,22 +1889,16 @@ public class Inputing extends AppCompatActivity {
         double highestAmp = findHighestAmp();
         HighestAmp12.setText(String.valueOf(highestAmp));
         String DEMAND = demand.getText().toString();
-        // Once the highest values are determined, create an intent to start the new activity
         String passVA = TotalVA.getText().toString();
+        String loadnamesave= loadname.getText().toString();
         String passA = TotalA.getText().toString();
         String passHIGHEST = HighestAmp12.getText().toString();
-//        String skel = Counter2.getText().toString();
         String mainpipo = Mainpipetxt.getText().toString();
         Intent intent = new Intent(getApplicationContext(), Loadschedule.class);
-
-
-
-
-        // Pass the necessary data to the loadsched through the intent
+        intent.putExtra("loadnamesave", loadnamesave);
         intent.putExtra("TOTALVA", passVA);
         intent.putExtra("TOTALA", passA);
         intent.putExtra("HIGHA", passHIGHEST);
-       // intent.putExtra("CTR", skel);
         intent.putExtra("DEMAND", DEMAND);
         intent.putExtra("mainpipo", mainpipo);
         startActivity(intent);

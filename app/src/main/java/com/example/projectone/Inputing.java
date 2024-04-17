@@ -491,7 +491,7 @@ public class Inputing extends AppCompatActivity {
                 case "Range":
                 MMPlus.setText("20");
                 AT.setText("30");
-                    Quantity.setText("1");
+
                     break;
                 default:
                     Wat.setVisibility(View.VISIBLE);
@@ -517,7 +517,6 @@ public class Inputing extends AppCompatActivity {
 
                     break;
                 case "Spare":
-                    Quantity.setText("1");
                     AT.setText("20");
                     SMM.setText("Stub");
                     GMM.setText("");
@@ -586,36 +585,16 @@ public class Inputing extends AppCompatActivity {
             }
 
 
-
-            // Restrict input to numbers between 1 and 20 for Quantity if needed
-            if ("Convenience Outlet".equals(selectedItem)) {
-                Quantity.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        if (!s.toString().isEmpty()) {
-                            int input = Integer.parseInt(s.toString());
-                            if (input < 1 || input > 20) {
-                                Quantity.setError("Input must be between 1 and 20");
-                                next.setEnabled(false);
-                            } else {
-                                Quantity.setError(null);
-                                next.setEnabled(true);
-                            }
-                        }
-                    }
-                });
+            if ("ACU".equals(selectedItem) || "Range".equals(selectedItem) || "Refrigerator".equals(selectedItem) || "Spare".equals(selectedItem) || "Water Heater".equals(selectedItem)) {
+                Quantity.setText("1");
+                Quantity.setEnabled(false);
+            } else {
+                Quantity.setEnabled(true);
             }
 
 
             // Manage visibility of "horses" view
             horses.setVisibility("ACU".equals(selectedItem) ? View.VISIBLE : View.GONE);
-            if ("ACU".equals(selectedItem)) Quantity.setText("1");
 
             // Set values for SNUM, GNUM, STYPE, and GTYPE based on selected item
             if (Arrays.asList("Lighting Outlet", "Convenience Outlet", "Water Heater", "Range", "ACU", "Refrigerator").contains(selectedItem)) {

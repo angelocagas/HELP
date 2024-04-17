@@ -3374,7 +3374,7 @@ public class Loadschedule extends AppCompatActivity {
         String FDW = sharedPreferences.getString("UFWT", "");
 
 
-      if (sum2 == 0 && sum2 <= 16.99) {
+      if (sum2 >= 1 && sum2 <= 16.99) {
             MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
         }
         else if (sum2 >= 17 && sum2 <= 24.99){

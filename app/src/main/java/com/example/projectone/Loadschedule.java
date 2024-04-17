@@ -2920,7 +2920,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
 
                 // Define your list of feed options
-                String[] feedOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
+                String[] feedOptions = new String[]{"3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
 
                 // Create ArrayAdapter to hold suggestions
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
@@ -3069,7 +3069,7 @@ public class Loadschedule extends AppCompatActivity {
                 AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
 
                 // Define your list of pipe wire options
-                String[] pipeWireOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "50", "60"};
+                String[] pipeWireOptions = new String[]{"3.5", "5.5", "8.0", "14", "22", "30", "50", "60"};
 
                 // Create ArrayAdapter to hold options
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);

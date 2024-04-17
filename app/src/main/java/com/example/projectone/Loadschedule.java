@@ -1913,7 +1913,6 @@ public class Loadschedule extends AppCompatActivity {
             dialog.show();
         }
 
-        /* -------------------------- END OF PRINT ---------------------- */
 
 
         /* -------------------------- START OF NEXT LOAD SCHEDULE ---------------------- */
@@ -2346,54 +2345,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                 // Add image to PDF based on paper size
-                                try {
 
-
-                                    // Get the image from drawable resources
-                                    int id;
-                                    if ("20x30 inches".equals(paperSize)) {
-                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
-                                    } else {
-                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
-                                    }
-                                    if (id != 0) {
-                                        BitmapFactory.Options options = new BitmapFactory.Options();
-                                        options.inJustDecodeBounds = true;
-                                        BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        // Compute the inSampleSize
-                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
-                                        options.inJustDecodeBounds = false;
-
-                                        // Decode the image with calculated inSampleSize
-                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                        Image image = Image.getInstance(stream.toByteArray());
-
-                                        if ("20x30 inches".equals(paperSize)) {
-                                            // Scale the image to cover the whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0, 0);
-                                        } else {
-                                            // Scale the image to cover the whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0, 0);
-                                        }
-
-                                        // Add the image to the document
-                                        document.add(image);
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
 
                                 // Retrieve RelativeLayout images from SharedPreferences and add them to the PDF
                                 SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -2403,6 +2355,54 @@ public class Loadschedule extends AppCompatActivity {
                                     String relaImageBase64 = prefs.getString(keyRela, null);
 
                                     if (relaImageBase64 != null) {
+                                        try {
+
+
+                                            // Get the image from drawable resources
+                                            int id;
+                                            if ("20x30 inches".equals(paperSize)) {
+                                                id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
+                                            } else {
+                                                id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                            }
+                                            if (id != 0) {
+                                                BitmapFactory.Options options = new BitmapFactory.Options();
+                                                options.inJustDecodeBounds = true;
+                                                BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                // Compute the inSampleSize
+                                                options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                                options.inJustDecodeBounds = false;
+
+                                                // Decode the image with calculated inSampleSize
+                                                Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                                Image image = Image.getInstance(stream.toByteArray());
+
+                                                if ("20x30 inches".equals(paperSize)) {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                } else {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                }
+
+                                                // Add the image to the document
+                                                document.add(image);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                         byte[] relaImageBytes = Base64.decode(relaImageBase64, Base64.DEFAULT);
 
                                         // Convert bytes to Bitmap
@@ -2687,7 +2687,6 @@ public class Loadschedule extends AppCompatActivity {
                                         }
 
                                         // Scale the image to fit the desired width and height
-                                        relaImage.scaleToFit((float) (desiredWidth * 1.5), desiredHeight);
 
 
                                         // Calculate the y-coordinate relative to the top of the page
@@ -2696,6 +2695,7 @@ public class Loadschedule extends AppCompatActivity {
                                         // Subtract the desired height of the element to determine the y-coordinate relative to the top
                                         float topEdgeYPosition = yPositionFromTop - desiredHeight;
 
+                                        relaImage.scaleAbsolute(2000, desiredHeight);
 
                                         // Add the RelativeLayout image to the PDF
 

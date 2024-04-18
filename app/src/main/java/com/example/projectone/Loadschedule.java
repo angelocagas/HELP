@@ -3769,14 +3769,14 @@ public class Loadschedule extends AppCompatActivity {
         if (FeederW2 != null) {
             String topText = "USE " + FeederW2 + "\n" + Feeder2 + "\n" + Feeder3 + " " + Pipetype.getText().toString();
 
-            String botText = "GEC:" + Feeder2;
+          //  String botText = "GEC:" + Feeder2;
 
             TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+          //  TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < topViews.length; i++) {
                 topViews[i].setText(topText);
-                botViews[i].setText(botText);
+             //   botViews[i].setText(botText);
             }
         }
         //display for skel

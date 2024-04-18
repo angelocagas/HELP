@@ -17,6 +17,7 @@ import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -2931,7 +2932,13 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedFeederWire = autoCompleteTextView.getText().toString();
+                                handleFeederWireSelection(selectedFeederWire);
+                            }
+                        })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -2956,106 +2963,11 @@ public class Loadschedule extends AppCompatActivity {
                         positiveButton.setEnabled(true);
                     }
                 });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the selected item from the AutoCompleteTextView
-                        String selectedFeederWire = autoCompleteTextView.getText().toString();
-
-                        // Update the FeederWire with the new text
-                        FeederWire.setText("2 - " + selectedFeederWire + "mm\u00B2 THHN/THWN-2 Cu. Wire ");
-
-                        String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
-
-
-                        TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                        }
-
-
-                        if(selectedFeederWire.equals("2") || selectedFeederWire.equals("3.5")|| selectedFeederWire.equals("5.5")||selectedFeederWire.equals("8")||selectedFeederWire.equals("14")||selectedFeederWire.equals("22")||selectedFeederWire.equals("30")){
-
-                            String botText = "GEC: " + " + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-                        }else if(selectedFeederWire.equals("38") ||selectedFeederWire.equals("50")){
-                            String botText = "GEC: " + " + 1 - 14.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-
-                        }else if(selectedFeederWire.equals("60") ||selectedFeederWire.equals("80")){
-                            String botText = "GEC: " + " + 1 - 22.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-
-                        }
-                        else if(selectedFeederWire.equals("100")||selectedFeederWire.equals("125")||selectedFeederWire.equals("150") ||selectedFeederWire.equals("175")){
-                            String botText = "GEC: " + " + 1 - 30.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-                        }
-                        else if(selectedFeederWire.equals("200") ||selectedFeederWire.equals("250") ||selectedFeederWire.equals("325")){
-                            String botText = "GEC: " + " + 1 - 50.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-                        }
-
-                        else if(selectedFeederWire.equals("375")|| selectedFeederWire.equals("400")|| selectedFeederWire.equals("500")){
-                            String botText = "GEC: " + " + 1 - 60.0mm\u00B2 THHN/THWN-2 Cu. Wire" ;
-
-                            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                            for (int i = 0; i < botViews.length; i++) {
-
-                                botViews[i].setText(botText);
-                            }
-
-                        }
-
-
-
-
-
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
             }
         });
+
+
+
 
 
 //second feeder wire update
@@ -3350,6 +3262,60 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
+    }
+    private void handleFeederWireSelection(String selectedFeederWire) {
+        String feed = FeederWire.getText().toString();
+
+        if (feed.startsWith("2 -")) {
+            // Extract wire size from feed
+            String feedWireSizeStr = feed.substring(4, feed.indexOf("mm\u00B2"));
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize = Double.parseDouble(selectedFeederWire);
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize < feedWireSize) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+
+
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Update the FeederWire with the new text
+                                    FeederWire.setText("2 - " + selectedFeederWire + "mm\u00B2 THHN/THWN-2 Cu. Wire ");
+
+                                    String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+
+                                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                                    for (int i = 0; i < topViews.length; i++) {
+                                        topViews[i].setText(topText);
+                                    }
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                }else{
+                    // Update the FeederWire with the new text
+                    FeederWire.setText("2 - " + selectedFeederWire + "mm\u00B2 THHN/THWN-2 Cu. Wire ");
+
+                    String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+
+                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                    for (int i = 0; i < topViews.length; i++) {
+                        topViews[i].setText(topText);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void sumOfLeftAndRightTop() {

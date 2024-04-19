@@ -1079,7 +1079,7 @@ public class Inputing extends AppCompatActivity {
                     dialog.show();
                 } else {
 
-                    if (ctrValue == 4 ||ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 ) {
+                    if (ctrValue == 4 ||ctrValue == 6 || ctrValue == 8 || ctrValue == 10 || ctrValue == 12 || ctrValue == 14 || ctrValue == 16 || ctrValue == 18 || ctrValue == 20 || ctrValue == 22 || ctrValue == 24 || ctrValue == 26 || ctrValue == 28 || ctrValue == 30  ) {
                         // Create an AlertDialog.Builder instance
 
 

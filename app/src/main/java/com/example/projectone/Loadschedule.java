@@ -3340,97 +3340,65 @@ public class Loadschedule extends AppCompatActivity {
         String FDW = sharedPreferences.getString("UFWT", "");
 
 
-      if (sum2 >= 1 && sum2 <= 16.99) {
+        if (sum2 >= 1 && sum2 <= 20) {
             MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 17 && sum2 <= 24.99){
+        } else if (sum2 <= 30) {
             MainWire.setText("30 AT, 100 AF, 2P, 230V, 60 HZ");
-
-        }
-
-        else if (sum2 >= 25 && sum2 <= 32.99) {
+        } else if (sum2 <= 40) {
             MainWire.setText("40 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 33 && sum2 <= 40.99){
+        } else if (sum2 <= 50) {
             MainWire.setText("50 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-
-        else if (sum2 >= 41 && sum2 <= 48.99){
+        } else if (sum2 <= 60) {
             MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 49 && sum2 <= 56.99){
+        }  else if (sum2 <= 70) {
             MainWire.setText("70 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-
-        else if (sum2 >= 57 && sum2 <= 80.99){
+        } else if (sum2 <= 100) {
             MainWire.setText("100 AT, 125 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 81 && sum2 <= 100.99){
+        } else if (sum2 <= 125) {
             MainWire.setText("125 AT, 150 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 101 && sum2 <= 120.99){
+        } else if (sum2 <= 150) {
             MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 121 && sum2 <= 140.99){
+        } else if (sum2 <= 175) {
             MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 141 && sum2 <= 160.99){
+        } else if (sum2 <= 200) {
             MainWire.setText("200 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 161 && sum2 <= 180.99){
+        } else if (sum2 <= 225) {
             MainWire.setText("225 AT, 250 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 181 && sum2 <= 200.99){
+        } else if (sum2 <= 250) {
             MainWire.setText("250 AT, 250 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 201 && sum2 <= 240.99){
+        } else if (sum2 <= 300) {
             MainWire.setText("300 AT, 400 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 241 && sum2 <= 280.99){
-            MainWire.setText("350 AT, 400 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 281 && sum2 <= 320.99){
+        } else if (sum2 <= 400) {
             MainWire.setText("400 AT, 400 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 321 && sum2 <= 400.99){
+        } else if (sum2 <= 500) {
             MainWire.setText("500 AT, 600 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 401 && sum2 <= 480.99){
+        } else if (sum2 <= 600) {
             MainWire.setText("600 AT, 600 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 481 && sum2 <= 560.99){
+        } else if (sum2 <= 700) {
             MainWire.setText("700 AT, 800 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 561 && sum2 <= 640.99){
+        } else if (sum2 <= 800) {
             MainWire.setText("800 AT, 800 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 641 && sum2 <= 800.99){
+        } else if (sum2 <= 1000) {
             MainWire.setText("1000 AT, 1200 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 801 && sum2 <= 960.99){
+        } else if (sum2 <= 1200) {
             MainWire.setText("1200 AT, 1200 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 961 && sum2 <= 1280.99){
+        } else if (sum2 <= 1600) {
             MainWire.setText("1600 AT, 1600 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 1281 && sum2 <= 1600.99){
+        } else if (sum2 <= 2000) {
             MainWire.setText("2000 AT, 2000 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 1601 && sum2 <= 2000.99){
+        } else if (sum2 <= 2500) {
             MainWire.setText("2500 AT, 2500 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 2001 && sum2 <= 2400.99){
+        } else if (sum2 <= 3000) {
             MainWire.setText("3000 AT, 3000 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 2401 && sum2 <= 3200.99){
+        } else if (sum2 <= 4000) {
             MainWire.setText("4000 AT, 4000 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 3201 && sum2 <= 4000.99){
+        } else if (sum2 <= 5000) {
             MainWire.setText("5000 AT, 5000 AF, 2P, 230V, 60 HZ");
-        }
-        else if (sum2 >= 4001 && sum2 <= 4800.99){
+        }else if (sum2 <= 6000) {
             MainWire.setText("6000 AT, 6000 AF, 2P, 230V, 60 HZ");
         }
+
+
 
 
 

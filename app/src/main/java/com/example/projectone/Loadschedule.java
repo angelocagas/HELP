@@ -2990,7 +2990,13 @@ public class Loadschedule extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
                 builder.setView(dialogView)
                         .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedFeederWiresec = autoCompleteTextView.getText().toString();
+                                handleFeederWiresecondSelection(selectedFeederWiresec);
+                            }
+                        })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked Cancel button, dismiss the dialog
@@ -3024,30 +3030,9 @@ public class Loadschedule extends AppCompatActivity {
                     }
                 });
 
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the AutoCompleteTextView
-                        String selectedPipeWire = autoCompleteTextView.getText().toString();
-                        // Update the FeederWire with the new text
-                        String newTet = (" + 1 - " + selectedPipeWire + "mm\u00B2 THHN/THWN-2 Cu. Wire");
-                        // Update TextViews
-                        FeederWireSecond.setText(newTet);
-                        String topText = "USE " + FeederWire.getText().toString() + "\n"+ newTet+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
 
+//pospos
 
-                        TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
             }
         });
 
@@ -3317,6 +3302,65 @@ public class Loadschedule extends AppCompatActivity {
             }
         }
     }
+
+    private void handleFeederWiresecondSelection(String selectedFeederWiresec) {
+        String feed2 = FeederWireSecond.getText().toString();
+
+        if (feed2.startsWith(" + 1 - ")) {
+            // Extract wire size from feed
+
+            int startIndex = " + 1 - ".length();
+            int endIndex = feed2.indexOf("mm\u00B2");
+            String feedWireSizeStr = feed2.substring(startIndex, endIndex);
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize2 = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize2 = Double.parseDouble(selectedFeederWiresec);
+
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize2 < feedWireSize2) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    updateFeederWire(selectedFeederWiresec);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                } else {
+                    updateFeederWire(selectedFeederWiresec);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void updateFeederWire(String selectedFeederWiresec) {
+        // Update the FeederWire with the new text
+        String newTet = (" + 1 - " + selectedFeederWiresec + "mm\u00B2 THHN/THWN-2 Cu. Wire");
+        FeederWireSecond.setText(newTet);
+
+        // Update TextViews
+        String topText = "USE " + FeederWire.getText().toString() + "\n" + newTet + "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+        TextView[] topViews = {num2_top, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+        for (int i = 0; i < topViews.length; i++) {
+            topViews[i].setText(topText);
+        }
+    }
+
+
+
+
+
+
 
     private void sumOfLeftAndRightTop() {
         double value1 = topOneAndTwoValue;
@@ -3737,65 +3781,7 @@ public class Loadschedule extends AppCompatActivity {
     }
 
 
-   /* private void updateCountText() {
-        countTextView.setText(String.valueOf(PBMAINCTR));
 
-        // Increment the current table count again if it's less than 3
-        if (PBMAINCTR == 0) {
-            num2_ab.setText("PB-MAIN");
-            num4_ab.setText("PB-MAIN");
-            num6_ab.setText("PB-MAIN");
-            num8_ab.setText("PB-MAIN");
-            num10_ab.setText("PB-MAIN");
-            num12_ab.setText("PB-MAIN");
-            num14_ab.setText("PB-MAIN");
-            num16_ab.setText("PB-MAIN");
-            num18_ab.setText("PB-MAIN");
-            num20_ab.setText("PB-MAIN");
-            num22_ab.setText("PB-MAIN");
-            num24_ab.setText("PB-MAIN");
-            num26_ab.setText("PB-MAIN");
-            num28_ab.setText("PB-MAIN");
-            num30_ab.setText("PB-MAIN");
-            PB1.setText("PB-MAIN");
-        }
-        if (PBMAINCTR == 1) {
-            num2_ab.setText("PB-1");
-            num4_ab.setText("PB-1");
-            num6_ab.setText("PB-1");
-            num8_ab.setText("PB-1");
-            num10_ab.setText("PB-1");
-            num12_ab.setText("PB-1");
-            num14_ab.setText("PB-1");
-            num16_ab.setText("PB-1");
-            num18_ab.setText("PB-1");
-            num20_ab.setText("PB-1");
-            num22_ab.setText("PB-1");
-            num24_ab.setText("PB-1");
-            num26_ab.setText("PB-1");
-            num28_ab.setText("PB-1");
-            num30_ab.setText("PB-1");
-            PB1.setText("PB-1");
-        }
-        if (PBMAINCTR == 2) {
-            num2_ab.setText("PB-2");
-            num4_ab.setText("PB-2");
-            num6_ab.setText("PB-2");
-            num8_ab.setText("PB-2");
-            num10_ab.setText("PB-2");
-            num12_ab.setText("PB-2");
-            num14_ab.setText("PB-2");
-            num16_ab.setText("PB-2");
-            num18_ab.setText("PB-2");
-            num20_ab.setText("PB-2");
-            num22_ab.setText("PB-2");
-            num24_ab.setText("PB-2");
-            num26_ab.setText("PB-2");
-            num28_ab.setText("PB-2");
-            num30_ab.setText("PB-2");
-            PB1.setText("PB-2");
-        }
-    }*/
 
 
 

@@ -2498,7 +2498,7 @@ public class Loadschedule extends AppCompatActivity {
                                                 imageEngineerName.setAbsolutePosition(500, 150);
                                                 imageProposedProjName.setAbsolutePosition(775, 140);
                                                 imageOwner.setAbsolutePosition(1180, 140);
-                                                imageElectrical.setAbsolutePosition(2020, 130);
+                                                imageElectrical.setAbsolutePosition(1965, 130);
                                                 imageSheetNo.setAbsolutePosition(2270, 100);
                                                 imageDesignedBy.setAbsolutePosition(1800, 170);
                                                 imageCertifiedBy.setAbsolutePosition(1800, 120);
@@ -2533,8 +2533,8 @@ public class Loadschedule extends AppCompatActivity {
                                                 imageEngineerNameA3.setAbsolutePosition(245, 75);
                                                 imageProposedProjNameA3.setAbsolutePosition(445, 65);
                                                 imageOwnerA3.setAbsolutePosition(650, 65);
-                                                imageElectricalA3.setAbsolutePosition(1010, 65);
-                                                imageSheetNoA3.setAbsolutePosition(1135, 50);
+                                                imageElectricalA3.setAbsolutePosition(980, 65);
+                                                imageSheetNoA3.setAbsolutePosition(1120, 50);
                                                 imageDesignedByA3.setAbsolutePosition(890, 85);
                                                 imageCertifiedByA3.setAbsolutePosition(890, 60);
                                                 imageRevision2A3.setAbsolutePosition(890, 45);
@@ -2569,7 +2569,7 @@ public class Loadschedule extends AppCompatActivity {
                                                 imageEngineerName.setAbsolutePosition(460, 100);
                                                 imageProposedProjName.setAbsolutePosition(710, 130 - 50);
                                                 imageOwner.setAbsolutePosition(1070, 130 - 50);
-                                                imageElectrical.setAbsolutePosition(1870, 80);
+                                                imageElectrical.setAbsolutePosition(1800, 80);
                                                 imageSheetNo.setAbsolutePosition(2060, 50);
                                                 imageDesignedBy.setAbsolutePosition(1650, 100);
                                                 imageCertifiedBy.setAbsolutePosition(1650, 60);

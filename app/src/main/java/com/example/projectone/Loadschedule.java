@@ -2477,30 +2477,23 @@ public class Loadschedule extends AppCompatActivity {
 
                                         float xPosition = 0;
                                         float yPosition = 0;
+                                        // Calculate the y-coordinate relative to the top of the page
+                                        float yPositionFromTop = 0;
+
+                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
+                                        float topEdgeYPosition = 0;
 
 
 
                                         switch (paperSize.toLowerCase()) {
                                             case "a1":
-                                                if(currentTableCount == 1) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
-                                                    yPosition = 1050 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
-                                                    yPosition = 900 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+                                                    desiredHeight = (int) (pageSize.getHeight() / 2); // Make it smaller by dividing the height by ...
+                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
+                                                    yPosition = 350; // Adjust as needed
+                                                    desiredWidth = 2000;
+
 
                                                 imageEngineerName.setAbsolutePosition(500, 150);
                                                 imageProposedProjName.setAbsolutePosition(775, 140);
@@ -2529,26 +2522,13 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                             case "a3":
-                                                if(currentTableCount == 1) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2);
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                    xPosition = (pageWidth - desiredWidth) + 700;
-                                                    yPosition = 580 + (i - 1) * desiredHeight; // Adjust as needed
+                                                // Adjust as needed
+                                                desiredWidth = 1100;
+                                                desiredHeight = (int) (pageSize.getHeight() / 1.8);
+                                                xPosition = (pageWidth - desiredWidth);
+                                                yPosition = 150; // Adjust as needed
 
-                                                }else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2);
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                    xPosition = (pageWidth - desiredWidth) + 700;
-                                                    yPosition = 450 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth());
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5);
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+
 
                                                 imageEngineerNameA3.setAbsolutePosition(245, 75);
                                                 imageProposedProjNameA3.setAbsolutePosition(445, 65);
@@ -2577,25 +2557,14 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                             case "20x30 inches":
-                                                if(currentTableCount == 1) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
-                                                    yPosition = 1040 + (i - 1) * desiredHeight; // Adjust as needed
-                                                } else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
-                                                    yPosition = 890 + (i - 1) * desiredHeight; // Adjust as needed
-                                                } else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+                                                // Adjust as needed
+                                                desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                desiredHeight = (int) (pageSize.getHeight() / 1.8); // Make it smaller by dividing the height by ...
+                                                xPosition = (pageWidth - desiredWidth) + 880; // Center horizontally
+                                                yPosition = 300; // Adjust as needed
+                                                desiredWidth = 2000;
+
+
 
                                                 imageEngineerName.setAbsolutePosition(460, 100);
                                                 imageProposedProjName.setAbsolutePosition(710, 130 - 50);
@@ -2633,18 +2602,23 @@ public class Loadschedule extends AppCompatActivity {
                                         // Scale the image to fit the desired width and height
 
 
-                                        // Calculate the y-coordinate relative to the top of the page
-                                        float yPositionFromTop = pageHeight - yPosition;
 
-                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
-                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
 
-                                        relaImage.scaleAbsolute(2000, desiredHeight);
+                                        relaImage.scaleAbsolute(desiredWidth, desiredHeight);
+                                        relaImage.setAbsolutePosition(xPosition, yPosition);
+
+
+
 
                                         // Add the RelativeLayout image to the PDF
 
                                         document.add(relaImage);
                                         if (currentTableCount > 0) {
+                                            xPosition = 0;
+                                            yPosition = 0;
+                                            yPositionFromTop = 0;
+                                            topEdgeYPosition = 0;
+
                                             document.newPage();
                                         }
 

@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
-        android:text="Add Loadschedule Name"
+        android:text="Add Panel Board name"
         android:textStyle="bold"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:hint="PB - Main"
+            android:hint="Please enter a Panel Board name"
             android:id="@+id/editTextLoadname"/>
 
 

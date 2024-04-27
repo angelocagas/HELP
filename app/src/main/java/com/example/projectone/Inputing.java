@@ -487,6 +487,28 @@ public class Inputing extends AppCompatActivity {
                     MMPlus.setText("20");
                     AT.setText("20");
 
+                    Quantity.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if (!s.toString().isEmpty()) {
+                                int input = Integer.parseInt(s.toString());
+                                if (input < 1 || input > 20) {
+                                    Quantity.setError("Input must be between 1 and 20");
+                                    next.setEnabled(false);
+                                } else {
+                                    Quantity.setError(null);
+                                    next.setEnabled(true);
+                                }
+                            }
+                        }
+                    });
+
                     break;
                 case "Range":
                 MMPlus.setText("20");

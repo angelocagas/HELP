@@ -2528,11 +2528,23 @@ public class Loadschedule extends AppCompatActivity {
                                                 xPosition = (pageWidth - desiredWidth);
                                                 yPosition = 150; // Adjust as needed
 
+                                                // Divide each image's width and height by 2 to scale them down
+                                                imageEngineerNameA3.scaleAbsolute(imageEngineerNameA3.getWidth() / 2, imageEngineerNameA3.getHeight() / 2);
+                                                imageProposedProjNameA3.scaleAbsolute(imageProposedProjNameA3.getWidth() / 2, imageProposedProjNameA3.getHeight() / 2);
+                                                imageOwnerA3.scaleAbsolute(imageOwnerA3.getWidth() / 2, imageOwnerA3.getHeight() / 2);
+                                                imageElectricalA3.scaleAbsolute(imageElectricalA3.getWidth() / 2, imageElectricalA3.getHeight() / 2);
+                                                imageSheetNoA3.scaleAbsolute(imageSheetNoA3.getWidth() / 2, imageSheetNoA3.getHeight() / 2);
+                                                imageDesignedByA3.scaleAbsolute(imageDesignedByA3.getWidth() / 2, imageDesignedByA3.getHeight() / 2);
+                                                imageCertifiedByA3.scaleAbsolute(imageCertifiedByA3.getWidth() / 2, imageCertifiedByA3.getHeight() / 2);
+                                                imageRevision2A3.scaleAbsolute(imageRevision2A3.getWidth() / 2, imageRevision2A3.getHeight() / 2);
+                                                imageAddressA3.scaleAbsolute(imageAddressA3.getWidth() / 2, imageAddressA3.getHeight() / 2);
+                                                imageLocationA3.scaleAbsolute((float) (imageLocationA3.getWidth() / 1.8), (float) (imageLocationA3.getHeight() / 1.8));
 
 
-                                                imageEngineerNameA3.setAbsolutePosition(245, 75);
-                                                imageProposedProjNameA3.setAbsolutePosition(445, 65);
-                                                imageOwnerA3.setAbsolutePosition(650, 65);
+
+                                                imageEngineerNameA3.setAbsolutePosition(250, 75);
+                                                imageProposedProjNameA3.setAbsolutePosition(400, 65);
+                                                imageOwnerA3.setAbsolutePosition(600, 65);
                                                 imageElectricalA3.setAbsolutePosition(980, 65);
                                                 imageSheetNoA3.setAbsolutePosition(1120, 50);
                                                 imageDesignedByA3.setAbsolutePosition(890, 85);

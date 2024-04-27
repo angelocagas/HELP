@@ -19,8 +19,8 @@
             android:fontFamily="@font/roboto_light"
             android:text="Engineer Name"
             android:gravity="center"
-            android:textColor="@color/black"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="6sp" />
 
         <TextView
@@ -74,6 +74,8 @@
             android:id="@+id/tvRevision1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
             android:text="Revision 1" />
 
         <TextView
@@ -141,7 +143,7 @@
 
         <TextView
             android:id="@+id/tvEngineerNameA3"
-            android:layout_width="wrap_content"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:text="Engineer Name"
@@ -152,7 +154,7 @@
 
         <TextView
             android:id="@+id/tvProposedProjNameA3"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:gravity="center"
@@ -174,7 +176,7 @@
 
         <TextView
             android:id="@+id/tvOwnerA3"
-            android:layout_width="wrap_content"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:gravity="center"
@@ -235,21 +237,24 @@
 
         <TextView
             android:id="@+id/tvElectricalA3"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:text="Electrical"
+            android:maxLines="2"
+            android:gravity="center"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="6sp" />
 
         <TextView
             android:id="@+id/tvSheetNoA3"
-            android:layout_width="wrap_content"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:text="Sheet No"
             android:gravity="center"
+            android:maxLength="2"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="6sp" />

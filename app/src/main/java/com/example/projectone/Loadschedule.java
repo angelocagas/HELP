@@ -6,6 +6,7 @@ import static android.view.View.VISIBLE;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -91,6 +93,9 @@ import android.view.View;
 
 public class Loadschedule extends AppCompatActivity {
 
+    private static final String PREFS_NAME = "MyPrefsFile";
+
+
     private double totalValue = 0.0;
 
     private double topOneAndTwoValue;
@@ -113,6 +118,8 @@ public class Loadschedule extends AppCompatActivity {
     private float mLastTouchY;
     /* ------------ for next ls --------- */
     private int currentTableCount = 0;
+    private int PBMAINCTR = 0;
+    private TextView countTextView;
     private DatabaseHelper databaseHelper;
     DecimalFormat df = new DecimalFormat("#.##");
     String lastDemand = null;
@@ -121,7 +128,7 @@ public class Loadschedule extends AppCompatActivity {
     List<ProjectTable> projectTableList;
 
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    TextView Pipetype, demandfactor1, demandfactor2, num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14, num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22, num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28, num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30, num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB, LAWEHIGHA, SAVEHIGHA, LAWEA, SaveA, UpdatedMainWire, FeederSize, FeederWireSecond, FeederWireThird, FeederWireFourth, FeederWire, MainWire, totalone, totalVATextView, totalATextView, HighestA, HighestB, TotalB, UnderOneAndTwo, UnderThreeAndFour, TotalUnder, TopOneAndTwo, TopThreeAndFour, TotalTop;
+    TextView num2_a1,num2_a2,num2_1,num2_2,num2_a,num2_ab,num2_top,num2_bot,PB1,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab, Pipetype, demandfactor1, demandfactor2, num8_4, num6_2, num6_3, num6_4, num6_5, num6_6, num8_1, num8_2, num8_3, num8_5, num8_6, num8_7, num8_8, num10_1, num10_2, num10_3, num10_4, num10_5, num10_6, num10_7, num10_8, num10_9, num10_10, num6_1, num12_1, num12_2, num12_3, num12_4, num12_5, num12_6, num12_7, num12_8, num12_9, num12_10, num12_11, num12_12, num14_1, num14_2, num14_3, num14_4, num14_5, num14_6, num14_7, num14_8, num14_9, num14_10, num14_11, num14_12, num14_13, num14_14, num16_1, num16_2, num16_3, num16_4, num16_5, num16_6, num16_7, num16_8, num16_9, num16_10, num16_11, num16_12, num16_13, num16_14, num16_15, num16_16, num18_1, num18_2, num18_3, num18_4, num18_5, num18_6, num18_7, num18_8, num18_9, num18_10, num18_11, num18_12, num18_13, num18_14, num18_15, num18_16, num18_17, num18_18, num20_1, num20_2, num20_3, num20_4, num20_5, num20_6, num20_7, num20_8, num20_9, num20_10, num20_11, num20_12, num20_13, num20_14, num20_15, num20_16, num20_17, num20_18, num20_19, num20_20, num22_1, num22_2, num22_3, num22_4, num22_5, num22_6, num22_7, num22_8, num22_9, num22_10, num22_11, num22_12, num22_13, num22_14, num22_15, num22_16, num22_17, num22_18, num22_19, num22_20, num22_21, num22_22, num24_1, num24_2, num24_3, num24_4, num24_5, num24_6, num24_7, num24_8, num24_9, num24_10, num24_11, num24_12, num24_13, num24_14, num24_15, num24_16, num24_17, num24_18, num24_19, num24_20, num24_21, num24_22, num24_23, num24_24, num26_1, num26_2, num26_3, num26_4, num26_5, num26_6, num26_7, num26_8, num26_9, num26_10, num26_11, num26_12, num26_13, num26_14, num26_15, num26_16, num26_17, num26_18, num26_19, num26_20, num26_21, num26_22, num26_23, num26_24, num26_25, num26_26, num28_1, num28_2, num28_3, num28_4, num28_5, num28_6, num28_7, num28_8, num28_9, num28_10, num28_11, num28_12, num28_13, num28_14, num28_15, num28_16, num28_17, num28_18, num28_19, num28_20, num28_21, num28_22, num28_23, num28_24, num28_25, num28_26, num28_27, num28_28, num30_1, num30_2, num30_3, num30_4, num30_5, num30_6, num30_7, num30_8, num30_9, num30_10, num30_11, num30_12, num30_13, num30_14, num30_15, num30_16, num30_17, num30_18, num30_19, num30_20, num30_21, num30_22, num30_23, num30_24, num30_25, num30_26, num30_27, num30_28, num30_29, num30_30, num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot, num4_bot, num4_1, num4_2, num4_3, num4_4, num4_a1, num4_a2, num4_a3, num4_a4, num6_a1, num6_a2, num6_a3, num6_a4, num6_a5, num6_a6, num8_a1, num8_a2, num8_a3, num8_a4, num8_a5, num8_a6, num8_a7, num8_a8, num10_a1, num10_a2, num10_a3, num10_a4, num10_a5, num10_a6, num10_a7, num10_a8, num10_a9, num10_a10, num12_a1, num12_a2, num12_a3, num12_a4, num12_a5, num12_a6, num12_a7, num12_a8, num12_a9, num12_a10, num12_a11, num12_a12, num14_a1, num14_a2, num14_a3, num14_a4, num14_a5, num14_a6, num14_a7, num14_a8, num14_a9, num14_a10, num14_a11, num14_a12, num14_a13, num14_a14, num16_a1, num16_a2, num16_a3, num16_a4, num16_a5, num16_a6, num16_a7, num16_a8, num16_a9, num16_a10, num16_a11, num16_a12, num16_a13, num16_a14, num16_a15, num16_a16, num18_a1, num18_a2, num18_a3, num18_a4, num18_a5, num18_a6, num18_a7, num18_a8, num18_a9, num18_a10, num18_a11, num18_a12, num18_a13, num18_a14, num18_a15, num18_a16, num18_a17, num18_a18, num20_a1, num20_a2, num20_a3, num20_a4, num20_a5, num20_a6, num20_a7, num20_a8, num20_a9, num20_a10, num20_a11, num20_a12, num20_a13, num20_a14, num20_a15, num20_a16, num20_a17, num20_a18, num20_a19, num20_a20, num22_a1, num22_a2, num22_a3, num22_a4, num22_a5, num22_a6, num22_a7, num22_a8, num22_a9, num22_a10, num22_a11, num22_a12, num22_a13, num22_a14, num22_a15, num22_a16, num22_a17, num22_a18, num22_a19, num22_a20, num22_a21, num22_a22, num24_a1, num24_a2, num24_a3, num24_a4, num24_a5, num24_a6, num24_a7, num24_a8, num24_a9, num24_a10, num24_a11, num24_a12, num24_a13, num24_a14, num24_a15, num24_a16, num24_a17, num24_a18, num24_a19, num24_a20, num24_a21, num24_a22, num24_a23, num24_a24, num26_a1, num26_a2, num26_a3, num26_a4, num26_a5, num26_a6, num26_a7, num26_a8, num26_a9, num26_a10, num26_a11, num26_a12, num26_a13, num26_a14, num26_a15, num26_a16, num26_a17, num26_a18, num26_a19, num26_a20, num26_a21, num26_a22, num26_a23, num26_a24, num26_a25, num26_a26, num28_a1, num28_a2, num28_a3, num28_a4, num28_a5, num28_a6, num28_a7, num28_a8, num28_a9, num28_a10, num28_a11, num28_a12, num28_a13, num28_a14, num28_a15, num28_a16, num28_a17, num28_a18, num28_a19, num28_a20, num28_a21, num28_a22, num28_a23, num28_a24, num28_a25, num28_a26, num28_a27, num28_a28, num30_a1, num30_a2, num30_a3, num30_a4, num30_a5, num30_a6, num30_a7, num30_a8, num30_a9, num30_a10, num30_a11, num30_a12, num30_a13, num30_a14, num30_a15, num30_a16, num30_a17, num30_a18, num30_a19, num30_a20, num30_a21, num30_a22, num30_a23, num30_a24, num30_a25, num30_a26, num30_a27, num30_a28, num30_a29, num30_a30, CTRtv, FEEDERWIREPASS, MAINWIREPASS, LAWEHIGHB, SAVEHIGHB, LAWEHIGHA, SAVEHIGHA, LAWEA, SaveA, UpdatedMainWire, FeederSize, FeederWireSecond, FeederWireThird, FeederWireFourth, FeederWire, MainWire, totalone, totalVATextView, totalATextView, HighestA, HighestB, TotalB, UnderOneAndTwo, UnderThreeAndFour, TotalUnder, TopOneAndTwo, TopThreeAndFour, TotalTop;
 
     RelativeLayout aaaa, RS30;
 
@@ -165,10 +172,14 @@ public class Loadschedule extends AppCompatActivity {
         demandfactor1 = findViewById(R.id.demandfactor1);
         demandfactor2 = findViewById(R.id.demandfactor2);
         Pipetype = findViewById(R.id.Pipetype);
-
+        PB1 = findViewById(R.id.PB1);
 
         // Call the method to get all items list
         ///   databaseHelper.getAllItemsList();
+        num2_1 = findViewById(R.id.num2_1);
+        num2_2 = findViewById(R.id.num2_2);
+
+
 
         num4_1 = findViewById(R.id.num4_1);
         num4_2 = findViewById(R.id.num4_2);
@@ -430,6 +441,9 @@ public class Loadschedule extends AppCompatActivity {
         num30_29 = findViewById(R.id.num30_29);
         num30_30 = findViewById(R.id.num30_30);
 
+        num2_a1 = findViewById(R.id.num2_a1);
+        num2_a2 = findViewById(R.id.num2_a2);
+
         num4_a1 = findViewById(R.id.num4_a1);
         num4_a2 = findViewById(R.id.num4_a2);
         num4_a3 = findViewById(R.id.num4_a3);
@@ -682,7 +696,7 @@ public class Loadschedule extends AppCompatActivity {
         num30_a29 = findViewById(R.id.num30_a29);
         num30_a30 = findViewById(R.id.num30_a30);
 
-
+        num2_a = findViewById(R.id.num2_a);
         num4_a = findViewById(R.id.num4_a);
         num6_a = findViewById(R.id.num6_a);
         num8_a = findViewById(R.id.num8_a);
@@ -697,8 +711,23 @@ public class Loadschedule extends AppCompatActivity {
         num26_a = findViewById(R.id.num26_a);
         num28_a = findViewById(R.id.num28_a);
         num30_a = findViewById(R.id.num30_a);
+        num2_ab = findViewById(R.id.num2_ab);
+        num4_ab = findViewById(R.id.num4_ab);
+        num6_ab = findViewById(R.id.num6_ab);
+        num8_ab = findViewById(R.id.num8_ab);
+        num10_ab = findViewById(R.id.num10_ab);
+        num12_ab = findViewById(R.id.num12_ab);
+        num14_ab = findViewById(R.id.num14_ab);
+        num16_ab = findViewById(R.id.num16_ab);
+        num18_ab = findViewById(R.id.num18_ab);
+        num20_ab = findViewById(R.id.num20_ab);
+        num22_ab = findViewById(R.id.num22_ab);
+        num24_ab = findViewById(R.id.num24_ab);
+        num26_ab = findViewById(R.id.num26_ab);
+        num28_ab = findViewById(R.id.num28_ab);
+        num30_ab = findViewById(R.id.num30_ab);
 
-
+        num2_top = findViewById(R.id.num2_top);
         num4_top = findViewById(R.id.num4_top);
         num6_top = findViewById(R.id.num6_top);
         num8_top = findViewById(R.id.num8_top);
@@ -713,7 +742,7 @@ public class Loadschedule extends AppCompatActivity {
         num26_top = findViewById(R.id.num26_top);
         num28_top = findViewById(R.id.num28_top);
         num30_top = findViewById(R.id.num30_top);
-
+        num2_bot = findViewById(R.id.num2_bot);
         num4_bot = findViewById(R.id.num4_bot);
         num6_bot = findViewById(R.id.num6_bot);
         num8_bot = findViewById(R.id.num8_bot);
@@ -728,7 +757,8 @@ public class Loadschedule extends AppCompatActivity {
         num26_bot = findViewById(R.id.num26_bot);
         num28_bot = findViewById(R.id.num28_bot);
         num30_bot = findViewById(R.id.num30_bot);
-
+        countTextView = findViewById(R.id.countTextView);
+        RelativeLayout RS2 = findViewById(R.id.RS2);
         RelativeLayout RS4 = findViewById(R.id.RS4);
         RelativeLayout RS6 = findViewById(R.id.RS6);
         RelativeLayout RS8 = findViewById(R.id.RS8);
@@ -755,14 +785,10 @@ public class Loadschedule extends AppCompatActivity {
         //updated
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref", MODE_PRIVATE);
 
-        String UPDMT = sharedPreferences.getString("UMT", "");
-        String FDW = sharedPreferences.getString("UFWT", "");
-        String TT = sharedPreferences.getString("TT", "");
-        String YY = sharedPreferences.getString("YY", "");
+        SharedPreferences pref2 = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
 
 
-        Intent intent = getIntent();
 
 
         final DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -833,6 +859,11 @@ public class Loadschedule extends AppCompatActivity {
             @Override
             public void onItemsLoaded(List<String> itemSList) {
                 switch (itemSList.size()) {
+                    case 2:
+                        num2_1.setText(itemSList.get(0));
+                        num2_2.setText(itemSList.get(1));
+
+                        break;
                     case 4:
                         num4_1.setText(itemSList.get(0));
                         num4_2.setText(itemSList.get(1));
@@ -1127,6 +1158,11 @@ public class Loadschedule extends AppCompatActivity {
             public void onItemsLoaded(List<String> ASList) {
                 if (ASList != null) {
                     switch (ASList.size()) {
+                        case 2:
+                            num2_a1.setText(ASList.get(0));
+                            num2_a2.setText(ASList.get(1));
+
+                            break;
                         case 4:
                             num4_a1.setText(ASList.get(0));
                             num4_a2.setText(ASList.get(1));
@@ -1421,7 +1457,26 @@ public class Loadschedule extends AppCompatActivity {
             public void onItemsLoaded(List<String> TSList) {
                 if (TSList != null) {
                     switch (TSList.size()) {
+                        case 2:
+                            RS2.setVisibility(View.VISIBLE);
+                            RS4.setVisibility(GONE);
+                            RS6.setVisibility(GONE);
+                            RS8.setVisibility(GONE);
+                            RS10.setVisibility(GONE);
+                            RS12.setVisibility(GONE);
+                            RS14.setVisibility(GONE);
+                            RS16.setVisibility(GONE);
+                            RS18.setVisibility(GONE);
+                            RS20.setVisibility(GONE);
+                            RS22.setVisibility(GONE);
+                            RS24.setVisibility(GONE);
+                            RS26.setVisibility(GONE);
+                            RS28.setVisibility(GONE);
+                            RS30.setVisibility(GONE);
+
+                            break;
                         case 4:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(View.VISIBLE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1439,6 +1494,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 6:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(View.VISIBLE);
                             RS8.setVisibility(GONE);
@@ -1457,6 +1513,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 8:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(View.VISIBLE);
@@ -1475,6 +1532,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 10:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1494,6 +1552,7 @@ public class Loadschedule extends AppCompatActivity {
                             break;
 
                         case 12:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1511,6 +1570,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 14:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1529,6 +1589,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 16:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1547,6 +1608,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 18:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1565,6 +1627,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 20:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1583,6 +1646,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 22:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1600,6 +1664,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 24:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1617,6 +1682,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 26:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1634,6 +1700,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 28:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1652,6 +1719,7 @@ public class Loadschedule extends AppCompatActivity {
 
                             break;
                         case 30:
+                            RS2.setVisibility(GONE);
                             RS4.setVisibility(GONE);
                             RS6.setVisibility(GONE);
                             RS8.setVisibility(GONE);
@@ -1679,471 +1747,12 @@ public class Loadschedule extends AppCompatActivity {
         });
 
 
-        if (intent != null) {
-            String totalA = intent.getStringExtra("TOTALA");
-            String HIGHA = intent.getStringExtra("HIGHA");
-            String Wiretype = intent.getStringExtra("WFG");
-            String PVCUPDATED = intent.getStringExtra("NUMPVC");
-            String WFGTYPE = intent.getStringExtra("WFG");
-            // Retrieving demand and mainpipe values from Intent
-            String demand = intent.getStringExtra("DEMAND");
-            String mainpipe = intent.getStringExtra("mainpipo");
 
-// Retrieving saved demand value from SharedPreferences
-            SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-            String savedDemand = preferences.getString("demand", null);
 
-            // Retrieving saved mainpipe value from SharedPreferences
-            String savedMainpipe = preferences.getString("mainpipe", null);
 
-// Using the retrieved demand value
-            if (demand != null) {
-                // If demand is provided in the intent, use it
-                demandfactor1.setText(demand);
-                demandfactor2.setText(demand);
-            } else if (savedDemand != null) {
-                // If demand is not provided in the intent but was previously saved in SharedPreferences, use the saved value
-                demandfactor1.setText(savedDemand);
-                demandfactor2.setText(savedDemand);
-            } else {
-                // If neither the demand is provided in the intent nor a saved value is available, set default values or handle the case as needed
-                demandfactor1.setText("0.80");
-                demandfactor2.setText("0.80");
-            }
 
-// Using the retrieved mainpipe value
-            if (mainpipe != null) {
-                // If mainpipe is provided in the intent, use it
-                Pipetype.setText(mainpipe);
-            } else if (savedMainpipe != null) {
-                // If mainpipe is not provided in the intent but was previously saved in SharedPreferences, use the saved value
-                Pipetype.setText(savedMainpipe);
-            } else {
-                // If neither the mainpipe is provided in the intent nor a saved value is available, set a default value or handle the case as needed
-                Pipetype.setText("IMC PIPE");
-            }
 
-            if (totalA == null && HIGHA == null) {
-                FeederSize.setText(TT);
-                UpdatedMainWire.setText(YY);
-                MainWire.setText(UPDMT);
 
-
-
-
-
-
-            }
-            // Assuming lastDemand is a class-level variable to store the last non-null demand value
-
-
-
-
-            if (PVCUPDATED != null) {
-                FeederWireFourth.setText(PVCUPDATED);
-            }
-
-        }
-
-
-        double demand = Double.parseDouble(demandfactor1.getText().toString());
-
-        double totalOneValue = totalValue;
-
-
-        double topOneAndTwoValue = totalOneValue * demand;
-
-
-        /* double highestAValue = Double.parseDouble(HighestA.getText().toString());
-        double topThreeAndFourValue = highestAValue * 0.25;
-        topThreeAndFourValue = Math.round(topThreeAndFourValue * 100.0) / 100.0;
-        String formattedResulttwo = decimalFormat.format(topThreeAndFourValue);
-        TopThreeAndFour.setText(formattedResulttwo); */
-
-       /* double totalTopValue = topOneAndTwoValue + topThreeAndFourValue;
-        totalTopValue = Math.round(totalTopValue * 100.0) / 100.0;
-        String formattedResultFinalTop = decimalFormat.format(totalTopValue);
-        TotalTop.setText(formattedResultFinalTop);  */
-
-       /* double totalBValue = Double.parseDouble(TotalB.getText().toString());
-        double underOneAndTwoValue = totalBValue * demand;
-        underOneAndTwoValue = Math.round(underOneAndTwoValue * 100.0) / 100.0;
-        String formattedResultUnderOneAndTwo = decimalFormat.format(underOneAndTwoValue);
-        UnderOneAndTwo.setText(formattedResultUnderOneAndTwo);
-
-        double highestBValue = Double.parseDouble(HighestB.getText().toString());
-        double underThreeAndFourValue = highestBValue * 1.5;
-        underThreeAndFourValue = Math.round(underThreeAndFourValue * 100.0) / 100.0;
-        String formattedResultUnderThreeAndFour = decimalFormat.format(underThreeAndFourValue);
-        UnderThreeAndFour.setText(formattedResultUnderThreeAndFour);*/
-
-        /*double totalUnderValue = underOneAndTwoValue + underThreeAndFourValue;
-        totalUnderValue = Math.round(totalUnderValue * 100.0) / 100.0;
-        String formattedResultTotalUnder = decimalFormat.format(totalUnderValue);
-        TotalUnder.setText(formattedResultTotalUnder);*/
-
-
-
-
-        //display for skel
-
-        String fullText = MainWire.getText().toString();
-        String desiredSubstring;
-
-// Assuming "175 AT" always appears at the beginning of the text and followed by a comma
-        int commaIndex = fullText.indexOf(',');
-        if (commaIndex != -1) {
-            desiredSubstring = fullText.substring(0, commaIndex);
-        } else {
-            // If there's no comma, simply take the whole text
-            desiredSubstring = fullText;
-        }
-
-        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
-
-        for (int i = 0; i < numViews.length; i++) {
-            numViews[i].setText(desiredSubstring + ", 2P ");
-        }
-
-//first update
-
-
-        FeederWire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
-
-                // Define your list of feed options
-                String[] feedOptions = new String[]{"2.0", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80"};
-
-                // Create ArrayAdapter to hold suggestions
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
-
-                // Set the adapter to AutoCompleteTextView
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Enable OK button when an item is selected
-                        positiveButton.setEnabled(true);
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the selected item from the AutoCompleteTextView
-                        String selectedFeederWire = autoCompleteTextView.getText().toString();
-
-                        // Update the FeederWire with the new text
-                        FeederWire.setText("2 - " + selectedFeederWire + "mm.sq. THHN Cu. Wire ");
-
-                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-//second feeder wire update
-        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
-
-                // Define your list of pipe wire options
-                String[] pipeWireOptions = new String[]{"8", "14", "22", "30", "50", "60"};
-
-                // Create ArrayAdapter to hold options
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        positiveButton.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the AutoCompleteTextView
-                        String selectedPipeWire = autoCompleteTextView.getText().toString();
-                        // Update the FeederWire with the new text
-                        String newTet = ("+ 1 - " + selectedPipeWire + " mm.sq. THHN Cu. Wire");
-                        // Update TextViews
-                        FeederWireSecond.setText(newTet);
-                        String topText = "USE " + FeederWire.getText().toString() + newTet + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
-                        String botText = "GEC: " + newTet;
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-                        TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                            botViews[i].setText(botText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-//last feeder wire
-        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextView
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
-
-                // Find the AutoCompleteTextView in the inflated layout
-                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
-
-                // Define your list of feeder wire options
-                String[] feederWireOptions = new String[]{"2", "3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80", "100", "125", "150", "175", "200", "250"};
-
-                // Create ArrayAdapter to hold options
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
-                autoCompleteTextView.setAdapter(adapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update Feeder Wire")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        positiveButton.setEnabled(s.toString().trim().length() > 0);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the selected item from the AutoCompleteTextView
-                        String selectedFeederWire = autoCompleteTextView.getText().toString();
-                        // Update the FeederWire with the new text
-                        FeederWireFourth.setText(" (G)In " + selectedFeederWire + " mmø");
-
-                        String topText = "USE " + FeederWire.getText().toString() + FeederWireSecond.getText().toString() + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
-
-                        TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-
-                        for (int i = 0; i < topViews.length; i++) {
-                            topViews[i].setText(topText);
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
-
-
-// main  wire update
-        //last main wire update
-        MainWire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inflate the layout containing the AutoCompleteTextViews
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
-
-                // Find the AutoCompleteTextViews in the inflated layout
-                final AutoCompleteTextView ATWire = dialogView.findViewById(R.id.auto_complete_AT_wire);
-                final AutoCompleteTextView AFWire = dialogView.findViewById(R.id.auto_complete_AF_wire);
-
-                // Define your list of AT and AF wire options
-                String[] ATOptions = new String[]{"20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "125", "150", "175"};
-                String[] AFOptions = new String[]{"50", "100", "225"};
-
-                // Create ArrayAdapters to hold options
-                ArrayAdapter<String> ATAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, ATOptions);
-                ArrayAdapter<String> AFAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, AFOptions);
-                ATWire.setAdapter(ATAdapter);
-                AFWire.setAdapter(AFAdapter);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-                builder.setView(dialogView)
-                        .setTitle("Update AT and AF")
-                        .setPositiveButton("OK", null) // Set null initially, we'll enable/disable it later
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User clicked Cancel button, dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-
-                // Get the button from the dialog after it's shown
-                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-                // Set initial state for the OK button
-                positiveButton.setEnabled(false);
-
-                // Set a listener to enable/disable the OK button based on text input
-                TextWatcher watcher = new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // Enable/disable OK button based on whether there is text entered
-                        String ATText = ATWire.getText().toString().trim();
-                        String AFText = AFWire.getText().toString().trim();
-                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                };
-
-                ATWire.addTextChangedListener(watcher);
-                AFWire.addTextChangedListener(watcher);
-
-                // Disable AF input based on the selected AT value
-                ATWire.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedAT = ATWire.getText().toString();
-                        if (selectedAT.equals("20") || selectedAT.equals("30") || selectedAT.equals("40") || selectedAT.equals("50"))
-                            AFWire.setText("50");
-                        else if (selectedAT.equals("60") || selectedAT.equals("70") || selectedAT.equals("80") || selectedAT.equals("90") || selectedAT.equals("100"))
-                            AFWire.setText("100");
-                        else
-                            AFWire.setText("225");
-
-                        // Disable AF input
-                        AFWire.setEnabled(false);
-                    }
-                });
-
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Get the text from the AutoCompleteTextViews
-                        String AT = ATWire.getText().toString();
-                        String AF = AFWire.getText().toString();
-                        // Update the MainWire with the new text
-                        String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 HZ");
-                        // Update TextViews
-                        MainWire.setText(newAfAt);
-
-                        TextView[] numViews = {num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
-
-                        for (int i = 0; i < numViews.length; i++) {
-                            numViews[i].setText(AT + " AT" + ", 2P ");
-                        }
-
-                        // Dismiss the dialog after OK button is clicked
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
 
 
 
@@ -2241,9 +1850,12 @@ public class Loadschedule extends AppCompatActivity {
             if (disableMenuItem) {
                 Toast.makeText(getApplicationContext(), "You cannot add more circuits because you have reached the maximum limit of 30.", Toast.LENGTH_SHORT).show();
                 item.setEnabled(false);
-            }else{
-                onBackPressed();
+            }else {
+                // Start the InputActivity
+                Intent intent = new Intent(this, Inputing.class);
+                startActivity(intent);
             }
+            return true;
         }
 
 
@@ -2302,7 +1914,6 @@ public class Loadschedule extends AppCompatActivity {
             dialog.show();
         }
 
-        /* -------------------------- END OF PRINT ---------------------- */
 
 
         /* -------------------------- START OF NEXT LOAD SCHEDULE ---------------------- */
@@ -2310,67 +1921,39 @@ public class Loadschedule extends AppCompatActivity {
 // Initialize currentTableCount from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         currentTableCount = prefs.getInt("currentTableCount", 0);
+
+
+
+
+
         if (id == R.id.nextLS) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
-            LayoutInflater inflater = Loadschedule.this.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.dialog_choose_main_pipe, null);
-            final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.autoCompletepipe);
 
-            // Set up AutoCompleteTextView with options
-            String[] mainPipeOptions = {"EMT", "PVC", "IMC", "LTFMC"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, mainPipeOptions);
-            autoCompleteTextView.setAdapter(adapter);
 
-            builder.setView(dialogView)
-                    .setTitle("Choose Main Pipe")
-                    .setPositiveButton("OK", null) // Initially set to null
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing if canceled
-                        }
-                    });
-            final AlertDialog dialog = builder.create();
-
-            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                @Override
-                public void onShow(DialogInterface dialogInterface) {
-                    Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                    positiveButton.setEnabled(false); // Initially disable the OK button
-
-                    autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            positiveButton.setEnabled(!TextUtils.isEmpty(autoCompleteTextView.getText().toString()));
-                        }
-                    });
-
-                    positiveButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String selectedMainPipe = autoCompleteTextView.getText().toString();
                             if (currentTableCount < 3) {
                                 // Increment the current table count
+
                                 currentTableCount++;
                                 Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
+
+                                PBMAINCTR++;
 
                                 // Save the updated currentTableCount using SharedPreferences
                                 SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
                                 editor.putInt("currentTableCount", currentTableCount);
                                 editor.apply();
 
+
+
+
+
+
+
                                 // Capture the contents of RelativeLayout and save as images in SharedPreferences
                                 captureRelativeLayoutAsImage();
                             }
 
                             if (currentTableCount != 3) {
-                                // Increment the current table count again if it's less than 3
+
 
 
                                 Log.d("Debug", "Current table count: " + currentTableCount); // Debugging statement
@@ -2384,7 +1967,6 @@ public class Loadschedule extends AppCompatActivity {
                                 // For example, to start a new activity for inputting data
                                 Intent intent = new Intent(Loadschedule.this, Inputing.class);
                                 intent.putExtra("currentTableCount", currentTableCount); // Pass currentTableCount as an extra
-                                intent.putExtra("mainPipe", selectedMainPipe);
                                 startActivity(intent);
                                 databaseHelper.clearTable();
 
@@ -2394,14 +1976,10 @@ public class Loadschedule extends AppCompatActivity {
                                 Toast.makeText(Loadschedule.this, "Maximum number of tables reached", Toast.LENGTH_SHORT).show();
                                 // You can handle the maximum limit scenario here
                             }
-                            dialog.dismiss();
-                        }
-                    });
 
-                }
-            });
 
-            dialog.show();
+
+
         }
 
 
@@ -2431,6 +2009,8 @@ public class Loadschedule extends AppCompatActivity {
 
 // Update the currentTableCount variable to reflect the change
                     currentTableCount = 0;
+                    PBMAINCTR= 0;
+
 
                     Toast.makeText(Loadschedule.this, "Project discarded", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Loadschedule.this, com.example.projectone.Menu.class);
@@ -2709,54 +2289,7 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                 // Add image to PDF based on paper size
-                                try {
 
-
-                                    // Get the image from drawable resources
-                                    int id;
-                                    if ("20x30 inches".equals(paperSize)) {
-                                        id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
-                                    } else {
-                                        id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
-                                    }
-                                    if (id != 0) {
-                                        BitmapFactory.Options options = new BitmapFactory.Options();
-                                        options.inJustDecodeBounds = true;
-                                        BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        // Compute the inSampleSize
-                                        options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
-                                        options.inJustDecodeBounds = false;
-
-                                        // Decode the image with calculated inSampleSize
-                                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
-
-                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                        Image image = Image.getInstance(stream.toByteArray());
-
-                                        if ("20x30 inches".equals(paperSize)) {
-                                            // Scale the image to cover the whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0, 0);
-                                        } else {
-                                            // Scale the image to cover the whole page and set position to bottom-left corner
-                                            float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
-                                            float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
-
-                                            image.scalePercent(widthPercentage, heightPercentage);
-                                            image.setAbsolutePosition(0, 0);
-                                        }
-
-                                        // Add the image to the document
-                                        document.add(image);
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
 
                                 // Retrieve RelativeLayout images from SharedPreferences and add them to the PDF
                                 SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -2766,6 +2299,54 @@ public class Loadschedule extends AppCompatActivity {
                                     String relaImageBase64 = prefs.getString(keyRela, null);
 
                                     if (relaImageBase64 != null) {
+                                        try {
+
+
+                                            // Get the image from drawable resources
+                                            int id;
+                                            if ("20x30 inches".equals(paperSize)) {
+                                                id = getResources().getIdentifier("a20x30border", "drawable", getPackageName());
+                                            } else {
+                                                id = getResources().getIdentifier(paperSize.toLowerCase() + "border", "drawable", getPackageName());
+                                            }
+                                            if (id != 0) {
+                                                BitmapFactory.Options options = new BitmapFactory.Options();
+                                                options.inJustDecodeBounds = true;
+                                                BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                // Compute the inSampleSize
+                                                options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
+                                                options.inJustDecodeBounds = false;
+
+                                                // Decode the image with calculated inSampleSize
+                                                Bitmap bmp = BitmapFactory.decodeResource(getResources(), id, options);
+
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                                Image image = Image.getInstance(stream.toByteArray());
+
+                                                if ("20x30 inches".equals(paperSize)) {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 150;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 66;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                } else {
+                                                    // Scale the image to cover the whole page and set position to bottom-left corner
+                                                    float widthPercentage = (pageSize.getWidth() / image.getWidth()) * 140;
+                                                    float heightPercentage = (pageSize.getHeight() / image.getHeight()) * 70;
+
+                                                    image.scalePercent(widthPercentage, heightPercentage);
+                                                    image.setAbsolutePosition(0, 0);
+                                                }
+
+                                                // Add the image to the document
+                                                document.add(image);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                         byte[] relaImageBytes = Base64.decode(relaImageBase64, Base64.DEFAULT);
 
                                         // Convert bytes to Bitmap
@@ -2896,35 +2477,28 @@ public class Loadschedule extends AppCompatActivity {
 
                                         float xPosition = 0;
                                         float yPosition = 0;
+                                        // Calculate the y-coordinate relative to the top of the page
+                                        float yPositionFromTop = 0;
+
+                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
+                                        float topEdgeYPosition = 0;
 
 
 
                                         switch (paperSize.toLowerCase()) {
                                             case "a1":
-                                                if(currentTableCount == 1) {
                                                     // Adjust as needed
                                                     desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
-                                                    yPosition = 1050 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1500; // Center horizontally
-                                                    yPosition = 900 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 750 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+                                                    desiredHeight = (int) (pageSize.getHeight() / 2); // Make it smaller by dividing the height by ...
+                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
+                                                    yPosition = 350; // Adjust as needed
+                                                    desiredWidth = 2000;
+
 
                                                 imageEngineerName.setAbsolutePosition(500, 150);
                                                 imageProposedProjName.setAbsolutePosition(775, 140);
                                                 imageOwner.setAbsolutePosition(1180, 140);
-                                                imageElectrical.setAbsolutePosition(2020, 130);
+                                                imageElectrical.setAbsolutePosition(1965, 130);
                                                 imageSheetNo.setAbsolutePosition(2270, 100);
                                                 imageDesignedBy.setAbsolutePosition(1800, 170);
                                                 imageCertifiedBy.setAbsolutePosition(1800, 120);
@@ -2948,32 +2522,31 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                             case "a3":
-                                                if(currentTableCount == 1) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2);
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                    xPosition = (pageWidth - desiredWidth) + 700;
-                                                    yPosition = 580 + (i - 1) * desiredHeight; // Adjust as needed
+                                                // Adjust as needed
+                                                desiredWidth = 1100;
+                                                desiredHeight = (int) (pageSize.getHeight() / 1.8);
+                                                xPosition = (pageWidth - desiredWidth);
+                                                yPosition = 150; // Adjust as needed
 
-                                                }else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2);
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4);
-                                                    xPosition = (pageWidth - desiredWidth) + 700;
-                                                    yPosition = 450 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth());
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5);
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 390 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+                                                // Divide each image's width and height by 2 to scale them down
+                                                imageEngineerNameA3.scaleAbsolute(imageEngineerNameA3.getWidth() / 2, imageEngineerNameA3.getHeight() / 2);
+                                                imageProposedProjNameA3.scaleAbsolute(imageProposedProjNameA3.getWidth() / 2, imageProposedProjNameA3.getHeight() / 2);
+                                                imageOwnerA3.scaleAbsolute(imageOwnerA3.getWidth() / 2, imageOwnerA3.getHeight() / 2);
+                                                imageElectricalA3.scaleAbsolute(imageElectricalA3.getWidth() / 2, imageElectricalA3.getHeight() / 2);
+                                                imageSheetNoA3.scaleAbsolute(imageSheetNoA3.getWidth() / 2, imageSheetNoA3.getHeight() / 2);
+                                                imageDesignedByA3.scaleAbsolute(imageDesignedByA3.getWidth() / 2, imageDesignedByA3.getHeight() / 2);
+                                                imageCertifiedByA3.scaleAbsolute(imageCertifiedByA3.getWidth() / 2, imageCertifiedByA3.getHeight() / 2);
+                                                imageRevision2A3.scaleAbsolute(imageRevision2A3.getWidth() / 2, imageRevision2A3.getHeight() / 2);
+                                                imageAddressA3.scaleAbsolute(imageAddressA3.getWidth() / 2, imageAddressA3.getHeight() / 2);
+                                                imageLocationA3.scaleAbsolute((float) (imageLocationA3.getWidth() / 1.8), (float) (imageLocationA3.getHeight() / 1.8));
 
-                                                imageEngineerNameA3.setAbsolutePosition(245, 75);
-                                                imageProposedProjNameA3.setAbsolutePosition(445, 65);
-                                                imageOwnerA3.setAbsolutePosition(650, 65);
-                                                imageElectricalA3.setAbsolutePosition(1010, 65);
-                                                imageSheetNoA3.setAbsolutePosition(1135, 50);
+
+
+                                                imageEngineerNameA3.setAbsolutePosition(250, 75);
+                                                imageProposedProjNameA3.setAbsolutePosition(400, 65);
+                                                imageOwnerA3.setAbsolutePosition(600, 65);
+                                                imageElectricalA3.setAbsolutePosition(980, 65);
+                                                imageSheetNoA3.setAbsolutePosition(1120, 50);
                                                 imageDesignedByA3.setAbsolutePosition(890, 85);
                                                 imageCertifiedByA3.setAbsolutePosition(890, 60);
                                                 imageRevision2A3.setAbsolutePosition(890, 45);
@@ -2996,30 +2569,19 @@ public class Loadschedule extends AppCompatActivity {
 
 
                                             case "20x30 inches":
-                                                if(currentTableCount == 1) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
-                                                    yPosition = 1040 + (i - 1) * desiredHeight; // Adjust as needed
-                                                } else if(currentTableCount == 2) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 4); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 1200; // Center horizontally
-                                                    yPosition = 890 + (i - 1) * desiredHeight; // Adjust as needed
-                                                } else if(currentTableCount == 3) {
-                                                    // Adjust as needed
-                                                    desiredWidth = (int) (pageSize.getWidth()); // Make it smaller by halving the width
-                                                    desiredHeight = (int) (pageSize.getHeight() / 5.5); // Make it smaller by dividing the height by ...
-                                                    xPosition = (pageWidth - desiredWidth) + 20;
-                                                    yPosition = 740 + (i - 1) * desiredHeight; // Adjust as needed
-                                                }
+                                                // Adjust as needed
+                                                desiredWidth = (int) (pageSize.getWidth() * 2); // Make it smaller by halving the width
+                                                desiredHeight = (int) (pageSize.getHeight() / 1.8); // Make it smaller by dividing the height by ...
+                                                xPosition = (pageWidth - desiredWidth) + 880; // Center horizontally
+                                                yPosition = 300; // Adjust as needed
+                                                desiredWidth = 2000;
+
+
 
                                                 imageEngineerName.setAbsolutePosition(460, 100);
                                                 imageProposedProjName.setAbsolutePosition(710, 130 - 50);
                                                 imageOwner.setAbsolutePosition(1070, 130 - 50);
-                                                imageElectrical.setAbsolutePosition(1870, 80);
+                                                imageElectrical.setAbsolutePosition(1800, 80);
                                                 imageSheetNo.setAbsolutePosition(2060, 50);
                                                 imageDesignedBy.setAbsolutePosition(1650, 100);
                                                 imageCertifiedBy.setAbsolutePosition(1650, 60);
@@ -3050,24 +2612,30 @@ public class Loadschedule extends AppCompatActivity {
                                         }
 
                                         // Scale the image to fit the desired width and height
-                                        relaImage.scaleToFit((float) (desiredWidth * 1.5), desiredHeight);
 
 
-                                        // Calculate the y-coordinate relative to the top of the page
-                                        float yPositionFromTop = pageHeight - yPosition;
 
-                                        // Subtract the desired height of the element to determine the y-coordinate relative to the top
-                                        float topEdgeYPosition = yPositionFromTop - desiredHeight;
+
+                                        relaImage.scaleAbsolute(desiredWidth, desiredHeight);
+                                        relaImage.setAbsolutePosition(xPosition, yPosition);
+
+
 
 
                                         // Add the RelativeLayout image to the PDF
-                                        relaImage.setAbsolutePosition(xPosition, topEdgeYPosition);
-
-
-
-
 
                                         document.add(relaImage);
+                                        if (currentTableCount > 0) {
+                                            xPosition = 0;
+                                            yPosition = 0;
+                                            yPositionFromTop = 0;
+                                            topEdgeYPosition = 0;
+
+                                            document.newPage();
+                                        }
+
+
+
                                     }
                                 }
 
@@ -3160,7 +2728,11 @@ public class Loadschedule extends AppCompatActivity {
                     double highestACUA = findHighestA(aList);
                     if (highestACUA > 0) {
                         updateUI(highestACUA);
+
+                        sumOfLeftAndRightTop();
+
                     }
+
 
             }
         });
@@ -3212,12 +2784,105 @@ public class Loadschedule extends AppCompatActivity {
     }
 
     public void onTotalValueCalculated(double totalValue) {
-        double demand = Double.parseDouble(demandfactor1.getText().toString());
+        Intent intent = getIntent();
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+        String demand1 = intent.getStringExtra("DEMAND");
+        String mainpipe = intent.getStringExtra("mainpipo");
+        String loadnamesave = intent.getStringExtra("loadnamesave");
+
+
+        // Logic for handling mainpipe value
+        if (loadnamesave != null && !loadnamesave.isEmpty()) {
+            PB1.setText(loadnamesave);
+
+
+
+
+
+
+                TextView[] nameViews = {num2_ab,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab};
+
+
+                for (int i = 0; i < nameViews.length; i++) {
+                    nameViews[i].setText(loadnamesave);
+                }
+
+
+
+            SharedPreferences.Editor myEdit = preferences.edit();
+            myEdit.putString("loadnamesave", loadnamesave);
+            myEdit.apply();
+
+        } else {
+
+            loadnamesave = preferences.getString("loadnamesave", "");
+
+            if (!loadnamesave.isEmpty()) {
+
+                PB1.setText(loadnamesave);
+
+                TextView[] nameViews = {num2_ab,num4_ab, num6_ab, num8_ab, num10_ab, num12_ab, num14_ab, num16_ab, num18_ab, num20_ab, num22_ab, num24_ab, num26_ab, num28_ab, num30_ab};
+
+                for (int i = 0; i < nameViews.length; i++) {
+                    nameViews[i].setText(loadnamesave);
+                }
+
+            }
+        }
+
+
+
+
+
+// Logic for handling mainpipe value
+        if (mainpipe != null && !mainpipe.isEmpty()) {
+            Pipetype.setText(mainpipe);
+
+
+            SharedPreferences.Editor myEdit = preferences.edit();
+            myEdit.putString("mainpipe", mainpipe);
+            myEdit.apply();
+
+        } else {
+
+            mainpipe = preferences.getString("mainpipe", "");
+
+            if (!mainpipe.isEmpty()) {
+
+                Pipetype.setText(mainpipe);
+            }
+        }
+
+// Additional logic for demand
+        if (demand1 != null && !demand1.isEmpty()) {
+            demandfactor1.setText(demand1);
+            demandfactor2.setText(demand1);
+
+
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.putString("DEMAND", demand1);
+            myEdit.apply();
+        } else {
+
+            demand1 = sharedPreferences.getString("DEMAND", "");
+
+            if (!demand1.isEmpty()) {
+                demandfactor1.setText(demand1);
+                demandfactor2.setText(demand1);
+            }
+        }
+
+
+        // Parse demandString to double
+
 
         double totalOneValue = totalValue;
 
-
-        topOneAndTwoValue = totalOneValue * demand;
+        String demand5 =demandfactor1.getText().toString();
+        double demandrer =Double.parseDouble(demand5);
+        topOneAndTwoValue = totalOneValue * demandrer;
 
 
 
@@ -3228,7 +2893,557 @@ public class Loadschedule extends AppCompatActivity {
         UnderOneAndTwo.setText(formattedResult);
         sumOfLeftAndRightTop();
 
+
+        //first update
+
+
+        FeederWire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.feeder);
+
+                // Define your list of feed options
+                String[] feedOptions = new String[]{"3.5", "5.5", "8.0", "14", "22", "30", "38", "50", "60", "80","100", "125", "150", "175", "200", "250", "325","375", "400", "500"};
+
+                // Create ArrayAdapter to hold suggestions
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feedOptions);
+
+                // Set the adapter to AutoCompleteTextView
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedFeederWire = autoCompleteTextView.getText().toString();
+                                handleFeederWireSelection(selectedFeederWire);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Enable OK button when an item is selected
+                        positiveButton.setEnabled(true);
+                    }
+                });
+            }
+        });
+
+
+
+
+
+//second feeder wire update
+        FeederWireSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_pipe_wire, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_pipe_wire);
+
+                // Define your list of pipe wire options
+                String[] pipeWireOptions = new String[]{"3.5", "5.5", "8.0", "14", "22", "30", "50", "60"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, pipeWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedFeederWiresec = autoCompleteTextView.getText().toString();
+                                handleFeederWiresecondSelection(selectedFeederWiresec);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+
+//pospos
+
+            }
+        });
+
+
+//last feeder wire
+        FeederWireFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextView
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_feeder_wire4, null);
+
+                // Find the AutoCompleteTextView in the inflated layout
+                final AutoCompleteTextView autoCompleteTextView = dialogView.findViewById(R.id.auto_complete_feeder_wire4);
+
+                // Define your list of feeder wire options
+                String[] feederWireOptions = new String[]{"15", "20", "25", "32", "40", "50", "65", "80", "90", "100"};
+
+                // Create ArrayAdapter to hold options
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, feederWireOptions);
+                autoCompleteTextView.setAdapter(adapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update Feeder Wire")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Get the selected item from the AutoCompleteTextView
+                                String selectedFeederWire = autoCompleteTextView.getText().toString();
+                                handleFeederWirethirdSelection(selectedFeederWire);
+                            }
+                        })// Set null initially, we'll enable/disable it later
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        positiveButton.setEnabled(s.toString().trim().length() > 0);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+
+            }
+        });
+
+
+// main  wire update
+        //last main wire update
+        MainWire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inflate the layout containing the AutoCompleteTextViews
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_main_wire, null);
+
+                // Find the AutoCompleteTextViews in the inflated layout
+                final AutoCompleteTextView ATWire = dialogView.findViewById(R.id.auto_complete_AT_wire);
+                final AutoCompleteTextView AFWire = dialogView.findViewById(R.id.auto_complete_AF_wire);
+
+                // Define your list of AT and AF wire options
+                String[] ATOptions = new String[]{"20", "30", "40", "50", "60", "70", "80", "90", "100","125","150", "175" ,"200","225", "250","300","350","400","500","600","700","800","1000","1200","1600","2000","2500","3000","4000","5000","6000"};
+                String[] AFOptions = new String[]{"50", "100","125","150", "225","250","400","600","800","1200","1600","2000","2500","3000","4000","5000","6000"};
+
+                // Create ArrayAdapters to hold options
+                ArrayAdapter<String> ATAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, ATOptions);
+                ArrayAdapter<String> AFAdapter = new ArrayAdapter<>(Loadschedule.this, android.R.layout.simple_dropdown_item_1line, AFOptions);
+                ATWire.setAdapter(ATAdapter);
+                AFWire.setAdapter(AFAdapter);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Loadschedule.this);
+                builder.setView(dialogView)
+                        .setTitle("Update AT and AF")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedAT = ATWire.getText().toString();
+                                String AT = ATWire.getText().toString();
+                                String AF = AFWire.getText().toString();
+                                handleataf(selectedAT,AT,AF);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User clicked Cancel button, dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                // Get the button from the dialog after it's shown
+                final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                // Set initial state for the OK button
+                positiveButton.setEnabled(false);
+
+                // Set a listener to enable/disable the OK button based on text input
+                TextWatcher watcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        // Enable/disable OK button based on whether there is text entered
+                        String ATText = ATWire.getText().toString().trim();
+                        String AFText = AFWire.getText().toString().trim();
+                        positiveButton.setEnabled(!ATText.isEmpty() && !AFText.isEmpty());
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                };
+
+                ATWire.addTextChangedListener(watcher);
+                AFWire.addTextChangedListener(watcher);
+
+                // Disable AF input based on the selected AT value
+                ATWire.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        String selectedAT = ATWire.getText().toString();
+                        if (selectedAT.equals("20") || selectedAT.equals("30") || selectedAT.equals("40") || selectedAT.equals("50")||selectedAT.equals("60") || selectedAT.equals("70")|| selectedAT.equals("80")|| selectedAT.equals("90"))
+                            AFWire.setText("100");
+                        else if (  selectedAT.equals("100"))
+                            AFWire.setText("125");
+                        else if (  selectedAT.equals("125"))
+                            AFWire.setText("150");
+                        else if (  selectedAT.equals("150") ||selectedAT.equals("175")||selectedAT.equals("200"))
+                            AFWire.setText("225");
+                        else if (  selectedAT.equals("225") ||selectedAT.equals("250"))
+                            AFWire.setText("250");
+                        else if ( selectedAT.equals("300")||selectedAT.equals("350")|| selectedAT.equals("400"))
+                            AFWire.setText("400");
+                        else if ( selectedAT.equals("500")|| selectedAT.equals("600"))
+                            AFWire.setText("600");
+                        else if (   selectedAT.equals("700")|| selectedAT.equals("800"))
+                            AFWire.setText("800");
+                        else if (  selectedAT.equals("1000") || selectedAT.equals("1200"))
+                            AFWire.setText("1200");
+                        else if (  selectedAT.equals("1600"))
+                            AFWire.setText("1600");
+                        else if (  selectedAT.equals("2000"))
+                            AFWire.setText("2000");
+                        else if (  selectedAT.equals("2500"))
+                            AFWire.setText("2500");
+                        else if (  selectedAT.equals("3000"))
+                            AFWire.setText("3000");
+                        else if (  selectedAT.equals("4000"))
+                            AFWire.setText("4000");
+                        else if (  selectedAT.equals("5000"))
+                            AFWire.setText("5000");
+                        else
+                            AFWire.setText("6000");
+
+                        // Disable AF input
+                        AFWire.setEnabled(false);
+                    }
+                });
+
+
+            }
+        });
+
+
     }
+    private void handleFeederWireSelection(String selectedFeederWire) {
+        String feed = FeederWire.getText().toString();
+
+        if (feed.startsWith("2 -")) {
+            // Extract wire size from feed
+            String feedWireSizeStr = feed.substring(4, feed.indexOf("mm\u00B2"));
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize = Double.parseDouble(selectedFeederWire);
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize < feedWireSize) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+
+
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Update the FeederWire with the new text
+                                    FeederWire.setText("2 - " + selectedFeederWire + "mm\u00B2 THHN/THWN-2 Cu. Wire ");
+                                   String Feeder2 = FeederWire.getText().toString();
+                                    gec(Feeder2);
+
+                                    String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+
+                                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                                    for (int i = 0; i < topViews.length; i++) {
+                                        topViews[i].setText(topText);
+                                    }
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                }else{
+                    // Update the FeederWire with the new text
+                    FeederWire.setText("2 - " + selectedFeederWire + "mm\u00B2 THHN/THWN-2 Cu. Wire ");
+                    String Feeder2 = FeederWire.getText().toString();
+                    gec(Feeder2);
+                    String topText = "USE " + FeederWire.getText().toString() + "\n"+ FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+
+                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                    for (int i = 0; i < topViews.length; i++) {
+                        topViews[i].setText(topText);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void handleFeederWiresecondSelection(String selectedFeederWiresec) {
+        String feed2 = FeederWireSecond.getText().toString();
+
+        if (feed2.startsWith(" + 1 - ")) {
+            // Extract wire size from feed
+
+            int startIndex = " + 1 - ".length();
+            int endIndex = feed2.indexOf("mm\u00B2");
+            String feedWireSizeStr = feed2.substring(startIndex, endIndex);
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize2 = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize2 = Double.parseDouble(selectedFeederWiresec);
+
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize2 < feedWireSize2) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    updateFeederWire(selectedFeederWiresec);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                } else {
+                    updateFeederWire(selectedFeederWiresec);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void updateFeederWire(String selectedFeederWiresec) {
+        // Update the FeederWire with the new text
+        String newTet = (" + 1 - " + selectedFeederWiresec + "mm\u00B2 THHN/THWN-2 Cu. Wire");
+        FeederWireSecond.setText(newTet);
+
+        // Update TextViews
+        String topText = "USE " + FeederWire.getText().toString() + "\n" + newTet + "\n" + FeederWireFourth.getText().toString() + " " + Pipetype.getText().toString();
+        TextView[] topViews = {num2_top, num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+        for (int i = 0; i < topViews.length; i++) {
+            topViews[i].setText(topText);
+        }
+    }
+
+    private void handleFeederWirethirdSelection(String selectedFeederWire) {
+        String feed2 = FeederWireFourth.getText().toString();
+
+        if (feed2.startsWith("(G)In ")) {
+            // Extract wire size from feed
+
+            int startIndex = "(G)In ".length();
+            int endIndex = feed2.indexOf(" mmø");
+            String feedWireSizeStr = feed2.substring(startIndex, endIndex);
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize2 = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize2 = Double.parseDouble(selectedFeederWire);
+
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize2 < feedWireSize2) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FeederWireFourth.setText("(G)In " + selectedFeederWire + " mmø");
+
+                                    String topText = "USE " + FeederWire.getText().toString()+ "\n" + FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
+
+                                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                                    for (int i = 0; i < topViews.length; i++) {
+                                        topViews[i].setText(topText);
+                                    }
+
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                } else {
+                    FeederWireFourth.setText("(G)In " + selectedFeederWire + " mmø");
+
+                    String topText = "USE " + FeederWire.getText().toString()+ "\n" + FeederWireSecond.getText().toString()+ "\n" + FeederWireFourth.getText().toString() + Pipetype.getText().toString();
+
+                    TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+
+                    for (int i = 0; i < topViews.length; i++) {
+                        topViews[i].setText(topText);
+                    }
+
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private void handleataf(String selectedAT,String AT,String AF) {
+        String feed2 = MainWire.getText().toString();
+
+        if (feed2.startsWith("")) {
+            // Extract wire size from feed
+
+            int startIndex = "".length();
+            int endIndex = feed2.indexOf(" AT,");
+            String feedWireSizeStr = feed2.substring(startIndex, endIndex);
+
+            try {
+                // Convert feed wire size to double for comparison
+                double feedWireSize2 = Double.parseDouble(feedWireSizeStr);
+
+                // Convert selected feeder wire size to double for comparison
+                double selectedWireSize2 = Double.parseDouble(selectedAT);
+
+
+                // Show dialog message if selected wire size is less than feed wire size
+                if (selectedWireSize2 < feedWireSize2) {
+                    new AlertDialog.Builder(Loadschedule.this)
+                            .setMessage("Please be informed that reducing the wire size significantly may violate the Philippine Electrical Code (PEC) standards.\n\nClick Proceed to confirm if you wish to continue editing.")
+                            .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    // Get the text from the AutoCompleteTextViews
+
+                                    // Update the MainWire with the new text
+                                    String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 HZ");
+                                    // Update TextViews
+                                    MainWire.setText(newAfAt);
+
+                                    TextView[] numViews = {num2_a,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                                    for (int i = 0; i < numViews.length; i++) {
+                                        numViews[i].setText(AT + " AT");
+                                    }
+
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                } else {
+                    // Update the MainWire with the new text
+                    String newAfAt = (AT + " AT, " + AF + " AF, 2P, 230V, 60 HZ");
+                    // Update TextViews
+                    MainWire.setText(newAfAt);
+
+                    TextView[] numViews = {num2_a,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+                    for (int i = 0; i < numViews.length; i++) {
+                        numViews[i].setText(AT + " AT");
+                    }
+
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
 
     private void sumOfLeftAndRightTop() {
         double value1 = topOneAndTwoValue;
@@ -3251,222 +3466,359 @@ public class Loadschedule extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharePref", MODE_PRIVATE);
         String FDW = sharedPreferences.getString("UFWT", "");
 
-        if (sum2 == 0) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
 
-        }
-        if (sum2 < 15) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 16 && sum2 <= 20) {
-            MainWire.setText("20 AT, 50 AF, 2P, 230V, 60 HZ");
-
-        }
-        if (sum2 >= 21 && sum2 <= 30) {
-            MainWire.setText("30 AT, 50 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 31 && sum2 <= 40) {
-            MainWire.setText("40 AT, 50 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 41 && sum2 <= 50) {
-            MainWire.setText("50 AT, 50 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 50 && sum2 <= 60) {
+        if (sum2 >= 1 && sum2 <= 20) {
+            MainWire.setText("20 AT, 100 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 30) {
+            MainWire.setText("30 AT, 100 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 40) {
+            MainWire.setText("40 AT, 100 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 50) {
+            MainWire.setText("50 AT, 100 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 60) {
             MainWire.setText("60 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-
-        if (sum2 >= 71 && sum2 <= 80) {
-            MainWire.setText("80 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 81 && sum2 <= 90) {
-            MainWire.setText("90 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 91 && sum2 <= 100) {
-            MainWire.setText("100 AT, 100 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 101 && sum2 <= 110) {
-            MainWire.setText("110 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 111 && sum2 <= 125) {
-            MainWire.setText("125 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 >= 125 && sum2 <= 150) {
+        }  else if (sum2 <= 70) {
+            MainWire.setText("70 AT, 100 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 100) {
+            MainWire.setText("100 AT, 125 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 125) {
+            MainWire.setText("125 AT, 150 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 150) {
             MainWire.setText("150 AT, 225 AF, 2P, 230V, 60 HZ");
-        }
-        if (sum2 > 151) {
+        } else if (sum2 <= 175) {
             MainWire.setText("175 AT, 225 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 200) {
+            MainWire.setText("200 AT, 225 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 225) {
+            MainWire.setText("225 AT, 250 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 250) {
+            MainWire.setText("250 AT, 250 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 300) {
+            MainWire.setText("300 AT, 400 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 400) {
+            MainWire.setText("400 AT, 400 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 500) {
+            MainWire.setText("500 AT, 600 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 600) {
+            MainWire.setText("600 AT, 600 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 700) {
+            MainWire.setText("700 AT, 800 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 800) {
+            MainWire.setText("800 AT, 800 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 1000) {
+            MainWire.setText("1000 AT, 1200 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 1200) {
+            MainWire.setText("1200 AT, 1200 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 1600) {
+            MainWire.setText("1600 AT, 1600 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 2000) {
+            MainWire.setText("2000 AT, 2000 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 2500) {
+            MainWire.setText("2500 AT, 2500 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 3000) {
+            MainWire.setText("3000 AT, 3000 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 4000) {
+            MainWire.setText("4000 AT, 4000 AF, 2P, 230V, 60 HZ");
+        } else if (sum2 <= 5000) {
+            MainWire.setText("5000 AT, 5000 AF, 2P, 230V, 60 HZ");
+        }else if (sum2 <= 6000) {
+            MainWire.setText("6000 AT, 6000 AF, 2P, 230V, 60 HZ");
         }
-        String PassMainWire = MainWire.getText().toString();
 
+
+
+
+
+
+        String PassMainWire = MainWire.getText().toString();
+        if ( PassMainWire.equals("20 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 3.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 3.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+
+        }
+        else if (PassMainWire.equals("30 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 3.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+
+        else if (PassMainWire.equals("40 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if ( PassMainWire.equals("50 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+
+        else if (PassMainWire.equals("60 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 14mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("70 AT, 100 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 22mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+
+        else if (PassMainWire.equals("100 AT, 125 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 30mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("125 AT, 150 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 38mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("150 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 50mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("175 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 60mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("200 AT, 225 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 80mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("225 AT, 250 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 100mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("250 AT, 250 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 125mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("300 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 150mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("350 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 175mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("400 AT, 400 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 200mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("500 AT, 600 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 30mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 250mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("600 AT, 600 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 38mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 325mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("700 AT, 800 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 375mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("800 AT, 800 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 400mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
+        else if (PassMainWire.equals("1000 AT, 1200 AF, 2P, 230V, 60 HZ")) {
+            FeederWireSecond.setText(" + 1 - 60mm\u00B2 THHN/THWN-2 Cu. Wire");
+            FeederWire.setText("2 - 500mm\u00B2 THHN/THWN-2 Cu. Wire");
+        }
 
         if (FDW != null) {
             MainWire.setText(PassMainWire);
         }
 
-        if (sum2 >= 1 && sum2 < 25) {
-            FeederWire.setText("2 - 2.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 25 && sum2 < 30) {
-            FeederWire.setText("2 - 3.5mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 30 && sum2 < 40) {
-            FeederWire.setText("2 - 5.5mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 40 && sum2 < 55) {
-            FeederWire.setText("2 - 8.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 55 && sum2 < 75) {
-            FeederWire.setText("2 - 14.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 75 && sum2 < 95) {
-            FeederWire.setText("2 - 22.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 95 && sum2 < 115) {
-            FeederWire.setText("2 - 30.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 115 && sum2 < 130) {
-            FeederWire.setText("2 - 38.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 130 && sum2 < 150) {
-            FeederWire.setText("2 - 50.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 150 && sum2 < 170) {
-            FeederWire.setText("2 - 60.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 170 && sum2 < 205) {
-            FeederWire.setText("2 - 80.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 205 && sum2 < 240) {
-            FeederWire.setText("2 - 100.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 240 && sum2 < 285) {
-            FeederWire.setText("2 - 125.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 285 && sum2 < 320) {
-            FeederWire.setText("2 - 150.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 320 && sum2 < 345) {
-            FeederWire.setText("2 - 175.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 345 && sum2 < 360) {
-            FeederWire.setText("2 - 200.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 360 && sum2 < 425) {
-            FeederWire.setText("2 - 250.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 425 && sum2 < 490) {
-            FeederWire.setText("2 - 325.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 490 && sum2 < 530) {
-            FeederWire.setText("2 - 375.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 530 && sum2 < 535) {
-            FeederWire.setText("2 - 400.0mm.sq. THHN Cu. Wire");
-        }
-        if (sum2 >= 535 && sum2 < 595) {
-            FeederWire.setText("2 - 500.0mm.sq. THHN Cu. Wire");
-        }
-
 
         String FeederW2 = FeederWire.getText().toString().trim();
 
-//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0 mm.sq.
-        if (FeederW2.equals("2 - 2.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+//IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0mm\u00B2
+        if (FeederW2.equals("2 - 3.5mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
 
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+
+
         }
-        if (FeederW2.equals("2 - 3.5mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 5.5mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 8.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 14mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 20 mmø");
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 14.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-            FeederWireFourth.setText("(G)In 20 mmø");
-        }
-        if (FeederW2.equals("2 - 22.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 22mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 25 mmø");
-        }
-        if (FeederW2.equals("2 - 30.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 8.0  mm.sq. THHN Cu. Wire");
-            FeederWireFourth.setText("(G)In 32 mmø");
-        }
-        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0 mm.sq.
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
 
-        if (FeederW2.equals("2 - 38.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
-            FeederWireFourth.setText("(G)In 32 mmø");
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 50.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 14.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 30mm\u00B2 THHN/THWN-2 Cu. Wire")) {
+            FeederWireFourth.setText("(G)In 32 mmø");
+            String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
+        //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0mm\u00B2
+
+        else if (FeederW2.equals("2 - 38mm\u00B2 THHN/THWN-2 Cu. Wire")) {
+            FeederWireFourth.setText("(G)In 32 mmø");
+
+            String botText = "GEC: + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
+        else if (FeederW2.equals("2 - 50mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 40 mmø");
+            String botText = "GEC: + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
         //IF FEEDERWIRE IS 60 80   =    22
-        if (FeederW2.equals("2 - 60.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 60mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 40 mmø");
+            String botText = "GEC: + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 80.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 22.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 80mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
 
         //IF FEEDERWIRE IS 100 to 175   = 30
 
-        if (FeederW2.equals("2 - 100.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 100mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 125.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 125mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 50 mmø");
+            String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
-        if (FeederW2.equals("2 - 150.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 150mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
+            String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
-        if (FeederW2.equals("2 - 175.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 30.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 175mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
-        }
+            String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
 
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
+        }
 
         //IF FEEDERWIRE IS 200 to 325    50
-        if (FeederW2.equals("2 - 200.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 200mm\u00B2 THHN/THWN-2 Cu. Wire")) {
             FeederWireFourth.setText("(G)In 65 mmø");
-        }
-        if (FeederW2.equals("2 - 250.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
-            FeederWireFourth.setText("(G)In 80  mmø");
-        }
-        if (FeederW2.equals("2 - 325.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 50.0  mm.sq. THHN Cu. Wire");
-        }
+            String botText = "GEC: + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire";
 
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
-        //IF FEEDERWIRE IS  375 to 500    600
-        if (FeederW2.equals("2 - 375.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
-        if (FeederW2.equals("2 - 400.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
-        }
-        if (FeederW2.equals("2 - 500.0mm.sq. THHN Cu. Wire")) {
-            FeederWireSecond.setText("+ 1 - 60.0  mm.sq. THHN Cu. Wire");
+        else if (FeederW2.equals("2 - 250mm\u00B2 THHN/THWN-2 Cu. Wire")) {
+            FeederWireFourth.setText("(G)In 80 mmø");
+            String botText = "GEC: + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+            TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+            for (int i = 0; i < botViews.length; i++) {
+
+                botViews[i].setText(botText);
+            }
         }
 
 
@@ -3476,19 +3828,287 @@ public class Loadschedule extends AppCompatActivity {
 
 //for the skeleton displays values
         if (FeederW2 != null) {
-            String topText = "USE " + FeederW2 + Feeder2 + Feeder3 + " " + Pipetype.getText().toString();
-            String botText = "GEC:" + Feeder2;
+            String topText = "USE " + FeederW2 + "\n" + Feeder2 + "\n" + Feeder3 + " " + Pipetype.getText().toString();
 
-            TextView[] topViews = {num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
-            TextView[] botViews = {num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+          //  String botText = "GEC:" + Feeder2;
+
+            TextView[] topViews = {num2_top,num4_top, num6_top, num8_top, num10_top, num12_top, num14_top, num16_top, num18_top, num20_top, num22_top, num24_top, num26_top, num28_top, num30_top};
+          //  TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
 
             for (int i = 0; i < topViews.length; i++) {
                 topViews[i].setText(topText);
-                botViews[i].setText(botText);
+             //   botViews[i].setText(botText);
             }
+        }
+        //display for skel
+
+        String fullText = MainWire.getText().toString();
+        String desiredSubstring;
+
+
+// Assuming "175 AT" always appears at the beginning of the text and followed by a comma
+        int commaIndex = fullText.indexOf(',');
+        if (commaIndex != -1) {
+            desiredSubstring = fullText.substring(0, commaIndex);
+        } else {
+            // If there's no comma, simply take the whole text
+            desiredSubstring = fullText;
+        }
+
+
+        TextView[] numViews = {num2_a,num4_a, num6_a, num8_a, num10_a, num12_a, num14_a, num16_a, num18_a, num20_a, num22_a, num24_a, num26_a, num28_a, num30_a};
+
+        for (int i = 0; i < numViews.length; i++) {
+            numViews[i].setText(desiredSubstring);
         }
     }
 
+
+private void gec(String Feeder2){
+
+    //IF FEEDERWIRE IS 30 BELOW THE FEEDERWIRE SECOND 8.0mm\u00B2
+    if (Feeder2.equals("2 - 3.5mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+
+
+    }
+    else if (Feeder2.equals("2 - 5.5mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 14mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 22mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 30mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 8.0mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    //IF FEEDERWIRE IS 38 to 50  THE FEEDERWIRE SECOND 14.0mm\u00B2
+
+    else if (Feeder2.equals("2 - 38mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+
+        String botText = "GEC: + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 50mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 14mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+    //IF FEEDERWIRE IS 60 80   =    22
+    else if (Feeder2.equals("2 - 60mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 80mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 22mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+
+    //IF FEEDERWIRE IS 100 to 175   = 30
+
+    else if (Feeder2.equals("2 - 100mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 125mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+    else if (Feeder2.equals("2 - 150mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+    else if (Feeder2.equals("2 - 175mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 30mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+    //IF FEEDERWIRE IS 200 to 325    50
+    else if (Feeder2.equals("2 - 200mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 250mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 50mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 325mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 60mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 375mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 60mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 400mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 60mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+    else if (Feeder2.equals("2 - 500mm\u00B2 THHN/THWN-2 Cu. Wire ")) {
+
+        String botText = "GEC: + 1 - 80mm\u00B2 THHN/THWN-2 Cu. Wire";
+
+        TextView[] botViews = {num2_bot,num4_bot, num6_bot, num8_bot, num10_bot, num12_bot, num14_bot, num16_bot, num18_bot, num20_bot, num22_bot, num24_bot, num26_bot, num28_bot, num30_bot};
+
+        for (int i = 0; i < botViews.length; i++) {
+
+            botViews[i].setText(botText);
+        }
+    }
+
+
+
+
+
+
+}
 
 
 

@@ -2,6 +2,7 @@ package com.angelodev.helpapp.util
 
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.Locale
 
 object ElectricalCalculator {
     private const val VOLTAGE = 230.0
@@ -18,7 +19,7 @@ object ElectricalCalculator {
 
     fun findHighestAmpere(ampereValues: List<Double>): Double {
         val highest = ampereValues.maxOrNull() ?: 0.0
-        val df = DecimalFormat("#.##")
+        val df = DecimalFormat("#.##", java.text.DecimalFormatSymbols(Locale.US))
         df.roundingMode = RoundingMode.HALF_UP
         return df.format(highest).toDouble()
     }
@@ -53,7 +54,7 @@ object ElectricalCalculator {
     fun computeUnderThreeAndFour(topThreeAndFour: Double): Double = topThreeAndFour
 
     fun formatValue(value: Double): String {
-        val df = DecimalFormat("#.##")
+        val df = DecimalFormat("#.##", java.text.DecimalFormatSymbols(Locale.US))
         df.roundingMode = RoundingMode.HALF_UP
         return df.format(value)
     }

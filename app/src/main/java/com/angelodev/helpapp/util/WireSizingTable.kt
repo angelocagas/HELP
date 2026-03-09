@@ -2,7 +2,7 @@ package com.angelodev.helpapp.util
 
 object WireSizingTable {
     // Standard AT wire values
-    val AT_VALUES = listOf(15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 125, 150, 175)
+    val AT_VALUES = listOf(15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 125, 150, 175, 200)
 
     // Wire sizes based on ampere trip per PEC Table 3.10.1.62 (THHN copper ampacity)
     fun getWireSizeForAT(at: Int): String = when {

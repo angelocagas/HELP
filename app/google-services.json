@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "758716903856",
-    "project_id": "projectone-f22c7",
-    "storage_bucket": "projectone-f22c7.appspot.com"
+    "project_number": "789670897939",
+    "project_id": "androidpersonalprojects",
+    "storage_bucket": "androidpersonalprojects.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:758716903856:android:44c57a86905817b0b16675",
+        "mobilesdk_app_id": "1:789670897939:android:85cda2e2a6563e2a3392e6",
         "android_client_info": {
-          "package_name": "com.example.projectone"
+          "package_name": "com.angelodev.helpapp"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBS2M21tZo-kL6q58r1kWRrVY4Ke9oXzD8"
+          "current_key": "AIzaSyDGoM0UQXMP7cQ6NYd0Vxzai5tbELerh9g"
         }
       ],
       "services": {

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="850dp"
-    android:layout_height="wrap_content"
-    android:gravity="start"
-    android:id="@+id/edit"
-    android:orientation="horizontal"
-    android:layout_marginTop="1.4dp"
-    tools:ignore="MissingDefaultResource">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="circuit"
+            type="com.angelodev.helpapp.data.local.entity.CircuitEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="850dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:id="@+id/edit"
+        android:orientation="horizontal"
+        android:layout_marginTop="1.4dp"
+        tools:ignore="MissingDefaultResource">
 
 
         <RelativeLayout
@@ -45,7 +53,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:text="1"
+            android:text="@{circuit.quantity}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -64,7 +72,7 @@
             android:layout_width="93.7dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:text="Lighting outlet 120W \n (leaving room)"
+            android:text="@{circuit.item}"
             android:textSize="8dp"
             android:ellipsize="end"
             android:paddingBottom="0dp"
@@ -83,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_gravity="center"
-            android:text="1"
+            android:text="@{circuit.oPlus}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -94,7 +102,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="230"
+            android:text="@{circuit.voltage}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -105,7 +113,7 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:text="3240"
+            android:text="@{circuit.voltAmpere}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -117,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:maxLength="5"
-            android:text="10.67"
+            android:text="@{circuit.ampere}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -128,7 +136,7 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:text="2"
+            android:text="@{circuit.pole}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -139,7 +147,7 @@
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:text="15"
+            android:text="@{circuit.ampereTrip}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -150,7 +158,7 @@
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:text="50"
+            android:text="@{circuit.ampereFrame}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -161,7 +169,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2.4dp"
-            android:text="2"
+            android:text="@{circuit.sizeNum}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -172,7 +180,7 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:text="5.5"
+            android:text="@{circuit.sizeMm}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -183,7 +191,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
-            android:text="THHN"
+            android:text="@{circuit.sizeType}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -194,7 +202,7 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:text="1"
+            android:text="@{circuit.groundNum}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -205,7 +213,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2.5dp"
-            android:text="3.5"
+            android:text="@{circuit.groundMm}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -216,7 +224,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
-            android:text="THHN"
+            android:text="@{circuit.groundType}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -228,7 +236,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="1dp"
-            android:text="20"
+            android:text="@{circuit.mmPlus}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -239,7 +247,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:text="PVC"
+            android:text="@{circuit.conduitType}"
             android:textAlignment="center"
             android:textSize="8dp"
             tools:ignore="TextSizeCheck" />
@@ -253,3 +261,5 @@
 
 
 </LinearLayout>
+
+</layout>

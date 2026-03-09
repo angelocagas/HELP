@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".HelpApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,72 +14,74 @@
         android:label="@string/help"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjectOne"
+        android:theme="@style/Theme.HelpApp"
         tools:targetApi="31">
-        <activity
-            android:name=".ChangeMain"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".ChangePVC"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".ChangeFeederWire"
-            android:screenOrientation="portrait"
-            android:exported="false" />
 
+        <!-- Splash -->
         <activity
-            android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PanelBoard"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateDataActivity"
-            android:exported="false" />
-        <activity android:name=".ChangePipeSize"
-            android:screenOrientation="portrait"
-        android:exported="false" />
-        <activity android:name=".Changefirst"
-        android:exported="false" />
-
-
-        <activity
-            android:name=".Loadschedule"
-            android:exported="false"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".Inputing"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".New_Project"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".Menu"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Auth -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- Home / Menu -->
+        <activity
+            android:name=".ui.home.MenuActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- Project -->
+        <activity
+            android:name=".ui.project.NewProjectActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.project.CircuitInputActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- Schedule -->
+        <activity
+            android:name=".ui.schedule.LoadScheduleActivity"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+
+        <!-- Config -->
+        <activity
+            android:name=".ui.schedule.config.ChangeMainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.schedule.config.ChangeFeederWireActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.schedule.config.ChangePipeSizeActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.schedule.config.ChangePvcActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- About -->
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
